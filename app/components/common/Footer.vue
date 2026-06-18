@@ -1,8 +1,53 @@
 <!-- components/SiteFooter.vue -->
 <template>
+    <section class="w-full bg-black">
+    <div class="bg-[#1c1b1f]">
+      <div
+        class="mx-auto flex flex-col gap-10 px-6 py-10 sm:px-10 md:flex-row md:items-center md:justify-between lg:px-20 lg:py-12"
+      >
+        <!-- Left text -->
+        <div>
+          <p class="mb-4 text-sm font-light text-white/55">
+            Join our mailing list
+          </p>
+
+          <h2
+            class="max-w-[360px] text-[28px] font-medium leading-[0.95] tracking-[-0.04em] text-white sm:text-[34px] lg:text-[40px]"
+          >
+            Get exclusive<br />
+            insights and updates
+          </h2>
+        </div>
+
+        <!-- Form -->
+        <form
+          class="flex w-full max-w-[620px] overflow-hidden bg-white md:mt-6"
+        >
+          <input
+            type="email"
+            placeholder="Enter email address to sign up"
+            class="h-[56px] flex-1 bg-[#e3e3e3] px-5 text-[12px] text-black outline-none placeholder:text-black/45 sm:h-[62px]"
+          />
+
+          <button
+            type="submit"
+            class="flex h-[56px] w-[150px] items-center justify-center gap-5 bg-white text-[11px] font-semibold uppercase text-black transition hover:bg-[#10cfa3] sm:h-[62px] sm:w-[170px]"
+          >
+            Subscribe
+            <img
+          :src="arrowOutwardIcon"
+          alt=""
+          class="h-5 w-5 object-contain"
+        />
+          </button>
+        </form>
+      </div>
+    </div>
+
+  </section>
   <footer class="w-full border-t border-black/5 bg-[#eeeeee]">
     <div
-      class="mx-auto flex max-w-[1440px] flex-col items-center gap-8 px-6 py-9 text-center sm:px-10 md:min-h-[132px] md:flex-row md:items-center md:justify-between md:px-14 md:py-8 md:text-left lg:px-20"
+      class="mx-auto flex flex-col items-center gap-8 px-6 py-9 text-center sm:px-10 md:min-h-[132px] md:flex-row md:items-center md:justify-between md:px-14 md:py-8 md:text-left lg:px-20"
     >
       <!-- Left side -->
       <div
@@ -104,5 +149,6 @@
 </template>
 
 <script setup>
+import arrowOutwardIcon from "~/assets/images/icon/arrow_outward.png"
 const currentYear = new Date().getFullYear()
 </script>

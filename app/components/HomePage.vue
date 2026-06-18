@@ -62,7 +62,7 @@
         class="relative order-1 min-w-0 max-w-full overflow-hidden bg-[rgba(16,82,87,.86)] px-5 py-6 text-white backdrop-blur-[1px] sm:px-8 sm:py-9 md:px-10 lg:order-2 lg:px-9 lg:py-10"
       >
         <h1
-          class="max-w-[680px] break-words text-[28px] font-semibold leading-[1.03] tracking-[-0.02em] text-white min-[390px]:text-[34px] sm:text-[40px] lg:text-[38px] xl:text-[40px]"
+          class="max-w-[680px] break-words text-[23px] font-semibold leading-[1.04] tracking-[-0.02em] text-white min-[390px]:text-[28px] sm:text-[40px] lg:text-[38px] xl:text-[40px]"
         >
           Unlocking liquidity. Mobilising capital.
           Accelerating African infrastructure.
@@ -114,7 +114,7 @@
 
         <!-- Cards -->
         <div
-          class="relative mt-6 overflow-hidden [--hero-card-gap:1rem] [--hero-card-width:min(58vw,200px)] sm:-mr-8 sm:mt-8 sm:[--hero-card-gap:1.5rem] sm:[--hero-card-width:min(42vw,244px)] md:-mr-10 lg:-mr-9"
+          class="relative -mr-5 mt-6 overflow-hidden [--hero-card-gap:1rem] [--hero-card-width:min(58vw,200px)] sm:-mr-8 sm:mt-8 sm:[--hero-card-gap:1.5rem] sm:[--hero-card-width:min(42vw,244px)] md:-mr-10 lg:-mr-9"
         >
           <div
             class="flex gap-4 pr-0 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)] sm:gap-6"
@@ -184,7 +184,7 @@
           class="col-span-2 flex min-h-[220px] items-start pt-12 lg:min-h-[260px] lg:pt-16"
         >
           <h3
-            class="max-w-[560px] text-[28px] font-medium leading-[1.08] tracking-[-0.045em] lg:text-[40px]"
+            class="max-w-[560px] text-[24px] font-medium leading-[1.08] tracking-[-0.045em] lg:text-[40px]"
           >
             A New Exit Window for
             <br />
@@ -232,7 +232,7 @@
       <!-- Mobile and tablet composition -->
       <div class="md:hidden">
         <h3
-          class="max-w-[520px] text-[34px] font-medium leading-[1.08] tracking-[-0.045em] sm:text-[42px]"
+          class="max-w-[520px] text-[28px] font-medium leading-[1.08] tracking-[-0.045em] sm:text-[34px]"
         >
           A New Exit Window for African Infrastructure
         </h3>
@@ -448,20 +448,20 @@
         </div>
       </div>
       <div
-        class="relative mt-24 min-h-[320px] overflow-hidden bg-[#002d49] bg-cover bg-[78%_center] md:min-h-[390px] lg:min-h-[450px] lg:bg-[88%_47%]"
+        class="relative mr-6 mt-14 min-h-[360px] overflow-hidden bg-[#002d49] bg-cover bg-[64%_center] sm:mt-20 sm:min-h-[340px] sm:bg-[72%_center] md:mr-10 md:mt-24 md:min-h-[390px] lg:min-h-[450px] lg:bg-[88%_47%] xl:mr-20"
         :style="{ backgroundImage: `url(${ribbonImage})` }"
       >
         <div
-          class="absolute inset-0 bg-[linear-gradient(90deg,#002d49_0%,#002d49_43%,rgba(0,45,73,.78)_57%,rgba(0,45,73,.08)_100%)]"
+          class="absolute inset-0 bg-[linear-gradient(180deg,#002d49_0%,rgba(0,45,73,.92)_45%,rgba(0,45,73,.72)_100%)] sm:bg-[linear-gradient(90deg,#002d49_0%,#002d49_50%,rgba(0,45,73,.72)_72%,rgba(0,45,73,.1)_100%)] md:bg-[linear-gradient(90deg,#002d49_0%,#002d49_43%,rgba(0,45,73,.78)_57%,rgba(0,45,73,.08)_100%)]"
         />
 
-        <div class="relative flex min-h-[320px] items-center px-8 py-12 md:min-h-[390px] md:px-14 lg:min-h-[450px] lg:px-16">
+        <div class="relative flex min-h-[360px] items-center px-5 py-10 sm:min-h-[340px] sm:px-8 sm:py-12 md:min-h-[390px] md:px-14 lg:min-h-[450px] lg:px-16">
           <div class="max-w-[440px]">
-            <h3 class="mb-9 text-[28px] font-semibold leading-none text-white lg:text-[34px]">
+            <h3 class="mb-6 text-[24px] font-semibold leading-none text-white sm:mb-8 sm:text-[28px] lg:mb-9 lg:text-[34px]">
               Why INFRAGORA
             </h3>
 
-            <p class="text-[12px] leading-[1.55] text-white lg:text-[14px]">
+            <p class="max-w-[36rem] text-[12px] leading-[1.6] text-white sm:text-[13px] lg:text-[14px]">
               Africa's infrastructure market faces limited exit pathways,
               insufficient equity capital, valuation uncertainty, weak price
               discovery, limited secondary market infrastructure and a narrow
@@ -481,7 +481,7 @@
     <!-- Header -->
     <div class="mb-12 flex items-end justify-between pr-6 sm:pr-10 lg:pr-20">
       <h2
-        class="text-[42px] leading-[0.95] font-medium tracking-[-0.04em]"
+        class="text-[34px] leading-[0.95] font-medium tracking-[-0.04em] lg:text-[42px]"
       >
         News <br />
         & Insights
@@ -691,51 +691,7 @@
       </NuxtLink>
     </div>
   </section>
-    <section class="w-full bg-black">
-    <div class="bg-[#1c1b1f]">
-      <div
-        class="mx-auto flex max-w-[1280px] flex-col gap-10 px-6 py-10 sm:px-10 md:flex-row md:items-center md:justify-between lg:px-20 lg:py-12"
-      >
-        <!-- Left text -->
-        <div>
-          <p class="mb-4 text-sm font-light text-white/55">
-            Join our mailing list
-          </p>
-
-          <h2
-            class="max-w-[360px] text-[28px] font-medium leading-[0.95] tracking-[-0.04em] text-white sm:text-[34px] lg:text-[40px]"
-          >
-            Get exclusive<br />
-            insights and updates
-          </h2>
-        </div>
-
-        <!-- Form -->
-        <form
-          class="flex w-full max-w-[620px] overflow-hidden bg-white md:mt-6"
-        >
-          <input
-            type="email"
-            placeholder="Enter email address to sign up"
-            class="h-[56px] flex-1 bg-[#e3e3e3] px-5 text-[12px] text-black outline-none placeholder:text-black/45 sm:h-[62px]"
-          />
-
-          <button
-            type="submit"
-            class="flex h-[56px] w-[150px] items-center justify-center gap-5 bg-white text-[11px] font-semibold uppercase text-black transition hover:bg-[#10cfa3] sm:h-[62px] sm:w-[170px]"
-          >
-            Subscribe
-            <img
-          :src="arrowOutwardIcon"
-          alt=""
-          class="h-5 w-5 object-contain"
-        />
-          </button>
-        </form>
-      </div>
-    </div>
-
-  </section>
+  
 </template>
 <script setup>
 import ribbonImage from "~/assets/images/ribbon.jpg"
@@ -756,6 +712,11 @@ useHead({
       name: 'description',
       content:
         'INFRAGORA Global Capital is an African-led infrastructure investment platform creating structured exit, liquidity and secondary market solutions for African infrastructure assets.',
+    },
+       {
+      name: 'keywords',
+      content:
+        'Africa infrastructure secondary market, infrastructure investment Africa, structured exits Africa, capital recycling, African infrastructure assets',
     },
   ],
 })
