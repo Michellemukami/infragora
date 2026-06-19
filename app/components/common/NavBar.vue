@@ -154,13 +154,25 @@
           Portfolio
         </NuxtLink>
 
-        <a class="flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.08em]">
+        <NuxtLink
+          to="/knowledge-hub"
+          class="text-[11px] font-medium uppercase tracking-[0.08em]"
+            >
           Knowledge Hub
-        </a>
+        </NuxtLink>
+        <NuxtLink
+          to="/news"
+          class="text-[11px] font-medium uppercase tracking-[0.08em]"
+            >
+          News
+        </NuxtLink>
 
-        <a class="text-[11px] font-medium uppercase tracking-[0.08em]">
+        <NuxtLink
+          to="/contact-us"
+          class="text-[11px] font-medium uppercase tracking-[0.08em]"
+        >
           Contact Us
-        </a>
+        </NuxtLink>
       </nav>
 
       <button
@@ -383,6 +395,7 @@ const secondaryMobileLinks = [
   { label: 'Portfolio', to: '/portfolio' },
   { label: 'Knowledge Hub', to: '/knowledge-hub' },
   { label: 'Contact Us', to: '/contact-us' },
+  { label: 'News', to: '/news' }
 ]
 
 const closeMobileMenu = () => {
