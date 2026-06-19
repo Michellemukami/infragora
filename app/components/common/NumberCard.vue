@@ -8,7 +8,7 @@
     >
       <h2
         :class="[
-          'mb-10 text-[26px] font-semibold leading-none tracking-[-0.035em] text-[#0a5264] sm:text-[30px] lg:mb-14 lg:text-[34px]',
+          'md:mb-10 text-[26px] font-semibold leading-none tracking-[-0.035em] text-[#0a5264] sm:text-[30px] lg:mb-10 lg:text-[34px]',
           titleClass,
         ]"
       >

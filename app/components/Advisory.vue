@@ -13,7 +13,7 @@
   />
    <section class="bg-[#fbfbfb]">
     <div
-      class="mx-auto w-full px-5 py-14 sm:px-8 sm:py-16 lg:px-16  xl:px-[80px]"
+      class="mx-auto w-full px-5 md:py-14 sm:px-8 sm:py-16 lg:px-16  xl:px-[80px]"
     >
       <header class="mb-9 sm:mb-10 lg:mb-12">
         <h2

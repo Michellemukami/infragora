@@ -176,7 +176,7 @@
       </nav>
 
       <button
-        class="hidden h-[40px] border border-[#d6dfdf] px-5 text-[11px] font-medium uppercase tracking-[0.08em] lg:block"
+        class="hidden h-[40px] border border-[#d6dfdf] px-5 text-[11px] font-medium uppercase tracking-[0.08em] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#0a5264] hover:bg-[#0a5264] hover:text-white hover:shadow-[0_12px_28px_rgba(10,82,100,0.18)] active:translate-y-0 lg:block"
       >
         LP Login
       </button>
