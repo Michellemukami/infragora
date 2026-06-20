@@ -107,12 +107,36 @@
 
         <!-- RIGHT SIDE FORM -->
         <div>
-          <form class="space-y-5">
+          <form
+            class="space-y-5"
+            @submit.prevent="submitForm"
+          >
+            <div
+              v-if="formStatus.message"
+              :class="[
+                'rounded border px-4 py-3 text-sm leading-[1.6]',
+                formStatus.type === 'success'
+                  ? 'border-[#b9d9c4] bg-[#eef8f1] text-[#1f6b3a]'
+                  : 'border-[#efc4c4] bg-[#fff1f1] text-[#9f2f2f]',
+              ]"
+              role="status"
+              aria-live="polite"
+            >
+              {{ formStatus.message }}
+            </div>
+
             <!-- Enquiry -->
             <select
+              v-model="form.enquiryType"
               class="h-[56px] w-full border border-[#d9d9d9] bg-white px-4 text-sm text-gray-700 outline-none focus:border-[#0c5668]"
+              required
             >
-              <option>Enquiry Type</option>
+              <option
+                value=""
+                disabled
+              >
+                Enquiry Type
+              </option>
               <option>Investment Enquiry</option>
               <option>Advisory Services</option>
               <option>Fund Management</option>
@@ -120,33 +144,38 @@
               <option>Partnership</option>
               <option>Portfolio / Project Opportunity</option>
               <option>Media Enquiry</option>
-General Enquiry
-
-              
+              <option>General Enquiry</option>
             </select>
 
             <!-- Names -->
             <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
               <input
+                v-model.trim="form.firstName"
                 type="text"
                 placeholder="First Name"
                 class="h-[56px] border border-[#d9d9d9] px-4 text-sm outline-none focus:border-[#0c5668]"
+                required
               />
 
               <input
+                v-model.trim="form.lastName"
                 type="text"
                 placeholder="Last Name"
                 class="h-[56px] border border-[#d9d9d9] px-4 text-sm outline-none focus:border-[#0c5668]"
+                required
               />
             </div>
 
             <input
+              v-model.trim="form.email"
               type="email"
               placeholder="Email"
               class="h-[56px] w-full border border-[#d9d9d9] px-4 text-sm outline-none focus:border-[#0c5668]"
+              required
             />
 
             <input
+              v-model.trim="form.phone"
               type="tel"
               placeholder="Phone Number"
               class="h-[56px] w-full border border-[#d9d9d9] px-4 text-sm outline-none focus:border-[#0c5668]"
@@ -154,12 +183,14 @@ General Enquiry
 
             <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
               <input
+                v-model.trim="form.organisation"
                 type="text"
                 placeholder="Organisation"
                 class="h-[56px] border border-[#d9d9d9] px-4 text-sm outline-none focus:border-[#0c5668]"
               />
 
               <input
+                v-model.trim="form.jobTitle"
                 type="text"
                 placeholder="Job Title"
                 class="h-[56px] border border-[#d9d9d9] px-4 text-sm outline-none focus:border-[#0c5668]"
@@ -167,16 +198,19 @@ General Enquiry
             </div>
 
             <textarea
+              v-model.trim="form.message"
               rows="4"
               placeholder="Message"
               class="w-full resize-none border border-[#d9d9d9] px-4 py-4 text-sm outline-none focus:border-[#0c5668]"
+              required
             ></textarea>
 
             <button
               type="submit"
-              class="h-[58px] w-full bg-[#0c5668] text-[12px] font-semibold uppercase tracking-[0.08em] text-white transition hover:opacity-90"
+              :disabled="isSubmitting"
+              class="h-[58px] w-full bg-[#0c5668] text-[12px] font-semibold uppercase tracking-[0.08em] text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Send Message
+              {{ isSubmitting ? 'Sending...' : 'Send Message' }}
             </button>
           </form>
         </div>
@@ -185,6 +219,8 @@ General Enquiry
   </section>
 </template>
 <script setup lang="ts">
+const config = useRuntimeConfig()
+
 useHead({
   title: 'Contact INFRAGORA Global Capital',
   meta: [
@@ -200,4 +236,111 @@ useHead({
     },
   ],
 })
+
+const defaultForm = {
+  enquiryType: '',
+  firstName: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  organisation: '',
+  jobTitle: '',
+  message: '',
+}
+
+const form = reactive({ ...defaultForm })
+const isSubmitting = ref(false)
+const formStatus = reactive<{
+  type: 'success' | 'error' | ''
+  message: string
+}>({
+  type: '',
+  message: '',
+})
+let statusTimer: ReturnType<typeof setTimeout> | undefined
+
+const resetStatus = () => {
+  if (statusTimer) {
+    clearTimeout(statusTimer)
+    statusTimer = undefined
+  }
+
+  formStatus.type = ''
+  formStatus.message = ''
+}
+
+const setStatus = (type: 'success' | 'error', message: string) => {
+  resetStatus()
+
+  formStatus.type = type
+  formStatus.message = message
+
+  statusTimer = setTimeout(() => {
+    resetStatus()
+  }, 6000)
+}
+
+const resetForm = () => {
+  Object.assign(form, defaultForm)
+}
+
+const submitForm = async () => {
+  resetStatus()
+
+  if (!form.enquiryType || !form.firstName || !form.lastName || !form.email || !form.message) {
+    setStatus('error', 'Please complete the enquiry type, name, email and message fields.')
+    return
+  }
+
+  const serviceId = config.public.emailjsServiceId
+  const templateId = config.public.emailjsTemplateId
+  const publicKey = config.public.emailjsPublicKey
+
+  if (!serviceId || !templateId || !publicKey) {
+    setStatus('error', 'Email service is not configured yet. Please try again later.')
+    return
+  }
+
+  isSubmitting.value = true
+
+  try {
+    const fullName = `${form.firstName} ${form.lastName}`.trim()
+
+    const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        service_id: serviceId,
+        template_id: templateId,
+        user_id: publicKey,
+        template_params: {
+          enquiry_type: form.enquiryType,
+          from_name: fullName,
+          first_name: form.firstName,
+          last_name: form.lastName,
+          from_email: form.email,
+          reply_to: form.email,
+          phone: form.phone,
+          organisation: form.organisation,
+          job_title: form.jobTitle,
+          message: form.message,
+        },
+      }),
+    })
+
+    if (!response.ok) {
+      throw new Error(await response.text())
+    }
+
+    resetForm()
+    setStatus('success', 'Thank you. Your message has been sent successfully.')
+  } catch (error) {
+    console.error('EmailJS contact form error:', error)
+    setStatus('error', 'We could not send your message right now. Please try again in a moment.')
+  } finally {
+    isSubmitting.value = false
+  }
+}
 </script>
