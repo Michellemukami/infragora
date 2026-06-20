@@ -4,8 +4,8 @@
  <WhatWeDoIntro
     title="Advisory"
     :paragraphs="aboutIntroParagraphs"
-    :media-src="aboutHeroVideo"
-    media-type="video"
+    :media-src="AdvisoryHeroImage"
+    media-type="image"
     section-class="min-h-[560px] md:min-h-[620px] lg:min-h-[640px]"
     media-container-class="min-h-[560px] items-start !pt-36 !pb-20 md:min-h-[620px] md:!pt-36 md:!pb-20 lg:min-h-[640px] lg:!pt-36 lg:!pb-20"
     title-class="text-[42px] sm:text-[52px] lg:text-[58px]"
@@ -61,7 +61,7 @@
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import NumberCard from './common/NumberCard.vue'
-import aboutHeroVideo from '~/assets/images/about-us/city.mp4'
+import AdvisoryHeroImage from '~/assets/images/capabilities/advisory.jpg'
 useHead({
   title: 'Infrastructure Advisory | INFRAGORA Global Capital',
   meta: [

@@ -4,8 +4,8 @@
  <WhatWeDoIntro
     title="What we do"
     :paragraphs="aboutIntroParagraphs"
-    :media-src="aboutHeroVideo"
-    media-type="video"
+    :media-src="capabilitiesHeroVideo"
+    media-type="image"
     section-class="min-h-[560px] md:min-h-[620px] lg:min-h-[640px]"
     media-container-class="min-h-[560px] items-start !pt-36 !pb-20 md:min-h-[620px] md:!pt-36 md:!pb-20 lg:min-h-[640px] lg:!pt-36 lg:!pb-20"
     title-class="text-[42px] sm:text-[52px] lg:text-[58px]"
@@ -17,7 +17,7 @@
            <!-- FEATURED CARD -->
         <article class="group relative min-h-[500px] overflow-hidden lg:min-h-[660px]">
           <img
-            src="/assets/images/bridge.jpg"
+            src="/assets/images/capabilities/cap-main.jpg"
             alt=""
             class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
           />
@@ -130,7 +130,7 @@
 </template>
 <script setup>
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
-import aboutHeroVideo from '~/assets/images/about-us/city.mp4'
+import capabilitiesHeroVideo from '~/assets/images/capabilities/skyline.jpg'
 useHead({
   title: 'Our Capabilities | INFRAGORA Advisory, Investment & Fund Management',
   meta: [

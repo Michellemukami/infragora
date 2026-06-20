@@ -4,7 +4,7 @@
  <WhatWeDoIntro
     title="Fund Management"
     :paragraphs="aboutIntroParagraphs"
-    :media-src="aboutHeroVideo"
+    :media-src="fundManagementHeroImage"
     media-type="image"
     section-class="min-h-[560px] md:min-h-[620px] lg:min-h-[640px]"
     media-container-class="min-h-[560px] items-start !pt-36 !pb-20 md:min-h-[620px] md:!pt-36 md:!pb-20 lg:min-h-[640px] lg:!pt-36 lg:!pb-20"
@@ -104,7 +104,7 @@ Capabilities
 </template>
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
-import aboutHeroVideo from '~/assets/images/capabilities/skyline.jpg'
+import fundManagementHeroImage from '~/assets/images/capabilities/fund-hero.jpg'
 useHead({
   title: 'Fund Management | African Infrastructure Investment Portfolios',
   meta: [

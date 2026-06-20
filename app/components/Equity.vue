@@ -4,7 +4,7 @@
  <WhatWeDoIntro
     title="Equity"
     :paragraphs="aboutIntroParagraphs"
-    :media-src="aboutHeroVideo"
+    :media-src="equityHeroImage"
     media-type="image"
     section-class="min-h-[560px] md:min-h-[620px] lg:min-h-[640px]"
     media-container-class="min-h-[560px] items-start !pt-36 !pb-20 md:min-h-[620px] md:!pt-36 md:!pb-20 lg:min-h-[640px] lg:!pt-36 lg:!pb-20"
@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import NumberCard from './common/NumberCard.vue'
-import aboutHeroVideo from '~/assets/images/capabilities/skyline.jpg'
+import equityHeroImage from '~/assets/images/capabilities/equity-hero.jpg'
 useHead({
   title: 'Equity Investment | INFRAGORA Global Capital',
   meta: [

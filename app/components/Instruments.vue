@@ -4,7 +4,7 @@
  <WhatWeDoIntro
     title="Instruments"
     :paragraphs="aboutIntroParagraphs"
-    :media-src="aboutHeroVideo"
+    :media-src="InstrumentHeroImage"
     media-type="image"
     section-class="min-h-[560px] md:min-h-[620px] lg:min-h-[640px]"
     media-container-class="min-h-[560px] items-start !pt-36 !pb-20 md:min-h-[620px] md:!pt-36 md:!pb-20 lg:min-h-[640px] lg:!pt-36 lg:!pb-20"
@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import NumberCard from './common/NumberCard.vue'
-import aboutHeroVideo from '~/assets/images/capabilities/skyline.jpg'
+import InstrumentHeroImage from '~/assets/images/capabilities/instrument-hero.jpg'
 useHead({
   title: 'Investment Instruments | Equity, Quasi-Equity & Private Credit',
   meta: [

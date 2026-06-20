@@ -4,7 +4,7 @@
  <WhatWeDoIntro
     title="Private Investment"
     :paragraphs="aboutIntroParagraphs"
-    :media-src="aboutHeroVideo"
+    :media-src="privateInvestmentHeroImage"
     media-type="image"
     section-class="min-h-[560px] md:min-h-[620px] lg:min-h-[640px]"
     media-container-class="min-h-[560px] items-start !pt-36 !pb-20 md:min-h-[620px] md:!pt-36 md:!pb-20 lg:min-h-[640px] lg:!pt-36 lg:!pb-20"
@@ -27,16 +27,16 @@ Focus"
   <ImageCard
     title="Value Creation Approach"
     :paragraphs="coverageText"
-    :image="bridgeImage"
+    :image="forestRoad"
     image-alt="African infrastructure development"
   />
 </template>
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import NumberCard from './common/NumberCard.vue'
-import bridgeImage from '~/assets/images/bridge.jpg'
+import forestRoad from '~/assets/images/capabilities/private-body.jpg'
 import ImageCard from './common/ImageCard.vue';
-import aboutHeroVideo from '~/assets/images/capabilities/private.jpg'
+import privateInvestmentHeroImage from '~/assets/images/capabilities/private.jpg'
 useHead({
   title: 'Private Investment | African Infrastructure Assets & Platforms',
   meta: [

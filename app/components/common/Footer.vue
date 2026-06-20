@@ -1,6 +1,6 @@
 <!-- components/SiteFooter.vue -->
 <template>
-    <section class="w-full bg-black">
+    <section v-if="showMailingList" class="w-full bg-black">
     <div class="bg-[#1c1b1f]">
       <div
         class="mx-auto flex flex-col gap-10 px-6 py-10 sm:px-10 md:flex-row md:items-center md:justify-between lg:px-20 lg:py-12"
@@ -66,6 +66,12 @@
             class="whitespace-nowrap transition-opacity duration-200 hover:opacity-55"
           >
             Privacy Policy
+          </NuxtLink>
+          <NuxtLink
+            to="/cookie-policy"
+            class="whitespace-nowrap transition-opacity duration-200 hover:opacity-55"
+          >
+            Cookie Policy
           </NuxtLink>
 
           <NuxtLink
@@ -150,5 +156,8 @@
 
 <script setup>
 import arrowOutwardIcon from "~/assets/images/icon/arrow_outward.png"
+
+const route = useRoute()
 const currentYear = new Date().getFullYear()
+const showMailingList = computed(() => route.path.replace(/\/$/, "") !== "/contact-us")
 </script>
