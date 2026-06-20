@@ -88,9 +88,9 @@
 
 <script setup>
 import KnowledgeCard from '~/components/KnowledgeCard.vue'
-import sustainabilityImage from '~/assets/images/sustainability.jpg'
-import energyImage from '~/assets/images/energy.jpg'
-import conferenceImage from '~/assets/images/conference.jpg'
-import outlookImage from '~/assets/images/outlook.jpg'
-import portfolioImage from '~/assets/images/portfolio.jpg'
+import sustainabilityImage from '~/assets/images/home/sustainability.jpg'
+import energyImage from '~/assets/images/home/energy.jpg'
+import conferenceImage from '~/assets/images/home/conference.jpg'
+import outlookImage from '~/assets/images/home/outlook.jpg'
+import portfolioImage from '~/assets/images/home/portfolio.jpg'
 </script>

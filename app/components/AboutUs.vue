@@ -257,7 +257,7 @@
 import WhatWeDoIntro from '~/components/common/WhatWeDoIntro.vue'
 import ImageCard from '~/components/common/ImageCard.vue'
 import aboutHeroVideo from '~/assets/images/about-us/city.mp4'
-import bridgeImage from '~/assets/images/bridge.jpg'
+import bridgeImage from '~/assets/images/about-us/aboutside.jpg'
 
 type TeamMember = {
   name: string
