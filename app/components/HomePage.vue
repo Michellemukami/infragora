@@ -10,7 +10,7 @@
         <div class="mt-8 flex flex-wrap items-center justify-center gap-2 sm:mt-9 sm:gap-3 lg:mt-10">
           <NuxtLink
             to="/our-capabilities"
-            class="inline-flex h-8 items-center gap-5 bg-[#18d8b7] px-5 text-[7px] font-bold uppercase tracking-[0.04em] text-[#032f45] transition hover:bg-[#35ffd8] sm:h-9 sm:px-6 sm:text-[8px] lg:h-10 lg:px-7"
+            class="inline-flex h-9 items-center gap-5 bg-[#18d8b7] px-6 text-[8px] font-bold uppercase tracking-[0.04em] text-[#032f45] transition hover:bg-[#35ffd8] sm:h-10 sm:px-7 sm:text-[9px] lg:h-11 lg:px-8 lg:text-[10px]"
           >
             Explore Our Platform
             <img :src="arrowOutwardIcon" alt="" class="h-2.5 w-2.5 object-contain" />
@@ -18,7 +18,7 @@
 
           <NuxtLink
             to="/about-us"
-            class="inline-flex h-8 items-center gap-5 bg-[#0d4a70] px-5 text-[7px] font-bold uppercase tracking-[0.04em] text-white transition hover:bg-[#12577f] sm:h-9 sm:px-6 sm:text-[8px] lg:h-10 lg:px-7"
+            class="inline-flex h-9 items-center gap-5 bg-[#0d4a70] px-6 text-[8px] font-bold uppercase tracking-[0.04em] text-white transition hover:bg-[#12577f] sm:h-10 sm:px-7 sm:text-[9px] lg:h-11 lg:px-8 lg:text-[10px]"
           >
             Discover Our Platform
             <img :src="arrowOutwardIcon" alt="" class="h-2.5 w-2.5 object-contain brightness-0 invert" />
@@ -28,41 +28,48 @@
        <div
   class="hero-image-strip-viewport mt-[54px] overflow-hidden sm:mt-16 lg:mt-[74px]"
 >
-  <div
-    class="hero-image-strip flex gap-3 overflow-visible pb-8 sm:gap-4 sm:pb-10 md:gap-5 md:pb-12 lg:gap-6 lg:pb-14"
-  >
-    <NuxtLink
-      v-for="card in heroCarouselCards"
-      :key="card.id"
-      :to="card.to"
-      class="group w-[44vw] min-w-[150px] max-w-[210px] shrink-0 sm:w-[28vw] sm:max-w-[260px] md:w-[240px] lg:w-full lg:max-w-none"
+  <div class="hero-image-strip pb-8 sm:pb-10 md:pb-12 lg:pb-14">
+    <div
+      v-for="trackIndex in 2"
+      :key="trackIndex"
+      class="hero-image-strip-set"
+      :aria-hidden="trackIndex === 2"
     >
-      <img
-        :src="card.image"
-        :alt="card.title"
-        class="h-[220px] w-full object-cover sm:h-[300px] md:h-[370px] lg:h-[410px] xl:h-[430px]"
-      />
+      <NuxtLink
+        v-for="card in heroCarouselCards"
+        :key="`${trackIndex}-${card.id}`"
+        :to="card.to"
+        class="group hero-image-card"
+      >
+        <span class="block overflow-hidden">
+          <img
+            :src="card.image"
+            :alt="card.title"
+            class="h-[220px] w-full object-cover transition duration-700 ease-out group-hover:scale-[1.035] sm:h-[300px] md:h-[370px] lg:h-[410px] xl:h-[430px]"
+          />
+        </span>
 
-      <div class="mt-3 flex items-start justify-between gap-4">
-        <div class="min-w-0">
-          <p class="text-[10px] font-medium leading-none text-[#15c8aa] sm:text-[11px] lg:text-[12px]">
-            {{ card.category }}
-          </p>
+        <div class="mt-3 flex items-start justify-between gap-4">
+          <div class="min-w-0">
+            <p class="text-[10px] font-medium leading-none text-[#15c8aa] sm:text-[11px] lg:text-[12px]">
+              {{ card.category }}
+            </p>
 
-          <h2
-            class="mt-2 text-[13px] font-medium leading-[1.22] tracking-[-0.025em] text-white sm:text-[15px] lg:text-[17px]"
-          >
-            {{ card.title }}
-          </h2>
+            <h2
+              class="mt-2 text-[13px] font-medium leading-[1.22] tracking-[-0.025em] text-white sm:text-[15px] lg:text-[17px]"
+            >
+              {{ card.title }}
+            </h2>
+          </div>
+
+          <img
+            :src="arrowOutwardIcon"
+            alt=""
+            class="mt-[18px] h-2.5 w-2.5 shrink-0 object-contain brightness-0 invert transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:mt-6 lg:h-3 lg:w-3"
+          />
         </div>
-
-        <img
-          :src="arrowOutwardIcon"
-          alt=""
-          class="mt-[18px] h-2.5 w-2.5 shrink-0 object-contain brightness-0 invert transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:mt-6 lg:h-3 lg:w-3"
-        />
-      </div>
-    </NuxtLink>
+      </NuxtLink>
+    </div>
   </div>
 </div>
       </div>
@@ -872,32 +879,86 @@ const showPreviousNewsPost = () => {
 .hero-image-strip-viewport {
   align-self: stretch;
   margin-inline: calc(50% - 50vw);
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 6vw,
+    #000 calc(100% - 6vw),
+    transparent 100%
+  );
 }
 
 .hero-image-strip {
-  --hero-strip-bleed: 4.5rem;
-  width: calc(100vw + (var(--hero-strip-bleed) * 2));
-  margin-left: calc(var(--hero-strip-bleed) * -1);
-  margin-right: 0;
+  --hero-card-gap: 0.75rem;
+  display: flex;
+  width: max-content;
+  gap: var(--hero-card-gap);
+  animation: hero-card-marquee 42s linear infinite;
+  will-change: transform;
+}
+
+.hero-image-strip:hover {
+  animation-play-state: paused;
+}
+
+.hero-image-strip-set {
+  display: flex;
+  gap: var(--hero-card-gap);
+}
+
+.hero-image-card {
+  width: 44vw;
+  min-width: 150px;
+  max-width: 210px;
+  flex-shrink: 0;
+}
+
+@keyframes hero-card-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(calc(-50% - (var(--hero-card-gap) / 2)), 0, 0);
+  }
 }
 
 @media (min-width: 640px) {
   .hero-image-strip {
-    --hero-strip-bleed: 6.5rem;
+    --hero-card-gap: 1rem;
+  }
+
+  .hero-image-card {
+    width: 28vw;
+    max-width: 260px;
   }
 }
 
 @media (min-width: 768px) {
   .hero-image-strip {
-    --hero-strip-bleed: 8.5rem;
+    --hero-card-gap: 1.25rem;
+  }
+
+  .hero-image-card {
+    width: 240px;
+    max-width: none;
   }
 }
 
 @media (min-width: 1024px) {
   .hero-image-strip {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    --hero-strip-bleed: clamp(10rem, 14vw, 18rem);
+    --hero-card-gap: 1.5rem;
+    animation-duration: 52s;
+  }
+
+  .hero-image-card {
+    width: clamp(280px, 21vw, 340px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-strip {
+    animation: none;
   }
 }
 </style>
