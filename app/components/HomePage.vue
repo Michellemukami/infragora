@@ -1,6 +1,6 @@
 <template>
-    <section class="relative overflow-hidden bg-[radial-gradient(circle_at_50%_115%,rgba(20,129,160,0.92)_0%,rgba(12,92,123,0.94)_33%,rgba(5,50,75,1)_78%)] pt-[102px] text-white sm:pt-[104px] lg:pt-[106px]">
-      <div class="mx-auto flex min-h-[456px] max-w-[1600px] flex-col items-center px-6 pb-0 sm:min-h-[560px] sm:px-10 lg:min-h-[720px] lg:px-20">
+    <section class="relative overflow-hidden bg-[radial-gradient(circle_at_50%_115%,rgba(20,129,160,0.92)_0%,rgba(12,92,123,0.94)_33%,rgba(5,50,75,1)_78%)] pt-[124px] text-white sm:pt-[132px] lg:pt-[146px]">
+      <div class="mx-auto flex min-h-[540px] max-w-[1600px] flex-col items-center px-6 pb-0 sm:min-h-[650px] sm:px-10 lg:min-h-[820px] lg:px-20">
         <h1 class="max-w-[720px] text-center text-[31px] font-semibold leading-[1.08] tracking-[-0.055em] text-white sm:text-[42px] md:text-[50px] lg:text-[56px]">
           Africa's Infrastructure
           <br />
@@ -29,7 +29,7 @@
   class="hero-image-strip-viewport mt-[54px] overflow-hidden sm:mt-16 lg:mt-[74px]"
 >
   <div
-    class="hero-image-strip flex gap-3 overflow-visible pb-0 sm:gap-4 md:gap-5 lg:gap-6"
+    class="hero-image-strip flex gap-3 overflow-visible pb-8 sm:gap-4 sm:pb-10 md:gap-5 md:pb-12 lg:gap-6 lg:pb-14"
   >
     <NuxtLink
       v-for="card in heroCarouselCards"
@@ -40,17 +40,17 @@
       <img
         :src="card.image"
         :alt="card.title"
-        class="h-[190px] w-full object-cover sm:h-[260px] md:h-[330px] lg:h-[360px] xl:h-[380px]"
+        class="h-[220px] w-full object-cover sm:h-[300px] md:h-[370px] lg:h-[410px] xl:h-[430px]"
       />
 
       <div class="mt-3 flex items-start justify-between gap-4">
         <div class="min-w-0">
-          <p class="text-[8px] font-medium leading-none text-[#15c8aa] sm:text-[9px] lg:text-[10px]">
+          <p class="text-[10px] font-medium leading-none text-[#15c8aa] sm:text-[11px] lg:text-[12px]">
             {{ card.category }}
           </p>
 
           <h2
-            class="mt-2 text-[10px] font-medium leading-[1.22] tracking-[-0.025em] text-white sm:text-[13px] lg:text-[14px]"
+            class="mt-2 text-[13px] font-medium leading-[1.22] tracking-[-0.025em] text-white sm:text-[15px] lg:text-[17px]"
           >
             {{ card.title }}
           </h2>
