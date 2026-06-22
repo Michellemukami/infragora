@@ -10,13 +10,17 @@
     media-container-class="min-h-[560px] items-start !pt-36 !pb-20 md:min-h-[620px] md:!pt-36 md:!pb-20 lg:min-h-[640px] lg:!pt-36 lg:!pb-20"
     title-class="text-[42px] sm:text-[52px] lg:text-[58px]"
     content-class="mt-28 md:mt-[230px] md:translate-x-12 lg:mt-[240px] lg:translate-x-24 xl:translate-x-32 text-[20px]"
-  />
-  
-<section class="overflow-hidden bg-[#f5f5f5]">
+   />
+   <!-- Portfolio Focus Areas -->
+<section
+  ref="portfolioFocusRef"
+  class="portfolio-focus-section overflow-hidden bg-[#f5f5f5]"
+  :class="{ 'is-visible': isPortfolioFocusVisible }"
+>
   <div class="mx-auto pl-6 sm:pl-10 lg:pl-20 py-14 sm:py-20 lg:py-20    ">
 
     <!-- Header -->
-    <div class="mb-12 flex items-end justify-between pr-6 sm:pr-10 lg:pr-20">
+    <div class="portfolio-focus-header mb-12 flex items-end justify-between pr-6 sm:pr-10 lg:pr-20">
       <h2
         class="text-[34px] leading-[0.95] font-medium tracking-[-0.04em] lg:text-[42px]"
       >
@@ -25,7 +29,7 @@
         Focus Areas
       </h2>
 
-      <div class="flex gap-3">
+      <div class="portfolio-focus-controls flex gap-3">
         <button
           type="button"
           class="flex h-9 w-9 items-center justify-center rounded-full border border-[#9da8aa] text-[20px] leading-none text-[#24454c] transition duration-300 hover:border-[#111111] hover:bg-[#111111] hover:text-white"
@@ -47,16 +51,17 @@
     </div>
 
     <!-- Cards -->
-    <div class="overflow-hidden pb-4">
+    <div class="portfolio-focus-viewport overflow-hidden pb-4">
       <div
         class="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
         :style="{ transform: `translateX(calc(-${newsCarouselIndex} * (min(82vw, 380px) + 1.5rem)))` }"
       >
         <!-- Card -->
         <article
-          v-for="post in newsCarouselPosts"
+          v-for="(post, postIndex) in newsCarouselPosts"
           :key="post.carouselId"
-          class="group w-[min(82vw,380px)] flex-shrink-0"
+          class="portfolio-focus-card group w-[min(82vw,380px)] flex-shrink-0"
+          :style="{ '--portfolio-focus-delay': `${140 + (postIndex % posts.length) * 90}ms` }"
         >
           <div class="relative overflow-hidden bg-white">
 
@@ -117,23 +122,28 @@
     number-class="text-[#f6b800]"
     label-class="text-[#253035]"
   />
-  <section class="w-full pl-6 md:pl-10 xl:pl-20 py-12 md:py-16 lg:py-20">
+  <!-- Image cover -->
+  <section
+    ref="imageCoverRef"
+    class="portfolio-image-cover-section w-full overflow-hidden pl-6 md:pl-10 xl:pl-20 py-12 md:py-16 lg:py-20"
+    :class="{ 'is-visible': isImageCoverVisible }"
+  >
 
       <div
-             class="relative mr-6  min-h-[360px] overflow-hidden bg-[#002d49] bg-cover  sm:min-h-[340px]  md:mr-10  md:min-h-[390px] lg:min-h-[450px] xl:mr-20"
+             class="portfolio-image-cover-panel relative mr-6  min-h-[360px] overflow-hidden bg-[#002d49] bg-cover  sm:min-h-[340px]  md:mr-10  md:min-h-[390px] lg:min-h-[450px] xl:mr-20"
              :style="{ backgroundImage: `url(${tunnel})` }"
            >
              <div
-               class="absolute inset-0 bg-[linear-gradient(180deg,#002d49_0%,rgba(0,45,73,.92)_45%,rgba(0,45,73,.72)_100%)] sm:bg-[linear-gradient(90deg,#002d49_0%,#002d49_50%,rgba(0,45,73,.72)_72%,rgba(0,45,73,.1)_100%)] md:bg-[linear-gradient(90deg,#002d49_0%,#002d49_43%,rgba(0,45,73,.78)_57%,rgba(0,45,73,.08)_100%)]"
+               class="portfolio-image-cover-overlay absolute inset-0 bg-[linear-gradient(180deg,#002d49_0%,rgba(0,45,73,.92)_45%,rgba(0,45,73,.72)_100%)] sm:bg-[linear-gradient(90deg,#002d49_0%,#002d49_50%,rgba(0,45,73,.72)_72%,rgba(0,45,73,.1)_100%)] md:bg-[linear-gradient(90deg,#002d49_0%,#002d49_43%,rgba(0,45,73,.78)_57%,rgba(0,45,73,.08)_100%)]"
              />
      
              <div class="relative flex min-h-[360px] items-center px-5 py-10 sm:min-h-[340px] sm:px-8 sm:py-12 md:min-h-[390px] md:px-14 lg:min-h-[450px] lg:px-16">
-               <div class="max-w-[440px]">
-                 <h3 class="mb-6 text-[24px] font-semibold leading-none text-white sm:mb-8 sm:text-[28px] lg:mb-9 lg:text-[34px]">
+               <div class="portfolio-image-cover-copy max-w-[440px]">
+                 <h3 class="portfolio-image-cover-title mb-6 text-[24px] font-semibold leading-none text-white sm:mb-8 sm:text-[28px] lg:mb-9 lg:text-[34px]">
                    Pipeline Positioning 
                  </h3>
      
-                 <p class="max-w-[36rem] text-[12px] leading-[1.6] text-white sm:text-[13px] lg:text-[14px]">
+                 <p class="portfolio-image-cover-text max-w-[36rem] text-[12px] leading-[1.6] text-white sm:text-[13px] lg:text-[14px]">
                   INFRAGORA has identified a robust pipeline of infrastructure investment opportunities across Africa, with focus areas spanning power, ICT, transport and infrastructure finance services. The pipeline is designed to support the creation of a diversified, scalable and investable portfolio of African infrastructure assets.
                  </p>
                </div>
@@ -160,6 +170,69 @@ import tunnel from "~/assets/images/portfolio/tunnel.png"
 import portfolioImage from "~/assets/images/portfolio/portfolio2.jpg"
 import bridgeImage from '~/assets/images/bridge.jpg'
 import ImageCard from './common/ImageCard.vue';
+
+const isPortfolioFocusVisible = ref(false)
+const isImageCoverVisible = ref(false)
+const portfolioFocusRef = ref<HTMLElement | null>(null)
+const imageCoverRef = ref<HTMLElement | null>(null)
+let portfolioFocusObserver: IntersectionObserver | null = null
+let imageCoverObserver: IntersectionObserver | null = null
+
+onMounted(() => {
+  if (!('IntersectionObserver' in window)) {
+    isPortfolioFocusVisible.value = true
+    isImageCoverVisible.value = true
+    return
+  }
+
+  if (!portfolioFocusRef.value) {
+    isPortfolioFocusVisible.value = true
+  } else {
+    portfolioFocusObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) {
+          return
+        }
+
+        isPortfolioFocusVisible.value = true
+        portfolioFocusObserver?.disconnect()
+      },
+      {
+        threshold: 0.16,
+        rootMargin: '0px 0px -12% 0px',
+      }
+    )
+
+    portfolioFocusObserver.observe(portfolioFocusRef.value)
+  }
+
+  if (!imageCoverRef.value) {
+    isImageCoverVisible.value = true
+  } else {
+    imageCoverObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) {
+          return
+        }
+
+        isImageCoverVisible.value = true
+        imageCoverObserver?.disconnect()
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -14% 0px',
+      }
+    )
+
+    imageCoverObserver.observe(imageCoverRef.value)
+  }
+})
+
+onBeforeUnmount(() => {
+  portfolioFocusObserver?.disconnect()
+  imageCoverObserver?.disconnect()
+})
+
 useHead({
   title: 'Portfolio | INFRAGORA Infrastructure Investment Focus',
   meta: [
@@ -247,3 +320,162 @@ const showPreviousNewsPost = () => {
 }
 
 </script>
+
+<style scoped>
+.portfolio-focus-header,
+.portfolio-focus-controls,
+.portfolio-focus-viewport,
+.portfolio-focus-card {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+}
+
+.portfolio-focus-header {
+  filter: blur(8px);
+  transform: translate3d(0, 36px, 0);
+  transition:
+    opacity 860ms ease,
+    transform 980ms cubic-bezier(.16, 1, .3, 1),
+    filter 860ms ease;
+  transition-delay: 70ms;
+}
+
+.portfolio-focus-controls {
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 760ms ease,
+    transform 860ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: 170ms;
+}
+
+.portfolio-focus-viewport {
+  transform: translate3d(0, 34px, 0);
+  transition:
+    opacity 760ms ease,
+    transform 900ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: 200ms;
+}
+
+.portfolio-focus-card {
+  filter: blur(10px);
+  transform: translate3d(0, 54px, 0) scale(.975);
+  transform-origin: center bottom;
+  transition:
+    opacity 860ms ease,
+    transform 1040ms cubic-bezier(.16, 1, .3, 1),
+    filter 860ms ease;
+  transition-delay: var(--portfolio-focus-delay, 0ms);
+}
+
+.portfolio-focus-card img {
+  filter: saturate(.92) contrast(.98);
+  transform: scale(1.045);
+  transition:
+    filter 1000ms ease,
+    transform 1400ms cubic-bezier(.16, 1, .3, 1);
+  will-change: filter, transform;
+}
+
+.portfolio-focus-card h3,
+.portfolio-focus-card span,
+.portfolio-focus-card svg {
+  transform: translate3d(0, 16px, 0);
+  transition: transform 860ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: calc(var(--portfolio-focus-delay, 0ms) + 130ms);
+}
+
+.portfolio-focus-section.is-visible .portfolio-focus-header,
+.portfolio-focus-section.is-visible .portfolio-focus-controls,
+.portfolio-focus-section.is-visible .portfolio-focus-viewport,
+.portfolio-focus-section.is-visible .portfolio-focus-card {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.portfolio-focus-section.is-visible .portfolio-focus-card img {
+  filter: saturate(1) contrast(1);
+  transform: scale(1);
+}
+
+.portfolio-focus-section.is-visible .portfolio-focus-card h3,
+.portfolio-focus-section.is-visible .portfolio-focus-card span,
+.portfolio-focus-section.is-visible .portfolio-focus-card svg {
+  transform: translate3d(0, 0, 0);
+}
+
+.portfolio-image-cover-panel,
+.portfolio-image-cover-overlay,
+.portfolio-image-cover-title,
+.portfolio-image-cover-text {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+}
+
+.portfolio-image-cover-panel {
+  filter: saturate(.9) contrast(.98);
+  transform: translate3d(0, 54px, 0) scale(.985);
+  transform-origin: center bottom;
+  transition:
+    opacity 900ms ease,
+    transform 1100ms cubic-bezier(.16, 1, .3, 1),
+    filter 1100ms ease;
+}
+
+.portfolio-image-cover-overlay {
+  opacity: 0;
+  transition: opacity 1000ms ease 160ms;
+}
+
+.portfolio-image-cover-title {
+  filter: blur(8px);
+  transform: translate3d(0, 34px, 0);
+  transition:
+    opacity 820ms ease,
+    transform 940ms cubic-bezier(.16, 1, .3, 1),
+    filter 820ms ease;
+  transition-delay: 220ms;
+}
+
+.portfolio-image-cover-text {
+  filter: blur(8px);
+  transform: translate3d(0, 26px, 0);
+  transition:
+    opacity 820ms ease,
+    transform 940ms cubic-bezier(.16, 1, .3, 1),
+    filter 820ms ease;
+  transition-delay: 330ms;
+}
+
+.portfolio-image-cover-section.is-visible .portfolio-image-cover-panel,
+.portfolio-image-cover-section.is-visible .portfolio-image-cover-title,
+.portfolio-image-cover-section.is-visible .portfolio-image-cover-text {
+  opacity: 1;
+  filter: blur(0) saturate(1) contrast(1);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.portfolio-image-cover-section.is-visible .portfolio-image-cover-overlay {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-focus-header,
+  .portfolio-focus-controls,
+  .portfolio-focus-viewport,
+  .portfolio-focus-card,
+  .portfolio-focus-card img,
+  .portfolio-focus-card h3,
+  .portfolio-focus-card span,
+  .portfolio-focus-card svg,
+  .portfolio-image-cover-panel,
+  .portfolio-image-cover-overlay,
+  .portfolio-image-cover-title,
+  .portfolio-image-cover-text {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}
+</style>

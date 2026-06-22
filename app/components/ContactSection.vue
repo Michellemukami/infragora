@@ -1,5 +1,9 @@
 <template>
-  <section class="bg-[#eeeeee] py-16 lg:py-24">
+  <section
+    ref="contactSectionRef"
+    class="contact-section bg-[#eeeeee] py-16 lg:py-24"
+    :class="{ 'is-visible': isContactSectionVisible }"
+  >
     <div
       class="mx-auto px-6 lg:px-20 xl:px-16"
     >
@@ -7,14 +11,14 @@
         class="grid grid-cols-1 gap-16 lg:grid-cols-[420px_1fr]"
       >
         <!-- LEFT SIDE -->
-        <div class="pt-4">
+        <div class="contact-copy pt-4">
           <h2
-            class="text-[#0c5668] text-[48px] font-semibold leading-none tracking-[-0.03em]"
+            class="contact-title text-[#0c5668] text-[48px] font-semibold leading-none tracking-[-0.03em]"
           >
             Contact Us
           </h2>
 
-          <div class="mt-12 max-w-[340px] space-y-6">
+          <div class="contact-intro mt-12 max-w-[340px] space-y-6">
             <p
               class="text-[15px] leading-[1.7] text-[#245665]"
             >
@@ -34,7 +38,7 @@
           </div>
 
           <!-- Social -->
-          <div class="mt-10 flex items-center gap-6">
+          <div class="contact-social mt-10 flex items-center gap-6">
             <!-- Linkedin -->
             <a
               href="#"
@@ -106,7 +110,7 @@
         </div>
 
         <!-- RIGHT SIDE FORM -->
-        <div>
+        <div class="contact-form-panel">
           <form
             class="space-y-5"
             @submit.prevent="submitForm"
@@ -250,6 +254,8 @@ const defaultForm = {
 
 const form = reactive({ ...defaultForm })
 const isSubmitting = ref(false)
+const isContactSectionVisible = ref(false)
+const contactSectionRef = ref<HTMLElement | null>(null)
 const formStatus = reactive<{
   type: 'success' | 'error' | ''
   message: string
@@ -258,6 +264,40 @@ const formStatus = reactive<{
   message: '',
 })
 let statusTimer: ReturnType<typeof setTimeout> | undefined
+let contactSectionObserver: IntersectionObserver | null = null
+
+onMounted(() => {
+  if (!('IntersectionObserver' in window) || !contactSectionRef.value) {
+    isContactSectionVisible.value = true
+    return
+  }
+
+  contactSectionObserver = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry?.isIntersecting) {
+        return
+      }
+
+      isContactSectionVisible.value = true
+      contactSectionObserver?.disconnect()
+      contactSectionObserver = null
+    },
+    {
+      threshold: 0.18,
+      rootMargin: '0px 0px -12% 0px',
+    },
+  )
+
+  contactSectionObserver.observe(contactSectionRef.value)
+})
+
+onBeforeUnmount(() => {
+  contactSectionObserver?.disconnect()
+
+  if (statusTimer) {
+    clearTimeout(statusTimer)
+  }
+})
 
 const resetStatus = () => {
   if (statusTimer) {
@@ -344,3 +384,102 @@ const submitForm = async () => {
   }
 }
 </script>
+
+<style scoped>
+.contact-section {
+  overflow: hidden;
+}
+
+.contact-title,
+.contact-intro,
+.contact-social,
+.contact-form-panel :deep(select),
+.contact-form-panel :deep(input),
+.contact-form-panel :deep(textarea),
+.contact-form-panel :deep(button) {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  filter: blur(10px);
+  transition:
+    opacity 760ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 760ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 760ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+}
+
+.contact-title {
+  transform: translate3d(0, 34px, 0);
+  transition-duration: 880ms;
+}
+
+.contact-intro {
+  transition-delay: 110ms;
+}
+
+.contact-social {
+  transition-delay: 210ms;
+}
+
+.contact-form-panel :deep(select) {
+  transition-delay: 140ms;
+}
+
+.contact-form-panel :deep(.grid:nth-of-type(1) input:nth-child(1)) {
+  transition-delay: 210ms;
+}
+
+.contact-form-panel :deep(.grid:nth-of-type(1) input:nth-child(2)) {
+  transition-delay: 270ms;
+}
+
+.contact-form-panel :deep(input:nth-of-type(1)) {
+  transition-delay: 330ms;
+}
+
+.contact-form-panel :deep(input:nth-of-type(2)) {
+  transition-delay: 390ms;
+}
+
+.contact-form-panel :deep(.grid:nth-of-type(2) input:nth-child(1)) {
+  transition-delay: 450ms;
+}
+
+.contact-form-panel :deep(.grid:nth-of-type(2) input:nth-child(2)) {
+  transition-delay: 510ms;
+}
+
+.contact-form-panel :deep(textarea) {
+  transition-delay: 570ms;
+}
+
+.contact-form-panel :deep(button) {
+  transition-delay: 650ms;
+}
+
+.contact-section.is-visible .contact-title,
+.contact-section.is-visible .contact-intro,
+.contact-section.is-visible .contact-social,
+.contact-section.is-visible .contact-form-panel :deep(select),
+.contact-section.is-visible .contact-form-panel :deep(input),
+.contact-section.is-visible .contact-form-panel :deep(textarea),
+.contact-section.is-visible .contact-form-panel :deep(button) {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-title,
+  .contact-intro,
+  .contact-social,
+  .contact-form-panel :deep(select),
+  .contact-form-panel :deep(input),
+  .contact-form-panel :deep(textarea),
+  .contact-form-panel :deep(button) {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+</style>

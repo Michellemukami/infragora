@@ -13,7 +13,11 @@
   />
   
 
-<section>
+<section
+  ref="benefitsSectionRef"
+  class="fund-benefits-section overflow-hidden"
+  :class="{ 'is-visible': isBenefitsSectionVisible }"
+>
      <!-- Benefits section -->
     <div
       class="mx-auto px-6 py-16 sm:px-10 md:px-14 md:py-20 lg:px-20 lg:py-20 xl:px-20"
@@ -22,7 +26,7 @@
       <div class="hidden grid-cols-3 gap-7 md:grid">
         <!-- Main title occupies the first two cells -->
         <div
-          class="col-span-2 flex min-h-[220px] items-start pt-12 lg:min-h-[260px] lg:pt-16"
+          class="fund-benefits-heading col-span-2 flex min-h-[220px] items-start pt-12 lg:min-h-[260px] lg:pt-16"
         >
           <h3
             class="max-w-[560px] text-[24px] font-medium leading-[1.08] tracking-[-0.045em] lg:text-[40px]"
@@ -37,7 +41,8 @@ Capabilities
         <!-- Card 01 -->
         <article
           v-if="firstMarketBenefit"
-          class="flex min-h-[220px] flex-col justify-between bg-[#d9e8e3] p-7 lg:min-h-[260px] lg:p-8"
+          class="fund-benefit-card flex min-h-[220px] flex-col justify-between bg-[#d9e8e3] p-7 lg:min-h-[260px] lg:p-8"
+          style="--benefit-delay: 120ms"
         >
           <span
             class="text-[20px] font-semibold leading-none tracking-[-0.05em] text-[#114c5a] lg:text-[30px]"
@@ -54,9 +59,10 @@ Capabilities
 
         <!-- Remaining cards -->
         <article
-          v-for="item in remainingMarketBenefits"
+          v-for="(item, itemIndex) in remainingMarketBenefits"
           :key="item.number"
-          class="flex min-h-[220px] flex-col justify-between bg-[#d9e8e3] p-7 lg:min-h-[260px] lg:p-8"
+          class="fund-benefit-card flex min-h-[220px] flex-col justify-between bg-[#d9e8e3] p-7 lg:min-h-[260px] lg:p-8"
+          :style="{ '--benefit-delay': `${200 + itemIndex * 80}ms` }"
         >
           <span
             class="text-[20px] font-semibold leading-none tracking-[-0.05em] text-[#114c5a] lg:text-[30px]"
@@ -75,16 +81,17 @@ Capabilities
       <!-- Mobile and tablet composition -->
       <div class="md:hidden">
         <h3
-          class="max-w-[520px] text-[28px] font-medium leading-[1.08] tracking-[-0.045em] sm:text-[34px]"
+          class="fund-benefits-heading max-w-[520px] text-[28px] font-medium leading-[1.08] tracking-[-0.045em] sm:text-[34px]"
         >
           A New Exit Window for African Infrastructure
         </h3>
 
         <div class="mt-10 grid gap-4 sm:grid-cols-2">
           <article
-            v-for="item in marketBenefits"
+            v-for="(item, itemIndex) in marketBenefits"
             :key="item.number"
-            class="flex min-h-[190px] flex-col justify-between bg-[#d9e8e3] p-6"
+            class="fund-benefit-card flex min-h-[190px] flex-col justify-between bg-[#d9e8e3] p-6"
+            :style="{ '--benefit-delay': `${120 + itemIndex * 75}ms` }"
           >
             <span
               class="text-[20px] font-semibold leading-none tracking-[-0.05em] text-[#114c5a] lg:text-[30px]"
@@ -105,6 +112,44 @@ Capabilities
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import fundManagementHeroImage from '~/assets/images/capabilities/fund-hero.jpg'
+
+const isBenefitsSectionVisible = ref(false)
+const benefitsSectionRef = ref<HTMLElement | null>(null)
+let benefitsSectionObserver: IntersectionObserver | null = null
+
+onMounted(() => {
+  if (!('IntersectionObserver' in window)) {
+    isBenefitsSectionVisible.value = true
+    return
+  }
+
+  if (!benefitsSectionRef.value) {
+    isBenefitsSectionVisible.value = true
+    return
+  }
+
+  benefitsSectionObserver = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry?.isIntersecting) {
+        return
+      }
+
+      isBenefitsSectionVisible.value = true
+      benefitsSectionObserver?.disconnect()
+    },
+    {
+      threshold: 0.16,
+      rootMargin: '0px 0px -12% 0px',
+    }
+  )
+
+  benefitsSectionObserver.observe(benefitsSectionRef.value)
+})
+
+onBeforeUnmount(() => {
+  benefitsSectionObserver?.disconnect()
+})
+
 useHead({
   title: 'Fund Management | African Infrastructure Investment Portfolios',
   meta: [
@@ -165,3 +210,71 @@ const marketBenefits = [
 const firstMarketBenefit = computed(() => marketBenefits[0])
 const remainingMarketBenefits = computed(() => marketBenefits.slice(1))
 </script>
+
+<style scoped>
+.fund-benefits-heading,
+.fund-benefit-card {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+}
+
+.fund-benefits-heading {
+  filter: blur(8px);
+  transform: translate3d(0, 38px, 0);
+  transition:
+    opacity 860ms ease,
+    transform 980ms cubic-bezier(.16, 1, .3, 1),
+    filter 860ms ease;
+  transition-delay: 70ms;
+}
+
+.fund-benefit-card {
+  filter: blur(10px);
+  transform: translate3d(0, 52px, 0) scale(.975);
+  transform-origin: center bottom;
+  transition:
+    opacity 860ms ease,
+    transform 1020ms cubic-bezier(.16, 1, .3, 1),
+    filter 860ms ease,
+    box-shadow 1020ms ease;
+  transition-delay: var(--benefit-delay, 0ms);
+  box-shadow: 0 24px 56px rgb(17 76 90 / 0);
+}
+
+.fund-benefit-card span,
+.fund-benefit-card p {
+  transform: translate3d(0, 18px, 0);
+  transition: transform 860ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: calc(var(--benefit-delay, 0ms) + 110ms);
+  will-change: transform;
+}
+
+.fund-benefits-section.is-visible .fund-benefits-heading,
+.fund-benefits-section.is-visible .fund-benefit-card {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.fund-benefits-section.is-visible .fund-benefit-card {
+  box-shadow: 0 24px 56px rgb(17 76 90 / 0.08);
+}
+
+.fund-benefits-section.is-visible .fund-benefit-card span,
+.fund-benefits-section.is-visible .fund-benefit-card p {
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fund-benefits-heading,
+  .fund-benefit-card,
+  .fund-benefit-card span,
+  .fund-benefit-card p {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+    box-shadow: none;
+  }
+}
+</style>

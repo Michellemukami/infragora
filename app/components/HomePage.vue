@@ -1,32 +1,44 @@
 <template>
-    <section class="relative overflow-hidden bg-[radial-gradient(circle_at_50%_115%,rgba(20,129,160,0.92)_0%,rgba(12,92,123,0.94)_33%,rgba(5,50,75,1)_78%)] pt-[124px] text-white sm:pt-[132px] lg:pt-[146px]">
+    <section
+      ref="homeHeroRef"
+      class="homepage-hero relative overflow-hidden bg-[radial-gradient(circle_at_50%_115%,rgba(20,129,160,0.92)_0%,rgba(12,92,123,0.94)_33%,rgba(5,50,75,1)_78%)] pt-[124px] text-white sm:pt-[132px] lg:pt-[146px]"
+      :class="{ 'is-visible': isHomeIntroVisible }"
+    >
       <div class="mx-auto flex min-h-[540px] max-w-[1600px] flex-col items-center px-6 pb-0 sm:min-h-[650px] sm:px-10 lg:min-h-[820px] lg:px-20">
-        <h1 class="max-w-[720px] text-center text-[31px] font-semibold leading-[1.08] tracking-[-0.055em] text-white sm:text-[42px] md:text-[50px] lg:text-[56px]">
+        <h1 class="hero-intro-title max-w-[720px] text-center text-[31px] font-semibold leading-[1.08] tracking-[-0.055em] text-white sm:text-[42px] md:text-[50px] lg:text-[56px]">
           Africa's Infrastructure
           <br />
           Secondary Market Platform
         </h1>
 
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-2 sm:mt-9 sm:gap-3 lg:mt-10">
+        <div class="hero-intro-actions mt-8 flex flex-wrap items-center justify-center gap-2 sm:mt-9 sm:gap-3 lg:mt-10">
           <NuxtLink
             to="/our-capabilities"
-            class="inline-flex h-9 items-center gap-5 bg-[#18d8b7] px-6 text-[8px] font-bold uppercase tracking-[0.04em] text-[#032f45] transition hover:bg-[#35ffd8] sm:h-10 sm:px-7 sm:text-[9px] lg:h-11 lg:px-8 lg:text-[10px]"
+            class="hero-intro-button inline-flex h-9 items-center gap-5 bg-[#18d8b7] px-6 text-[8px] font-bold uppercase tracking-[0.04em] text-[#032f45] transition hover:bg-[#35ffd8] sm:h-10 sm:px-7 sm:text-[9px] lg:h-11 lg:px-8 lg:text-[10px]"
+            style="--hero-button-delay: 150ms"
           >
             Explore Our Platform
-            <img :src="arrowOutwardIcon" alt="" class="h-2.5 w-2.5 object-contain" />
+            <span class="hero-button-icon" aria-hidden="true">
+              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-base h-3 w-3 object-contain" />
+              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-hover h-3 w-3 object-contain" />
+            </span>
           </NuxtLink>
 
           <NuxtLink
             to="/about-us"
-            class="inline-flex h-9 items-center gap-5 bg-[#0d4a70] px-6 text-[8px] font-bold uppercase tracking-[0.04em] text-white transition hover:bg-[#12577f] sm:h-10 sm:px-7 sm:text-[9px] lg:h-11 lg:px-8 lg:text-[10px]"
+            class="hero-intro-button inline-flex h-9 items-center gap-5 bg-[#0d4a70] px-6 text-[8px] font-bold uppercase tracking-[0.04em] text-white transition hover:bg-[#12577f] sm:h-10 sm:px-7 sm:text-[9px] lg:h-11 lg:px-8 lg:text-[10px]"
+            style="--hero-button-delay: 235ms"
           >
             Discover Our Platform
-            <img :src="arrowOutwardIcon" alt="" class="h-2.5 w-2.5 object-contain brightness-0 invert" />
+            <span class="hero-button-icon" aria-hidden="true">
+              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-base hero-button-icon-light h-3 w-3 object-contain" />
+              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-hover hero-button-icon-light h-3 w-3 object-contain" />
+            </span>
           </NuxtLink>
         </div>
 
        <div
-  class="hero-image-strip-viewport mt-[54px] overflow-hidden sm:mt-16 lg:mt-[74px]"
+  class="hero-intro-strip hero-image-strip-viewport mt-[54px] overflow-hidden sm:mt-16 lg:mt-[74px]"
 >
   <div class="hero-image-strip pb-8 sm:pb-10 md:pb-12 lg:pb-14">
     <div
@@ -74,14 +86,18 @@
 </div>
       </div>
     </section>
-<section class="w-full bg-[#fafafa] text-[#111111]">
+<section
+  ref="secondSectionRef"
+  class="homepage-second-section w-full bg-[#fafafa] text-[#111111]"
+  :class="{ 'is-visible': isSecondSectionVisible }"
+>
     <!-- Top introduction strip -->
     <div class="bg-[#dcebe7]">
       <div
         class="mx-auto grid gap-10 px-6 py-12 sm:px-10 md:grid-cols-[0.8fr_1.2fr] md:px-14 md:py-16 lg:gap-24 lg:px-20 xl:px-20"
       >
         <!-- Intro title -->
-        <div>
+        <div class="second-section-intro-title">
           <h2
             class="max-w-[390px] text-[28px] font-semibold leading-[1.08] tracking-[-0.04em] sm:text-[34px] lg:text-[40px]"
           >
@@ -93,7 +109,7 @@
 
         <!-- Intro copy -->
         <div
-          class="max-w-[700px] text-[12px] leading-[1.45] text-[#151515] sm:text-[13px] lg:text-[14px]"
+          class="second-section-intro-copy max-w-[700px] text-[12px] leading-[1.45] text-[#151515] sm:text-[13px] lg:text-[14px]"
         >
           <p>
             Africa’s infrastructure opportunity is significant, but the market
@@ -118,13 +134,15 @@
 
     <!-- Benefits section -->
     <div
-      class="mx-auto px-6 py-16 sm:px-10 md:px-14 md:py-20 lg:px-20 lg:py-20 xl:px-20"
+      ref="benefitsSectionRef"
+      class="homepage-benefits-section mx-auto px-6 py-16 sm:px-10 md:px-14 md:py-20 lg:px-20 lg:py-20 xl:px-20"
+      :class="{ 'is-visible': isBenefitsSectionVisible }"
     >
       <!-- Desktop composition -->
       <div class="hidden grid-cols-3 gap-7 md:grid">
         <!-- Main title occupies the first two cells -->
         <div
-          class="col-span-2 flex min-h-[220px] items-start pt-12 lg:min-h-[260px] lg:pt-16"
+          class="second-section-benefit-heading col-span-2 flex min-h-[220px] items-start pt-12 lg:min-h-[260px] lg:pt-16"
         >
           <h3
             class="max-w-[560px] text-[24px] font-medium leading-[1.08] tracking-[-0.045em] lg:text-[40px]"
@@ -137,16 +155,17 @@
 
         <!-- Card 01 -->
         <article
-          class="flex min-h-[220px] flex-col justify-between bg-[#eeeeee] p-7 lg:min-h-[260px] lg:p-8"
+          class="second-section-card flex min-h-[220px] flex-col justify-between bg-[#eeeeee] p-7 lg:min-h-[260px] lg:p-8"
+          style="--second-section-delay: 260ms"
         >
           <span
-            class="text-[42px] font-semibold leading-none tracking-[-0.05em] text-[#c6c6c6] lg:text-[54px]"
+            class="benefit-card-number text-[42px] font-semibold leading-none tracking-[-0.05em] text-[#c6c6c6] lg:text-[54px]"
           >
             {{ marketBenefits[0].number }}
           </span>
 
           <p
-            class="max-w-[300px] text-[12px] leading-[1.35] text-[#1b1b1b] lg:text-[14px]"
+            class="benefit-card-text max-w-[300px] text-[12px] leading-[1.35] text-[#1b1b1b] lg:text-[14px]"
           >
             {{ marketBenefits[0].text }}
           </p>
@@ -156,16 +175,17 @@
         <article
           v-for="item in marketBenefits.slice(1)"
           :key="item.number"
-          class="flex min-h-[220px] flex-col justify-between bg-[#eeeeee] p-7 lg:min-h-[260px] lg:p-8"
+          class="second-section-card flex min-h-[220px] flex-col justify-between bg-[#eeeeee] p-7 lg:min-h-[260px] lg:p-8"
+          :style="{ '--second-section-delay': `${320 + Number(item.number) * 70}ms` }"
         >
           <span
-            class="text-[42px] font-semibold leading-none tracking-[-0.05em] text-[#c6c6c6] lg:text-[54px]"
+            class="benefit-card-number text-[42px] font-semibold leading-none tracking-[-0.05em] text-[#c6c6c6] lg:text-[54px]"
           >
             {{ item.number }}
           </span>
 
           <p
-            class="max-w-[310px] text-[12px] leading-[1.35] text-[#1b1b1b] lg:text-[14px]"
+            class="benefit-card-text max-w-[310px] text-[12px] leading-[1.35] text-[#1b1b1b] lg:text-[14px]"
           >
             {{ item.text }}
           </p>
@@ -175,7 +195,7 @@
       <!-- Mobile and tablet composition -->
       <div class="md:hidden">
         <h3
-          class="max-w-[520px] text-[28px] font-medium leading-[1.08] tracking-[-0.045em] sm:text-[34px]"
+          class="second-section-benefit-heading max-w-[520px] text-[28px] font-medium leading-[1.08] tracking-[-0.045em] sm:text-[34px]"
         >
           A New Exit Window for African Infrastructure
         </h3>
@@ -184,15 +204,16 @@
           <article
             v-for="item in marketBenefits"
             :key="item.number"
-            class="flex min-h-[190px] flex-col justify-between bg-[#eeeeee] p-6"
+            class="second-section-card flex min-h-[190px] flex-col justify-between bg-[#eeeeee] p-6"
+            :style="{ '--second-section-delay': `${180 + Number(item.number) * 70}ms` }"
           >
             <span
-              class="text-[40px] font-semibold leading-none tracking-[-0.05em] text-[#c6c6c6]"
+              class="benefit-card-number text-[40px] font-semibold leading-none tracking-[-0.05em] text-[#c6c6c6]"
             >
               {{ item.number }}
             </span>
 
-            <p class="max-w-[290px] text-[12px] leading-[1.4]">
+            <p class="benefit-card-text max-w-[290px] text-[12px] leading-[1.4]">
               {{ item.text }}
             </p>
           </article>
@@ -200,15 +221,20 @@
       </div>
     </div>
   </section>
-
-  <section class="bg-white">
+<!-- What We Do Section -->
+  <section
+    ref="whatWeDoSectionRef"
+    class="homepage-what-we-do overflow-hidden bg-white"
+    :class="{ 'is-visible': isWhatWeDoSectionVisible }"
+  >
     <div class="mx-auto ">
       <div class="grid lg:grid-cols-2">
         <!-- LEFT SIDE -->
         <div class="grid grid-cols-1 md:grid-cols-2 ">
           <!-- Advisory -->
           <article
-            class="bg-[#0d5563] px-8 py-8 md:px-10 lg:px-20 md:py-10 lg:h-[330px]"
+            class="what-we-do-tile bg-[#0d5563] px-8 py-8 md:px-10 lg:px-20 md:py-10 lg:h-[330px]"
+            style="--what-we-do-delay: 0ms"
           >
             <h3
               class="text-[28px] font-medium leading-none text-white"
@@ -227,7 +253,8 @@
 
           <!-- Investment -->
           <article
-            class="bg-[#072f4a] px-8 py-8 md:px-10 md:py-10 lg:h-[330px]"
+            class="what-we-do-tile bg-[#072f4a] px-8 py-8 md:px-10 md:py-10 lg:h-[330px]"
+            style="--what-we-do-delay: 90ms"
           >
             <h3
               class="text-[28px] font-medium leading-none text-white"
@@ -246,7 +273,8 @@
 
           <!-- Instruments -->
           <article
-            class="bg-[#dce8e5] px-8 py-8 md:px-10 lg:px-20  md:py-10 lg:h-[330px]"
+            class="what-we-do-tile bg-[#dce8e5] px-8 py-8 md:px-10 lg:px-20  md:py-10 lg:h-[330px]"
+            style="--what-we-do-delay: 180ms"
           >
             <h3
               class="text-[28px] font-medium leading-none text-[#08243a]"
@@ -264,7 +292,8 @@
 
           <!-- Fund Management -->
           <article
-            class="bg-[#c6ddda] px-8 py-8 md:px-10 md:py-10 lg:h-[330px]"
+            class="what-we-do-tile bg-[#c6ddda] px-8 py-8 md:px-10 md:py-10 lg:h-[330px]"
+            style="--what-we-do-delay: 270ms"
           >
             <h3
               class="text-[28px] font-medium leading-none text-[#08243a]"
@@ -283,7 +312,10 @@
         </div>
 
         <!-- FEATURED CARD -->
-        <article class="group relative min-h-[500px] overflow-hidden lg:min-h-[660px]">
+        <article
+          class="what-we-do-feature group relative min-h-[500px] overflow-hidden lg:min-h-[660px]"
+          style="--what-we-do-delay: 220ms"
+        >
           <img
             src="/assets/images/bridge.jpg"
             alt=""
@@ -337,15 +369,21 @@
       </div>
     </div>
   </section>
-
-  <section class="overflow-hidden bg-[#f7f7f7] py-12 md:py-16 lg:py-20">
+<!-- focus areas -->
+  <section
+    ref="focusAreasSectionRef"
+    class="homepage-focus-areas overflow-hidden bg-[#f7f7f7] py-12 md:py-16 lg:py-20"
+    :class="{ 'is-visible': isFocusAreasSectionVisible }"
+  >
     <div class="w-full pl-6 md:pl-10 xl:pl-20">
       <div class="mb-9 flex items-center justify-between pr-6 md:pr-10 xl:pr-20">
-        <h2 class="text-[28px] font-semibold leading-none tracking-[-0.01em] text-black lg:text-[34px]">
+        <h2
+          class="focus-areas-heading text-[28px] font-semibold leading-none tracking-[-0.01em] text-black lg:text-[34px]"
+        >
           Focus Areas
         </h2>
 
-        <div class="flex gap-3">
+        <div class="focus-areas-controls flex gap-3">
           <button
             aria-label="Previous focus area"
             type="button"
@@ -366,7 +404,7 @@
         </div>
       </div>
 
-      <div class="overflow-hidden">
+      <div class="focus-areas-carousel overflow-hidden">
         <div
           class="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
           :style="{ transform: `translateX(calc(-${focusCarouselIndex} * (min(78vw, 354px) + 1.5rem)))` }"
@@ -391,7 +429,9 @@
         </div>
       </div>
       <div
-        class="relative mr-6 mt-14 min-h-[360px] overflow-hidden bg-[#002d49] bg-cover bg-[64%_center] sm:mt-20 sm:min-h-[340px] sm:bg-[72%_center] md:mr-10 md:mt-24 md:min-h-[390px] lg:min-h-[450px] lg:bg-[88%_47%] xl:mr-20"
+        ref="focusAreasFeatureRef"
+        class="focus-areas-feature relative mr-6 mt-14 min-h-[360px] overflow-hidden bg-[#002d49] bg-cover bg-[64%_center] sm:mt-20 sm:min-h-[340px] sm:bg-[72%_center] md:mr-10 md:mt-24 md:min-h-[390px] lg:min-h-[450px] lg:bg-[88%_47%] xl:mr-20"
+        :class="{ 'is-visible': isFocusAreasFeatureVisible }"
         :style="{ backgroundImage: `url(${ribbonImage})` }"
       >
         <div
@@ -418,19 +458,24 @@
       </div>
     </div>
   </section>
-<section class="overflow-hidden bg-[#f5f5f5]">
+  <!-- News -->
+<section
+  ref="newsSectionRef"
+  class="homepage-news overflow-hidden bg-[#f5f5f5]"
+  :class="{ 'is-visible': isNewsSectionVisible }"
+>
   <div class="mx-auto pl-6 sm:pl-10 lg:pl-20">
 
     <!-- Header -->
     <div class="mb-12 flex items-end justify-between pr-6 sm:pr-10 lg:pr-20">
       <h2
-        class="text-[34px] leading-[0.95] font-medium tracking-[-0.04em] lg:text-[42px]"
+        class="news-heading text-[34px] leading-[0.95] font-medium tracking-[-0.04em] lg:text-[42px]"
       >
         News <br />
         & Insights
       </h2>
 
-      <div class="flex gap-3">
+      <div class="news-controls flex gap-3">
         <button
           type="button"
           class="flex h-9 w-9 items-center justify-center rounded-full border border-[#9da8aa] text-[20px] leading-none text-[#24454c] transition duration-300 hover:border-[#111111] hover:bg-[#111111] hover:text-white"
@@ -452,16 +497,17 @@
     </div>
 
     <!-- Cards -->
-    <div class="overflow-hidden pb-4">
+    <div class="news-cards-viewport overflow-hidden pb-4">
       <div
         class="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
         :style="{ transform: `translateX(calc(-${newsCarouselIndex} * (min(82vw, 380px) + 1.5rem)))` }"
       >
         <!-- Card -->
         <article
-          v-for="post in newsCarouselPosts"
+          v-for="(post, postIndex) in newsCarouselPosts"
           :key="post.carouselId"
-          class="group w-[min(82vw,380px)] flex-shrink-0"
+          class="news-card group w-[min(82vw,380px)] flex-shrink-0"
+          :style="{ '--news-card-delay': `${160 + (postIndex % posts.length) * 85}ms` }"
         >
           <div class="relative overflow-hidden bg-white">
 
@@ -514,28 +560,34 @@
   </div>
 </section>
 <KnowledgeHub />
- <section class="w-full bg-[#f5f5f5] px-6 sm:px-10 lg:px-20">
+<!-- accordion -->
+ <section
+    ref="accordionSectionRef"
+    class="homepage-accordion w-full overflow-hidden bg-[#f5f5f5] px-6 sm:px-10 lg:px-20"
+    :class="{ 'is-visible': isAccordionSectionVisible }"
+  >
     <div class="mx-auto">
       <!-- Small title -->
-      <p class="mb-6 text-[15px] font-medium leading-none text-black lg:text-[16px]">
+      <p class="accordion-kicker mb-6 text-[15px] font-medium leading-none text-black lg:text-[16px]">
         Our Global Reach
       </p>
 
       <!-- Main heading -->
       <h2
-        class="max-w-[720px] text-[34px] font-semibold leading-[1.16] tracking-[-1.4px] text-black sm:text-[44px] lg:text-[52px]"
+        class="accordion-heading max-w-[720px] text-[34px] font-semibold leading-[1.16] tracking-[-1.4px] text-black sm:text-[44px] lg:text-[52px]"
       >
         Innovating where it counts.<br />
         Scaling what matters.
       </h2>
 
       <!-- Accordion wrapper -->
-      <div class="mt-14 overflow-hidden border-t border-[#dedede] lg:mt-20">
+      <div class="accordion-list mt-14 overflow-hidden border-t border-[#dedede] lg:mt-20">
         <div
-          v-for="region in reachRegions"
+          v-for="(region, regionIndex) in reachRegions"
           :key="region.name"
-          class="group border-b border-[#dedede] transition-colors duration-500 ease-[cubic-bezier(.16,1,.3,1)] hover:bg-white/45"
+          class="accordion-item group border-b border-[#dedede] transition-colors duration-500 ease-[cubic-bezier(.16,1,.3,1)] hover:bg-white/45"
           :class="isRegionOpen(region.name) ? 'pb-10 lg:pb-14' : ''"
+          :style="{ '--accordion-item-index': regionIndex }"
         >
           <button
             type="button"
@@ -601,19 +653,24 @@
       </div>
     </div>
   </section>
-   <section class="w-full bg-[#f7f7f7]">
+  <!-- last -->
+   <section
+    ref="lastSectionRef"
+    class="homepage-last-cta w-full overflow-hidden bg-[#f7f7f7]"
+    :class="{ 'is-visible': isLastSectionVisible }"
+  >
     <div
       class="mx-auto flex min-h-[420px] max-w-[1440px] flex-col items-center justify-center px-6 py-20 lg:py-28 text-center sm:px-10 lg:min-h-[520px]"
     >
       <h2
-        class="max-w-[760px] text-[38px] font-semibold leading-[1.08] tracking-[-1.8px] text-black sm:text-[48px] md:text-[58px] lg:text-[64px]"
+        class="last-cta-heading max-w-[760px] text-[38px] font-semibold leading-[1.08] tracking-[-1.8px] text-black sm:text-[48px] md:text-[58px] lg:text-[64px]"
       >
         Partner with Africa's<br class="hidden sm:block" />
         infrastructure market builder
       </h2>
 
       <p
-        class="mt-8 max-w-[640px] text-[14px] leading-[1.65] text-[#00283f] sm:text-[15px] md:mt-10 md:text-[16px]"
+        class="last-cta-copy mt-8 max-w-[640px] text-[14px] leading-[1.65] text-[#00283f] sm:text-[15px] md:mt-10 md:text-[16px]"
       >
         Whether you are an asset developer, institutional investor, development
         finance institution, fund manager, infrastructure company or strategic
@@ -623,7 +680,7 @@
 
       <NuxtLink
         to="/contact-us"
-        class="mt-10 inline-flex h-[54px] items-center justify-center gap-5 bg-[#12cfa3] px-8 text-[11px] font-bold uppercase tracking-[-0.2px] text-black transition duration-300 hover:bg-[#0fbf96] sm:h-[58px] sm:px-10"
+        class="last-cta-action mt-10 inline-flex h-[54px] items-center justify-center gap-5 bg-[#12cfa3] px-8 text-[11px] font-bold uppercase tracking-[-0.2px] text-black transition duration-300 hover:bg-[#0fbf96] sm:h-[58px] sm:px-10"
       >
         Partner with us
         <img
@@ -852,6 +909,264 @@ const posts = [
 ]
 
 const newsCarouselIndex = ref(0)
+const route = useRoute()
+const homeHeroRef = ref(null)
+const isHomeIntroVisible = ref(false)
+const isSecondSectionVisible = ref(false)
+const secondSectionRef = ref(null)
+const isBenefitsSectionVisible = ref(false)
+const benefitsSectionRef = ref(null)
+const isWhatWeDoSectionVisible = ref(false)
+const whatWeDoSectionRef = ref(null)
+const isFocusAreasSectionVisible = ref(false)
+const focusAreasSectionRef = ref(null)
+const isFocusAreasFeatureVisible = ref(false)
+const focusAreasFeatureRef = ref(null)
+const isNewsSectionVisible = ref(false)
+const newsSectionRef = ref(null)
+const isAccordionSectionVisible = ref(false)
+const accordionSectionRef = ref(null)
+const isLastSectionVisible = ref(false)
+const lastSectionRef = ref(null)
+
+let secondSectionObserver = null
+let benefitsSectionObserver = null
+let whatWeDoSectionObserver = null
+let focusAreasSectionObserver = null
+let focusAreasFeatureObserver = null
+let newsSectionObserver = null
+let accordionSectionObserver = null
+let lastSectionObserver = null
+let homeIntroAnimationFrame = 0
+
+const playHomeIntroAnimation = async () => {
+  isHomeIntroVisible.value = false
+
+  if (homeIntroAnimationFrame) {
+    cancelAnimationFrame(homeIntroAnimationFrame)
+    homeIntroAnimationFrame = 0
+  }
+
+  await nextTick()
+
+  homeIntroAnimationFrame = requestAnimationFrame(() => {
+    homeIntroAnimationFrame = requestAnimationFrame(() => {
+      isHomeIntroVisible.value = true
+      homeIntroAnimationFrame = 0
+    })
+  })
+}
+
+onMounted(() => {
+  playHomeIntroAnimation()
+
+  const supportsIntersectionObserver = 'IntersectionObserver' in window
+
+  if (!supportsIntersectionObserver) {
+    isSecondSectionVisible.value = true
+    isBenefitsSectionVisible.value = true
+    isWhatWeDoSectionVisible.value = true
+    isFocusAreasSectionVisible.value = true
+    isFocusAreasFeatureVisible.value = true
+    isNewsSectionVisible.value = true
+    isAccordionSectionVisible.value = true
+    isLastSectionVisible.value = true
+    return
+  }
+
+  if (secondSectionRef.value) {
+    secondSectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) {
+          return
+        }
+
+        isSecondSectionVisible.value = true
+        secondSectionObserver?.disconnect()
+      },
+      {
+        threshold: 0.18,
+        rootMargin: '0px 0px -12% 0px',
+      }
+    )
+
+    secondSectionObserver.observe(secondSectionRef.value)
+  } else {
+    isSecondSectionVisible.value = true
+  }
+
+  if (!benefitsSectionRef.value) {
+    isBenefitsSectionVisible.value = true
+  } else {
+    benefitsSectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) {
+          return
+        }
+
+        isBenefitsSectionVisible.value = true
+        benefitsSectionObserver?.disconnect()
+      },
+      {
+        threshold: 0.18,
+        rootMargin: '0px 0px -14% 0px',
+      }
+    )
+
+    benefitsSectionObserver.observe(benefitsSectionRef.value)
+  }
+
+  if (!whatWeDoSectionRef.value) {
+    isWhatWeDoSectionVisible.value = true
+  } else {
+    whatWeDoSectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) {
+          return
+        }
+
+        isWhatWeDoSectionVisible.value = true
+        whatWeDoSectionObserver?.disconnect()
+      },
+      {
+        threshold: 0.16,
+        rootMargin: '0px 0px -14% 0px',
+      }
+    )
+
+    whatWeDoSectionObserver.observe(whatWeDoSectionRef.value)
+  }
+
+  if (!focusAreasSectionRef.value) {
+    isFocusAreasSectionVisible.value = true
+  } else {
+    focusAreasSectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) {
+          return
+        }
+
+        isFocusAreasSectionVisible.value = true
+        focusAreasSectionObserver?.disconnect()
+      },
+      {
+        threshold: 0.16,
+        rootMargin: '0px 0px -14% 0px',
+      }
+    )
+
+    focusAreasSectionObserver.observe(focusAreasSectionRef.value)
+  }
+
+  if (!focusAreasFeatureRef.value) {
+    isFocusAreasFeatureVisible.value = true
+  } else {
+    focusAreasFeatureObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) {
+          return
+        }
+
+        isFocusAreasFeatureVisible.value = true
+        focusAreasFeatureObserver?.disconnect()
+      },
+      {
+        threshold: 0.22,
+        rootMargin: '0px 0px -16% 0px',
+      }
+    )
+
+    focusAreasFeatureObserver.observe(focusAreasFeatureRef.value)
+  }
+
+  if (!newsSectionRef.value) {
+    isNewsSectionVisible.value = true
+  } else {
+    newsSectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) {
+          return
+        }
+
+        isNewsSectionVisible.value = true
+        newsSectionObserver?.disconnect()
+      },
+      {
+        threshold: 0.16,
+        rootMargin: '0px 0px -14% 0px',
+      }
+    )
+
+    newsSectionObserver.observe(newsSectionRef.value)
+  }
+
+  if (!accordionSectionRef.value) {
+    isAccordionSectionVisible.value = true
+  } else {
+    accordionSectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) {
+          return
+        }
+
+        isAccordionSectionVisible.value = true
+        accordionSectionObserver?.disconnect()
+      },
+      {
+        threshold: 0.18,
+        rootMargin: '0px 0px -14% 0px',
+      }
+    )
+
+    accordionSectionObserver.observe(accordionSectionRef.value)
+  }
+
+  if (!lastSectionRef.value) {
+    isLastSectionVisible.value = true
+  } else {
+    lastSectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) {
+          return
+        }
+
+        isLastSectionVisible.value = true
+        lastSectionObserver?.disconnect()
+      },
+      {
+        threshold: 0.22,
+        rootMargin: '0px 0px -14% 0px',
+      }
+    )
+
+    lastSectionObserver.observe(lastSectionRef.value)
+  }
+})
+
+onUnmounted(() => {
+  if (homeIntroAnimationFrame) {
+    cancelAnimationFrame(homeIntroAnimationFrame)
+  }
+
+  secondSectionObserver?.disconnect()
+  benefitsSectionObserver?.disconnect()
+  whatWeDoSectionObserver?.disconnect()
+  focusAreasSectionObserver?.disconnect()
+  focusAreasFeatureObserver?.disconnect()
+  newsSectionObserver?.disconnect()
+  accordionSectionObserver?.disconnect()
+  lastSectionObserver?.disconnect()
+})
+
+watch(
+  () => route.fullPath,
+  () => {
+    if (route.path === '/') {
+      playHomeIntroAnimation()
+    }
+  },
+  { flush: 'post' },
+)
 
 const newsCarouselPosts = computed(() =>
   [...posts, ...posts].map((post, index) => ({
@@ -876,6 +1191,356 @@ const showPreviousNewsPost = () => {
 </script>
 
 <style scoped>
+.hero-intro-title,
+.hero-intro-strip {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 760ms ease,
+    transform 760ms cubic-bezier(.16, 1, .3, 1);
+  will-change: opacity, transform;
+}
+
+.hero-intro-actions {
+  perspective: 900px;
+}
+
+.hero-intro-button {
+  opacity: 0;
+  transform: translate3d(0, 24px, 0) scale(.965);
+  filter: blur(10px);
+  box-shadow: 0 18px 44px rgb(0 0 0 / 0);
+  transition:
+    opacity 780ms cubic-bezier(.16, 1, .3, 1),
+    transform 880ms cubic-bezier(.16, 1, .3, 1),
+    filter 780ms cubic-bezier(.16, 1, .3, 1),
+    box-shadow 880ms ease,
+    background-color 260ms ease;
+  transition-delay: var(--hero-button-delay, 120ms);
+  will-change: opacity, transform, filter;
+}
+
+.hero-button-icon {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translate3d(-6px, 6px, 0) scale(.86);
+  transition:
+    opacity 520ms ease,
+    transform 680ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: calc(var(--hero-button-delay, 120ms) + 170ms);
+  will-change: opacity, transform;
+}
+
+.hero-button-icon img {
+  grid-area: 1 / 1;
+  display: block;
+  filter: none;
+  transform-origin: center;
+  transition:
+    opacity 520ms ease,
+    transform 720ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: 0ms;
+  will-change: opacity, transform;
+}
+
+.hero-button-icon-light {
+  filter: brightness(0) invert(1);
+}
+
+.hero-button-icon-hover {
+  opacity: 0;
+  transform: translate3d(-7px, 7px, 0) rotate(-8deg);
+}
+
+.homepage-hero.is-visible .hero-intro-button {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+  box-shadow: 0 20px 52px rgb(0 32 46 / 0.2);
+}
+
+.homepage-hero.is-visible .hero-button-icon {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.hero-intro-strip {
+  transform: translate3d(0, 24px, 0) scale(.99);
+  transition-delay: 330ms;
+}
+
+.homepage-hero.is-visible .hero-intro-title,
+.homepage-hero.is-visible .hero-intro-strip {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.homepage-hero.is-visible .hero-intro-button:hover {
+  transform: translate3d(0, -2px, 0) scale(1.015);
+  box-shadow: 0 24px 60px rgb(0 32 46 / 0.28);
+}
+
+.homepage-hero.is-visible .hero-intro-button:hover .hero-button-icon,
+.homepage-hero.is-visible .hero-intro-button:focus-visible .hero-button-icon {
+  transform: translate3d(2px, -2px, 0) scale(1.08);
+}
+
+.homepage-hero.is-visible .hero-intro-button:hover .hero-button-icon-base,
+.homepage-hero.is-visible .hero-intro-button:focus-visible .hero-button-icon-base {
+  opacity: 0;
+  transform: translate3d(7px, -7px, 0) rotate(8deg);
+}
+
+.homepage-hero.is-visible .hero-intro-button:hover .hero-button-icon-hover,
+.homepage-hero.is-visible .hero-intro-button:focus-visible .hero-button-icon-hover {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+.second-section-intro-title,
+.second-section-intro-copy,
+.second-section-benefit-heading {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition:
+    opacity 760ms ease,
+    transform 760ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: var(--second-section-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.second-section-intro-copy {
+  --second-section-delay: 120ms;
+}
+
+.second-section-benefit-heading {
+  --second-section-delay: 180ms;
+  filter: blur(8px);
+  transform: translate3d(0, 38px, 0);
+  transition:
+    opacity 840ms ease,
+    transform 980ms cubic-bezier(.16, 1, .3, 1),
+    filter 840ms ease;
+}
+
+.second-section-card {
+  opacity: 0;
+  filter: blur(10px);
+  transform: translate3d(0, 48px, 0) scale(.975);
+  transform-origin: center bottom;
+  box-shadow: 0 26px 60px rgb(0 63 80 / 0);
+  transition:
+    opacity 840ms ease,
+    transform 980ms cubic-bezier(.16, 1, .3, 1),
+    filter 840ms ease,
+    box-shadow 980ms ease,
+    background-color 980ms ease;
+  transition-delay: var(--second-section-delay, 0ms);
+  will-change: opacity, transform, filter;
+}
+
+.benefit-card-number {
+  display: inline-block;
+  transform: translate3d(-10px, 0, 0) scale(.94);
+  transition:
+    color 900ms ease,
+    transform 920ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: calc(var(--second-section-delay, 0ms) + 110ms);
+  will-change: transform;
+}
+
+.benefit-card-text {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 760ms ease,
+    transform 900ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: calc(var(--second-section-delay, 0ms) + 150ms);
+  will-change: opacity, transform;
+}
+
+.homepage-second-section.is-visible .second-section-intro-title,
+.homepage-second-section.is-visible .second-section-intro-copy {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.homepage-benefits-section.is-visible .second-section-benefit-heading,
+.homepage-benefits-section.is-visible .second-section-card {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.homepage-benefits-section.is-visible .second-section-card {
+  background-color: #f2f2f2;
+  box-shadow: 0 26px 60px rgb(0 63 80 / 0.08);
+}
+
+.homepage-benefits-section.is-visible .benefit-card-number,
+.homepage-benefits-section.is-visible .benefit-card-text {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.what-we-do-tile,
+.what-we-do-feature {
+  opacity: 0;
+  transform: translate3d(0, 34px, 0);
+  transition:
+    opacity 780ms ease,
+    transform 780ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: var(--what-we-do-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.what-we-do-feature {
+  transform: translate3d(0, 34px, 0) scale(.985);
+}
+
+.homepage-what-we-do.is-visible .what-we-do-tile,
+.homepage-what-we-do.is-visible .what-we-do-feature {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.focus-areas-heading,
+.focus-areas-controls,
+.focus-areas-carousel,
+.focus-areas-feature {
+  opacity: 0;
+  transform: translate3d(0, 34px, 0);
+  transition:
+    opacity 780ms ease,
+    transform 780ms cubic-bezier(.16, 1, .3, 1);
+  will-change: opacity, transform;
+}
+
+.focus-areas-controls {
+  transition-delay: 90ms;
+}
+
+.focus-areas-carousel {
+  transition-delay: 170ms;
+}
+
+.focus-areas-feature {
+  transform: translate3d(0, 38px, 0) scale(.985);
+  transition-delay: 260ms;
+}
+
+.homepage-focus-areas.is-visible .focus-areas-heading,
+.homepage-focus-areas.is-visible .focus-areas-controls,
+.homepage-focus-areas.is-visible .focus-areas-carousel,
+.focus-areas-feature.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.news-heading,
+.news-controls,
+.news-cards-viewport,
+.news-card {
+  opacity: 0;
+  transform: translate3d(0, 34px, 0);
+  transition:
+    opacity 820ms ease,
+    transform 820ms cubic-bezier(.16, 1, .3, 1);
+  will-change: opacity, transform;
+}
+
+.news-controls {
+  transition-delay: 80ms;
+}
+
+.news-cards-viewport {
+  transform: translate3d(0, 42px, 0);
+  transition-delay: 140ms;
+}
+
+.news-card {
+  transform: translate3d(0, 48px, 0) scale(.97);
+  transition-delay: var(--news-card-delay, 0ms);
+}
+
+.homepage-news.is-visible .news-heading,
+.homepage-news.is-visible .news-controls,
+.homepage-news.is-visible .news-cards-viewport,
+.homepage-news.is-visible .news-card {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.accordion-kicker,
+.accordion-heading,
+.accordion-list,
+.accordion-item {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0);
+  transition:
+    opacity 780ms ease,
+    transform 780ms cubic-bezier(.16, 1, .3, 1);
+  will-change: opacity, transform;
+}
+
+.accordion-heading {
+  transition-delay: 90ms;
+}
+
+.accordion-list {
+  transform: translate3d(0, 38px, 0);
+  transition-delay: 180ms;
+}
+
+.accordion-item {
+  transform: translate3d(0, 24px, 0);
+  transition-delay: calc(260ms + (var(--accordion-item-index, 0) * 80ms));
+}
+
+.homepage-accordion.is-visible .accordion-kicker,
+.homepage-accordion.is-visible .accordion-heading,
+.homepage-accordion.is-visible .accordion-list,
+.homepage-accordion.is-visible .accordion-item {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.last-cta-heading,
+.last-cta-copy,
+.last-cta-action {
+  opacity: 0;
+  transform: translate3d(0, 34px, 0);
+  transition:
+    opacity 820ms ease,
+    transform 820ms cubic-bezier(.16, 1, .3, 1);
+  will-change: opacity, transform;
+}
+
+.last-cta-heading {
+  transform: translate3d(0, 42px, 0) scale(.985);
+}
+
+.last-cta-copy {
+  transition-delay: 120ms;
+}
+
+.last-cta-action {
+  transform: translate3d(0, 28px, 0) scale(.96);
+  transition-delay: 240ms;
+}
+
+.homepage-last-cta.is-visible .last-cta-heading,
+.homepage-last-cta.is-visible .last-cta-copy,
+.homepage-last-cta.is-visible .last-cta-action {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
 .hero-image-strip-viewport {
   align-self: stretch;
   margin-inline: calc(50% - 50vw);
@@ -893,7 +1558,7 @@ const showPreviousNewsPost = () => {
   display: flex;
   width: max-content;
   gap: var(--hero-card-gap);
-  animation: hero-card-marquee 42s linear infinite;
+  animation: hero-card-marquee 46s linear infinite;
   will-change: transform;
 }
 
@@ -948,7 +1613,7 @@ const showPreviousNewsPost = () => {
 @media (min-width: 1024px) {
   .hero-image-strip {
     --hero-card-gap: 1.5rem;
-    animation-duration: 52s;
+    animation-duration: 56s;
   }
 
   .hero-image-card {
@@ -957,6 +1622,42 @@ const showPreviousNewsPost = () => {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-intro-title,
+  .hero-intro-actions,
+  .hero-intro-button,
+  .hero-button-icon,
+  .hero-button-icon img,
+  .hero-intro-strip,
+  .second-section-intro-title,
+  .second-section-intro-copy,
+  .second-section-benefit-heading,
+  .second-section-card,
+  .benefit-card-number,
+  .benefit-card-text,
+  .what-we-do-tile,
+  .what-we-do-feature,
+  .focus-areas-heading,
+  .focus-areas-controls,
+  .focus-areas-carousel,
+  .focus-areas-feature,
+  .news-heading,
+  .news-controls,
+  .news-cards-viewport,
+  .news-card,
+  .accordion-kicker,
+  .accordion-heading,
+  .accordion-list,
+  .accordion-item,
+  .last-cta-heading,
+  .last-cta-copy,
+  .last-cta-action {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+    box-shadow: none;
+  }
+
   .hero-image-strip {
     animation: none;
   }

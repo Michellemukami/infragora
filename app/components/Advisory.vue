@@ -11,11 +11,16 @@
     title-class="text-[42px] sm:text-[52px] lg:text-[58px]"
     content-class="mt-28 md:mt-[230px] md:translate-x-12 lg:mt-[240px] lg:translate-x-24 xl:translate-x-32"
   />
-   <section class="bg-[#fbfbfb]">
+  <!-- ADVISORY SERVICES -->
+   <section
+    ref="advisoryServicesRef"
+    class="advisory-services-section overflow-hidden bg-[#fbfbfb]"
+    :class="{ 'is-visible': isAdvisoryServicesVisible }"
+  >
     <div
       class="mx-auto w-full px-5 md:py-14 sm:px-8 sm:py-16 lg:px-16  xl:px-[80px]"
     >
-      <header class="mb-9 sm:mb-10 lg:mb-12">
+      <header class="advisory-services-heading mb-9 sm:mb-10 lg:mb-12">
         <h2
           class="max-w-[220px] text-[28px] font-medium leading-[1.08] tracking-[-0.04em] text-[#202020] sm:text-[34px] lg:text-[40px]"
         >
@@ -27,9 +32,10 @@
 
       <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-[30px]">
         <article
-          v-for="service in services"
+          v-for="(service, serviceIndex) in services"
           :key="service.title"
-          class="flex min-h-[230px] flex-col bg-[#d9e8e3] px-5 py-5 sm:min-h-[245px] sm:px-6 sm:py-6 lg:min-h-[270px] lg:px-7 lg:py-7 xl:min-h-[285px]"
+          class="advisory-service-card flex min-h-[230px] flex-col bg-[#d9e8e3] px-5 py-5 sm:min-h-[245px] sm:px-6 sm:py-6 lg:min-h-[270px] lg:px-7 lg:py-7 xl:min-h-[285px]"
+          :style="{ '--service-delay': `${120 + serviceIndex * 75}ms` }"
         >
           <h3
             class="max-w-[280px] text-[18px] font-semibold leading-[1.22] tracking-[-0.035em] text-[#005263] sm:text-[19px] lg:text-[20px]"
@@ -62,6 +68,44 @@
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import NumberCard from './common/NumberCard.vue'
 import AdvisoryHeroImage from '~/assets/images/capabilities/advisory.jpg'
+
+const isAdvisoryServicesVisible = ref(false)
+const advisoryServicesRef = ref<HTMLElement | null>(null)
+let advisoryServicesObserver: IntersectionObserver | null = null
+
+onMounted(() => {
+  if (!('IntersectionObserver' in window)) {
+    isAdvisoryServicesVisible.value = true
+    return
+  }
+
+  if (!advisoryServicesRef.value) {
+    isAdvisoryServicesVisible.value = true
+    return
+  }
+
+  advisoryServicesObserver = new IntersectionObserver(
+    ([entry]) => {
+      if (!entry?.isIntersecting) {
+        return
+      }
+
+      isAdvisoryServicesVisible.value = true
+      advisoryServicesObserver?.disconnect()
+    },
+    {
+      threshold: 0.16,
+      rootMargin: '0px 0px -12% 0px',
+    }
+  )
+
+  advisoryServicesObserver.observe(advisoryServicesRef.value)
+})
+
+onBeforeUnmount(() => {
+  advisoryServicesObserver?.disconnect()
+})
+
 useHead({
   title: 'Infrastructure Advisory | INFRAGORA Global Capital',
   meta: [
@@ -135,3 +179,70 @@ const supportItems: NumberCardItem[] = [
   { number: '08', label: 'Fund managers and asset owners' },
 ]
 </script>
+
+<style scoped>
+.advisory-services-heading,
+.advisory-service-card {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+}
+
+.advisory-services-heading {
+  filter: blur(8px);
+  transform: translate3d(0, 34px, 0);
+  transition:
+    opacity 820ms ease,
+    transform 940ms cubic-bezier(.16, 1, .3, 1),
+    filter 820ms ease;
+  transition-delay: 70ms;
+}
+
+.advisory-service-card {
+  filter: blur(10px);
+  transform: translate3d(0, 48px, 0) scale(.975);
+  transform-origin: center bottom;
+  transition:
+    opacity 840ms ease,
+    transform 980ms cubic-bezier(.16, 1, .3, 1),
+    filter 840ms ease,
+    box-shadow 980ms ease;
+  transition-delay: var(--service-delay, 0ms);
+  box-shadow: 0 24px 55px rgb(0 82 99 / 0);
+}
+
+.advisory-service-card h3,
+.advisory-service-card p {
+  transform: translate3d(0, 16px, 0);
+  transition: transform 860ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: calc(var(--service-delay, 0ms) + 120ms);
+}
+
+.advisory-services-section.is-visible .advisory-services-heading,
+.advisory-services-section.is-visible .advisory-service-card {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.advisory-services-section.is-visible .advisory-service-card {
+  box-shadow: 0 24px 55px rgb(0 82 99 / 0.08);
+}
+
+.advisory-services-section.is-visible .advisory-service-card h3,
+.advisory-services-section.is-visible .advisory-service-card p {
+  transform: translate3d(0, 0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .advisory-services-heading,
+  .advisory-service-card,
+  .advisory-service-card h3,
+  .advisory-service-card p {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+    box-shadow: none;
+  }
+}
+</style>
