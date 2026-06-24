@@ -31,8 +31,8 @@
           >
             Discover Our Platform
             <span class="hero-button-icon" aria-hidden="true">
-              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-base hero-button-icon-light h-3 w-3 object-contain" />
-              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-hover hero-button-icon-light h-3 w-3 object-contain" />
+              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-base hero-button-icon-light brightness-0 invert  h-3 w-3 object-contain" />
+              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-hover hero-button-icon-light brightness-0 invert h-3 w-3 object-contain" />
             </span>
           </NuxtLink>
         </div>
@@ -77,7 +77,7 @@
           <img
             :src="arrowOutwardIcon"
             alt=""
-            class="mt-[18px] h-2.5 w-2.5 shrink-0 object-contain brightness-0 invert transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:mt-6 lg:h-3 lg:w-3"
+            class="mt-[18px] h-2.5 w-2.5 shrink-0 object-contain brightness-0 invert transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:mt-6 lg:h-3 lg:w-3 "
           />
         </div>
       </NuxtLink>
@@ -1248,7 +1248,7 @@ const showPreviousNewsPost = () => {
   will-change: opacity, transform;
 }
 
-.hero-button-icon-light {
+.hero-button-icon img.hero-button-icon-light {
   filter: brightness(0) invert(1);
 }
 
