@@ -1,7 +1,7 @@
 <template>
   <header class="fixed left-0 top-0 z-50 w-full border-b border-black/5 bg-white/95 backdrop-blur-md">
     <div
-      class="mx-auto flex h-[76px] max-w-[1440px] items-center justify-between px-6 xl:px-12"
+      class="mx-auto flex h-[76px] items-center justify-between px-6 md:px-20"
     >
       <NuxtLink to="/">
         <img src="/logo.png" alt="Infragora" class="h-8 w-auto" />
