@@ -84,20 +84,21 @@
                   </NuxtLink>
 
                   <div class="mt-3 space-y-3 border-l border-[#d6dfdf] pl-4 text-[#4a5d61]">
+                     <NuxtLink
+                      to="/our-capabilities/investment/private-investment"
+                      class="block transition-opacity hover:opacity-60"
+                      @click="isCapabilitiesOpen = false"
+                    >
+                      Private Investments
+                    </NuxtLink>
                     <NuxtLink
                       to="/our-capabilities/investment/public-investment"
                       class="block transition-opacity hover:opacity-60"
                       @click="isCapabilitiesOpen = false"
                     >
-                      Public Investment
+                      Public Investments
                     </NuxtLink>
-                    <NuxtLink
-                      to="/our-capabilities/investment/private-investment"
-                      class="block transition-opacity hover:opacity-60"
-                      @click="isCapabilitiesOpen = false"
-                    >
-                      Private Investment
-                    </NuxtLink>
+                  
                   </div>
                 </div>
 
@@ -297,20 +298,21 @@
                   </NuxtLink>
 
                   <div class="space-y-3 border-l border-[#d6dfdf] pl-4 text-[#4a5d61]">
+                          <NuxtLink
+                      to="/our-capabilities/investment/private-investment"
+                      class="block transition hover:text-[#0a5264]"
+                      @click="closeMobileMenu"
+                    >
+                      Private Investments
+                    </NuxtLink>
                     <NuxtLink
                       to="/our-capabilities/investment/public-investment"
                       class="block transition hover:text-[#0a5264]"
                       @click="closeMobileMenu"
                     >
-                      Public Investment
+                      Public Investments
                     </NuxtLink>
-                    <NuxtLink
-                      to="/our-capabilities/investment/private-investment"
-                      class="block transition hover:text-[#0a5264]"
-                      @click="closeMobileMenu"
-                    >
-                      Private Investment
-                    </NuxtLink>
+              
                   </div>
                 </div>
 

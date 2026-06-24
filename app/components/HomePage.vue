@@ -197,7 +197,8 @@
         <h3
           class="second-section-benefit-heading max-w-[520px] text-[28px] font-medium leading-[1.08] tracking-[-0.045em] sm:text-[34px]"
         >
-          A New Exit Window for African Infrastructure
+          A New Exit Market for African Infrastructure
+
         </h3>
 
         <div class="mt-10 grid gap-4 sm:grid-cols-2">
@@ -245,9 +246,10 @@
             <p
               class="mt-16 max-w-[250px] text-[15px] leading-[1.7] text-white/90"
             >
-              Project development, transaction structuring,
-              market access, valuation, ESG alignment and
-              investor readiness.
+              Project development, transaction structuring, capital raising, market access, valuation analysis, ESG strategy and impact assessment and investor readiness.
+
+Executed by INFRAGORA Advisory
+
             </p>
           </article>
 
@@ -265,9 +267,7 @@
             <p
               class="mt-16 max-w-[250px] text-[15px] leading-[1.7] text-white/90"
             >
-              Operating, brownfield, growth and selected
-              late-stage greenfield infrastructure assets
-              across Africa.
+              Greenfield especially selected late-stage and operating/brownfield with growth upside infrastructure assets
             </p>
           </article>
 
@@ -569,7 +569,7 @@
     <div class="mx-auto">
       <!-- Small title -->
       <p class="accordion-kicker mb-6 text-[15px] font-medium leading-none text-black lg:text-[16px]">
-        Our Global Reach
+        Our Global Reach & Presence
       </p>
 
       <!-- Main heading -->
@@ -799,15 +799,15 @@ const marketBenefits = [
   },
   {
     number: '03',
-    text: "Improve liquidity in Africa’s traditionally illiquid infrastructure market",
+    text: "Improve liquidity in Africa’s historically illiquid infrastructure market",
   },
   {
     number: '04',
-    text: 'Attract regional and global institutional investors',
+    text: 'Attract local, regional and global institutional investors into the African infrastructure market',
   },
   {
     number: '05',
-    text: 'Support the development of diversified asset-backed securities',
+    text: 'Support the development of novel, diversified asset-backed securities, products and instruments',
   },
   {
     number: '06',
@@ -815,7 +815,7 @@ const marketBenefits = [
   },
   {
     number: '07',
-    text: 'Grow infrastructure into a more visible and investable asset class',
+    text: 'Grow infrastructure into a more visible and investable asset class in Africa',
   },
 ]
 
@@ -832,7 +832,7 @@ const focusAreas = [
   },
   {
     id: 2,
-    title: 'Broadband and ICT infrastructure',
+    title: 'Digital Infrastructure',
     text:
       'data centres, fibre networks, telecom infrastructure, mobile broadband, submarine cables, landing stations, spectrum-related infrastructure and green ICT solutions.',
     background:
@@ -852,7 +852,7 @@ const focusAreas = [
   },
   {
     id: 4,
-    title: 'Sustainable water',
+    title: 'Water and Waste',
     text:
       'urban water supply, sanitation, wastewater treatment, irrigation systems and climate resilient infrastructure.',
     background:

@@ -45,7 +45,7 @@ useHead({
   ],
 })
 const aboutIntroParagraphs = [
-  "Infrastructure requires flexible capital. INFRAGORA structures investment instruments that align project needs, investor expectations and long-term asset performance.",
+  "Infrastructure requires flexible capital. INFRAGORA structures investment instruments that align with project needs, investor expectations and long-term asset quality and performance objectives.",
 "Our instruments are designed to support different stages of asset maturity, capital requirements and risk-return profiles."
  
 ]

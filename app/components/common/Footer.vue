@@ -54,7 +54,7 @@
         class="flex min-w-0 flex-col items-center gap-5 text-[12px] font-medium text-black sm:text-[13px] md:flex-row md:items-center md:gap-10 lg:gap-14"
       >
         <p class="whitespace-nowrap">
-          &copy;{{ currentYear }} Infragora
+          &copy;{{ currentYear }} INFRAGORA
         </p>
 
         <nav

@@ -64,7 +64,7 @@ type NumberCardItem = {
 
 
 const coverageText = [
-  'We target operating, brownfield, expansion-ready and selected late-stage greenfield infrastructure assets across priority sectors. Our investment process combines sector analysis, disciplined screening, risk assessment, ESG review, governance oversight and value creation planning.'
+  'INFRAGORA’s investment strategy is to generate attractive risk-adjusted returns (capital gains and dividend yields) by making investments in performing operating assets with expansion and growth offerings, as well as suitable early and near end greenfield infrastructure assets across Africa within well-defined asset classes. Our investment process includes a comprehensive and robust deal curation process, investment appraisal, due diligence, returns assessment and value creation.'
   
 ]
 const supportItems: NumberCardItem[] = [

@@ -24,7 +24,7 @@ Solutions"
     label-class="text-[#253035]"
   />
    <NumberCard
-    title="Who We Support"
+    title="What We Support"
     :items="supportItems1"
     section-class="bg-[#d9e8e3]"
     title-class="text-[#0a5264]"
@@ -55,7 +55,7 @@ useHead({
 })
 const aboutIntroParagraphs = [
   "INFRAGORA's public investment capability is designed to connect African infrastructure assets with regional and global capital markets.",
-  "Through listed investment vehicles, asset-backed securities and structured instruments, we aim to improve liquidity, transparency, pricing and access for institutional investors."
+  "Through listed investment vehicles, asset-backed securities and structured instruments, product innovation and new capital formation, we aim to improve liquidity, transparency, pricing discovery and access for regional and global ESG aligned institutional investors to Africa’s infrastructure opportunities."
  
 ]
 
@@ -73,7 +73,7 @@ const supportItems0: NumberCardItem[] = [
   { number: '03', label: 'Enhanced price discovery' },
   { number: '04', label: 'Listed access to infrastructure assets' },
   { number: '05', label: 'Structured exit pathways' },
-  { number: '06', label: 'Asset-backed securities development' },
+  { number: '06', label: 'Asset-backed securities development and capital formation' },
   { number: '07', label: 'Capital recycling and portfolio diversification' },
  
 ]

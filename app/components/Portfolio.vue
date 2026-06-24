@@ -150,13 +150,7 @@
              </div>
            </div>
   </section>
-  <ImageCard
-    title="INFRAGORA Investment 
-Vehicle 1"
-    :paragraphs="coverageText"
-    :image="bridgeImage"
-    image-alt="African infrastructure development"
-  />
+ 
 </template>
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
@@ -168,8 +162,6 @@ import train from "~/assets/images/portfolio/train.jpg"
 import water from "~/assets/images/portfolio/water.jpg"
 import tunnel from "~/assets/images/portfolio/tunnel.png"
 import portfolioImage from "~/assets/images/portfolio/portfolio2.jpg"
-import bridgeImage from '~/assets/images/bridge.jpg'
-import ImageCard from './common/ImageCard.vue';
 
 const isPortfolioFocusVisible = ref(false)
 const isImageCoverVisible = ref(false)
@@ -252,9 +244,7 @@ const aboutIntroParagraphs = [
   "We were created to address one of Africa's most important infrastructure finance challenges: the lack of liquidity and structured exit pathways for investors, developers and asset owners. By enabling capital recycling, structured exits, asset-backed securities and institutional investor access, INFRAGORA helps unlock value from existing infrastructure assets while mobilising new capital for future development.",
 
 ]
-const coverageText = [
-  'INFRAGORA Investment Vehicle 1, or IIV1, is designed to invest in a diversified portfolio of African infrastructure assets. The vehicle targets operating and growth infrastructure opportunities, including brownfield assets with stable cash flows, assets with expansion potential and selected late-stage greenfield projects approaching commercial operation..',
-]
+
 
 type NumberCardItem = {
   number: string

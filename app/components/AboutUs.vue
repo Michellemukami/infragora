@@ -35,7 +35,7 @@
           <p
             class="text-[14px] font-normal leading-[1.55] tracking-[-0.015em] text-white/95 sm:text-[15px] lg:text-[16px]"
           >
-            to deepen infrastructure liquidity, improve market access, enhance
+            To deepen infrastructure liquidity, improve market access, enhance
             price discovery and support the emergence of infrastructure as a
             visible, investable and scalable asset class across Africa.
           </p>
@@ -83,9 +83,7 @@
           <p
             class="mt-8 text-[14px] font-normal leading-[1.55] tracking-[-0.015em] text-[#062d4a] sm:text-[15px] lg:mt-9 lg:text-[16px]"
           >
-            To become Africa's leading infrastructure secondary market
-            platform, connecting high-quality infrastructure assets with
-            long-term capital from regional and global investors.
+           To become Africa’s leading infrastructure secondary market platform, connecting high-quality infrastructure assets with long-term capital from local, regional and global investors.
           </p>
         </div>
       </article>
@@ -232,13 +230,7 @@
           <p
             class="text-[13px] leading-[1.45] text-[#003f50] sm:text-[14px] lg:text-[15px]"
           >
-            INFRAGORA is led by a highly experienced team with deep expertise
-            across infrastructure finance, investment banking, development
-            finance, private equity, capital markets, public markets,
-            governance, ESG and African investment execution. The team brings
-            extensive experience from leading financial institutions,
-            development banks, investment platforms and infrastructure
-            organisations across Africa and global markets.
+            INFRAGORA is led by a global and highly experienced team with deep expertise across infrastructure finance, investment banking, development finance, private equity, capital markets, public markets, governance, ESG and Global and African investment execution. The team brings extensive experience from leading financial institutions, development banks, investment platforms, management consulting, and infrastructure organisations across Africa and global markets. The team has a proven track record in result-oriented leadership, organizational development, strategy formulation and execution, executive management, and operational management — both in building institutions from the ground up and leading existing organizations.
           </p>
         </div>
       </div>
@@ -309,7 +301,7 @@ type Value = {
 
 const aboutIntroParagraphs = [
   'INFRAGORA Global Capital is an African-led infrastructure investment and fund management platform focused on establishing a structured secondary market for African infrastructure assets.',
-  "We were created to address one of Africa's most important infrastructure finance challenges: the lack of liquidity and structured exit pathways for investors, developers and asset owners. By enabling capital recycling, structured exits, asset-backed securities and institutional investor access, INFRAGORA helps unlock value from existing infrastructure assets while mobilising new capital for future development.",
+  "We were created to address Africa's main infrastructure finance challenges and most significant market failure: the lack of liquidity and structured exit pathways for investors, institutional investors, developers and asset owners. By enabling capital recycling, structured exits, asset-backed securities and institutional investor access, INFRAGORA helps to unlock value from existing infrastructure assets whilst mobilising new capital to accelerate asset creation and development.",
 ]
 
 const teamMembers: TeamMember[] = [
@@ -359,11 +351,11 @@ const coverageText = [
   'Our platform is structured to work with asset developers, infrastructure companies, portfolio companies, DFIs, multilateral and bilateral institutions, investment banks, pension funds, sovereign wealth funds, infrastructure funds, asset managers, family offices and strategic investors.',
 ]
 const objectives = [
-  'Stimulate capital recycling for investors and developers',
+  'Stimulate capital recycling for investors, developers, and asset owners',
   "Boost liquidity in Africa's infrastructure market",
-  'Crowd in regional and global institutional investors',
+  'Crowd in local, regional and global institutional investors',
   'Deepen capital formation through asset-backed securities',
-  'Improve infrastructure asset visibility, valuation and transparency',
+  '5.	Improve infrastructure asset visibility, valuation benchmarks and transparency',
   'Support sustainable infrastructure investment across Africa',
   'Grow infrastructure as a mainstream asset class',
 ]
@@ -371,28 +363,28 @@ const values: [Value, ...Value[]] = [
   {
     title: 'Bold',
     description:
-      'Unlock capital tied up in operating infrastructure projects',
+      'Strategically positioned and know-how to tackle the critical market failure in Africa’s infrastructure market',
     featured: true,
   },
   {
     title: 'Innovative',
     description:
-      "Improve liquidity in Africa’s traditionally illiquid infrastructure market",
+      "Leverage creative innovation to boost liquidity in Africa’s traditionally illiquid infrastructure market",
   },
   {
     title: 'Value',
     description:
-      'Attract regional and global institutional investors',
+      'Broad based value creation for shareholders, investors, market stakeholders, and communities',
   },
   {
-    title: 'Excellence',
+    title: 'Precision execution',
     description:
       'Support the development of diversified asset-backed securities',
   },
   {
     title: 'Trust',
     description:
-      'Deepen capital formation across African markets',
+      'Guided by ethics, trust and custodianship in value creation',
   },
 ]
 

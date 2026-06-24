@@ -22,7 +22,7 @@ const introHeader = {
   title: 'Knowledge Hub',
   description: [
     'The INFRAGORA Knowledge Hub shares perspectives on the future of African infrastructure investment, liquidity, capital markets and sustainable development.',
-    "Our insights are designed for asset owners, investors, policymakers, development partners, financial institutions and infrastructure companies seeking to understand Africa's evolving infrastructure investment landscape.",
+    "Our insights and knowledge products are designed for asset owners, regional and global investors, policymakers, development partners, financial institutions and infrastructure companies seeking to understand Africa's evolving infrastructure investment landscape.",
   ],
 }
 

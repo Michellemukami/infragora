@@ -53,7 +53,7 @@ useHead({
   ],
 })
 const aboutIntroParagraphs = [
-  "INFRAGORA's private investment capability focuses on direct and structured investments into high-quality infrastructure assets across Africa. We target opportunities where long-term capital, disciplined governance and strategic support can unlock growth, expansion and operational value.",
+  "INFRAGORA's private investment capability focuses on direct and structured investments into high-quality infrastructure assets and platforms across Africa. We acquire majority or significant minority positions by investing in performing operating assets with expansion and growth offerings, as well as suitable early and near end greenfield infrastructure assets with the objective to deliver risk adjusted hybrid returns profile (capital gains and consistent dividend yield) to our shareholders and investors, with the overall goal on sustainability and development impact. We target opportunities where long-term capital, disciplined governance and strategic support can unlock growth, expansion and operational value.",
 
  
 ]
@@ -65,13 +65,14 @@ type NumberCardItem = {
 }
 
 const coverageText = [
-  'We work with asset owners and management teams to improve project readiness, operational resilience, capital structure, ESG alignment, governance and long-term market positioning.',
+  'We work with asset owners, project developers and management teams to improve acquisition readiness, operational resilience, capital structure, ESG alignment, governance and long-term market positioning.',
+  "We collaborate with INFRAGORA Advisory on well curated and developed bankable pipeline of opportunities with clear pathway to financial close to deliver a strong growth focused asset base."
 ]
 
 const supportItems0: NumberCardItem[] = [
   { number: '01', label: 'Operating brownfield assets with stable cash flows' },
   { number: '02', label: 'Projects with expansion and new capex potential' },
-  { number: '03', label: 'Select near-COD greenfield infrastructure assets' },
+  { number: '03', label: 'Select early and near-COD greenfield infrastructure assets with a growth returns focus' },
   { number: '04', label: 'Strategic infrastructure platforms' },
   { number: '05', label: 'Significant minority and control investment opportunities' },
   { number: '06', label: 'Co-investment and partnership structures' },

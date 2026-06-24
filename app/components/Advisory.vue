@@ -54,7 +54,7 @@
   </section>
 
   <NumberCard
-    title="Who We Support"
+    title="What We Support"
     :items="supportItems"
     section-class="bg-[#fbfbfb]"
     title-class="text-[#0a5264]"
@@ -122,7 +122,7 @@ useHead({
   ],
 })
 const aboutIntroParagraphs = [
-  'INFRAGORA Advisory supports infrastructure assets, developers, investors and portfolio companies across the project and investment lifecycle. We help transform infrastructure opportunities into bankable, investable and scalable assets by combining market insight, transaction expertise, financial structuring and capital access.',
+  'INFRAGORA Advisory our sister entity provides an end to end curated deal development, structuring, and capital raising services which ensures the bankability of infrastructure assets, and supports developers, investors and portfolio companies across the project and investment lifecycle. We help transform infrastructure opportunities into bankable, investable and scalable assets by combining market insight, transaction advisory expertise, deal structuring and capital access to ensure financial close. INFRAGORA Advisory helps accelerate the pipeline of bankable greenfield and near end or semi greenfield growth opportunities for the INFRAGORA Secondary Market Platform.',
  
 ]
 type AdvisoryService = {
@@ -139,32 +139,32 @@ const services: AdvisoryService[] = [
   {
     title: 'Project Development Advisory',
     description:
-      'early-stage and growth-stage support including market assessment, development strategy, feasibility review and commercial structuring.',
+      'Carry out and coordinate the detailed project preparation process of early-stage and growth-stage opportunities. This include conducting pre-feasibility and bankable feasibility studies - market assessment, technical studies, legal and regulatory, financial analysis and business plan, environmental and social impact studies, etc. as part of a robust deal curation process.',
   },
   {
     title: 'Transaction Structuring',
     description:
-      'transaction design, investor positioning, risk allocation, capital stack development and structuring for equity, quasi-equity and debt participation.',
+      'Deal structuring, industry and investor matching and positioning, investment derisking, capital stack structuring and optimisation including the use of innovative financial engineering or instruments and blended finance.',
   },
   {
-    title: 'Capital Mobilisation',
+    title: 'Capital Rasing or Mobilisation ',
     description:
-      'fundraising readiness, investor engagement, development finance participation and strategic capital partnerships.',
+      'Fundraising readiness, investor engagement, optimised investor mix and strategic capital partnerships and participation.',
   },
   {
-    title: 'Valuation and Market Readiness',
+    title: 'Valuation',
     description:
-      'support for asset valuation, price discovery, documentation quality and investor confidence.',
+      'Asset valuation, price discovery, residual growth assessment, acquisition assessment',
   },
   {
     title: 'ESG and Impact Advisory',
     description:
-      'sustainability, climate resilience, social impact and governance principles embedded into infrastructure investment planning and execution.',
+      'ESG assessment and index referencing, sustainability, climate resilience, social impact and governance principles embedded into infrastructure investment planning and execution.',
   },
   {
     title: 'Secondary Market Readiness',
     description:
-      'preparation for structured exits, listing pathways, asset-backed securities and institutional participation.',
+      'Financial close and preparation for private and public investment and structured exits, listing pathways, asset-backed securities and institutional participation.',
   },
 ]
 
