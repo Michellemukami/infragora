@@ -355,7 +355,7 @@ const objectives = [
   "Boost liquidity in Africa's infrastructure market",
   'Crowd in local, regional and global institutional investors',
   'Deepen capital formation through asset-backed securities',
-  '5.	Improve infrastructure asset visibility, valuation benchmarks and transparency',
+  'Improve infrastructure asset visibility, valuation benchmarks and transparency',
   'Support sustainable infrastructure investment across Africa',
   'Grow infrastructure as a mainstream asset class',
 ]
