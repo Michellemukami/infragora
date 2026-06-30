@@ -107,19 +107,10 @@ Capabilities
       </div>
     </div>
 </section>
- <ImageCard
-    title="INFRAGORA Investment 
-Vehicle 1"
-    :paragraphs="coverageText"
-    :image="bridgeImage"
-    image-alt="African infrastructure development"
-  />
 </template>
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import fundManagementHeroImage from '~/assets/images/capabilities/fund-hero.jpg'
-import bridgeImage from '~/assets/images/bridge.jpg'
-import ImageCard from './common/ImageCard.vue';
 
 const isBenefitsSectionVisible = ref(false)
 const benefitsSectionRef = ref<HTMLElement | null>(null)
@@ -179,13 +170,6 @@ const aboutIntroParagraphs = [
 ]
 
 
-type NumberCardItem = {
-  number: string
-  label: string
-}
-const coverageText = [
-  'INFRAGORA Investment Vehicle 1, or IIV1, is designed to invest in a diversified portfolio of African infrastructure assets. The vehicle targets operating and growth infrastructure opportunities, including brownfield assets with stable cash flows, assets with expansion potential and selected late-stage greenfield projects approaching commercial operation..',
-]
 const marketBenefits = [
   {
     number: 'Portfolio Construction',

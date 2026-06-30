@@ -150,7 +150,109 @@
              </div>
            </div>
   </section>
- 
+  <!-- here -->
+  <section
+    ref="investmentVehicleRef"
+    class="iiv-profile bg-white px-6 py-16 text-[#062f4a] sm:px-10 lg:px-20"
+    :class="{ 'is-visible': isInvestmentVehicleVisible }"
+  >
+    <div class="mx-auto max-w-[1440px]">
+      <h2 class="iiv-profile-heading mx-auto max-w-[760px] text-center text-[30px] font-semibold leading-[1.08] tracking-[-0.045em] sm:text-[40px] lg:text-[48px]">
+        Profiling INFRAGORA Investment
+        <span class="block font-normal">Vehicle 1</span>
+      </h2>
+
+      <div class="mt-14 grid items-start gap-10 md:mt-16 md:grid-cols-[1fr_0.9fr] md:gap-16 lg:mt-20 lg:grid-cols-[0.96fr_1fr] lg:gap-24 xl:gap-32">
+        <div class="iiv-profile-copy max-w-[620px] md:pt-10 lg:pt-14">
+          <p class="text-[13px] font-normal leading-[1.48] tracking-[-0.02em] text-[#062f4a] sm:text-[14px] lg:text-[15px]">
+            {{ investmentVehicleCopy }}
+          </p>
+        </div>
+
+        <aside class="iiv-value-card w-full bg-[#073a58] px-7 py-7 text-white sm:px-9 sm:py-8 lg:px-10 lg:py-9">
+          <div class="flex items-center gap-4 border-b border-white/25 pb-5">
+            <span class="flex h-7 w-7 items-center justify-center rounded-full border border-[#4d91aa]">
+              <span class="block h-3.5 w-3.5 rounded-full bg-[#4d91aa]" />
+            </span>
+            <span class="text-[14px] font-medium uppercase leading-none tracking-[0.03em] text-[#5e9cb2] sm:text-[15px]">
+              USD
+            </span>
+          </div>
+
+          <strong class="mt-8 block text-[70px] font-semibold leading-[0.9] tracking-[-0.075em] text-[#e3f0f0] sm:text-[92px] lg:text-[108px] xl:text-[120px]">
+            $1.2b
+          </strong>
+
+          <p class="mt-5 text-[12px] font-medium leading-none text-white sm:text-[13px] lg:text-[14px]">
+            Value of listed investment holding vehicle.
+          </p>
+        </aside>
+      </div>
+    </div>
+  </section>
+   <!-- here2 -->
+  <section
+    ref="phaseImplementationRef"
+    class="phase-implementation bg-[#073a58] px-6 py-16 text-white sm:px-10 sm:py-20 lg:px-20 lg:py-24"
+    :class="{ 'is-visible': isPhaseImplementationVisible }"
+  >
+    <div class="mx-auto max-w-[1440px]">
+      <h2 class="phase-heading max-w-[420px] text-[32px] font-semibold leading-[1.02] tracking-[-0.045em] sm:text-[40px] lg:text-[48px]">
+        Phase-wise
+        <span class="block font-normal">Implementation</span>
+      </h2>
+
+      <div class="mt-16 grid gap-12 md:mt-20 md:grid-cols-2 md:gap-16 lg:mt-24 lg:gap-24 xl:gap-32">
+        <article
+          v-for="(phase, phaseIndex) in implementationPhases"
+          :key="phase.title"
+          class="phase-card"
+          :style="{ '--phase-delay': `${160 + phaseIndex * 120}ms` }"
+        >
+          <p class="text-[10px] font-semibold uppercase leading-none tracking-[0.02em] text-white/90 sm:text-[11px]">
+            {{ phase.phase }}
+          </p>
+
+          <h3 class="mt-4 text-[22px] font-semibold leading-none tracking-[-0.035em] text-white sm:text-[26px] lg:text-[30px]">
+            {{ phase.title }}
+          </h3>
+
+          <div class="mt-10 grid grid-cols-2 gap-8 border-b border-[#4d91aa]/70 pb-4 sm:mt-12 lg:gap-10">
+            <div
+              v-for="metric in phase.metrics"
+              :key="metric.value"
+              class="min-w-0"
+              :class="phase.metrics.length === 1 ? 'col-span-2' : ''"
+            >
+              <div class="flex items-center gap-3">
+                <span class="flex h-4 w-4 items-center justify-center rounded-full border border-[#4d91aa]">
+                  <span class="block h-2 w-2 rounded-full bg-[#4d91aa]" />
+                </span>
+                <span class="text-[10px] font-medium uppercase leading-none tracking-[0.03em] text-[#5e9cb2] sm:text-[11px]">
+                  USD
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 grid grid-cols-2 gap-8 lg:gap-10">
+            <strong
+              v-for="metric in phase.metrics"
+              :key="`${phase.title}-${metric.value}`"
+              class="text-[42px] font-semibold leading-none tracking-[-0.075em] text-[#e3f0f0] sm:text-[52px] lg:text-[62px] xl:text-[70px]"
+              :class="phase.metrics.length === 1 ? 'col-span-2' : ''"
+            >
+              {{ metric.value }}
+            </strong>
+          </div>
+
+          <p class="mt-8 max-w-[520px] text-[12px] font-medium leading-[1.55] tracking-[-0.015em] text-white sm:text-[13px] lg:text-[14px]">
+            {{ phase.description }}
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
 </template>
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
@@ -165,15 +267,23 @@ import portfolioImage from "~/assets/images/portfolio/portfolio2.jpg"
 
 const isPortfolioFocusVisible = ref(false)
 const isImageCoverVisible = ref(false)
+const isInvestmentVehicleVisible = ref(false)
+const isPhaseImplementationVisible = ref(false)
 const portfolioFocusRef = ref<HTMLElement | null>(null)
 const imageCoverRef = ref<HTMLElement | null>(null)
+const investmentVehicleRef = ref<HTMLElement | null>(null)
+const phaseImplementationRef = ref<HTMLElement | null>(null)
 let portfolioFocusObserver: IntersectionObserver | null = null
 let imageCoverObserver: IntersectionObserver | null = null
+let investmentVehicleObserver: IntersectionObserver | null = null
+let phaseImplementationObserver: IntersectionObserver | null = null
 
 onMounted(() => {
   if (!('IntersectionObserver' in window)) {
     isPortfolioFocusVisible.value = true
     isImageCoverVisible.value = true
+    isInvestmentVehicleVisible.value = true
+    isPhaseImplementationVisible.value = true
     return
   }
 
@@ -218,11 +328,55 @@ onMounted(() => {
 
     imageCoverObserver.observe(imageCoverRef.value)
   }
+
+  if (!investmentVehicleRef.value) {
+    isInvestmentVehicleVisible.value = true
+  } else {
+    investmentVehicleObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) {
+          return
+        }
+
+        isInvestmentVehicleVisible.value = true
+        investmentVehicleObserver?.disconnect()
+      },
+      {
+        threshold: 0.18,
+        rootMargin: '0px 0px -14% 0px',
+      }
+    )
+
+    investmentVehicleObserver.observe(investmentVehicleRef.value)
+  }
+
+  if (!phaseImplementationRef.value) {
+    isPhaseImplementationVisible.value = true
+  } else {
+    phaseImplementationObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) {
+          return
+        }
+
+        isPhaseImplementationVisible.value = true
+        phaseImplementationObserver?.disconnect()
+      },
+      {
+        threshold: 0.18,
+        rootMargin: '0px 0px -14% 0px',
+      }
+    )
+
+    phaseImplementationObserver.observe(phaseImplementationRef.value)
+  }
 })
 
 onBeforeUnmount(() => {
   portfolioFocusObserver?.disconnect()
   imageCoverObserver?.disconnect()
+  investmentVehicleObserver?.disconnect()
+  phaseImplementationObserver?.disconnect()
 })
 
 useHead({
@@ -263,6 +417,27 @@ const supportItems0: NumberCardItem[] = [
   { number: '07', label: 'Institutional investor relevance.' },
   { number: '08', label: 'Potential for liquidity, listing or structured exit.' },
 ]
+
+const investmentVehicleCopy =
+  'INFRAGORA has launched the INFRAGORA Investment Vehicle 1 ("IIV1" or the "Investment Vehicle") - a US$1-2 billion listed investment holding vehicle. IIV1 would be listed in key African and global markets, with initial listing at London Stock Exchange (LSE) and the Johannesburg Stock Exchange (JSE) and further listings at the Nigeria Stock Exchange (NGX), Nairobi Stock Exchange (NSE), and the US (NYSE or NASDAQ), in a phased timeline.'
+
+const implementationPhases = [
+  {
+    phase: 'Phase I',
+    title: 'Equity funding',
+    metrics: [{ value: '$600M' }, { value: '$1.4b' }],
+    description:
+      'Initial capital raise of US$600 million by no later than end of H2 2026 and an additional US$1.4 billion by no later than end of H1 2027.',
+  },
+  {
+    phase: 'Phase II',
+    title: 'Debt funding',
+    metrics: [{ value: '$3b - $5b' }],
+    description:
+      'Additional US$3-5 billion, through infrastructure backed debt securities, follow-on equity offerings, and infrastructure ETFs.',
+  },
+]
+
 const posts = [
   {
     id: 1,
@@ -449,6 +624,97 @@ const showPreviousNewsPost = () => {
   opacity: 1;
 }
 
+.iiv-profile-heading,
+.iiv-profile-copy,
+.iiv-value-card,
+.phase-heading,
+.phase-card {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+}
+
+.iiv-profile-heading,
+.phase-heading {
+  filter: blur(8px);
+  transform: translate3d(0, 34px, 0);
+  transition:
+    opacity 840ms ease,
+    transform 960ms cubic-bezier(.16, 1, .3, 1),
+    filter 840ms ease;
+  transition-delay: 80ms;
+}
+
+.iiv-profile-copy {
+  filter: blur(8px);
+  transform: translate3d(0, 38px, 0);
+  transition:
+    opacity 820ms ease,
+    transform 960ms cubic-bezier(.16, 1, .3, 1),
+    filter 820ms ease;
+  transition-delay: 210ms;
+}
+
+.iiv-value-card {
+  filter: blur(10px);
+  transform: translate3d(0, 52px, 0) scale(.975);
+  transform-origin: center bottom;
+  transition:
+    opacity 860ms ease,
+    transform 1040ms cubic-bezier(.16, 1, .3, 1),
+    filter 860ms ease,
+    box-shadow 1040ms ease;
+  transition-delay: 280ms;
+  box-shadow: 0 24px 56px rgb(7 58 88 / 0);
+}
+
+.iiv-value-card strong,
+.iiv-value-card p,
+.iiv-value-card > div {
+  transform: translate3d(0, 18px, 0);
+  transition: transform 880ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: 420ms;
+  will-change: transform;
+}
+
+.phase-card {
+  filter: blur(10px);
+  transform: translate3d(0, 54px, 0) scale(.975);
+  transform-origin: center bottom;
+  transition:
+    opacity 860ms ease,
+    transform 1040ms cubic-bezier(.16, 1, .3, 1),
+    filter 860ms ease;
+  transition-delay: var(--phase-delay, 0ms);
+}
+
+.phase-card > * {
+  transform: translate3d(0, 18px, 0);
+  transition: transform 880ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: calc(var(--phase-delay, 0ms) + 130ms);
+  will-change: transform;
+}
+
+.iiv-profile.is-visible .iiv-profile-heading,
+.iiv-profile.is-visible .iiv-profile-copy,
+.iiv-profile.is-visible .iiv-value-card,
+.phase-implementation.is-visible .phase-heading,
+.phase-implementation.is-visible .phase-card {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.iiv-profile.is-visible .iiv-value-card {
+  box-shadow: 0 24px 56px rgb(7 58 88 / 0.14);
+}
+
+.iiv-profile.is-visible .iiv-value-card strong,
+.iiv-profile.is-visible .iiv-value-card p,
+.iiv-profile.is-visible .iiv-value-card > div,
+.phase-implementation.is-visible .phase-card > * {
+  transform: translate3d(0, 0, 0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .portfolio-focus-header,
   .portfolio-focus-controls,
@@ -461,7 +727,16 @@ const showPreviousNewsPost = () => {
   .portfolio-image-cover-panel,
   .portfolio-image-cover-overlay,
   .portfolio-image-cover-title,
-  .portfolio-image-cover-text {
+  .portfolio-image-cover-text,
+  .iiv-profile-heading,
+  .iiv-profile-copy,
+  .iiv-value-card,
+  .iiv-value-card strong,
+  .iiv-value-card p,
+  .iiv-value-card > div,
+  .phase-heading,
+  .phase-card,
+  .phase-card > * {
     opacity: 1;
     filter: none;
     transform: none;

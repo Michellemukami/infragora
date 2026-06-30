@@ -370,94 +370,135 @@ Executed by INFRAGORA Advisory
     </div>
   </section>
 <!-- focus areas -->
-  <section
-    ref="focusAreasSectionRef"
-    class="homepage-focus-areas overflow-hidden bg-[#f7f7f7] py-12 md:py-16 lg:py-20"
-    :class="{ 'is-visible': isFocusAreasSectionVisible }"
-  >
-    <div class="w-full pl-6 md:pl-10 xl:pl-20">
-      <div class="mb-9 flex items-center justify-between pr-6 md:pr-10 xl:pr-20">
-        <h2
-          class="focus-areas-heading text-[28px] font-semibold leading-none tracking-[-0.01em] text-black lg:text-[34px]"
-        >
-          Focus Areas
-        </h2>
+ <section
+  ref="portfolioFocusRef"
+  class="portfolio-focus-section overflow-hidden bg-[#f5f5f5]"
+  :class="{ 'is-visible': isPortfolioFocusVisible }"
+>
+  <div class="mx-auto pl-6 sm:pl-10 lg:pl-20 py-14 sm:py-20 lg:py-20    ">
 
-        <div class="focus-areas-controls flex gap-3">
-          <button
-            aria-label="Previous focus area"
-            type="button"
-            class="flex h-9 w-9 items-center justify-center rounded-full border border-[#9da8aa] text-[20px] leading-none text-[#24454c] transition duration-300 hover:border-[#111111] hover:bg-[#111111] hover:text-white"
-            @click="showPreviousFocusArea"
-          >
-            ‹
-          </button>
-
-          <button
-            aria-label="Next focus area"
-            type="button"
-            class="flex h-9 w-9 items-center justify-center rounded-full border border-[#9da8aa] text-[20px] leading-none text-[#24454c] transition duration-300 hover:border-[#111111] hover:bg-[#111111] hover:text-white"
-            @click="showNextFocusArea"
-          >
-            ›
-          </button>
-        </div>
-      </div>
-
-      <div class="focus-areas-carousel overflow-hidden">
-        <div
-          class="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
-          :style="{ transform: `translateX(calc(-${focusCarouselIndex} * (min(78vw, 354px) + 1.5rem)))` }"
-        >
-          <div
-            v-for="area in focusCarouselAreas"
-            :key="area.carouselId"
-            class="flex h-[285px] w-[min(78vw,354px)] shrink-0 flex-col justify-between p-5 transition duration-500 hover:-translate-y-1 md:h-[330px] lg:h-[360px]"
-            :style="{ background: area.background }"
-          >
-            <h3
-              class="text-[20px] font-semibold leading-[1.08] lg:text-[23px]"
-              :class="[area.titleClass, area.titleMaxWidth]"
-            >
-              {{ area.title }}
-            </h3>
-
-            <p class="text-[12px] leading-[1.4] text-[#001929] lg:text-[13px]">
-              {{ area.text }}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div
-        ref="focusAreasFeatureRef"
-        class="focus-areas-feature relative mr-6 mt-14 min-h-[360px] overflow-hidden bg-[#002d49] bg-cover bg-[64%_center] sm:mt-20 sm:min-h-[340px] sm:bg-[72%_center] md:mr-10 md:mt-24 md:min-h-[390px] lg:min-h-[450px] lg:bg-[88%_47%] xl:mr-20"
-        :class="{ 'is-visible': isFocusAreasFeatureVisible }"
-        :style="{ backgroundImage: `url(${ribbonImage})` }"
+    <!-- Header -->
+    <div class="portfolio-focus-header mb-12 flex items-end justify-between pr-6 sm:pr-10 lg:pr-20">
+      <h2
+        class="text-[34px] leading-[0.95] font-medium tracking-[-0.04em] lg:text-[42px]"
       >
-        <div
-          class="absolute inset-0 bg-[linear-gradient(180deg,#002d49_0%,rgba(0,45,73,.92)_45%,rgba(0,45,73,.72)_100%)] sm:bg-[linear-gradient(90deg,#002d49_0%,#002d49_50%,rgba(0,45,73,.72)_72%,rgba(0,45,73,.1)_100%)] md:bg-[linear-gradient(90deg,#002d49_0%,#002d49_43%,rgba(0,45,73,.78)_57%,rgba(0,45,73,.08)_100%)]"
-        />
+        
+        Focus Areas
+      </h2>
 
-        <div class="relative flex min-h-[360px] items-center px-5 py-10 sm:min-h-[340px] sm:px-8 sm:py-12 md:min-h-[390px] md:px-14 lg:min-h-[450px] lg:px-16">
-          <div class="max-w-[440px]">
-            <h3 class="mb-6 text-[24px] font-semibold leading-none text-white sm:mb-8 sm:text-[28px] lg:mb-9 lg:text-[34px]">
-              Why INFRAGORA
-            </h3>
+      <div class="portfolio-focus-controls flex gap-3">
+        <button
+          type="button"
+          class="flex h-9 w-9 items-center justify-center rounded-full border border-[#9da8aa] text-[20px] leading-none text-[#24454c] transition duration-300 hover:border-[#111111] hover:bg-[#111111] hover:text-white"
+          aria-label="Previous news item"
+          @click="showPreviousNewsPost"
+        >
+          &lsaquo;
+        </button>
 
-            <p class="max-w-[36rem] text-[12px] leading-[1.6] text-white sm:text-[13px] lg:text-[14px]">
-              Africa's infrastructure market faces limited exit pathways,
-              insufficient equity capital, valuation uncertainty, weak price
-              discovery, limited secondary market infrastructure and a narrow
-              investor base. INFRAGORA addresses these challenges through a
-              platform designed to combine deep African market access,
-              investment discipline, global partnerships and structured
-              financial solutions.
-            </p>
+        <button
+          type="button"
+          class="flex h-9 w-9 items-center justify-center rounded-full border border-[#9da8aa] text-[20px] leading-none text-[#24454c] transition duration-300 hover:border-[#111111] hover:bg-[#111111] hover:text-white"
+          aria-label="Next news item"
+          @click="showNextNewsPost"
+        >
+          &rsaquo;
+        </button>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="portfolio-focus-viewport overflow-hidden pb-4">
+      <div
+        class="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
+        :style="{ transform: `translateX(calc(-${newsCarouselIndex} * (min(82vw, 380px) + 1.5rem)))` }"
+      >
+        <!-- Card -->
+        <article
+          v-for="(post, postIndex) in newsCarouselPosts"
+          :key="post.carouselId"
+          class="portfolio-focus-card group w-[min(82vw,380px)] flex-shrink-0"
+          :style="{ '--portfolio-focus-delay': `${140 + (postIndex % posts.length) * 90}ms` }"
+        >
+          <div class="relative overflow-hidden bg-white">
+
+            <!-- Image -->
+            <div class="overflow-hidden">
+              <img
+                :src="post.image"
+                :alt="post.title"
+                class="h-[420px] w-full object-cover transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105 sm:h-[460px]"
+              />
+            </div>
+
+            <!-- Bottom Fade -->
+            <div
+              class="absolute inset-x-0 bottom-0 h-[190px] bg-gradient-to-t from-white via-white/85 to-transparent"
+            />
+
+            <!-- Content -->
+            <div class="absolute bottom-0 left-0 right-0 p-5">
+              <h3 class="max-w-[260px] text-[20px] font-medium leading-[1.05]">
+                {{ post.title }}
+              </h3>
+
+              <div class="mt-5 flex items-center gap-4">
+                <span class="text-[12px] tracking-wide">
+                  Read More
+                </span>
+
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  class="transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                >
+                  <path
+                    d="M7 17L17 7M17 7H8M17 7V16"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                </svg>
+              </div>
+            </div>
+
           </div>
+        </article>
+      </div>
+    </div>
+
+    <div
+      ref="focusAreasFeatureRef"
+      class="portfolio-image-cover-section relative mr-6 mt-14 min-h-[360px] overflow-hidden bg-[#002d49] bg-[length:136%_auto] bg-[124%_center] bg-no-repeat sm:mt-20 sm:min-h-[340px] sm:bg-[length:108%_auto] sm:bg-[124%_center] md:mr-10 md:mt-24 md:min-h-[390px] md:bg-[length:96%_auto] lg:min-h-[450px] lg:bg-[length:88%_auto] xl:mr-20"
+      :class="{ 'is-visible': isFocusAreasFeatureVisible }"
+      :style="{ backgroundImage: `url(${ribbonImage})` }"
+    >
+      <div
+        class="absolute inset-0 bg-[linear-gradient(180deg,#002d49_0%,rgba(0,45,73,.94)_40%,rgba(0,45,73,.72)_72%,rgba(0,45,73,.18)_100%)] sm:bg-[linear-gradient(90deg,#002d49_0%,#002d49_34%,rgba(0,45,73,.96)_45%,rgba(0,45,73,.68)_62%,rgba(0,45,73,.2)_82%,rgba(0,45,73,0)_100%)] md:bg-[linear-gradient(90deg,#002d49_0%,#002d49_32%,rgba(0,45,73,.94)_43%,rgba(0,45,73,.62)_60%,rgba(0,45,73,.18)_80%,rgba(0,45,73,0)_100%)]"
+      />
+
+      <div class="relative flex min-h-[360px] items-center px-5 py-10 sm:min-h-[340px] sm:px-8 sm:py-12 md:min-h-[390px] md:px-14 lg:min-h-[450px] lg:px-16">
+        <div class="portfolio-image-cover-content max-w-[440px]">
+          <h3 class="mb-6 text-[24px] font-semibold leading-none text-white sm:mb-8 sm:text-[28px] lg:mb-9 lg:text-[34px]">
+            Why INFRAGORA
+          </h3>
+
+          <p class="max-w-[36rem] text-[12px] leading-[1.6] text-white sm:text-[13px] lg:text-[14px]">
+            Africa's infrastructure market faces limited exit pathways,
+            insufficient equity capital, valuation uncertainty, weak price
+            discovery, limited secondary market infrastructure and a narrow
+            investor base. INFRAGORA addresses these challenges through a
+            platform designed to combine deep African market access,
+            investment discipline, global partnerships and structured
+            financial solutions.
+          </p>
         </div>
       </div>
     </div>
-  </section>
+
+  </div>
+</section>
   <!-- News -->
 <section
   ref="newsSectionRef"
@@ -480,7 +521,7 @@ Executed by INFRAGORA Advisory
           type="button"
           class="flex h-9 w-9 items-center justify-center rounded-full border border-[#9da8aa] text-[20px] leading-none text-[#24454c] transition duration-300 hover:border-[#111111] hover:bg-[#111111] hover:text-white"
           aria-label="Previous news item"
-          @click="showPreviousNewsPost"
+          @click="showPreviousNewsPost2"
         >
           &lsaquo;
         </button>
@@ -489,7 +530,7 @@ Executed by INFRAGORA Advisory
           type="button"
           class="flex h-9 w-9 items-center justify-center rounded-full border border-[#9da8aa] text-[20px] leading-none text-[#24454c] transition duration-300 hover:border-[#111111] hover:bg-[#111111] hover:text-white"
           aria-label="Next news item"
-          @click="showNextNewsPost"
+          @click="showNextNewsPost2"
         >
           &rsaquo;
         </button>
@@ -504,7 +545,7 @@ Executed by INFRAGORA Advisory
       >
         <!-- Card -->
         <article
-          v-for="(post, postIndex) in newsCarouselPosts"
+          v-for="(post, postIndex) in newsCarouselPosts2"
           :key="post.carouselId"
           class="news-card group w-[min(82vw,380px)] flex-shrink-0"
           :style="{ '--news-card-delay': `${160 + (postIndex % posts.length) * 85}ms` }"
@@ -557,6 +598,31 @@ Executed by INFRAGORA Advisory
       </div>
     </div>
 
+  </div>
+</section>
+<section
+  ref="partnersSectionRef"
+  class="homepage-partners bg-[#f5f5f5] px-6 py-16 sm:px-10 sm:py-20 lg:px-20 lg:py-24"
+  :class="{ 'is-visible': isPartnersSectionVisible }"
+>
+  <div class="mx-auto max-w-[1440px]">
+    <h2 class="partners-heading mb-12 text-center text-[28px] font-semibold leading-none tracking-[-0.01em] text-black sm:text-[34px] lg:mb-16 lg:text-[42px]">
+      Partners & Allies
+    </h2>
+
+    <div class="grid grid-cols-2 items-center gap-x-10 gap-y-10 sm:grid-cols-3 sm:gap-x-12 sm:gap-y-12 md:grid-cols-4 lg:grid-cols-6 lg:gap-x-14 lg:gap-y-14">
+      <div
+        v-for="partner in partnerLogos"
+        :key="partner.name"
+        class="partner-logo flex h-16 items-center justify-center sm:h-20 lg:h-24"
+      >
+        <img
+          :src="partner.logo"
+          :alt="partner.name"
+          class="max-h-9 max-w-[120px] object-contain sm:max-h-10 sm:max-w-[140px] lg:max-h-12 lg:max-w-[160px]"
+        />
+      </div>
+    </div>
   </div>
 </section>
 <KnowledgeHub />
@@ -708,7 +774,25 @@ import southAfricaFlag from '~/assets/images/flags/african/south-africa.png'
 import kenyaFlag from '~/assets/images/flags/african/ke.png'
 import nigeriaFlag from '~/assets/images/flags/african/nigeria.png'
 import coteDivoireFlag from '~/assets/images/flags/african/cotr dlvoire.png'
-
+import green from "~/assets/images/portfolio/green.jpg"
+import ict from "~/assets/images/portfolio/ict.jpg"
+import train from "~/assets/images/portfolio/train.jpg"
+import water from "~/assets/images/portfolio/water.jpg"
+import tunnel from "~/assets/images/portfolio/tunnel.png"
+import actisLogo from "~/assets/images/home/partners/Actis.png"
+import afrexiLogo from "~/assets/images/home/partners/afrexi.jpg"
+import aiimLogo from "~/assets/images/home/partners/aiim.jpg"
+import edfLogo from "~/assets/images/home/partners/EDF.png"
+import frontierLogo from "~/assets/images/home/partners/Frontier.png"
+import ifcLogo from "~/assets/images/home/partners/International_Finance_Corporation.png"
+import jpMorganLogo from "~/assets/images/home/partners/J_P_Morgan.png"
+import afrikLogo from "~/assets/images/home/partners/Logo_Afrikanische.png"
+import moodysLogo from "~/assets/images/home/partners/moody.png"
+import pathLogo from "~/assets/images/home/partners/path3213.png"
+import riscuraLogo from "~/assets/images/home/partners/Riscura.png"
+import serengetiLogo from "~/assets/images/home/partners/serengeti.png"
+const portfolioFocusRef = ref(null)
+const isPortfolioFocusVisible = ref(false)
 useHead({
   title: 'INFRAGORA Global Capital | Africa Infrastructure Secondary Market Platform',
   meta: [
@@ -761,6 +845,21 @@ const heroCarouselCards = [
     image: heroCardFive,
     to: '/fund-management',
   },
+]
+
+const partnerLogos = [
+  { name: 'EDF', logo: edfLogo },
+  { name: 'Frontier', logo: frontierLogo },
+  { name: 'International Finance Corporation', logo: ifcLogo },
+  { name: 'PATH', logo: pathLogo },
+  { name: "Moody's", logo: moodysLogo },
+  { name: 'Afrikanische', logo: afrikLogo },
+  { name: 'J.P. Morgan', logo: jpMorganLogo },
+  { name: 'Afreximbank', logo: afrexiLogo },
+  { name: 'Serengeti', logo: serengetiLogo },
+  { name: 'AIIM', logo: aiimLogo },
+  { name: 'Actis', logo: actisLogo },
+  { name: 'Riscura', logo: riscuraLogo },
 ]
 
 const openReachRegion = ref('Africa')
@@ -884,7 +983,28 @@ const showPreviousFocusArea = () => {
       ? focusAreas.length - 1
       : focusCarouselIndex.value - 1
 }
-
+const posts2 = [
+  {
+    id: 1,
+    title: "Green and Renewable Energy",
+    image: green
+  },
+  {
+    id: 2,
+    title: "ICT and Digital Infrastructure",
+    image: ict
+  },
+  {
+    id: 3,
+    title: "Sustainable Transport",
+    image: train
+  },
+  {
+    id: 4,
+    title: "Water and Sanitation",
+    image: water    
+  }
+]
 const posts = [
   {
     id: 1,
@@ -924,6 +1044,8 @@ const isFocusAreasFeatureVisible = ref(false)
 const focusAreasFeatureRef = ref(null)
 const isNewsSectionVisible = ref(false)
 const newsSectionRef = ref(null)
+const isPartnersSectionVisible = ref(false)
+const partnersSectionRef = ref(null)
 const isAccordionSectionVisible = ref(false)
 const accordionSectionRef = ref(null)
 const isLastSectionVisible = ref(false)
@@ -932,9 +1054,11 @@ const lastSectionRef = ref(null)
 let secondSectionObserver = null
 let benefitsSectionObserver = null
 let whatWeDoSectionObserver = null
+let portfolioFocusObserver = null
 let focusAreasSectionObserver = null
 let focusAreasFeatureObserver = null
 let newsSectionObserver = null
+let partnersSectionObserver = null
 let accordionSectionObserver = null
 let lastSectionObserver = null
 let homeIntroAnimationFrame = 0
@@ -966,9 +1090,11 @@ onMounted(() => {
     isSecondSectionVisible.value = true
     isBenefitsSectionVisible.value = true
     isWhatWeDoSectionVisible.value = true
+    isPortfolioFocusVisible.value = true
     isFocusAreasSectionVisible.value = true
     isFocusAreasFeatureVisible.value = true
     isNewsSectionVisible.value = true
+    isPartnersSectionVisible.value = true
     isAccordionSectionVisible.value = true
     isLastSectionVisible.value = true
     return
@@ -1037,6 +1163,27 @@ onMounted(() => {
     whatWeDoSectionObserver.observe(whatWeDoSectionRef.value)
   }
 
+  if (!portfolioFocusRef.value) {
+    isPortfolioFocusVisible.value = true
+  } else {
+    portfolioFocusObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) {
+          return
+        }
+
+        isPortfolioFocusVisible.value = true
+        portfolioFocusObserver?.disconnect()
+      },
+      {
+        threshold: 0.16,
+        rootMargin: '0px 0px -14% 0px',
+      }
+    )
+
+    portfolioFocusObserver.observe(portfolioFocusRef.value)
+  }
+
   if (!focusAreasSectionRef.value) {
     isFocusAreasSectionVisible.value = true
   } else {
@@ -1100,6 +1247,27 @@ onMounted(() => {
     newsSectionObserver.observe(newsSectionRef.value)
   }
 
+  if (!partnersSectionRef.value) {
+    isPartnersSectionVisible.value = true
+  } else {
+    partnersSectionObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting) {
+          return
+        }
+
+        isPartnersSectionVisible.value = true
+        partnersSectionObserver?.disconnect()
+      },
+      {
+        threshold: 0.18,
+        rootMargin: '0px 0px -14% 0px',
+      }
+    )
+
+    partnersSectionObserver.observe(partnersSectionRef.value)
+  }
+
   if (!accordionSectionRef.value) {
     isAccordionSectionVisible.value = true
   } else {
@@ -1151,9 +1319,11 @@ onUnmounted(() => {
   secondSectionObserver?.disconnect()
   benefitsSectionObserver?.disconnect()
   whatWeDoSectionObserver?.disconnect()
+  portfolioFocusObserver?.disconnect()
   focusAreasSectionObserver?.disconnect()
   focusAreasFeatureObserver?.disconnect()
   newsSectionObserver?.disconnect()
+  partnersSectionObserver?.disconnect()
   accordionSectionObserver?.disconnect()
   lastSectionObserver?.disconnect()
 })
@@ -1169,6 +1339,12 @@ watch(
 )
 
 const newsCarouselPosts = computed(() =>
+  [...posts2, ...posts2].map((post, index) => ({
+    ...post,
+    carouselId: `${post.id}-${index}`,
+  }))
+)
+const newsCarouselPosts2 = computed(() =>
   [...posts, ...posts].map((post, index) => ({
     ...post,
     carouselId: `${post.id}-${index}`,
@@ -1176,6 +1352,19 @@ const newsCarouselPosts = computed(() =>
 )
 
 const showNextNewsPost = () => {
+  newsCarouselIndex.value =
+    newsCarouselIndex.value >= posts2.length - 1
+      ? 0
+      : newsCarouselIndex.value + 1
+}
+
+const showPreviousNewsPost2 = () => {
+  newsCarouselIndex.value =
+    newsCarouselIndex.value <= 0
+      ? posts.length - 1
+      : newsCarouselIndex.value - 1
+}
+const showNextNewsPost2 = () => {
   newsCarouselIndex.value =
     newsCarouselIndex.value >= posts.length - 1
       ? 0
@@ -1185,12 +1374,178 @@ const showNextNewsPost = () => {
 const showPreviousNewsPost = () => {
   newsCarouselIndex.value =
     newsCarouselIndex.value <= 0
-      ? posts.length - 1
+      ? posts2.length - 1
       : newsCarouselIndex.value - 1
 }
 </script>
 
 <style scoped>
+.portfolio-focus-header,
+.portfolio-focus-controls,
+.portfolio-focus-viewport,
+.portfolio-focus-card {
+  opacity: 0;
+  will-change: opacity, transform, filter;
+}
+
+.portfolio-focus-header {
+  filter: blur(8px);
+  transform: translate3d(0, 36px, 0);
+  transition:
+    opacity 860ms ease,
+    transform 980ms cubic-bezier(.16, 1, .3, 1),
+    filter 860ms ease;
+  transition-delay: 70ms;
+}
+
+.portfolio-focus-controls {
+  transform: translate3d(0, 24px, 0);
+  transition:
+    opacity 760ms ease,
+    transform 860ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: 170ms;
+}
+
+.portfolio-focus-viewport {
+  transform: translate3d(0, 34px, 0);
+  transition:
+    opacity 760ms ease,
+    transform 900ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: 200ms;
+}
+
+.portfolio-focus-card {
+  filter: blur(10px);
+  transform: translate3d(0, 54px, 0) scale(.975);
+  transform-origin: center bottom;
+  transition:
+    opacity 860ms ease,
+    transform 1040ms cubic-bezier(.16, 1, .3, 1),
+    filter 860ms ease;
+  transition-delay: var(--portfolio-focus-delay, 0ms);
+}
+
+.portfolio-focus-card img {
+  filter: saturate(.92) contrast(.98);
+  transform: scale(1.045);
+  transition:
+    filter 1000ms ease,
+    transform 1400ms cubic-bezier(.16, 1, .3, 1);
+  will-change: filter, transform;
+}
+
+.portfolio-focus-card h3,
+.portfolio-focus-card span,
+.portfolio-focus-card svg {
+  transform: translate3d(0, 16px, 0);
+  transition: transform 860ms cubic-bezier(.16, 1, .3, 1);
+  transition-delay: calc(var(--portfolio-focus-delay, 0ms) + 130ms);
+}
+
+.portfolio-focus-section.is-visible .portfolio-focus-header,
+.portfolio-focus-section.is-visible .portfolio-focus-controls,
+.portfolio-focus-section.is-visible .portfolio-focus-viewport,
+.portfolio-focus-section.is-visible .portfolio-focus-card {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.portfolio-focus-section.is-visible .portfolio-focus-card img {
+  filter: saturate(1) contrast(1);
+  transform: scale(1);
+}
+
+.portfolio-focus-section.is-visible .portfolio-focus-card h3,
+.portfolio-focus-section.is-visible .portfolio-focus-card span,
+.portfolio-focus-section.is-visible .portfolio-focus-card svg {
+  transform: translate3d(0, 0, 0);
+}
+
+.portfolio-image-cover-content {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translate3d(0, 34px, 0);
+  transition:
+    opacity 820ms ease,
+    transform 940ms cubic-bezier(.16, 1, .3, 1),
+    filter 820ms ease;
+  transition-delay: 180ms;
+  will-change: opacity, transform, filter;
+}
+
+.portfolio-image-cover-section.is-visible .portfolio-image-cover-content {
+  opacity: 1;
+  filter: blur(0);
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.partners-heading,
+.partner-logo {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 760ms ease,
+    transform 860ms cubic-bezier(.16, 1, .3, 1);
+  will-change: opacity, transform;
+}
+
+.partner-logo {
+  transform: translate3d(0, 34px, 0) scale(.96);
+}
+
+.homepage-partners.is-visible .partners-heading,
+.homepage-partners.is-visible .partner-logo {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+.homepage-partners.is-visible .partner-logo:nth-child(1) {
+  transition-delay: 80ms;
+}
+
+.homepage-partners.is-visible .partner-logo:nth-child(2) {
+  transition-delay: 130ms;
+}
+
+.homepage-partners.is-visible .partner-logo:nth-child(3) {
+  transition-delay: 180ms;
+}
+
+.homepage-partners.is-visible .partner-logo:nth-child(4) {
+  transition-delay: 230ms;
+}
+
+.homepage-partners.is-visible .partner-logo:nth-child(5) {
+  transition-delay: 280ms;
+}
+
+.homepage-partners.is-visible .partner-logo:nth-child(6) {
+  transition-delay: 330ms;
+}
+
+.homepage-partners.is-visible .partner-logo:nth-child(n + 7) {
+  transition-delay: 380ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-focus-header,
+  .portfolio-focus-controls,
+  .portfolio-focus-viewport,
+  .portfolio-focus-card,
+  .portfolio-focus-card img,
+  .portfolio-focus-card h3,
+  .portfolio-focus-card span,
+  .portfolio-focus-card svg,
+  .portfolio-image-cover-content,
+  .partners-heading,
+  .partner-logo {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    transition: none;
+  }
+}
 .hero-intro-title,
 .hero-intro-strip {
   opacity: 0;

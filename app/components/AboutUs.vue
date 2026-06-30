@@ -237,7 +237,7 @@
 
       <!-- Team grid -->
       <div
-        class="mt-14 grid grid-cols-1 gap-x-5 gap-y-9 sm:grid-cols-2 md:mt-16 lg:grid-cols-4 lg:gap-x-7 lg:gap-y-10 xl:mt-20"
+        class="mt-14 grid grid-cols-1 gap-x-10 gap-y-14 md:mt-16 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-16 xl:mt-20"
       >
         <article
           v-for="(member, memberIndex) in teamMembers"
@@ -247,7 +247,7 @@
         >
           <!-- Portrait -->
           <div
-            class="governance-team-portrait relative aspect-square w-full overflow-hidden bg-[#dcebea]"
+            class="governance-team-portrait relative h-[250px] w-full overflow-hidden bg-[#dcebea] sm:h-[320px] lg:h-[360px] xl:h-[410px]"
           >
             <img
               v-if="member.image"
@@ -263,17 +263,23 @@
           </div>
 
           <!-- Member details -->
-          <div class="governance-team-details pt-4">
+          <div class="governance-team-details pt-5 sm:pt-6">
             <h3
-              class="text-[18px] font-medium leading-none tracking-[-0.03em] sm:text-[19px] lg:text-[20px]"
+              class="text-[20px] font-medium leading-none tracking-[-0.03em] sm:text-[22px] lg:text-[24px]"
             >
               {{ member.name }}
             </h3>
 
             <p
-              class="mt-3 text-[11px] leading-none text-[#003f50] sm:text-[12px]"
+              class="mt-3 text-[12px] font-medium leading-[1.35] text-[#003f50] sm:text-[13px] lg:text-[14px]"
             >
               {{ member.role }}
+            </p>
+
+            <p
+              class="mt-8 max-w-[620px] text-[12px] leading-[1.6] text-[#003f50] sm:text-[13px] lg:mt-9 lg:text-[14px] xl:text-[15px]"
+            >
+              {{ member.bio }}
             </p>
           </div>
         </article>
@@ -290,6 +296,7 @@ import bridgeImage from '~/assets/images/about-us/aboutside.jpg'
 type TeamMember = {
   name: string
   role: string
+  bio: string
   image?: string
 }
 
@@ -306,44 +313,14 @@ const aboutIntroParagraphs = [
 
 const teamMembers: TeamMember[] = [
   {
-    name: 'Ezekiel',
-    role: 'Founder & CEO',
-    image: '/images/team/ezekiel-1.jpg',
+    name: 'Ezekiel Odiogo',
+    role: 'BEng, MSc LSE, Sloan Fellow, MBA MIT',
+    bio: 'Ezekiel Odiogo has about 24 years of global investment banking and industry experience. He has held several leadership positions at the African Development Bank including as Head Private Sector Investment Operations, managing US$150 billion+ portfolios across various industries and infrastructure asset class, with hands on transaction advisory and execution experience, and in the setup and management of several investment funds. He spearheaded from concept and led the establishment of the Africa Investment Forum - Africa\'s premier multi-billion and fully transactional marketplace with back-to-back successes and record levels in mobilizing multi-billion dollars private capital and closing deals. Ezekiel spent over half a decade at the Islamic Development Bank, where he led several fund investments and was part of the pioneering team that setup the Bank\'s structured finance and public private partnership operations.',
   },
   {
-    name: 'Name',
-    role: 'Role',
-    image: '/images/team/member-2.jpg',
-  },
-  {
-    name: 'Name',
-    role: 'Role',
-    image: '/images/team/member-3.jpg',
-  },
-  {
-    name: 'Name',
-    role: 'Role',
-    image: '/images/team/member-4.jpg',
-  },
-  {
-    name: 'Ezekiel',
-    role: 'Founder & CEO',
-    image: '/images/team/ezekiel-2.jpg',
-  },
-  {
-    name: 'Name',
-    role: 'Role',
-    image: '/images/team/member-6.jpg',
-  },
-  {
-    name: 'Name',
-    role: 'Role',
-    image: '/images/team/member-7.jpg',
-  },
-  {
-    name: 'Name',
-    role: 'Role',
-    image: '/images/team/member-8.jpg',
+    name: 'Andrew Alli',
+    role: 'CA, BEng Kings College, MBA, INSEAD',
+    bio: 'Andrew Alli was, most recently, the President and CEO of the Africa Finance Corporation, a multilateral financial institution focused on improving Africa\'s critical infrastructure. A financial professional with over 30 years\' experience in both developed and developing countries, he is currently a Non-Executive Director for the Development Bank of Nigeria, where he chairs the Audit Committee. Andrew is also currently a Non-Executive Director for MTN Nigeria and the British International Investment (BII). Andrew was also a Partner at Travant Capital Partners, a West-Africa focused private equity fund. He spent over a decade with the International Finance Corporation (IFC), where he held senior positions including as Country Manager for Nigeria and South Africa.',
   },
 ]
 const coverageText = [
