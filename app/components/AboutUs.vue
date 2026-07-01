@@ -237,51 +237,86 @@
 
       <!-- Team grid -->
       <div
-        class="mt-14 grid grid-cols-1 gap-x-10 gap-y-14 md:mt-16 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-16 xl:mt-20"
+        class="mt-14 grid grid-cols-1 gap-x-10 gap-y-8 md:mt-16 lg:grid-cols-2 lg:gap-x-16 lg:gap-y-10 xl:mt-20"
       >
         <article
           v-for="(member, memberIndex) in teamMembers"
           :key="`${member.name}-${member.image}`"
           class="governance-team-card group"
+          :class="{ 'is-open': isTeamMemberOpen(memberIndex) }"
           :style="{ '--team-delay': `${160 + memberIndex * 70}ms` }"
         >
-          <!-- Portrait -->
-          <div
-            class="governance-team-portrait relative h-[250px] w-full overflow-hidden bg-[#dcebea] sm:h-[320px] lg:h-[360px] xl:h-[410px]"
+          <button
+            type="button"
+            class="governance-team-trigger block w-full text-left"
+            :aria-expanded="isTeamMemberOpen(memberIndex)"
+            @click="toggleTeamMember(memberIndex)"
           >
-            <img
-              v-if="member.image"
-              :src="member.image"
-              :alt="member.name"
-              class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]"
-              @error="($event.currentTarget as HTMLImageElement).style.display = 'none'"
-            />
-
+            <!-- Portrait -->
             <div
-              class="pointer-events-none absolute inset-0 bg-[#00495a]/0 transition duration-300 group-hover:bg-[#00495a]/5"
-            />
-          </div>
-
-          <!-- Member details -->
-          <div class="governance-team-details pt-5 sm:pt-6">
-            <h3
-              class="text-[20px] font-medium leading-none tracking-[-0.03em] sm:text-[22px] lg:text-[24px]"
+              class="governance-team-portrait relative h-[250px] w-full overflow-hidden bg-[#dcebea] sm:h-[320px] lg:h-[360px] xl:h-[410px]"
             >
-              {{ member.name }}
-            </h3>
+              <img
+                v-if="member.image"
+                :src="member.image"
+                :alt="member.name"
+                class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.025]"
+                @error="($event.currentTarget as HTMLImageElement).style.display = 'none'"
+              />
 
-            <p
-              class="mt-3 text-[12px] font-medium leading-[1.35] text-[#003f50] sm:text-[13px] lg:text-[14px]"
-            >
-              {{ member.role }}
-            </p>
+              <div
+                v-else
+                class="flex h-full w-full items-center justify-center bg-[#dcebea] text-[46px] font-medium tracking-[-0.06em] text-[#003f50]/35 sm:text-[64px]"
+              >
+                {{ getTeamMemberInitials(member.name) }}
+              </div>
 
-            <p
-              class="mt-8 max-w-[620px] text-[12px] leading-[1.6] text-[#003f50] sm:text-[13px] lg:mt-9 lg:text-[14px] xl:text-[15px]"
-            >
-              {{ member.bio }}
-            </p>
-          </div>
+              <div
+                class="governance-team-portrait-shade pointer-events-none absolute inset-0"
+              />
+
+              <div class="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-5 p-5 text-white sm:p-6">
+                <div>
+                  <p class="text-[11px] font-medium uppercase tracking-[0.18em] text-white/65">
+                    Leadership
+                  </p>
+                  <h3
+                    class="mt-2 text-[22px] font-medium leading-none tracking-[-0.035em] sm:text-[26px] lg:text-[30px]"
+                  >
+                    {{ member.name }}
+                  </h3>
+                </div>
+
+                <span class="governance-team-toggle" aria-hidden="true">
+                  <span />
+                  <span />
+                </span>
+              </div>
+            </div>
+
+            <!-- Member details -->
+            <div class="governance-team-details">
+              <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <p
+                  class="max-w-[520px] text-[12px] font-medium leading-[1.45] text-[#003f50] sm:text-[13px] lg:text-[14px]"
+                >
+                  {{ member.role }}
+                </p>
+
+                <span class="governance-team-cta">
+                  {{ isTeamMemberOpen(memberIndex) ? 'Hide profile' : 'View profile' }}
+                </span>
+              </div>
+
+              <div class="governance-team-bio" :aria-hidden="!isTeamMemberOpen(memberIndex)">
+                <p
+                  class="max-w-[680px] text-[12px] leading-[1.7] text-[#003f50] sm:text-[13px] lg:text-[14px] xl:text-[15px]"
+                >
+                  {{ member.bio }}
+                </p>
+              </div>
+            </div>
+          </button>
         </article>
       </div>
     </div>
@@ -372,6 +407,7 @@ const isMissionVisionVisible = ref(false)
 const isStrategicObjectivesVisible = ref(false)
 const isValuesSectionVisible = ref(false)
 const isGovernanceTeamVisible = ref(false)
+const activeTeamMemberIndex = ref<number | null>(null)
 const purposeSectionRef = ref<HTMLElement | null>(null)
 const missionVisionRef = ref<HTMLElement | null>(null)
 const strategicObjectivesRef = ref<HTMLElement | null>(null)
@@ -382,6 +418,23 @@ let missionVisionObserver: IntersectionObserver | null = null
 let strategicObjectivesObserver: IntersectionObserver | null = null
 let valuesSectionObserver: IntersectionObserver | null = null
 let governanceTeamObserver: IntersectionObserver | null = null
+
+const toggleTeamMember = (memberIndex: number) => {
+  activeTeamMemberIndex.value =
+    activeTeamMemberIndex.value === memberIndex ? null : memberIndex
+}
+
+const isTeamMemberOpen = (memberIndex: number) =>
+  activeTeamMemberIndex.value === memberIndex
+
+const getTeamMemberInitials = (name: string) =>
+  name
+    .split(' ')
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase()
 
 onMounted(() => {
   if (!('IntersectionObserver' in window)) {
@@ -621,6 +674,31 @@ onBeforeUnmount(() => {
   transition-delay: var(--team-delay, 0ms);
 }
 
+.governance-team-trigger {
+  border: 1px solid rgb(0 63 80 / 0.1);
+  background: rgb(255 255 255 / 0.72);
+  box-shadow: 0 28px 70px rgb(0 63 80 / 0.06);
+  transition:
+    border-color 260ms ease,
+    background-color 260ms ease,
+    box-shadow 360ms ease,
+    transform 360ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.governance-team-trigger:hover,
+.governance-team-trigger:focus-visible,
+.governance-team-card.is-open .governance-team-trigger {
+  border-color: rgb(0 63 80 / 0.18);
+  background: #fff;
+  box-shadow: 0 34px 88px rgb(0 63 80 / 0.12);
+  transform: translate3d(0, -4px, 0);
+}
+
+.governance-team-trigger:focus-visible {
+  outline: 2px solid rgb(0 63 80 / 0.35);
+  outline-offset: 4px;
+}
+
 .governance-team-portrait {
   box-shadow: 0 22px 50px rgb(0 63 80 / 0);
   transition:
@@ -637,7 +715,52 @@ onBeforeUnmount(() => {
   will-change: filter, transform;
 }
 
+.governance-team-portrait-shade {
+  background:
+    linear-gradient(180deg, rgb(0 63 80 / 0) 20%, rgb(0 45 60 / 0.78) 100%),
+    linear-gradient(135deg, rgb(0 63 80 / 0.18), rgb(0 63 80 / 0));
+  opacity: .92;
+  transition: opacity 360ms ease;
+}
+
+.governance-team-toggle {
+  position: relative;
+  display: grid;
+  height: 42px;
+  width: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgb(255 255 255 / 0.36);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.12);
+  backdrop-filter: blur(14px);
+  transition:
+    border-color 260ms ease,
+    background-color 260ms ease,
+    transform 360ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.governance-team-toggle span {
+  position: absolute;
+  height: 1px;
+  width: 14px;
+  background: currentColor;
+  color: white;
+  transition: transform 320ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.governance-team-toggle span:last-child {
+  transform: rotate(90deg);
+}
+
+.governance-team-card.is-open .governance-team-toggle {
+  border-color: rgb(255 255 255 / 0.7);
+  background: rgb(255 255 255 / 0.2);
+  transform: rotate(45deg);
+}
+
 .governance-team-details {
+  padding: 1.25rem;
   opacity: 0;
   transform: translate3d(0, 18px, 0);
   transition:
@@ -645,6 +768,40 @@ onBeforeUnmount(() => {
     transform 820ms cubic-bezier(.16, 1, .3, 1);
   transition-delay: calc(var(--team-delay, 0ms) + 120ms);
   will-change: opacity, transform;
+}
+
+.governance-team-cta {
+  display: inline-flex;
+  width: fit-content;
+  flex: 0 0 auto;
+  align-items: center;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: .2rem;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #0f5967;
+}
+
+.governance-team-bio {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translate3d(0, -8px, 0);
+  transition:
+    max-height 620ms cubic-bezier(.16, 1, .3, 1),
+    opacity 360ms ease,
+    transform 460ms cubic-bezier(.16, 1, .3, 1),
+    padding-top 460ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.governance-team-card.is-open .governance-team-bio {
+  max-height: 560px;
+  opacity: 1;
+  padding-top: 1.5rem;
+  transform: translate3d(0, 0, 0);
 }
 
 .purpose-mission-vision.is-visible .purpose-copy,
@@ -672,6 +829,10 @@ onBeforeUnmount(() => {
   transform: scale(1);
 }
 
+.governance-team-card.is-open .governance-team-portrait img {
+  transform: scale(1.025);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .purpose-copy,
   .mission-vision-copy,
@@ -686,12 +847,21 @@ onBeforeUnmount(() => {
   .governance-team-card,
   .governance-team-details,
   .governance-team-portrait,
-  .governance-team-portrait img {
+  .governance-team-portrait img,
+  .governance-team-trigger,
+  .governance-team-portrait-shade,
+  .governance-team-toggle,
+  .governance-team-toggle span,
+  .governance-team-bio {
     opacity: 1;
     filter: none;
     transform: none;
     transition: none;
     box-shadow: none;
+  }
+
+  .governance-team-card.is-open .governance-team-bio {
+    max-height: none;
   }
 }
 </style>
