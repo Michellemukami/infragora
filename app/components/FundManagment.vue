@@ -441,7 +441,7 @@ Capabilities
       <div class="grid md:grid-cols-2">
         <!-- Card -->
         <div
-          class="bridge-one-card group bg-[#0f5967] p-10 transition hover:bg-[#126575]"
+          class="bridge-one-card group bg-[#0f5967] p-10 transition"
           style="--bridge-card-delay: 180ms"
         >
           <h3 class="mb-14 text-[32px] font-light text-white">
@@ -475,7 +475,7 @@ Capabilities
 
         <!-- Card -->
         <div
-          class="bridge-one-card group bg-[#0c3955] p-10 transition hover:bg-[#15486a]"
+          class="bridge-one-card group bg-[#09314a] p-10 transition hover:bg-[#09314a]"
           style="--bridge-card-delay: 280ms"
         >
           <h3 class="mb-14 text-[32px] font-light text-white">
@@ -485,31 +485,31 @@ Capabilities
           <div class="space-y-10">
             <div>
               <div
-                class="mb-2 flex items-center justify-between text-white/60 text-[12px] uppercase tracking-[1.5px]"
+                class="mb-2 flex items-center justify-between text-[#316483] text-[12px] uppercase tracking-[1.5px]"
               >
                 <span>Size (%)</span>
                 <span class="text-[34px] font-medium text-white">25%</span>
               </div>
 
-              <div class="h-px bg-white/20"></div>
+              <div class="h-px bg-[#316483] "></div>
             </div>
 
             <div>
               <div
-                class="mb-2 flex items-center justify-between text-white/60 text-[12px] uppercase tracking-[1.5px]"
+                class="mb-2 flex items-center justify-between text-[#316483] text-[12px] uppercase tracking-[1.5px]"
               >
                 <span>Target Investment</span>
                 <span class="text-[34px] font-medium text-white">$2b</span>
               </div>
 
-              <div class="h-px bg-white/20"></div>
+              <div class="h-px bg-[#316483] "></div>
             </div>
           </div>
         </div>
 
         <!-- Card -->
         <div
-          class="bridge-one-card group bg-[#edf5f2] p-10 transition hover:bg-[#e7efec]"
+          class="bridge-one-card group bg-[#d9e8e3] p-10 transition "
           style="--bridge-card-delay: 380ms"
         >
           <h3 class="mb-14 text-[32px] font-light text-[#052e52]">
@@ -519,7 +519,7 @@ Capabilities
           <div class="space-y-10">
             <div>
               <div
-                class="mb-2 flex items-center justify-between text-[12px] uppercase tracking-[1.5px] text-[#4f6c7a]"
+                class="mb-2 flex items-center justify-between text-[12px] uppercase tracking-[1.5px] text-[#A1C0B6]"
               >
                 <span>Size (%)</span>
                 <span class="text-[34px] font-medium text-[#052e52]"
@@ -527,25 +527,25 @@ Capabilities
                 >
               </div>
 
-              <div class="h-px bg-[#b7c9cf]"></div>
+              <div class="h-px bg-[#A1C0B6]"></div>
             </div>
 
             <div>
               <div
-                class="mb-2 flex items-center justify-between text-[12px] uppercase tracking-[1.5px] text-[#4f6c7a]"
+                class="mb-2 flex items-center justify-between text-[12px] uppercase tracking-[1.5px] text-[#A1C0B6]"
               >
                 <span>Target Investment</span>
                 <span class="text-[34px] font-medium text-[#052e52]">$2b</span>
               </div>
 
-              <div class="h-px bg-[#b7c9cf]"></div>
+              <div class="h-px bg-[#A1C0B6]"></div>
             </div>
           </div>
         </div>
 
         <!-- Card -->
         <div
-          class="bridge-one-card group bg-[#dbe8e4] p-10 transition hover:bg-[#d2e0dc]"
+          class="bridge-one-card group bg-[#afd0c9] p-10 transition hover:bg-[#afd0c9]"
           style="--bridge-card-delay: 480ms"
         >
           <h3 class="mb-14 text-[32px] font-light text-[#052e52]">
@@ -555,26 +555,26 @@ Capabilities
           <div class="space-y-10">
             <div>
               <div
-                class="mb-2 flex items-center justify-between text-[12px] uppercase tracking-[1.5px] text-[#4f6c7a]"
+                class="mb-2 flex items-center justify-between text-[12px] uppercase tracking-[1.5px] text-[#76a797]"
               >
                 <span>Size (%)</span>
-                <span class="text-[34px] font-medium text-[#052e52]"
+                <span class="text-[34px] font-medium text-[#09314a]"
                   >30% - 40%</span
                 >
               </div>
 
-              <div class="h-px bg-[#b7c9cf]"></div>
+              <div class="h-px bg-[#76a797]"></div>
             </div>
 
             <div>
               <div
-                class="mb-2 flex items-center justify-between text-[12px] uppercase tracking-[1.5px] text-[#4f6c7a]"
+                class="mb-2 flex items-center justify-between text-[12px] uppercase tracking-[1.5px] text-[#76a797]"
               >
                 <span>Target Investment</span>
-                <span class="text-[34px] font-medium text-[#052e52]">$2b</span>
+                <span class="text-[34px] font-medium text-[#09314a]">$2b</span>
               </div>
 
-              <div class="h-px bg-[#b7c9cf]"></div>
+              <div class="h-px bg-[#76a797]"></div>
             </div>
           </div>
         </div>
@@ -668,7 +668,7 @@ Capabilities
         </div>
 
         <!-- Card -->
-        <div class="bridge-two-card bg-[#0a3653] p-10" style="--bridge-card-delay: 300ms">
+        <div class="bridge-two-card bg-[#09314a] p-10" style="--bridge-card-delay: 300ms">
           <h3 class="mb-14 text-[30px] font-normal text-white">
             Afridata South Africa
           </h3>
@@ -676,7 +676,7 @@ Capabilities
           <div class="space-y-10">
             <div>
               <div
-                class="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[1.5px] text-white/50"
+                class="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[1.5px] text-[#A1C0B6]"
               >
                 <span>Size (%)</span>
                 <span class="text-[32px] font-medium text-white">
@@ -684,12 +684,12 @@ Capabilities
                 </span>
               </div>
 
-              <div class="h-px bg-white/20"></div>
+              <div class="h-px bg-[#A1C0B6]"></div>
             </div>
 
             <div>
               <div
-                class="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[1.5px] text-white/50"
+                class="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[1.5px] text-[#316483]"
               >
                 <span>Target Investment</span>
                 <span class="text-[30px] font-medium text-white">
@@ -697,13 +697,13 @@ Capabilities
                 </span>
               </div>
 
-              <div class="h-px bg-white/20"></div>
+              <div class="h-px bg-[#316483]"></div>
             </div>
           </div>
         </div>
 
         <!-- Bottom Card -->
-        <div class="bridge-two-card bg-[#edf5f3] p-10 md:col-span-2" style="--bridge-card-delay: 420ms">
+        <div class="bridge-two-card bg-[#d9e8e3] p-10 md:col-span-2" style="--bridge-card-delay: 420ms">
           <h3 class="mb-16 text-[30px] font-normal text-[#082c4f]">
             Afridata Angola
           </h3>
@@ -711,7 +711,7 @@ Capabilities
           <div class="space-y-10">
             <div>
               <div
-                class="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[1.5px] text-[#6b8991]"
+                class="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[1.5px] text-[#A1C0B6]"
               >
                 <span>Size (%)</span>
 
@@ -725,7 +725,7 @@ Capabilities
 
             <div>
               <div
-                class="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[1.5px] text-[#6b8991]"
+                class="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[1.5px] text-[#A1C0B6]"
               >
                 <span>Target Investment</span>
 
