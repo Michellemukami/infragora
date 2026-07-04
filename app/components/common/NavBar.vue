@@ -12,12 +12,86 @@
           Home
         </NuxtLink>
 
-        <NuxtLink
-          to="/about-us"
-          class="flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.08em]"
-        >
-          About
-        </NuxtLink>
+        <div class="relative">
+          <button
+            type="button"
+            class="flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.08em] transition-opacity duration-200 hover:opacity-65"
+            aria-haspopup="true"
+            :aria-expanded="isAboutOpen"
+            @click="isAboutOpen = !isAboutOpen"
+          >
+            About Us
+            <svg
+              class="h-3 w-3 transition-transform duration-300"
+              :class="{ 'rotate-180': isAboutOpen }"
+              viewBox="0 0 20 20"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M5 8L10 13L15 8"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+
+          <Transition
+            enter-active-class="transition duration-200 ease-out"
+            enter-from-class="-translate-y-2 opacity-0"
+            enter-to-class="translate-y-0 opacity-100"
+            leave-active-class="transition duration-150 ease-in"
+            leave-from-class="translate-y-0 opacity-100"
+            leave-to-class="-translate-y-2 opacity-0"
+          >
+            <div
+              v-if="isAboutOpen"
+              class="absolute left-0 top-full mt-6 w-[245px] border border-black/10 bg-white p-6 text-[#102225] shadow-[0_18px_45px_rgba(0,0,0,0.12)]"
+            >
+              <NuxtLink
+                to="/about-us"
+                class="block text-[13px] font-semibold leading-none tracking-[-0.01em] text-[#003f50] transition-opacity hover:opacity-60"
+                @click="isAboutOpen = false"
+              >
+                About Us
+              </NuxtLink>
+
+              <div class="mt-5 space-y-4 text-[12px] leading-none text-[#102225]">
+                <div>
+                  <NuxtLink
+                    to="/governance"
+                    class="block font-medium transition-opacity hover:opacity-60"
+                    @click="isAboutOpen = false"
+                  >
+                    Team
+                  </NuxtLink>
+
+                  <div class="mt-3 space-y-3 border-l border-[#d6dfdf] pl-4 text-[#4a5d61]">
+                    <NuxtLink
+                      v-for="link in aboutTeamLinks"
+                      :key="link.label"
+                      :to="link.to"
+                      class="block transition-opacity hover:opacity-60"
+                      @click="isAboutOpen = false"
+                    >
+                      {{ link.label }}
+                    </NuxtLink>
+                  </div>
+                </div>
+
+                <NuxtLink
+                  to="/partners"
+                  class="block font-medium transition-opacity hover:opacity-60"
+                  @click="isAboutOpen = false"
+                >
+                  Partners &amp; Allies
+                </NuxtLink>
+              </div>
+            </div>
+          </Transition>
+        </div>
 
         <div class="relative">
           <button
@@ -248,6 +322,75 @@
             <button
               type="button"
               class="flex w-full items-center justify-between text-left text-[24px] font-medium leading-none tracking-[-0.035em] transition duration-200 hover:text-[#0a5264]"
+              :aria-expanded="isMobileAboutOpen"
+              @click="isMobileAboutOpen = !isMobileAboutOpen"
+            >
+              <span>About Us</span>
+              <span
+                class="flex h-8 w-8 items-center justify-center rounded-full border border-black/10 text-[18px] transition duration-300"
+                :class="isMobileAboutOpen ? 'rotate-45 bg-[#0a5264] text-white' : ''"
+              >
+                +
+              </span>
+            </button>
+
+            <Transition
+              enter-active-class="transition duration-300 ease-out"
+              enter-from-class="-translate-y-2 opacity-0"
+              enter-to-class="translate-y-0 opacity-100"
+              leave-active-class="transition duration-200 ease-in"
+              leave-from-class="translate-y-0 opacity-100"
+              leave-to-class="-translate-y-2 opacity-0"
+            >
+              <div
+                v-if="isMobileAboutOpen"
+                class="mt-5 space-y-4 rounded-[6px] border border-black/10 bg-white p-5 text-[14px] shadow-[0_16px_40px_rgba(0,0,0,0.08)]"
+              >
+                <NuxtLink
+                  to="/about-us"
+                  class="block font-semibold text-[#0a5264]"
+                  @click="closeMobileMenu"
+                >
+                  About Us
+                </NuxtLink>
+
+                <div class="space-y-3">
+                  <NuxtLink
+                    to="/about-us#team"
+                    class="block font-medium transition hover:text-[#0a5264]"
+                    @click="closeMobileMenu"
+                  >
+                    Team
+                  </NuxtLink>
+
+                  <div class="space-y-3 border-l border-[#d6dfdf] pl-4 text-[#4a5d61]">
+                    <NuxtLink
+                      v-for="link in aboutTeamLinks"
+                      :key="link.label"
+                      :to="link.to"
+                      class="block transition hover:text-[#0a5264]"
+                      @click="closeMobileMenu"
+                    >
+                      {{ link.label }}
+                    </NuxtLink>
+                  </div>
+                </div>
+
+                <NuxtLink
+                  to="/partners"
+                  class="block transition hover:text-[#0a5264]"
+                  @click="closeMobileMenu"
+                >
+                  Partners &amp; Allies
+                </NuxtLink>
+              </div>
+            </Transition>
+          </div>
+
+          <div class="border-b border-black/10 py-5">
+            <button
+              type="button"
+              class="flex w-full items-center justify-between text-left text-[24px] font-medium leading-none tracking-[-0.035em] transition duration-200 hover:text-[#0a5264]"
               :aria-expanded="isMobileCapabilitiesOpen"
               @click="isMobileCapabilitiesOpen = !isMobileCapabilitiesOpen"
             >
@@ -383,14 +526,22 @@
 </template>
 
 <script setup lang="ts">
+const isAboutOpen = ref(false)
 const isCapabilitiesOpen = ref(false)
 const isMobileMenuOpen = ref(false)
+const isMobileAboutOpen = ref(false)
 const isMobileCapabilitiesOpen = ref(false)
 const route = useRoute()
 
 const primaryMobileLinks = [
   { label: 'Home', to: '/' },
-  { label: 'About', to: '/about-us' },
+]
+
+const aboutTeamLinks = [
+  { label: 'Pioneers', to: '/about-us#pioneers' },
+  { label: 'Founders', to: '/about-us#founders' },
+  { label: 'Backed by', to: '/about-us#backed-by' },
+  { label: 'Global board', to: '/about-us#global-board' },
 ]
 
 const secondaryMobileLinks = [
@@ -402,12 +553,14 @@ const secondaryMobileLinks = [
 
 const closeMobileMenu = () => {
   isMobileMenuOpen.value = false
+  isMobileAboutOpen.value = false
   isMobileCapabilitiesOpen.value = false
 }
 
 watch(
   () => route.fullPath,
   () => {
+    isAboutOpen.value = false
     isCapabilitiesOpen.value = false
     closeMobileMenu()
   },

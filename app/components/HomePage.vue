@@ -600,7 +600,7 @@ Executed by INFRAGORA Advisory
 
   </div>
 </section>
-<section
+<!-- <section
   ref="partnersSectionRef"
   class="homepage-partners bg-[#f5f5f5] px-6 py-16 sm:px-10 sm:py-20 lg:px-20 lg:py-24"
   :class="{ 'is-visible': isPartnersSectionVisible }"
@@ -624,7 +624,7 @@ Executed by INFRAGORA Advisory
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <KnowledgeHub />
 <!-- accordion -->
  <section
