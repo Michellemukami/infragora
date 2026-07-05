@@ -156,7 +156,7 @@
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import NumberCard from './common/NumberCard.vue'
-import aboutHeroVideo from '~/assets/images/capabilities/skyline.jpg'
+
 import green from "~/assets/images/portfolio/green.jpg"
 import ict from "~/assets/images/portfolio/ict.jpg"
 import train from "~/assets/images/portfolio/train.jpg"
