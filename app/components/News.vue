@@ -31,6 +31,7 @@ type NewsItem = {
   id: number
   title: string
   category: string
+  country: string
   ctaLabel: string
   image: string
   layout: 'standard' | 'wide'
@@ -42,6 +43,7 @@ const newsItems: NewsItem[] = [
     title:
       'INFRAGORA Advances Its African Infrastructure Secondary Market Platform',
     category: 'Markets',
+    country: 'Mauritius',
     ctaLabel: 'Read More',
     image: newsImage,
     layout: 'standard',
@@ -51,6 +53,7 @@ const newsItems: NewsItem[] = [
     title:
       'INFRAGORA Strengthens Focus on Green Energy and Digital Infrastructure',
     category: 'Investment',
+    country: 'South Africa',
     ctaLabel: 'Read More',
     image: newsImage,
     layout: 'standard',
@@ -60,6 +63,7 @@ const newsItems: NewsItem[] = [
     title:
       'INFRAGORA Builds Partnerships to Support Market Transparency and Investor Confidence',
     category: 'Infrastructure',
+    country: 'Kenya',
     ctaLabel: 'Read More',
     image: newsImage,
     layout: 'standard',
@@ -69,6 +73,7 @@ const newsItems: NewsItem[] = [
     title:
       'INFRAGORA Advances Its African Infrastructure Secondary Market Platform',
     category: 'Markets',
+    country: 'Nigeria',
     ctaLabel: 'Read More',
     image: newsImage,
     layout: 'wide',
@@ -78,6 +83,7 @@ const newsItems: NewsItem[] = [
     title:
       'INFRAGORA Builds Partnerships to Support Market Transparency and Investor Confidence',
     category: 'Infrastructure',
+    country: "Côte d'Ivoire",
     ctaLabel: 'Read More',
     image: newsImage,
     layout: 'standard',
@@ -87,6 +93,7 @@ const newsItems: NewsItem[] = [
     title:
       'INFRAGORA Advances Its African Infrastructure Secondary Market Platform',
     category: 'Markets',
+    country: 'Mauritius',
     ctaLabel: 'Read More',
     image: newsImage,
     layout: 'standard',
@@ -96,6 +103,7 @@ const newsItems: NewsItem[] = [
     title:
       'INFRAGORA Strengthens Focus on Green Energy and Digital Infrastructure',
     category: 'Investment',
+    country: 'South Africa',
     ctaLabel: 'Read More',
     image: newsImage,
     layout: 'standard',
@@ -105,6 +113,7 @@ const newsItems: NewsItem[] = [
     title:
       'INFRAGORA Builds Partnerships to Support Market Transparency and Investor Confidence',
     category: 'Infrastructure',
+    country: 'Kenya',
     ctaLabel: 'Read More',
     image: newsImage,
     layout: 'standard',
@@ -114,6 +123,7 @@ const newsItems: NewsItem[] = [
     title:
       'INFRAGORA Builds Partnerships to Support Market Transparency and Investor Confidence',
     category: 'Infrastructure',
+    country: 'Nigeria',
     ctaLabel: 'Read More',
     image: newsImage,
     layout: 'standard',
@@ -123,6 +133,7 @@ const newsItems: NewsItem[] = [
     title:
       'INFRAGORA Advances Its African Infrastructure Secondary Market Platform',
     category: 'Markets',
+    country: "Côte d'Ivoire",
     ctaLabel: 'Read More',
     image: newsImage,
     layout: 'wide',

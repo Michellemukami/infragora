@@ -162,7 +162,7 @@ import ict from "~/assets/images/portfolio/ict.jpg"
 import train from "~/assets/images/portfolio/train.jpg"
 import water from "~/assets/images/portfolio/water.jpg"
 import tunnel from "~/assets/images/portfolio/tunnel.png"
-import portfolioImage from "~/assets/images/portfolio/portfolio2.jpg"
+import portfolioImage from "~/assets/images/portfolio/portfolio2.webp"
 
 const isPortfolioFocusVisible = ref(false)
 const isImageCoverVisible = ref(false)

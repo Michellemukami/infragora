@@ -34,9 +34,9 @@
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import NumberCard from './common/NumberCard.vue'
-import investmentHeroImage from '~/assets/images/capabilities/investment.jpg'
+import investmentHeroImage from '~/assets/images/capabilities/investment.webp'
 import ImageCard from './common/ImageCard.vue';
-import bridgeImage from '~/assets/images/bridge.jpg'
+import bridgeImage from '~/assets/images/bridge.webp'
 useHead({
   title: 'Infrastructure Investment | INFRAGORA Global Capital',
   meta: [

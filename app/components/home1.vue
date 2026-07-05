@@ -411,7 +411,7 @@
         <!-- FEATURED CARD -->
         <article class="group relative min-h-[500px] overflow-hidden lg:min-h-[660px]">
           <img
-            src="/assets/images/bridge.jpg"
+            src="/assets/images/bridge.webp"
             alt=""
             class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
           />

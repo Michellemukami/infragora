@@ -5,7 +5,7 @@
     :class="{ 'is-visible': isContactSectionVisible }"
   >
     <div
-      class="mx-auto px-6 lg:px-20 xl:px-16"
+      class="mx-auto px-6 lg:px-20 xl:px-20"
     >
       <div
         class="grid grid-cols-1 gap-16 lg:grid-cols-[420px_1fr]"

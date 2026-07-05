@@ -118,7 +118,7 @@ Capabilities
 
         <!-- LEFT -->
         <div
-          class="investment-vehicle-panel investment-vehicle-panel--left flex items-center bg-[#E8F1EE] px-[28px] py-[48px] sm:px-[40px] lg:px-[42px]"
+          class="investment-vehicle-panel investment-vehicle-panel--left flex items-center bg-[#E8F1EE] px-[28px] py-[48px] sm:px-[40px] lg:px-20"
         >
           <div class="max-w-[520px]">
 
@@ -224,6 +224,41 @@ Capabilities
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+    <!-- here4 -->
+   <section class="featured-platform-section w-full bg-white">
+    <div class="mx-auto px-6 py-14 sm:px-10 md:py-16 lg:px-20 lg:py-[104px]">
+      <div class="grid items-center gap-10 md:grid-cols-[minmax(0,1.2fr)_minmax(280px,0.9fr)] md:gap-14 lg:gap-[72px]">
+        <figure class="relative aspect-[311/218] w-full overflow-hidden bg-[#103547]">
+          <img
+            :src="featuredPlatformImage"
+            alt=""
+            class="absolute inset-0 h-full w-full object-cover object-[50%_42%]"
+          />
+          <div class="absolute inset-0 bg-[#062331]/45"></div>
+        </figure>
+
+        <div class="max-w-[440px] text-[#003f50]">
+          <p class="md:text-[10px] lg:text-[15px] font-medium leading-none text-[#b8c0c0] sm:text-[11px]">
+            Featured Platform
+          </p>
+
+          <h2 class="mt-8 text-[24px] font-semibold leading-[1.03] tracking-[-0.04em] sm:text-[30px] lg:text-[40px]">
+            INFRAGORA Investment
+            <span class="block font-normal">Vehicle 1</span>
+          </h2>
+
+          <p class="mt-8 text-[12px] font-normal leading-[1.5] tracking-[-0.02em] text-[#07394a] sm:text-[13px] lg:text-[17px]">
+            INFRAGORA Investment Vehicle 1, or IIV1, is designed to invest
+            in a diversified portfolio of African infrastructure assets. The
+            vehicle targets operating and growth infrastructure opportunities,
+            including brownfield assets with stable cash flows, assets with
+            expansion potential and selected late-stage greenfield projects
+            approaching commercial operation.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -380,17 +415,7 @@ Capabilities
 
     </div>
   </section>
-   <section class="w-full bg-white py-12 sm:py-14 lg:py-16">
-    <div class="mx-auto max-w-[1400px] px-6 sm:px-8 lg:px-10">
-      <h2
-        class="text-center text-[#12314B] text-[28px] font-normal leading-tight
-               sm:text-[34px]
-               lg:text-[44px]"
-      >
-        Pipeline Overview Summary
-      </h2>
-    </div>
-  </section>
+
    <!-- bridge1 -->
     <section
       ref="bridgeOneRef"
@@ -403,7 +428,7 @@ Capabilities
       <!-- LEFT IMAGE -->
       <div class="bridge-one-media relative h-[620px] lg:h-auto">
         <img
-          src="/assets/images/bridge.jpg"
+          src="/assets/images/capabilities/mergers.webp"
           alt=""
           class="bridge-one-image absolute inset-0 h-full w-full object-cover"
         />
@@ -593,7 +618,7 @@ Capabilities
       <!-- Left Image -->
       <div class="bridge-two-media relative min-h-[620px]">
         <img
-          src="/assets/images/bridge.jpg"
+          src="/assets/images/capabilities/green.webp"
           alt="Bridge"
           class="bridge-two-image absolute inset-0 h-full w-full object-cover"
         />
@@ -753,7 +778,7 @@ Capabilities
       <!-- Left Image -->
       <div class="bridge-three-media relative min-h-[260px] lg:min-h-[420px]">
         <img
-          src="/assets/images/bridge.jpg"
+          src="/assets/images/capabilities/new.webp"
           alt="Bridge"
           class="bridge-three-image absolute inset-0 h-full w-full object-cover"
         />
@@ -824,7 +849,8 @@ Capabilities
 </template>
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
-import fundManagementHeroImage from '~/assets/images/capabilities/fund-hero.jpg'
+import featuredPlatformImage from '~/assets/images/capabilities/vehicle1.webp'
+import fundManagementHeroImage from '~/assets/images/capabilities/fund-hero.webp'
 const isInvestmentVehicleVisible = ref(false)
 const isPhaseImplementationVisible = ref(false)
 const isBenefitsSectionVisible = ref(false)

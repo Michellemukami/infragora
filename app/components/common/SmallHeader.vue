@@ -9,7 +9,7 @@
   >
     <div
       :class="[
-        'small-header-inner mx-auto grid min-h-[250px] w-full max-w-[1600px] grid-cols-1 gap-8 px-6 pb-14 pt-28 sm:px-10 md:min-h-[270px] md:grid-cols-[34%_1fr] md:items-center md:gap-12 md:px-14 md:pb-16 md:pt-32 lg:min-h-[280px] lg:grid-cols-[40%_1fr] lg:px-[5.8vw] lg:pb-[72px] lg:pt-36',
+        'small-header-inner mx-auto grid min-h-[250px] w-full max-w-[1600px] grid-cols-1 gap-8 px-6 pb-14 pt-28 sm:px-10 md:min-h-[270px] md:grid-cols-[34%_1fr] md:items-center md:gap-12 md:px-14 lg:px-20 md:pb-16 md:pt-32 lg:min-h-[280px] lg:grid-cols-[40%_1fr] lg:pb-[72px] lg:pt-36',
         containerClass,
       ]"
     >

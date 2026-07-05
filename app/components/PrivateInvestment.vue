@@ -34,9 +34,9 @@ Focus"
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import NumberCard from './common/NumberCard.vue'
-import forestRoad from '~/assets/images/capabilities/private-body.jpg'
+import forestRoad from '~/assets/images/capabilities/private-body.webp'
 import ImageCard from './common/ImageCard.vue';
-import privateInvestmentHeroImage from '~/assets/images/capabilities/private.jpg'
+import privateInvestmentHeroImage from '~/assets/images/capabilities/private.webp'
 useHead({
   title: 'Private Investment | African Infrastructure Assets & Platforms',
   meta: [

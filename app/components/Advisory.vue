@@ -67,7 +67,7 @@
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import NumberCard from './common/NumberCard.vue'
-import AdvisoryHeroImage from '~/assets/images/capabilities/advisory.jpg'
+import AdvisoryHeroImage from '~/assets/images/capabilities/advisory.webp'
 
 const isAdvisoryServicesVisible = ref(false)
 const advisoryServicesRef = ref<HTMLElement | null>(null)

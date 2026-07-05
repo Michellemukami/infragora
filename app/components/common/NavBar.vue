@@ -12,13 +12,18 @@
           Home
         </NuxtLink>
 
-        <div class="relative">
+        <div
+          ref="aboutDropdownRef"
+          class="relative"
+          @mouseenter="openAboutDropdown"
+          @mouseleave="closeAboutDropdown"
+        >
           <button
             type="button"
             class="flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.08em] transition-opacity duration-200 hover:opacity-65"
             aria-haspopup="true"
             :aria-expanded="isAboutOpen"
-            @click="isAboutOpen = !isAboutOpen"
+            @click="openAboutDropdown"
           >
             About Us
             <svg
@@ -62,28 +67,17 @@
                 <div>
                   <NuxtLink
                     to="/governance"
-                    class="block font-medium transition-opacity hover:opacity-60"
+                    class="block text-[13px] font-semibold leading-none tracking-[-0.01em] text-[#003f50] transition-opacity hover:opacity-60"
                     @click="isAboutOpen = false"
                   >
-                    Team
+                    Governance
                   </NuxtLink>
 
-                  <div class="mt-3 space-y-3 border-l border-[#d6dfdf] pl-4 text-[#4a5d61]">
-                    <NuxtLink
-                      v-for="link in aboutTeamLinks"
-                      :key="link.label"
-                      :to="link.to"
-                      class="block transition-opacity hover:opacity-60"
-                      @click="isAboutOpen = false"
-                    >
-                      {{ link.label }}
-                    </NuxtLink>
-                  </div>
                 </div>
 
                 <NuxtLink
                   to="/partners"
-                  class="block font-medium transition-opacity hover:opacity-60"
+                  class="block text-[13px] font-semibold leading-none tracking-[-0.01em] text-[#003f50] transition-opacity hover:opacity-60"
                   @click="isAboutOpen = false"
                 >
                   Partners &amp; Allies
@@ -93,13 +87,18 @@
           </Transition>
         </div>
 
-        <div class="relative">
+        <div
+          ref="capabilitiesDropdownRef"
+          class="relative"
+          @mouseenter="openCapabilitiesDropdown"
+          @mouseleave="closeCapabilitiesDropdown"
+        >
           <button
             type="button"
             class="flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.08em] transition-opacity duration-200 hover:opacity-65"
             aria-haspopup="true"
             :aria-expanded="isCapabilitiesOpen"
-            @click="isCapabilitiesOpen = !isCapabilitiesOpen"
+            @click="openCapabilitiesDropdown"
           >
             Capabilities
             <svg
@@ -356,24 +355,14 @@
 
                 <div class="space-y-3">
                   <NuxtLink
-                    to="/about-us#team"
+                    to="/governance"
                     class="block font-medium transition hover:text-[#0a5264]"
                     @click="closeMobileMenu"
                   >
-                    Team
+                    Governance
                   </NuxtLink>
 
-                  <div class="space-y-3 border-l border-[#d6dfdf] pl-4 text-[#4a5d61]">
-                    <NuxtLink
-                      v-for="link in aboutTeamLinks"
-                      :key="link.label"
-                      :to="link.to"
-                      class="block transition hover:text-[#0a5264]"
-                      @click="closeMobileMenu"
-                    >
-                      {{ link.label }}
-                    </NuxtLink>
-                  </div>
+             
                 </div>
 
                 <NuxtLink
@@ -531,6 +520,10 @@ const isCapabilitiesOpen = ref(false)
 const isMobileMenuOpen = ref(false)
 const isMobileAboutOpen = ref(false)
 const isMobileCapabilitiesOpen = ref(false)
+const aboutDropdownRef = ref<HTMLElement | null>(null)
+const capabilitiesDropdownRef = ref<HTMLElement | null>(null)
+let aboutCloseTimeout: ReturnType<typeof setTimeout> | undefined
+let capabilitiesCloseTimeout: ReturnType<typeof setTimeout> | undefined
 const route = useRoute()
 
 const primaryMobileLinks = [
@@ -557,11 +550,71 @@ const closeMobileMenu = () => {
   isMobileCapabilitiesOpen.value = false
 }
 
+const closeDesktopDropdowns = () => {
+  clearDropdownCloseTimeouts()
+  isAboutOpen.value = false
+  isCapabilitiesOpen.value = false
+}
+
+const clearDropdownCloseTimeouts = () => {
+  if (aboutCloseTimeout) {
+    clearTimeout(aboutCloseTimeout)
+    aboutCloseTimeout = undefined
+  }
+
+  if (capabilitiesCloseTimeout) {
+    clearTimeout(capabilitiesCloseTimeout)
+    capabilitiesCloseTimeout = undefined
+  }
+}
+
+const openAboutDropdown = () => {
+  clearDropdownCloseTimeouts()
+  isAboutOpen.value = true
+  isCapabilitiesOpen.value = false
+}
+
+const closeAboutDropdown = () => {
+  if (aboutCloseTimeout) clearTimeout(aboutCloseTimeout)
+  aboutCloseTimeout = setTimeout(() => {
+    isAboutOpen.value = false
+    aboutCloseTimeout = undefined
+  }, 180)
+}
+
+const openCapabilitiesDropdown = () => {
+  clearDropdownCloseTimeouts()
+  isCapabilitiesOpen.value = true
+  isAboutOpen.value = false
+}
+
+const closeCapabilitiesDropdown = () => {
+  if (capabilitiesCloseTimeout) clearTimeout(capabilitiesCloseTimeout)
+  capabilitiesCloseTimeout = setTimeout(() => {
+    isCapabilitiesOpen.value = false
+    capabilitiesCloseTimeout = undefined
+  }, 180)
+}
+
+const handleDocumentPointerDown = (event: PointerEvent) => {
+  const target = event.target
+
+  if (!(target instanceof Node)) return
+
+  if (
+    aboutDropdownRef.value?.contains(target) ||
+    capabilitiesDropdownRef.value?.contains(target)
+  ) {
+    return
+  }
+
+  closeDesktopDropdowns()
+}
+
 watch(
   () => route.fullPath,
   () => {
-    isAboutOpen.value = false
-    isCapabilitiesOpen.value = false
+    closeDesktopDropdowns()
     closeMobileMenu()
   },
 )
@@ -573,7 +626,13 @@ watch(isMobileMenuOpen, (isOpen) => {
 
 onBeforeUnmount(() => {
   if (import.meta.client) {
+    clearDropdownCloseTimeouts()
+    document.removeEventListener('pointerdown', handleDocumentPointerDown)
     document.documentElement.style.overflow = ''
   }
+})
+
+onMounted(() => {
+  document.addEventListener('pointerdown', handleDocumentPointerDown)
 })
 </script>

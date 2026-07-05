@@ -3,7 +3,7 @@
     title="About us"
     :paragraphs="aboutIntroParagraphs"
     :media-src="aboutHeroVideo"
-    media-type="video"
+    media-type="image"
     section-class="min-h-[560px] md:min-h-[620px] lg:min-h-[640px]"
     media-container-class="min-h-[560px] items-start !pt-36 !pb-20 md:min-h-[620px] md:!pt-36 md:!pb-20 lg:min-h-[640px] lg:!pt-36 lg:!pb-20"
     title-class="text-[42px] sm:text-[52px] lg:text-[58px]"
@@ -210,8 +210,8 @@
 <script setup lang="ts">
 import WhatWeDoIntro from '~/components/common/WhatWeDoIntro.vue'
 import ImageCard from '~/components/common/ImageCard.vue'
-import aboutHeroVideo from '~/assets/images/about-us/city.mp4'
-import bridgeImage from '~/assets/images/about-us/aboutside.jpg'
+import aboutHeroVideo from '~/assets/images/about-us/aboutUs.webp'
+import bridgeImage from '~/assets/images/about-us/aboutside.webp'
 
 type TeamMember = {
   name: string

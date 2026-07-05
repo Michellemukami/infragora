@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import NumberCard from './common/NumberCard.vue'
-import InstrumentHeroImage from '~/assets/images/capabilities/instrument-hero.jpg'
+import InstrumentHeroImage from '~/assets/images/capabilities/instrument-hero.webp'
 useHead({
   title: 'Investment Instruments | Equity, Quasi-Equity & Private Credit',
   meta: [

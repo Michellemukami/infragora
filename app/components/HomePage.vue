@@ -317,7 +317,7 @@ Executed by INFRAGORA Advisory
           style="--what-we-do-delay: 220ms"
         >
           <img
-            src="/assets/images/bridge.jpg"
+            src="/assets/images/bridge.webp"
             alt=""
             class="absolute inset-0 h-full w-full object-cover transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
           />
@@ -470,7 +470,7 @@ Executed by INFRAGORA Advisory
 
     <div
       ref="focusAreasFeatureRef"
-      class="portfolio-image-cover-section relative mr-6 mt-14 min-h-[360px] overflow-hidden bg-[#002d49] bg-[length:136%_auto] bg-[124%_center] bg-no-repeat sm:mt-20 sm:min-h-[340px] sm:bg-[length:108%_auto] sm:bg-[124%_center] md:mr-10 md:mt-24 md:min-h-[390px] md:bg-[length:96%_auto] lg:min-h-[450px] lg:bg-[length:88%_auto] xl:mr-20"
+      class="portfolio-image-cover-section relative mr-6 mt-14 min-h-[360px] overflow-hidden bg-[#002d49] bg-cover bg-[64%_center] bg-no-repeat sm:mt-20 sm:min-h-[340px] sm:bg-[72%_center] md:mr-10 md:mt-24 md:min-h-[390px] lg:min-h-[450px] lg:bg-[88%_47%] xl:mr-20"
       :class="{ 'is-visible': isFocusAreasFeatureVisible }"
       :style="{ backgroundImage: `url(${ribbonImage})` }"
     >
@@ -760,7 +760,7 @@ Executed by INFRAGORA Advisory
   
 </template>
 <script setup>
-import ribbonImage from "~/assets/images/home/ribbon.jpg"
+import ribbonImage from "~/assets/images/home/ribbon.webp"
 import newsImage from "~/assets/images/news.jpg"
 import arrowOutwardIcon from "~/assets/images/icon/arrow_outward.png"
 import heroCardOne from "~/assets/images/home/corasel1.jpg"

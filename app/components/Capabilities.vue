@@ -22,7 +22,7 @@
           
         <article class="capabilities-featured-card group relative min-h-[500px] overflow-hidden lg:min-h-[660px]">
           <img
-            src="/assets/images/capabilities/cap-main.jpg"
+            src="/assets/images/capabilities/cap-main.webp"
             alt=""
             class="capabilities-featured-image absolute inset-0 h-full w-full object-cover transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
           />
@@ -139,7 +139,7 @@
 </template>
 <script setup>
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
-import capabilitiesHeroVideo from '~/assets/images/capabilities/skyline.jpg'
+import capabilitiesHeroVideo from '~/assets/images/capabilities/skyline.webp'
 
 const isFeaturedCardSectionVisible = ref(false)
 const featuredCardSectionRef = ref(null)

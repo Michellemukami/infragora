@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import NumberCard from './common/NumberCard.vue'
-import privateCreditHeroImage from '~/assets/images/capabilities/credit-hero.jpg'
+import privateCreditHeroImage from '~/assets/images/capabilities/credit-hero.webp'
 useHead({
   title: 'Private Credit for Infrastructure | INFRAGORA Global Capital',
   meta: [

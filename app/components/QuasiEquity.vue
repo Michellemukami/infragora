@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import NumberCard from './common/NumberCard.vue'
-import quasiEquityHeroImage from '~/assets/images/capabilities/quasi-hero.jpg'
+import quasiEquityHeroImage from '~/assets/images/capabilities/quasi-hero.webp'
 useHead({
   title: 'Quasi-Equity Solutions | INFRAGORA Global Capital',
   meta: [

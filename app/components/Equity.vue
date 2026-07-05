@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import NumberCard from './common/NumberCard.vue'
-import equityHeroImage from '~/assets/images/capabilities/equity-hero.jpg'
+import equityHeroImage from '~/assets/images/capabilities/equity-hero.webp'
 useHead({
   title: 'Equity Investment | INFRAGORA Global Capital',
   meta: [

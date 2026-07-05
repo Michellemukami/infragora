@@ -37,7 +37,7 @@ Solutions"
 <script setup lang="ts">
 import WhatWeDoIntro from './common/WhatWeDoIntro.vue';
 import NumberCard from './common/NumberCard.vue'
-import publicInvestmentHeroImage from '~/assets/images/capabilities/public-hero.jpg'
+import publicInvestmentHeroImage from '~/assets/images/capabilities/public-hero.webp'
 useHead({
   title: 'Public Investment | Listed Infrastructure Vehicles & Capital Markets',
   meta: [

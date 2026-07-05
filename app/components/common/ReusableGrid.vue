@@ -3,6 +3,7 @@ type GridItem = {
   id: number | string
   title: string
   category: string
+  country?: string | string[]
   date?: string
   image: string
   layout: 'standard' | 'wide'
@@ -13,18 +14,28 @@ type GridItem = {
 const props = withDefaults(defineProps<{
   items?: GridItem[]
   categories?: string[]
+  countries?: string[]
   orderOptions?: string[]
   sectionClass?: string
   containerClass?: string
 }>(), {
   items: () => [],
   categories: () => [],
+  countries: () => [
+    'All',
+    'Mauritius',
+    'South Africa',
+    'Kenya',
+    'Nigeria',
+    "Côte d'Ivoire",
+  ],
   orderOptions: () => ['Newest', 'Oldest'],
   sectionClass: '',
   containerClass: '',
 })
 
 const selectedCategory = ref('All')
+const selectedCountry = ref('All')
 const selectedDateOrder = ref('Newest')
 const selectedOrder = ref('Newest')
 
@@ -38,12 +49,23 @@ const categoryOptions = computed(() => {
 })
 
 const filteredItems = computed(() => {
-  const items =
-    selectedCategory.value === 'All'
-      ? [...props.items]
-      : props.items.filter(
-          (item) => item.category === selectedCategory.value,
-        )
+  const items = props.items.filter((item) => {
+    const categoryMatches =
+      selectedCategory.value === 'All' ||
+      item.category === selectedCategory.value
+
+    const itemCountries = Array.isArray(item.country)
+      ? item.country
+      : item.country
+        ? [item.country]
+        : []
+
+    const countryMatches =
+      selectedCountry.value === 'All' ||
+      itemCountries.includes(selectedCountry.value)
+
+    return categoryMatches && countryMatches
+  })
 
   return selectedOrder.value === 'Oldest' ? items.reverse() : items
 })
@@ -92,6 +114,45 @@ const filteredItems = computed(() => {
                   :value="category"
                 >
                   {{ category }}
+                </option>
+              </select>
+
+              <svg
+                class="pointer-events-none absolute right-2.5 top-1/2 h-3 w-3 -translate-y-1/2"
+                viewBox="0 0 20 20"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M6 8L10 12L14 8"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </label>
+
+          <!-- Country -->
+          <label class="grid grid-cols-[72px_1fr] items-center gap-3 sm:grid-cols-[76px_1fr] lg:flex">
+            <span
+              class="text-[11px] font-medium leading-none tracking-[-0.02em]"
+            >
+              Country
+            </span>
+
+            <div class="relative">
+              <select
+                v-model="selectedCountry"
+                class="h-9 w-full min-w-0 appearance-none border border-black/35 bg-white pl-3 pr-8 text-[11px] outline-none transition focus:border-black lg:h-8 lg:min-w-[128px]"
+              >
+                <option
+                  v-for="country in countries"
+                  :key="country"
+                  :value="country"
+                >
+                  {{ country }}
                 </option>
               </select>
 
