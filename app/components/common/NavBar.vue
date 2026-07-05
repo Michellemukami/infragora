@@ -322,7 +322,7 @@
               type="button"
               class="flex w-full items-center justify-between text-left text-[24px] font-medium leading-none tracking-[-0.035em] transition duration-200 hover:text-[#0a5264]"
               :aria-expanded="isMobileAboutOpen"
-              @click="isMobileAboutOpen = !isMobileAboutOpen"
+              @click="toggleMobileAbout"
             >
               <span>About Us</span>
               <span
@@ -333,47 +333,46 @@
               </span>
             </button>
 
-            <Transition
-              enter-active-class="transition duration-300 ease-out"
-              enter-from-class="-translate-y-2 opacity-0"
-              enter-to-class="translate-y-0 opacity-100"
-              leave-active-class="transition duration-200 ease-in"
-              leave-from-class="translate-y-0 opacity-100"
-              leave-to-class="-translate-y-2 opacity-0"
+            <div
+              class="grid overflow-hidden transition-[grid-template-rows,opacity,margin-top] duration-300 ease-[cubic-bezier(.16,1,.3,1)]"
+              :class="isMobileAboutOpen ? 'mt-5 grid-rows-[1fr] opacity-100' : 'mt-0 grid-rows-[0fr] opacity-0'"
             >
               <div
-                v-if="isMobileAboutOpen"
-                class="mt-5 space-y-4 rounded-[6px] border border-black/10 bg-white p-5 text-[14px] shadow-[0_16px_40px_rgba(0,0,0,0.08)]"
+                class="min-h-0 overflow-hidden"
+                :aria-hidden="!isMobileAboutOpen"
               >
-                <NuxtLink
-                  to="/about-us"
-                  class="block font-semibold text-[#0a5264]"
-                  @click="closeMobileMenu"
+                <div
+                  class="space-y-4 rounded-[6px] border border-black/10 bg-white p-5 text-[14px] shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition duration-300 ease-[cubic-bezier(.16,1,.3,1)]"
+                  :class="isMobileAboutOpen ? 'translate-y-0 opacity-100' : '-translate-y-1 opacity-0'"
                 >
-                  About Us
-                </NuxtLink>
-
-                <div class="space-y-3">
                   <NuxtLink
-                    to="/governance"
-                    class="block font-medium transition hover:text-[#0a5264]"
+                    to="/about-us"
+                    class="block font-semibold text-[#0a5264]"
                     @click="closeMobileMenu"
                   >
-                    Governance
+                    About Us
                   </NuxtLink>
 
-             
-                </div>
+                  <div class="space-y-3">
+                    <NuxtLink
+                      to="/governance"
+                      class="block font-medium transition hover:text-[#0a5264]"
+                      @click="closeMobileMenu"
+                    >
+                      Governance
+                    </NuxtLink>
+                  </div>
 
-                <NuxtLink
-                  to="/partners"
-                  class="block transition hover:text-[#0a5264]"
-                  @click="closeMobileMenu"
-                >
-                  Partners &amp; Allies
-                </NuxtLink>
+                  <NuxtLink
+                    to="/partners"
+                    class="block transition hover:text-[#0a5264]"
+                    @click="closeMobileMenu"
+                  >
+                    Partners &amp; Allies
+                  </NuxtLink>
+                </div>
               </div>
-            </Transition>
+            </div>
           </div>
 
           <div class="border-b border-black/10 py-5">
@@ -381,7 +380,7 @@
               type="button"
               class="flex w-full items-center justify-between text-left text-[24px] font-medium leading-none tracking-[-0.035em] transition duration-200 hover:text-[#0a5264]"
               :aria-expanded="isMobileCapabilitiesOpen"
-              @click="isMobileCapabilitiesOpen = !isMobileCapabilitiesOpen"
+              @click="toggleMobileCapabilities"
             >
               <span>Capabilities</span>
               <span
@@ -392,105 +391,106 @@
               </span>
             </button>
 
-            <Transition
-              enter-active-class="transition duration-300 ease-out"
-              enter-from-class="-translate-y-2 opacity-0"
-              enter-to-class="translate-y-0 opacity-100"
-              leave-active-class="transition duration-200 ease-in"
-              leave-from-class="translate-y-0 opacity-100"
-              leave-to-class="-translate-y-2 opacity-0"
+            <div
+              class="grid overflow-hidden transition-[grid-template-rows,opacity,margin-top] duration-300 ease-[cubic-bezier(.16,1,.3,1)]"
+              :class="isMobileCapabilitiesOpen ? 'mt-5 grid-rows-[1fr] opacity-100' : 'mt-0 grid-rows-[0fr] opacity-0'"
             >
               <div
-                v-if="isMobileCapabilitiesOpen"
-                class="mt-5 space-y-4 rounded-[6px] border border-black/10 bg-white p-5 text-[14px] shadow-[0_16px_40px_rgba(0,0,0,0.08)]"
+                class="min-h-0 overflow-hidden"
+                :aria-hidden="!isMobileCapabilitiesOpen"
               >
-                <NuxtLink
-                  to="/our-capabilities"
-                  class="block font-semibold text-[#0a5264]"
-                  @click="closeMobileMenu"
+                <div
+                  class="space-y-4 rounded-[6px] border border-black/10 bg-white p-5 text-[14px] shadow-[0_16px_40px_rgba(0,0,0,0.08)] transition duration-300 ease-[cubic-bezier(.16,1,.3,1)]"
+                  :class="isMobileCapabilitiesOpen ? 'translate-y-0 opacity-100' : '-translate-y-1 opacity-0'"
                 >
-                  Our Capabilities
-                </NuxtLink>
-
-                <NuxtLink
-                  to="/our-capabilities/advisory"
-                  class="block transition hover:text-[#0a5264]"
-                  @click="closeMobileMenu"
-                >
-                  Advisory
-                </NuxtLink>
-
-                <div class="space-y-3">
                   <NuxtLink
-                    to="/our-capabilities/investment"
-                    class="block font-medium transition hover:text-[#0a5264]"
+                    to="/our-capabilities"
+                    class="block font-semibold text-[#0a5264]"
                     @click="closeMobileMenu"
                   >
-                    Investment
+                    Our Capabilities
                   </NuxtLink>
 
-                  <div class="space-y-3 border-l border-[#d6dfdf] pl-4 text-[#4a5d61]">
+                  <NuxtLink
+                    to="/our-capabilities/advisory"
+                    class="block transition hover:text-[#0a5264]"
+                    @click="closeMobileMenu"
+                  >
+                    Advisory
+                  </NuxtLink>
+
+                  <div class="space-y-3">
+                    <NuxtLink
+                      to="/our-capabilities/investment"
+                      class="block font-medium transition hover:text-[#0a5264]"
+                      @click="closeMobileMenu"
+                    >
+                      Investment
+                    </NuxtLink>
+
+                    <div class="space-y-3 border-l border-[#d6dfdf] pl-4 text-[#4a5d61]">
                           <NuxtLink
-                      to="/our-capabilities/investment/private-investment"
-                      class="block transition hover:text-[#0a5264]"
-                      @click="closeMobileMenu"
-                    >
-                      Private Investments
-                    </NuxtLink>
-                    <NuxtLink
-                      to="/our-capabilities/investment/public-investment"
-                      class="block transition hover:text-[#0a5264]"
-                      @click="closeMobileMenu"
-                    >
-                      Public Investments
-                    </NuxtLink>
+                        to="/our-capabilities/investment/private-investment"
+                        class="block transition hover:text-[#0a5264]"
+                        @click="closeMobileMenu"
+                      >
+                        Private Investments
+                      </NuxtLink>
+                      <NuxtLink
+                        to="/our-capabilities/investment/public-investment"
+                        class="block transition hover:text-[#0a5264]"
+                        @click="closeMobileMenu"
+                      >
+                        Public Investments
+                      </NuxtLink>
               
+                    </div>
                   </div>
-                </div>
 
-                <div class="space-y-3">
+                  <div class="space-y-3">
+                    <NuxtLink
+                      to="/our-capabilities/instruments"
+                      class="block font-medium transition hover:text-[#0a5264]"
+                      @click="closeMobileMenu"
+                    >
+                      Instruments
+                    </NuxtLink>
+
+                    <div class="space-y-3 border-l border-[#d6dfdf] pl-4 text-[#4a5d61]">
+                      <NuxtLink
+                        to="/our-capabilities/instruments/equity"
+                        class="block transition hover:text-[#0a5264]"
+                        @click="closeMobileMenu"
+                      >
+                        Equity
+                      </NuxtLink>
+                      <NuxtLink
+                        to="/our-capabilities/instruments/quasi-equity"
+                        class="block transition hover:text-[#0a5264]"
+                        @click="closeMobileMenu"
+                      >
+                        Quasi Equity
+                      </NuxtLink>
+                      <NuxtLink
+                        to="/our-capabilities/instruments/private-credit"
+                        class="block transition hover:text-[#0a5264]"
+                        @click="closeMobileMenu"
+                      >
+                        Private Credit
+                      </NuxtLink>
+                    </div>
+                  </div>
+
                   <NuxtLink
-                    to="/our-capabilities/instruments"
-                    class="block font-medium transition hover:text-[#0a5264]"
+                    to="/fund-management"
+                    class="block transition hover:text-[#0a5264]"
                     @click="closeMobileMenu"
                   >
-                    Instruments
+                    Fund Management
                   </NuxtLink>
-
-                  <div class="space-y-3 border-l border-[#d6dfdf] pl-4 text-[#4a5d61]">
-                    <NuxtLink
-                      to="/our-capabilities/instruments/equity"
-                      class="block transition hover:text-[#0a5264]"
-                      @click="closeMobileMenu"
-                    >
-                      Equity
-                    </NuxtLink>
-                    <NuxtLink
-                      to="/our-capabilities/instruments/quasi-equity"
-                      class="block transition hover:text-[#0a5264]"
-                      @click="closeMobileMenu"
-                    >
-                      Quasi Equity
-                    </NuxtLink>
-                    <NuxtLink
-                      to="/our-capabilities/instruments/private-credit"
-                      class="block transition hover:text-[#0a5264]"
-                      @click="closeMobileMenu"
-                    >
-                      Private Credit
-                    </NuxtLink>
-                  </div>
                 </div>
-
-                <NuxtLink
-                  to="/fund-management"
-                  class="block transition hover:text-[#0a5264]"
-                  @click="closeMobileMenu"
-                >
-                  Fund Management
-                </NuxtLink>
               </div>
-            </Transition>
+            </div>
           </div>
 
           <NuxtLink
@@ -548,6 +548,18 @@ const closeMobileMenu = () => {
   isMobileMenuOpen.value = false
   isMobileAboutOpen.value = false
   isMobileCapabilitiesOpen.value = false
+}
+
+const toggleMobileAbout = () => {
+  const shouldOpen = !isMobileAboutOpen.value
+  isMobileAboutOpen.value = shouldOpen
+  isMobileCapabilitiesOpen.value = false
+}
+
+const toggleMobileCapabilities = () => {
+  const shouldOpen = !isMobileCapabilitiesOpen.value
+  isMobileCapabilitiesOpen.value = shouldOpen
+  isMobileAboutOpen.value = false
 }
 
 const closeDesktopDropdowns = () => {
