@@ -417,7 +417,7 @@ Executed by INFRAGORA Advisory
         <article
           v-for="(post, postIndex) in newsCarouselPosts"
           :key="post.carouselId"
-          class="portfolio-focus-card group w-[min(82vw,380px)] flex-shrink-0"
+          class="portfolio-focus-card group w-[min(82vw,380px)] flex-shrink-0 transition duration-500 ease-[cubic-bezier(.16,1,.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_34px_rgba(0,0,0,0.09)]"
           :style="{ '--portfolio-focus-delay': `${140 + (postIndex % posts.length) * 90}ms` }"
         >
           <div class="relative overflow-hidden bg-white">
@@ -427,17 +427,17 @@ Executed by INFRAGORA Advisory
               <img
                 :src="post.image"
                 :alt="post.title"
-                class="h-[420px] w-full object-cover transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105 sm:h-[460px]"
+                class="h-[420px] w-full object-cover transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.025] sm:h-[460px]"
               />
             </div>
 
             <!-- Bottom Fade -->
             <div
-              class="absolute inset-x-0 bottom-0 h-[190px] bg-gradient-to-t from-white via-white/85 to-transparent"
+              class="absolute inset-x-0 bottom-0 h-[190px] bg-gradient-to-t from-white via-white/85 to-transparent transition duration-500 group-hover:via-white/90"
             />
 
             <!-- Content -->
-            <div class="absolute bottom-0 left-0 right-0 p-5">
+            <div class="absolute bottom-0 left-0 right-0 p-5 transition duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:-translate-y-0.5">
               <h3 class="max-w-[260px] text-[20px] font-medium leading-[1.05]">
                 {{ post.title }}
               </h3>
@@ -547,7 +547,7 @@ Executed by INFRAGORA Advisory
         <article
           v-for="(post, postIndex) in newsCarouselPosts2"
           :key="post.carouselId"
-          class="news-card group w-[min(82vw,380px)] flex-shrink-0"
+          class="news-card group w-[min(82vw,380px)] flex-shrink-0 transition duration-500 ease-[cubic-bezier(.16,1,.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_34px_rgba(0,0,0,0.09)]"
           :style="{ '--news-card-delay': `${160 + (postIndex % posts.length) * 85}ms` }"
         >
           <div class="relative overflow-hidden bg-white">
@@ -557,17 +557,17 @@ Executed by INFRAGORA Advisory
               <img
                 :src="post.image"
                 :alt="post.title"
-                class="h-[420px] w-full object-cover transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-105 sm:h-[460px]"
+                class="h-[420px] w-full object-cover transition duration-700 ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.025] sm:h-[460px]"
               />
             </div>
 
             <!-- Bottom Fade -->
             <div
-              class="absolute inset-x-0 bottom-0 h-[190px] bg-gradient-to-t from-white via-white/85 to-transparent"
+              class="absolute inset-x-0 bottom-0 h-[190px] bg-gradient-to-t from-white via-white/85 to-transparent transition duration-500 group-hover:via-white/90"
             />
 
             <!-- Content -->
-            <div class="absolute bottom-0 left-0 right-0 p-5">
+            <div class="absolute bottom-0 left-0 right-0 p-5 transition duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:-translate-y-0.5">
               <h3 class="max-w-[260px] text-[20px] font-medium leading-[1.05]">
                 {{ post.title }}
               </h3>
