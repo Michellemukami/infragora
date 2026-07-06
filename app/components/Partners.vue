@@ -81,11 +81,11 @@
             Investor Partners
           </h2>
 
-          <div class="mx-auto mt-9 grid max-w-[420px] grid-cols-2 items-center justify-items-center gap-x-5 gap-y-7 md:mt-16 md:max-w-[870px] md:grid-cols-5 md:gap-x-12 md:gap-y-[30px] lg:gap-x-[70px]">
+          <div class="mx-auto mt-9 grid max-w-[420px] grid-cols-2 items-center justify-items-center gap-x-7 gap-y-7 md:mt-16 md:max-w-[1040px] md:grid-cols-6 md:gap-x-9 md:gap-y-9 lg:gap-x-12">
             <div
               v-for="(partner, index) in investorPartners"
               :key="partner.id"
-              class="flex h-[64px] w-full translate-y-6 items-center justify-center opacity-0 transition-all duration-700 ease-out md:h-14"
+              class="flex h-[64px] w-full translate-y-6 items-center justify-center opacity-0 transition-all duration-700 ease-out md:h-[62px]"
               :class="partner.positionClass"
               data-partner-reveal
               :style="{ transitionDelay: `${index * 55}ms` }"
@@ -93,7 +93,7 @@
               <img
                 :src="partner.logo"
                 :alt="partner.name"
-                class="block h-auto max-h-full object-contain"
+                class="block h-auto max-h-full max-w-full object-contain"
                 :class="partner.logoClass"
               />
             </div>
@@ -143,6 +143,10 @@ import afcLogo from '~/assets/images/home/partners/afc.png'
 import africa50Logo from '~/assets/images/home/partners/Logo_Afrikanische.png'
 import aiimLogo from '~/assets/images/home/partners/aiim.jpg'
 import dfcLogo from '~/assets/images/home/partners/dfc.png'
+import biiLogo from '~/assets/images/home/partners/bii.png'
+import ebrdLogo from '~/assets/images/home/partners/ebrd.png'
+import Development_Bank_Logo from '~/assets/images/home/partners/Development_Bank.png'
+import tolaramLogo from '~/assets/images/home/partners/tolaram.png'
 import elsewedyLogo from '~/assets/images/home/partners/elsewedy.png'
 import evolutionLogo from '~/assets/images/home/partners/evolution.png'
 import eximLogo from '~/assets/images/home/partners/exim.png'
@@ -270,13 +274,18 @@ const executionPartners: ExecutionPartner[] = [
 ]
 
 const investorPartners: LogoPartner[] = [
-  { id: 'africa50', name: 'Africa50', logo: africa50Logo, logoClass: 'w-[50px] md:w-[68px]' },
-  { id: 'ustda', name: 'USTDA', logo: ustdaLogo, logoClass: 'w-[112px] md:w-[148px]' },
-  { id: 'dfc-primary', name: 'U.S. International Development Finance Corporation', logo: dfcLogo, logoClass: 'w-[142px] md:w-[188px]' },
-  { id: 'exim', name: 'EXIM Bank', logo: eximLogo, logoClass: 'w-[78px] md:w-[100px]' },
-  { id: 'ifc', name: 'International Finance Corporation', logo: ifcLogo, logoClass: 'w-[172px] md:w-[224px]' },
-  { id: 'dfc-secondary', name: 'U.S. International Development Finance Corporation', logo: dfcLogo, logoClass: 'w-[142px] md:w-[188px]', positionClass: 'md:col-start-3' },
-  { id: 'afc', name: 'Africa Finance Corporation', logo: afcLogo, logoClass: 'w-[160px] md:w-[212px]', positionClass: 'md:col-start-4' },
+  { id: 'ustda', name: 'USTDA', logo: ustdaLogo, logoClass: 'w-[112px] md:w-[118px]' },
+  { id: 'dfc-primary', name: 'U.S. International Development Finance Corporation', logo: dfcLogo, logoClass: 'w-[142px] md:w-[150px]' },
+  { id: 'sasol', name: 'Sasol', logo: sasolLogo, logoClass: 'w-[88px] md:w-[94px]' },
+  { id: 'seacom', name: 'SEACOM', logo: seacomLogo, logoClass: 'w-[98px] md:w-[104px]' },
+  { id: 'exim', name: 'EXIM Bank', logo: eximLogo, logoClass: 'w-[78px] md:w-[84px]' },
+  { id: 'ifc', name: 'International Finance Corporation', logo: ifcLogo, logoClass: 'w-[172px] md:w-[178px]' },
+  { id: 'africa50', name: 'Africa50', logo: africa50Logo, logoClass: 'w-[50px] md:w-[58px]' },
+  { id: 'tolaram', name: 'Tolaram Group', logo: tolaramLogo, logoClass: 'w-[90px] md:w-[112px]' },
+  { id: 'development-bank', name: 'Development Bank of Southern Africa', logo: Development_Bank_Logo, logoClass: 'w-[90px] md:w-[112px]' },
+  { id: 'ebrd', name: 'European Bank for Reconstruction and Development', logo: ebrdLogo, logoClass: 'w-[90px] md:w-[200px]' },
+  { id: 'bii', name: 'British International Investment', logo: biiLogo, logoClass: 'w-[90px] md:w-[112px]' },
+  { id: 'afc', name: 'Africa Finance Corporation', logo: afcLogo, logoClass: 'w-[160px] md:w-[166px]' },
 ]
 
 const institutionalAllies: LogoPartner[] = [

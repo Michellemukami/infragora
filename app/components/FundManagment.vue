@@ -787,15 +787,31 @@ Capabilities
         <div class="bridge-three-overlay absolute inset-0 bg-[#071822]/45"></div>
 
         <!-- Content -->
-        <div class="relative flex h-full p-8 lg:px-20">
-          <h2
-            class="bridge-three-title max-w-[170px] text-white text-[34px] lg:text-[44px] font-light leading-[1.05] tracking-[-0.02em]"
-          >
-            New
-            <br />
-            Build
-          </h2>
+        <div
+          class="relative z-10 flex h-full flex-col justify-between p-8 lg:px-20 text-white"
+        >
+          <div>
+            <h2
+              class="bridge-three-title max-w-[170px] text-[34px] lg:text-[44px] font-light leading-[1.05] tracking-[-0.02em]"
+            >
+              Green Energy Platform
+            </h2>
+          </div>
+
+          <div class="bridge-three-metric">
+            <p
+              class="mb-4 text-[11px] uppercase tracking-[2px] text-white/60"
+            >
+              Target Investment
+            </p>
+
+            <div class="flex items-end gap-1">
+              <span class="text-[86px] font-semibold leading-none">$9</span>
+              <span class="pb-4 text-[34px] font-medium">b</span>
+            </div>
+          </div>
         </div>
+        
       </div>
 
       <!-- Right Card -->
@@ -806,7 +822,7 @@ Capabilities
         <h3
           class="text-white text-[22px] lg:text-[30px] font-normal mb-12"
         >
-          Afridata Nigeria
+          INFRAGORA -SASOL
         </h3>
 
         <!-- Size -->
@@ -819,29 +835,14 @@ Capabilities
             <span
               class="text-white text-[24px] lg:text-[34px] normal-case tracking-normal"
             >
-              60% - 70%
+               - 
             </span>
           </div>
 
           <div class="mt-3 h-px bg-white/20"></div>
         </div>
 
-        <!-- Target -->
-        <div>
-          <div
-            class="flex justify-between items-end text-[10px] uppercase tracking-[1.8px] text-white/45"
-          >
-            <span>Target Investment</span>
-
-            <span
-              class="text-white text-[22px] lg:text-[32px] normal-case tracking-normal"
-            >
-              $0.12b - 0.14b
-            </span>
-          </div>
-
-          <div class="mt-3 h-px bg-white/20"></div>
-        </div>
+       
       </div>
     </div>
   </section>
@@ -1439,7 +1440,8 @@ const remainingMarketBenefits = computed(() => marketBenefits.slice(1))
 .bridge-two-metric,
 .bridge-three-media,
 .bridge-three-card,
-.bridge-three-title {
+.bridge-three-title,
+.bridge-three-metric {
   opacity: 0;
   will-change: opacity, transform, filter;
 }
@@ -1484,7 +1486,8 @@ const remainingMarketBenefits = computed(() => marketBenefits.slice(1))
 }
 
 .bridge-one-metric,
-.bridge-two-metric {
+.bridge-two-metric,
+.bridge-three-metric {
   filter: blur(8px);
   transform: translate3d(0, 38px, 0);
   transition:
@@ -1530,7 +1533,8 @@ const remainingMarketBenefits = computed(() => marketBenefits.slice(1))
 .bridge-two-section.is-visible .bridge-two-metric,
 .bridge-three-section.is-visible .bridge-three-media,
 .bridge-three-section.is-visible .bridge-three-card,
-.bridge-three-section.is-visible .bridge-three-title {
+.bridge-three-section.is-visible .bridge-three-title,
+.bridge-three-section.is-visible .bridge-three-metric {
   opacity: 1;
   filter: blur(0);
   transform: translate3d(0, 0, 0) scale(1);
@@ -1598,6 +1602,7 @@ const remainingMarketBenefits = computed(() => marketBenefits.slice(1))
   .bridge-three-media,
   .bridge-three-card,
   .bridge-three-title,
+  .bridge-three-metric,
   .bridge-three-image,
   .bridge-three-overlay,
   .bridge-three-card h3,
