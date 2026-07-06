@@ -8,7 +8,12 @@
       </NuxtLink>
 
       <nav class="hidden items-center gap-10 lg:flex">
-        <NuxtLink to="/" class="text-[11px] font-medium uppercase tracking-[0.08em]">
+        <NuxtLink
+          to="/"
+          class="text-[11px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 hover:text-[#1296ad]"
+          :class="navLinkClass('/')"
+          :aria-current="isActivePath('/') ? 'page' : undefined"
+        >
           Home
         </NuxtLink>
 
@@ -20,7 +25,8 @@
         >
           <button
             type="button"
-            class="flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.08em] transition-opacity duration-200 hover:opacity-65"
+            class="flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 hover:text-[#1296ad]"
+            :class="isAboutActive ? activeNavClass : inactiveNavClass"
             aria-haspopup="true"
             :aria-expanded="isAboutOpen"
             @click="openAboutDropdown"
@@ -57,7 +63,9 @@
             >
               <NuxtLink
                 to="/about-us"
-                class="block text-[13px] font-semibold leading-none tracking-[-0.01em] text-[#003f50] transition-opacity hover:opacity-60"
+                class="block text-[13px] font-semibold leading-none tracking-[-0.01em] transition-colors hover:text-[#1296ad]"
+                :class="navLinkClass('/about-us')"
+                :aria-current="isActivePath('/about-us') ? 'page' : undefined"
                 @click="isAboutOpen = false"
               >
                 About Us
@@ -67,7 +75,9 @@
                 <div>
                   <NuxtLink
                     to="/governance"
-                    class="block text-[13px] font-semibold leading-none tracking-[-0.01em] text-[#003f50] transition-opacity hover:opacity-60"
+                    class="block text-[13px] font-semibold leading-none tracking-[-0.01em] transition-colors hover:text-[#1296ad]"
+                    :class="navLinkClass('/governance')"
+                    :aria-current="isActivePath('/governance') ? 'page' : undefined"
                     @click="isAboutOpen = false"
                   >
                     Governance
@@ -77,7 +87,9 @@
 
                 <NuxtLink
                   to="/partners"
-                  class="block text-[13px] font-semibold leading-none tracking-[-0.01em] text-[#003f50] transition-opacity hover:opacity-60"
+                  class="block text-[13px] font-semibold leading-none tracking-[-0.01em] transition-colors hover:text-[#1296ad]"
+                  :class="navLinkClass('/partners')"
+                  :aria-current="isActivePath('/partners') ? 'page' : undefined"
                   @click="isAboutOpen = false"
                 >
                   Partners &amp; Allies
@@ -95,7 +107,8 @@
         >
           <button
             type="button"
-            class="flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.08em] transition-opacity duration-200 hover:opacity-65"
+            class="flex items-center gap-1 text-[11px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 hover:text-[#1296ad]"
+            :class="isCapabilitiesActive ? activeNavClass : inactiveNavClass"
             aria-haspopup="true"
             :aria-expanded="isCapabilitiesOpen"
             @click="openCapabilitiesDropdown"
@@ -132,7 +145,9 @@
             >
               <NuxtLink
                 to="/our-capabilities"
-                class="block text-[13px] font-semibold leading-none tracking-[-0.01em] text-[#003f50] transition-opacity hover:opacity-60"
+                class="block text-[13px] font-semibold leading-none tracking-[-0.01em] transition-colors hover:text-[#1296ad]"
+                :class="navLinkClass('/our-capabilities')"
+                :aria-current="isActivePath('/our-capabilities') ? 'page' : undefined"
                 @click="isCapabilitiesOpen = false"
               >
                 Our Capabilities
@@ -141,7 +156,9 @@
               <div class="mt-5 space-y-4 text-[12px] leading-none text-[#102225]">
                 <NuxtLink
                   to="/our-capabilities/advisory"
-                  class="block font-medium transition-opacity hover:opacity-60"
+                  class="block font-medium transition-colors hover:text-[#1296ad]"
+                  :class="navLinkClass('/our-capabilities/advisory')"
+                  :aria-current="isActivePath('/our-capabilities/advisory') ? 'page' : undefined"
                   @click="isCapabilitiesOpen = false"
                 >
                   Advisory
@@ -150,7 +167,9 @@
                 <div>
                   <NuxtLink
                     to="/our-capabilities/investment"
-                    class="block font-medium transition-opacity hover:opacity-60"
+                    class="block font-medium transition-colors hover:text-[#1296ad]"
+                    :class="navLinkClass('/our-capabilities/investment')"
+                    :aria-current="isActivePath('/our-capabilities/investment') ? 'page' : undefined"
                     @click="isCapabilitiesOpen = false"
                   >
                     Investment
@@ -159,14 +178,18 @@
                   <div class="mt-3 space-y-3 border-l border-[#d6dfdf] pl-4 text-[#4a5d61]">
                      <NuxtLink
                       to="/our-capabilities/investment/private-investment"
-                      class="block transition-opacity hover:opacity-60"
+                      class="block transition-colors hover:text-[#1296ad]"
+                      :class="navLinkClass('/our-capabilities/investment/private-investment')"
+                      :aria-current="isActivePath('/our-capabilities/investment/private-investment') ? 'page' : undefined"
                       @click="isCapabilitiesOpen = false"
                     >
                       Private Investments
                     </NuxtLink>
                     <NuxtLink
                       to="/our-capabilities/investment/public-investment"
-                      class="block transition-opacity hover:opacity-60"
+                      class="block transition-colors hover:text-[#1296ad]"
+                      :class="navLinkClass('/our-capabilities/investment/public-investment')"
+                      :aria-current="isActivePath('/our-capabilities/investment/public-investment') ? 'page' : undefined"
                       @click="isCapabilitiesOpen = false"
                     >
                       Public Investments
@@ -178,30 +201,38 @@
                 <div>
                   <NuxtLink
                     to="/our-capabilities/instruments"
-                    class="block font-medium transition-opacity hover:opacity-60"
+                    class="block font-medium transition-colors hover:text-[#1296ad]"
+                    :class="navLinkClass('/our-capabilities/instruments')"
+                    :aria-current="isActivePath('/our-capabilities/instruments') ? 'page' : undefined"
                     @click="isCapabilitiesOpen = false"
                   >
                     Instruments
                   </NuxtLink>
 
                   <div class="mt-3 space-y-3 border-l border-[#d6dfdf] pl-4 text-[#4a5d61]">
-                    <NuxtLink
-                      to="/our-capabilities/instruments/equity"
-                      class="block transition-opacity hover:opacity-60"
-                      @click="isCapabilitiesOpen = false"
-                    >
+                      <NuxtLink
+                        to="/our-capabilities/instruments/equity"
+                        class="block transition-colors hover:text-[#1296ad]"
+                        :class="navLinkClass('/our-capabilities/instruments/equity')"
+                        :aria-current="isActivePath('/our-capabilities/instruments/equity') ? 'page' : undefined"
+                        @click="isCapabilitiesOpen = false"
+                      >
                       Equity
                     </NuxtLink>
                     <NuxtLink
                       to="/our-capabilities/instruments/quasi-equity"
-                      class="block transition-opacity hover:opacity-60"
+                      class="block transition-colors hover:text-[#1296ad]"
+                      :class="navLinkClass('/our-capabilities/instruments/quasi-equity')"
+                      :aria-current="isActivePath('/our-capabilities/instruments/quasi-equity') ? 'page' : undefined"
                       @click="isCapabilitiesOpen = false"
                     >
                       Quasi Equity
                     </NuxtLink>
                     <NuxtLink
                       to="/our-capabilities/instruments/private-credit"
-                      class="block transition-opacity hover:opacity-60"
+                      class="block transition-colors hover:text-[#1296ad]"
+                      :class="navLinkClass('/our-capabilities/instruments/private-credit')"
+                      :aria-current="isActivePath('/our-capabilities/instruments/private-credit') ? 'page' : undefined"
                       @click="isCapabilitiesOpen = false"
                     >
                       Private Credit
@@ -211,7 +242,9 @@
 
                 <NuxtLink
                   to="/fund-management"
-                  class="block font-medium transition-opacity hover:opacity-60"
+                  class="block font-medium transition-colors hover:text-[#1296ad]"
+                  :class="navLinkClass('/fund-management')"
+                  :aria-current="isActivePath('/fund-management') ? 'page' : undefined"
                   @click="isCapabilitiesOpen = false"
                 >
                   Fund Management
@@ -223,34 +256,42 @@
 
         <NuxtLink
           to="/portfolio"
-          class="text-[11px] font-medium uppercase tracking-[0.08em]"
+          class="text-[11px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 hover:text-[#1296ad]"
+          :class="navLinkClass('/portfolio')"
+          :aria-current="isActivePath('/portfolio') ? 'page' : undefined"
         >
           Portfolio
         </NuxtLink>
 
         <NuxtLink
           to="/knowledge-hub"
-          class="text-[11px] font-medium uppercase tracking-[0.08em]"
+          class="text-[11px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 hover:text-[#1296ad]"
+          :class="navLinkClass('/knowledge-hub')"
+          :aria-current="isActivePath('/knowledge-hub') ? 'page' : undefined"
             >
           Knowledge Hub
         </NuxtLink>
         <NuxtLink
           to="/news"
-          class="text-[11px] font-medium uppercase tracking-[0.08em]"
+          class="text-[11px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 hover:text-[#1296ad]"
+          :class="navLinkClass('/news')"
+          :aria-current="isActivePath('/news') ? 'page' : undefined"
             >
           News
         </NuxtLink>
 
         <NuxtLink
           to="/contact-us"
-          class="text-[11px] font-medium uppercase tracking-[0.08em]"
+          class="text-[11px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 hover:text-[#1296ad]"
+          :class="navLinkClass('/contact-us')"
+          :aria-current="isActivePath('/contact-us') ? 'page' : undefined"
         >
           Contact Us
         </NuxtLink>
       </nav>
 
       <button
-        class="hidden h-[40px] border border-[#d6dfdf] px-5 text-[11px] font-medium uppercase tracking-[0.08em] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#0a5264] hover:bg-[#0a5264] hover:text-white hover:shadow-[0_12px_28px_rgba(10,82,100,0.18)] active:translate-y-0 lg:block"
+        class="hidden h-[40px] border border-[#d6dfdf] px-5 text-[11px] font-medium uppercase tracking-[0.08em] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#1296ad] hover:bg-[#1296ad] hover:text-white hover:shadow-[0_12px_28px_rgba(18,150,173,0.18)] active:translate-y-0 lg:block"
       >
         LP Login
       </button>
@@ -311,7 +352,9 @@
             v-for="link in primaryMobileLinks"
             :key="link.to"
             :to="link.to"
-            class="border-b border-black/10 py-5 text-[24px] font-medium leading-none tracking-[-0.035em] transition duration-200 hover:pl-2 hover:text-[#0a5264]"
+            class="border-b border-black/10 py-5 text-[24px] font-medium leading-none tracking-[-0.035em] transition duration-200 hover:pl-2 hover:text-[#1296ad]"
+            :class="navLinkClass(link.to)"
+            :aria-current="isActivePath(link.to) ? 'page' : undefined"
             @click="closeMobileMenu"
           >
             {{ link.label }}
@@ -320,14 +363,15 @@
           <div class="border-b border-black/10 py-5">
             <button
               type="button"
-              class="flex w-full items-center justify-between text-left text-[24px] font-medium leading-none tracking-[-0.035em] transition duration-200 hover:text-[#0a5264]"
+              class="flex w-full items-center justify-between text-left text-[24px] font-medium leading-none tracking-[-0.035em] transition duration-200 hover:text-[#1296ad]"
+              :class="isAboutActive ? activeNavClass : inactiveNavClass"
               :aria-expanded="isMobileAboutOpen"
               @click="toggleMobileAbout"
             >
               <span>About Us</span>
               <span
                 class="flex h-8 w-8 items-center justify-center rounded-full border border-black/10 text-[18px] transition duration-300"
-                :class="isMobileAboutOpen ? 'rotate-45 bg-[#0a5264] text-white' : ''"
+                :class="isMobileAboutOpen ? 'rotate-45 bg-[#1296ad] text-white' : ''"
               >
                 +
               </span>
@@ -347,7 +391,9 @@
                 >
                   <NuxtLink
                     to="/about-us"
-                    class="block font-semibold text-[#0a5264]"
+                    class="block font-semibold transition-colors hover:text-[#1296ad]"
+                    :class="navLinkClass('/about-us')"
+                    :aria-current="isActivePath('/about-us') ? 'page' : undefined"
                     @click="closeMobileMenu"
                   >
                     About Us
@@ -356,7 +402,9 @@
                   <div class="space-y-3">
                     <NuxtLink
                       to="/governance"
-                      class="block font-medium transition hover:text-[#0a5264]"
+                      class="block font-medium transition hover:text-[#1296ad]"
+                      :class="navLinkClass('/governance')"
+                      :aria-current="isActivePath('/governance') ? 'page' : undefined"
                       @click="closeMobileMenu"
                     >
                       Governance
@@ -365,7 +413,9 @@
 
                   <NuxtLink
                     to="/partners"
-                    class="block transition hover:text-[#0a5264]"
+                    class="block transition hover:text-[#1296ad]"
+                    :class="navLinkClass('/partners')"
+                    :aria-current="isActivePath('/partners') ? 'page' : undefined"
                     @click="closeMobileMenu"
                   >
                     Partners &amp; Allies
@@ -378,14 +428,15 @@
           <div class="border-b border-black/10 py-5">
             <button
               type="button"
-              class="flex w-full items-center justify-between text-left text-[24px] font-medium leading-none tracking-[-0.035em] transition duration-200 hover:text-[#0a5264]"
+              class="flex w-full items-center justify-between text-left text-[24px] font-medium leading-none tracking-[-0.035em] transition duration-200 hover:text-[#1296ad]"
+              :class="isCapabilitiesActive ? activeNavClass : inactiveNavClass"
               :aria-expanded="isMobileCapabilitiesOpen"
               @click="toggleMobileCapabilities"
             >
               <span>Capabilities</span>
               <span
                 class="flex h-8 w-8 items-center justify-center rounded-full border border-black/10 text-[18px] transition duration-300"
-                :class="isMobileCapabilitiesOpen ? 'rotate-45 bg-[#0a5264] text-white' : ''"
+                :class="isMobileCapabilitiesOpen ? 'rotate-45 bg-[#1296ad] text-white' : ''"
               >
                 +
               </span>
@@ -405,7 +456,9 @@
                 >
                   <NuxtLink
                     to="/our-capabilities"
-                    class="block font-semibold text-[#0a5264]"
+                    class="block font-semibold transition-colors hover:text-[#1296ad]"
+                    :class="navLinkClass('/our-capabilities')"
+                    :aria-current="isActivePath('/our-capabilities') ? 'page' : undefined"
                     @click="closeMobileMenu"
                   >
                     Our Capabilities
@@ -413,7 +466,9 @@
 
                   <NuxtLink
                     to="/our-capabilities/advisory"
-                    class="block transition hover:text-[#0a5264]"
+                    class="block transition hover:text-[#1296ad]"
+                    :class="navLinkClass('/our-capabilities/advisory')"
+                    :aria-current="isActivePath('/our-capabilities/advisory') ? 'page' : undefined"
                     @click="closeMobileMenu"
                   >
                     Advisory
@@ -422,7 +477,9 @@
                   <div class="space-y-3">
                     <NuxtLink
                       to="/our-capabilities/investment"
-                      class="block font-medium transition hover:text-[#0a5264]"
+                      class="block font-medium transition hover:text-[#1296ad]"
+                      :class="navLinkClass('/our-capabilities/investment')"
+                      :aria-current="isActivePath('/our-capabilities/investment') ? 'page' : undefined"
                       @click="closeMobileMenu"
                     >
                       Investment
@@ -431,14 +488,18 @@
                     <div class="space-y-3 border-l border-[#d6dfdf] pl-4 text-[#4a5d61]">
                           <NuxtLink
                         to="/our-capabilities/investment/private-investment"
-                        class="block transition hover:text-[#0a5264]"
+                        class="block transition hover:text-[#1296ad]"
+                        :class="navLinkClass('/our-capabilities/investment/private-investment')"
+                        :aria-current="isActivePath('/our-capabilities/investment/private-investment') ? 'page' : undefined"
                         @click="closeMobileMenu"
                       >
                         Private Investments
                       </NuxtLink>
                       <NuxtLink
                         to="/our-capabilities/investment/public-investment"
-                        class="block transition hover:text-[#0a5264]"
+                        class="block transition hover:text-[#1296ad]"
+                        :class="navLinkClass('/our-capabilities/investment/public-investment')"
+                        :aria-current="isActivePath('/our-capabilities/investment/public-investment') ? 'page' : undefined"
                         @click="closeMobileMenu"
                       >
                         Public Investments
@@ -450,7 +511,9 @@
                   <div class="space-y-3">
                     <NuxtLink
                       to="/our-capabilities/instruments"
-                      class="block font-medium transition hover:text-[#0a5264]"
+                      class="block font-medium transition hover:text-[#1296ad]"
+                      :class="navLinkClass('/our-capabilities/instruments')"
+                      :aria-current="isActivePath('/our-capabilities/instruments') ? 'page' : undefined"
                       @click="closeMobileMenu"
                     >
                       Instruments
@@ -459,21 +522,27 @@
                     <div class="space-y-3 border-l border-[#d6dfdf] pl-4 text-[#4a5d61]">
                       <NuxtLink
                         to="/our-capabilities/instruments/equity"
-                        class="block transition hover:text-[#0a5264]"
+                        class="block transition hover:text-[#1296ad]"
+                        :class="navLinkClass('/our-capabilities/instruments/equity')"
+                        :aria-current="isActivePath('/our-capabilities/instruments/equity') ? 'page' : undefined"
                         @click="closeMobileMenu"
                       >
                         Equity
                       </NuxtLink>
                       <NuxtLink
                         to="/our-capabilities/instruments/quasi-equity"
-                        class="block transition hover:text-[#0a5264]"
+                        class="block transition hover:text-[#1296ad]"
+                        :class="navLinkClass('/our-capabilities/instruments/quasi-equity')"
+                        :aria-current="isActivePath('/our-capabilities/instruments/quasi-equity') ? 'page' : undefined"
                         @click="closeMobileMenu"
                       >
                         Quasi Equity
                       </NuxtLink>
                       <NuxtLink
                         to="/our-capabilities/instruments/private-credit"
-                        class="block transition hover:text-[#0a5264]"
+                        class="block transition hover:text-[#1296ad]"
+                        :class="navLinkClass('/our-capabilities/instruments/private-credit')"
+                        :aria-current="isActivePath('/our-capabilities/instruments/private-credit') ? 'page' : undefined"
                         @click="closeMobileMenu"
                       >
                         Private Credit
@@ -483,7 +552,9 @@
 
                   <NuxtLink
                     to="/fund-management"
-                    class="block transition hover:text-[#0a5264]"
+                    class="block transition hover:text-[#1296ad]"
+                    :class="navLinkClass('/fund-management')"
+                    :aria-current="isActivePath('/fund-management') ? 'page' : undefined"
                     @click="closeMobileMenu"
                   >
                     Fund Management
@@ -497,7 +568,9 @@
             v-for="link in secondaryMobileLinks"
             :key="link.label"
             :to="link.to"
-            class="border-b border-black/10 py-5 text-[24px] font-medium leading-none tracking-[-0.035em] transition duration-200 hover:pl-2 hover:text-[#0a5264]"
+            class="border-b border-black/10 py-5 text-[24px] font-medium leading-none tracking-[-0.035em] transition duration-200 hover:pl-2 hover:text-[#1296ad]"
+            :class="navLinkClass(link.to)"
+            :aria-current="isActivePath(link.to) ? 'page' : undefined"
             @click="closeMobileMenu"
           >
             {{ link.label }}
@@ -505,7 +578,7 @@
         </nav>
 
         <button
-          class="mt-8 flex h-12 w-full items-center justify-center border border-[#0a5264] bg-[#0a5264] text-[11px] font-semibold uppercase tracking-[0.1em] text-white transition duration-300 hover:bg-transparent hover:text-[#0a5264]"
+          class="mt-8 flex h-12 w-full items-center justify-center border border-[#1296ad] bg-[#1296ad] text-[11px] font-semibold uppercase tracking-[0.1em] text-white transition duration-300 hover:bg-transparent hover:text-[#1296ad]"
         >
           LP Login
         </button>
@@ -525,6 +598,16 @@ const capabilitiesDropdownRef = ref<HTMLElement | null>(null)
 let aboutCloseTimeout: ReturnType<typeof setTimeout> | undefined
 let capabilitiesCloseTimeout: ReturnType<typeof setTimeout> | undefined
 const route = useRoute()
+const activeNavClass = 'text-[#1296ad]'
+const inactiveNavClass = 'text-[#102225]'
+
+const isActivePath = (path: string) => route.path === path
+const navLinkClass = (path: string) => (isActivePath(path) ? activeNavClass : inactiveNavClass)
+
+const isAboutActive = computed(() => ['/about-us', '/governance', '/partners'].includes(route.path))
+const isCapabilitiesActive = computed(
+  () => route.path.startsWith('/our-capabilities') || route.path === '/fund-management',
+)
 
 const primaryMobileLinks = [
   { label: 'Home', to: '/' },
