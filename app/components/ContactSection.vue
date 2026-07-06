@@ -209,6 +209,8 @@
               required
             ></textarea>
 
+            <input type="hidden" name="source" value="afridata" />
+
             <button
               type="submit"
               :disabled="isSubmitting"
@@ -366,6 +368,7 @@ const submitForm = async () => {
           organisation: form.organisation,
           job_title: form.jobTitle,
           message: form.message,
+          source: 'afridata',
         },
       }),
     })
