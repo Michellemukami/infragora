@@ -798,18 +798,7 @@ Capabilities
             </h2>
           </div>
 
-          <div class="bridge-three-metric">
-            <p
-              class="mb-4 text-[11px] uppercase tracking-[2px] text-white/60"
-            >
-              Target Investment
-            </p>
-
-            <div class="flex items-end gap-1">
-              <span class="text-[86px] font-semibold leading-none">$9</span>
-              <span class="pb-4 text-[34px] font-medium">b</span>
-            </div>
-          </div>
+        
         </div>
         
       </div>
@@ -842,7 +831,22 @@ Capabilities
           <div class="mt-3 h-px bg-white/20"></div>
         </div>
 
-       
+        <!-- Target -->
+        <div>
+          <div
+            class="flex justify-between items-end text-[10px] uppercase tracking-[1.8px] text-white/45"
+          >
+            <span>Target Investment</span>
+
+            <span
+              class="text-white text-[22px] lg:text-[32px] normal-case tracking-normal"
+            >
+              $9b
+            </span>
+          </div>
+
+          <div class="mt-3 h-px bg-white/20"></div>
+        </div>
       </div>
     </div>
   </section>

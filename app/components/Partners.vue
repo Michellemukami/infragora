@@ -140,7 +140,7 @@ import moodysLogo from '~/assets/images/home/partners/moody.png'
 import riscuraLogo from '~/assets/images/home/partners/Riscura.png'
 import actisLogo from '~/assets/images/home/partners/Actis.png'
 import afcLogo from '~/assets/images/home/partners/afc.png'
-import africa50Logo from '~/assets/images/home/partners/Logo_Afrikanische.png'
+import afrexiLogo from '~/assets/images/home/partners/afrexi.jpg'
 import aiimLogo from '~/assets/images/home/partners/aiim.jpg'
 import dfcLogo from '~/assets/images/home/partners/dfc.png'
 import biiLogo from '~/assets/images/home/partners/bii.png'
@@ -280,7 +280,7 @@ const investorPartners: LogoPartner[] = [
   { id: 'seacom', name: 'SEACOM', logo: seacomLogo, logoClass: 'w-[98px] md:w-[104px]' },
   { id: 'exim', name: 'EXIM Bank', logo: eximLogo, logoClass: 'w-[78px] md:w-[84px]' },
   { id: 'ifc', name: 'International Finance Corporation', logo: ifcLogo, logoClass: 'w-[172px] md:w-[178px]' },
-  { id: 'africa50', name: 'Africa50', logo: africa50Logo, logoClass: 'w-[50px] md:w-[115px]' },
+  { id: 'afrexi', name: 'afrexi', logo: afrexiLogo, logoClass: 'w-[82px] md:w-[240px] lg:w-[270px]', positionClass: 'md:!h-[88px] lg:!h-[96px]' },
   { id: 'tolaram', name: 'Tolaram Group', logo: tolaramLogo, logoClass: 'w-[90px] md:w-[112px]' },
   { id: 'development-bank', name: 'Development Bank of Southern Africa', logo: Development_Bank_Logo, logoClass: 'w-[90px] md:w-[112px]' },
   { id: 'ebrd', name: 'European Bank for Reconstruction and Development', logo: ebrdLogo, logoClass: 'w-[120px] md:w-[270px] lg:w-[300px]', positionClass: 'md:!h-[88px] lg:!h-[96px]' },
