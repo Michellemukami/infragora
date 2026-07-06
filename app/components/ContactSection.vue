@@ -209,7 +209,7 @@
               required
             ></textarea>
 
-            <input type="hidden" name="source" value="afridata" />
+            <input type="hidden" name="source" value="Infragora" />
 
             <button
               type="submit"
@@ -368,7 +368,7 @@ const submitForm = async () => {
           organisation: form.organisation,
           job_title: form.jobTitle,
           message: form.message,
-          source: 'afridata',
+          source: 'Infragora',
         },
       }),
     })
