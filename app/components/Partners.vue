@@ -280,10 +280,10 @@ const investorPartners: LogoPartner[] = [
   { id: 'seacom', name: 'SEACOM', logo: seacomLogo, logoClass: 'w-[98px] md:w-[104px]' },
   { id: 'exim', name: 'EXIM Bank', logo: eximLogo, logoClass: 'w-[78px] md:w-[84px]' },
   { id: 'ifc', name: 'International Finance Corporation', logo: ifcLogo, logoClass: 'w-[172px] md:w-[178px]' },
-  { id: 'africa50', name: 'Africa50', logo: africa50Logo, logoClass: 'w-[50px] md:w-[58px]' },
+  { id: 'africa50', name: 'Africa50', logo: africa50Logo, logoClass: 'w-[50px] md:w-[115px]' },
   { id: 'tolaram', name: 'Tolaram Group', logo: tolaramLogo, logoClass: 'w-[90px] md:w-[112px]' },
   { id: 'development-bank', name: 'Development Bank of Southern Africa', logo: Development_Bank_Logo, logoClass: 'w-[90px] md:w-[112px]' },
-  { id: 'ebrd', name: 'European Bank for Reconstruction and Development', logo: ebrdLogo, logoClass: 'w-[90px] md:w-[200px]' },
+  { id: 'ebrd', name: 'European Bank for Reconstruction and Development', logo: ebrdLogo, logoClass: 'w-[120px] md:w-[270px] lg:w-[300px]', positionClass: 'md:!h-[88px] lg:!h-[96px]' },
   { id: 'bii', name: 'British International Investment', logo: biiLogo, logoClass: 'w-[90px] md:w-[112px]' },
   { id: 'afc', name: 'Africa Finance Corporation', logo: afcLogo, logoClass: 'w-[160px] md:w-[166px]' },
 ]
