@@ -165,6 +165,23 @@ type Member = {
   bio: string[]
 }
 
+useHead({
+  title:
+    'Governance | INFRAGORA Global Capital',
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Learn about INFRAGORA’s governance framework, leadership structure and commitment to disciplined investment oversight, accountability and transparency.',
+    },
+    {
+      name: 'keywords',
+      content:
+        'INFRAGORA governance, infrastructure investment governance, fund governance Africa, investment management governance',
+    },
+    
+  ],
+})
 const profileBio = [
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien, vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis.',
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.',

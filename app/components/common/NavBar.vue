@@ -65,7 +65,7 @@
                 to="/about-us"
                 class="block text-[13px] font-semibold leading-none tracking-[-0.01em] transition-colors hover:text-[#1296ad]"
                 :class="navLinkClass('/about-us')"
-                :aria-current="isActivePath('/about-us') ? 'page' : undefined"
+              
                 @click="isAboutOpen = false"
               >
                 About Us
@@ -77,7 +77,7 @@
                     to="/governance"
                     class="block text-[13px] font-semibold leading-none tracking-[-0.01em] transition-colors hover:text-[#1296ad]"
                     :class="navLinkClass('/governance')"
-                    :aria-current="isActivePath('/governance') ? 'page' : undefined"
+                 
                     @click="isAboutOpen = false"
                   >
                     Governance
@@ -86,10 +86,10 @@
                 </div>
 
                 <NuxtLink
-                  to="/partners"
+                  to="/partners-allies"
                   class="block text-[13px] font-semibold leading-none tracking-[-0.01em] transition-colors hover:text-[#1296ad]"
-                  :class="navLinkClass('/partners')"
-                  :aria-current="isActivePath('/partners') ? 'page' : undefined"
+                  :class="navLinkClass('/partners-allies')"
+                 
                   @click="isAboutOpen = false"
                 >
                   Partners &amp; Allies
@@ -412,10 +412,10 @@
                   </div>
 
                   <NuxtLink
-                    to="/partners"
+                    to="/partners-allies"
                     class="block transition hover:text-[#1296ad]"
-                    :class="navLinkClass('/partners')"
-                    :aria-current="isActivePath('/partners') ? 'page' : undefined"
+                    :class="navLinkClass('/partners-allies')"
+                    :aria-current="isActivePath('/partners-allies') ? 'page' : undefined"
                     @click="closeMobileMenu"
                   >
                     Partners &amp; Allies

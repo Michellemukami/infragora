@@ -166,7 +166,23 @@ const revealElement = (element: Element) => {
   element.classList.remove('translate-y-6', 'translate-y-8', 'opacity-0')
   element.classList.add('translate-y-0', 'opacity-100')
 }
-
+useHead({
+  title:
+    'Partners & Allies | INFRAGORA Global Capital',
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Discover the strategic, investment and execution partners supporting INFRAGORA’s mission to deepen infrastructure investment and liquidity across Africa.',
+    },
+    {
+      name: 'keywords',
+      content:
+        'INFRAGORA partners, infrastructure investment partners Africa, infrastructure finance partners, strategic partners Africa',
+    },
+    
+  ],
+})
 onMounted(() => {
   const revealItems = Array.from(document.querySelectorAll('[data-partner-reveal]'))
 
