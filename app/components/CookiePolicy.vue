@@ -1,5 +1,5 @@
 <template>
-  <PolicyHero title="Terms and Conditions" />
+  <PolicyHero title="Cookie Policy" />
   <PolicyBody :sections="sections" />
 </template>
 
