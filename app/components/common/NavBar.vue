@@ -262,23 +262,24 @@
         >
           Portfolio
         </NuxtLink>
-
-        <NuxtLink
-          to="/knowledge-hub"
-          class="text-[11px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 hover:text-[#1296ad]"
-          :class="navLinkClass('/knowledge-hub')"
-          :aria-current="isActivePath('/knowledge-hub') ? 'page' : undefined"
-            >
-          Knowledge Hub
-        </NuxtLink>
-        <NuxtLink
-          to="/news"
-          class="text-[11px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 hover:text-[#1296ad]"
-          :class="navLinkClass('/news')"
-          :aria-current="isActivePath('/news') ? 'page' : undefined"
-            >
-          News
-        </NuxtLink>
+<!--
+  <NuxtLink
+    to="/knowledge-hub"
+    class="text-[11px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 hover:text-[#1296ad]"
+    :class="navLinkClass('/knowledge-hub')"
+    :aria-current="isActivePath('/knowledge-hub') ? 'page' : undefined"
+      >
+    Knowledge Hub
+  </NuxtLink>
+  <NuxtLink
+    to="/news"
+    class="text-[11px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 hover:text-[#1296ad]"
+    :class="navLinkClass('/news')"
+    :aria-current="isActivePath('/news') ? 'page' : undefined"
+      >
+    News
+  </NuxtLink>
+        -->
 
         <NuxtLink
           to="/contact-us"
@@ -622,9 +623,9 @@ const aboutTeamLinks = [
 
 const secondaryMobileLinks = [
   { label: 'Portfolio', to: '/portfolio' },
-  { label: 'Knowledge Hub', to: '/knowledge-hub' },
+  // { label: 'Knowledge Hub', to: '/knowledge-hub' },
   { label: 'Contact Us', to: '/contact-us' },
-  { label: 'News', to: '/news' }
+  // { label: 'News', to: '/news' }
 ]
 
 const closeMobileMenu = () => {

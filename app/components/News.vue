@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import ReusableGrid from './common/ReusableGrid.vue';
-import SmallHeader from './common/SmallHeader.vue';
-import newsImage from '~/assets/images/news.jpg'
+import ReusableGrid from './common/ReusableGrid.vue'
+import SmallHeader from './common/SmallHeader.vue'
+import type { CmsContentItem } from '~/data/cmsContent'
+import { resolveCmsImageSrc } from '~/data/cmsImageResolver'
+
 useHead({
   title: 'News | INFRAGORA Global Capital Updates',
   meta: [
@@ -25,129 +27,33 @@ const introHeader = {
   ],
 }
 
-const newsCategories = ['All', 'Company Announcements', 'Investment Updates', 'Partnerships', 'Market Commentary', 'ESG and Impact News','Events and Speaking Engagements', 'Media Releases']
+const { data: newsArticles } = await useFetch<CmsContentItem[]>('/api/news', {
+  default: () => [],
+})
 
-type NewsItem = {
-  id: number
-  title: string
-  category: string
-  country: string
-  ctaLabel: string
-  image: string
-  layout: 'standard' | 'wide'
-}
-
-const newsItems: NewsItem[] = [
-  {
-    id: 1,
-    title:
-      'INFRAGORA Advances Its African Infrastructure Secondary Market Platform',
-    category: 'Markets',
-    country: 'Mauritius',
-    ctaLabel: 'Read More',
-    image: newsImage,
-    layout: 'standard',
-  },
-  {
-    id: 2,
-    title:
-      'INFRAGORA Strengthens Focus on Green Energy and Digital Infrastructure',
-    category: 'Investment',
-    country: 'South Africa',
-    ctaLabel: 'Read More',
-    image: newsImage,
-    layout: 'standard',
-  },
-  {
-    id: 3,
-    title:
-      'INFRAGORA Builds Partnerships to Support Market Transparency and Investor Confidence',
-    category: 'Infrastructure',
-    country: 'Kenya',
-    ctaLabel: 'Read More',
-    image: newsImage,
-    layout: 'standard',
-  },
-  {
-    id: 4,
-    title:
-      'INFRAGORA Advances Its African Infrastructure Secondary Market Platform',
-    category: 'Markets',
-    country: 'Nigeria',
-    ctaLabel: 'Read More',
-    image: newsImage,
-    layout: 'wide',
-  },
-  {
-    id: 5,
-    title:
-      'INFRAGORA Builds Partnerships to Support Market Transparency and Investor Confidence',
-    category: 'Infrastructure',
-    country: "Côte d'Ivoire",
-    ctaLabel: 'Read More',
-    image: newsImage,
-    layout: 'standard',
-  },
-  {
-    id: 6,
-    title:
-      'INFRAGORA Advances Its African Infrastructure Secondary Market Platform',
-    category: 'Markets',
-    country: 'Mauritius',
-    ctaLabel: 'Read More',
-    image: newsImage,
-    layout: 'standard',
-  },
-  {
-    id: 7,
-    title:
-      'INFRAGORA Strengthens Focus on Green Energy and Digital Infrastructure',
-    category: 'Investment',
-    country: 'South Africa',
-    ctaLabel: 'Read More',
-    image: newsImage,
-    layout: 'standard',
-  },
-  {
-    id: 8,
-    title:
-      'INFRAGORA Builds Partnerships to Support Market Transparency and Investor Confidence',
-    category: 'Infrastructure',
-    country: 'Kenya',
-    ctaLabel: 'Read More',
-    image: newsImage,
-    layout: 'standard',
-  },
-  {
-    id: 9,
-    title:
-      'INFRAGORA Builds Partnerships to Support Market Transparency and Investor Confidence',
-    category: 'Infrastructure',
-    country: 'Nigeria',
-    ctaLabel: 'Read More',
-    image: newsImage,
-    layout: 'standard',
-  },
-  {
-    id: 10,
-    title:
-      'INFRAGORA Advances Its African Infrastructure Secondary Market Platform',
-    category: 'Markets',
-    country: "Côte d'Ivoire",
-    ctaLabel: 'Read More',
-    image: newsImage,
-    layout: 'wide',
-  },
-]
+const newsItems = computed(() =>
+  newsArticles.value.map((item) => ({
+    id: item.id,
+    title: item.title,
+    category: item.category,
+    country: item.country,
+    project: item.project,
+    ctaLabel: item.ctaLabel,
+    date: item.publishedAt,
+    image: resolveCmsImageSrc(item.mainImage?.src),
+    layout: item.layout,
+    href: `/news/${item.slug}`,
+  })),
+)
 </script>
 
 <template>
-    <SmallHeader
-      :title="introHeader.title"
-      :description="introHeader.description"
-    />
-    <ReusableGrid
-      :items="newsItems"
-      :categories="newsCategories"
-    />
+  <SmallHeader
+    :title="introHeader.title"
+    :description="introHeader.description"
+  />
+
+  <ReusableGrid
+    :items="newsItems"
+  />
 </template>

@@ -4,6 +4,7 @@ type GridItem = {
   title: string
   category: string
   country?: string | string[]
+  project?: string | string[]
   date?: string
   image: string
   layout: 'standard' | 'wide'
@@ -15,6 +16,7 @@ const props = withDefaults(defineProps<{
   items?: GridItem[]
   categories?: string[]
   countries?: string[]
+  projects?: string[]
   orderOptions?: string[]
   sectionClass?: string
   containerClass?: string
@@ -29,6 +31,7 @@ const props = withDefaults(defineProps<{
     'Nigeria',
     "Côte d'Ivoire",
   ],
+  projects: () => [],
   orderOptions: () => ['Newest', 'Oldest'],
   sectionClass: '',
   containerClass: '',
@@ -36,16 +39,43 @@ const props = withDefaults(defineProps<{
 
 const selectedCategory = ref('All')
 const selectedCountry = ref('All')
+const selectedProject = ref('All')
 const selectedDateOrder = ref('Newest')
 const selectedOrder = ref('Newest')
+
+const normalizeList = (value?: string | string[]) => {
+  if (Array.isArray(value)) return value
+  return value ? [value] : []
+}
+
+const buildOptions = (values: Array<string | string[] | undefined>) => {
+  const uniqueValues = new Set<string>()
+
+  for (const value of values) {
+    for (const entry of normalizeList(value)) {
+      uniqueValues.add(entry)
+    }
+  }
+
+  return ['All', ...Array.from(uniqueValues)]
+}
 
 const categoryOptions = computed(() => {
   if (props.categories.length > 0) return props.categories
 
-  return [
-    'All',
-    ...Array.from(new Set(props.items.map((item) => item.category))),
-  ]
+  return ['All', ...Array.from(new Set(props.items.map((item) => item.category)))]
+})
+
+const countryOptions = computed(() => {
+  if (props.countries.length > 0) return props.countries
+
+  return buildOptions(props.items.map((item) => item.country))
+})
+
+const projectOptions = computed(() => {
+  if (props.projects.length > 0) return props.projects
+
+  return buildOptions(props.items.map((item) => item.project))
 })
 
 const filteredItems = computed(() => {
@@ -64,11 +94,20 @@ const filteredItems = computed(() => {
       selectedCountry.value === 'All' ||
       itemCountries.includes(selectedCountry.value)
 
-    return categoryMatches && countryMatches
+    const itemProjects = normalizeList(item.project)
+
+    const projectMatches =
+      selectedProject.value === 'All' ||
+      itemProjects.includes(selectedProject.value)
+
+    return categoryMatches && countryMatches && projectMatches
   })
 
   return selectedOrder.value === 'Oldest' ? items.reverse() : items
 })
+
+const itemLabels = (item: GridItem) =>
+  [item.category, ...normalizeList(item.country), ...normalizeList(item.project)].filter(Boolean)
 </script>
 
 <template>
@@ -153,6 +192,48 @@ const filteredItems = computed(() => {
                   :value="country"
                 >
                   {{ country }}
+                </option>
+              </select>
+
+              <svg
+                class="pointer-events-none absolute right-2.5 top-1/2 h-3 w-3 -translate-y-1/2"
+                viewBox="0 0 20 20"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M6 8L10 12L14 8"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+          </label>
+
+          <!-- Project -->
+          <label
+            v-if="projectOptions.length > 1"
+            class="grid grid-cols-[72px_1fr] items-center gap-3 sm:grid-cols-[76px_1fr] lg:flex"
+          >
+            <span
+              class="text-[11px] font-medium leading-none tracking-[-0.02em]"
+            >
+              Project
+            </span>
+
+            <div class="relative">
+              <select
+                v-model="selectedProject"
+                class="h-9 w-full min-w-0 appearance-none border border-black/35 bg-white pl-3 pr-8 text-[11px] outline-none transition focus:border-black lg:h-8 lg:min-w-[128px]"
+              >
+                <option
+                  v-for="project in projectOptions"
+                  :key="project"
+                  :value="project"
+                >
+                  {{ project }}
                 </option>
               </select>
 
@@ -313,7 +394,7 @@ const filteredItems = computed(() => {
           ]"
         >
           <img
-              :src="item.image"
+            :src="item.image"
             :alt="item.title"
             class="absolute inset-0 -z-20 h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.035]"
             loading="lazy"
@@ -328,6 +409,13 @@ const filteredItems = computed(() => {
           <div
             class="flex h-full flex-col justify-end px-4 pb-4 pt-6 sm:px-5 sm:pb-5 lg:px-5"
           >
+            <div
+              v-if="itemLabels(item).length"
+              class="mb-3 flex flex-wrap gap-2"
+            >
+         
+            </div>
+
             <h3
               class="max-w-[95%] text-[18px] font-medium leading-[0.98] tracking-[-0.055em] text-black sm:text-[19px] lg:text-[20px] xl:text-[22px]"
             >

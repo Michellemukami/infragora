@@ -37,10 +37,29 @@
           </NuxtLink>
         </div>
 
-       <div
-  class="hero-intro-strip hero-image-strip-viewport mt-[54px] overflow-hidden sm:mt-16 lg:mt-[74px]"
->
-  <div class="hero-image-strip pb-8 sm:pb-10 md:pb-12 lg:pb-14">
+       <div class="hero-intro-strip hero-strip-shell relative mt-[54px] self-stretch sm:mt-16 lg:mt-[74px]">
+  <div class="hero-carousel-controls" aria-label="Hero carousel controls">
+    <button
+      type="button"
+      class="hero-carousel-button"
+      aria-label="Show previous hero card"
+      @click="moveHeroCarousel(-1)"
+    >
+      <span aria-hidden="true">&lsaquo;</span>
+    </button>
+
+    <button
+      type="button"
+      class="hero-carousel-button"
+      aria-label="Show next hero card"
+      @click="moveHeroCarousel(1)"
+    >
+      <span aria-hidden="true">&rsaquo;</span>
+    </button>
+  </div>
+
+  <div class="hero-image-strip-viewport overflow-hidden">
+  <div ref="heroImageStripRef" class="hero-image-strip pb-8 sm:pb-10 md:pb-12 lg:pb-14">
     <div
       v-for="trackIndex in 2"
       :key="trackIndex"
@@ -83,6 +102,7 @@
       </NuxtLink>
     </div>
   </div>
+</div>
 </div>
       </div>
     </section>
@@ -1031,6 +1051,7 @@ const posts = [
 const newsCarouselIndex = ref(0)
 const route = useRoute()
 const homeHeroRef = ref(null)
+const heroImageStripRef = ref(null)
 const isHomeIntroVisible = ref(false)
 const isSecondSectionVisible = ref(false)
 const secondSectionRef = ref(null)
@@ -1062,6 +1083,74 @@ let partnersSectionObserver = null
 let accordionSectionObserver = null
 let lastSectionObserver = null
 let homeIntroAnimationFrame = 0
+let heroCarouselScrubFrame = 0
+
+const normalizeAnimationTime = (time, duration) =>
+  ((time % duration) + duration) % duration
+
+const easeHeroCarouselScrub = (progress) =>
+  1 - Math.pow(1 - progress, 3)
+
+const moveHeroCarousel = (direction) => {
+  const strip = heroImageStripRef.value
+
+  if (!strip) {
+    return
+  }
+
+  const marqueeAnimations = strip.getAnimations?.() || []
+  const marqueeAnimation =
+    marqueeAnimations.find(
+      (animation) => animation.animationName === 'hero-card-marquee'
+    ) || marqueeAnimations[0]
+
+  if (!marqueeAnimation) {
+    strip.scrollBy?.({
+      left: direction * strip.clientWidth * 0.7,
+      behavior: 'smooth',
+    })
+    return
+  }
+
+  const timing = marqueeAnimation.effect?.getComputedTiming?.()
+  const duration = Number(timing?.duration) || 46000
+  const currentTime =
+    typeof marqueeAnimation.currentTime === 'number'
+      ? marqueeAnimation.currentTime
+      : 0
+  const stepTime = duration / heroCarouselCards.length
+  const targetTime = currentTime + direction * stepTime
+  const scrubDuration = 720
+  const startedAt = performance.now()
+
+  if (heroCarouselScrubFrame) {
+    cancelAnimationFrame(heroCarouselScrubFrame)
+    heroCarouselScrubFrame = 0
+  }
+
+  marqueeAnimation.pause()
+
+  const scrubCarousel = (frameTime) => {
+    const elapsed = frameTime - startedAt
+    const progress = Math.min(elapsed / scrubDuration, 1)
+    const easedProgress = easeHeroCarouselScrub(progress)
+
+    marqueeAnimation.currentTime = normalizeAnimationTime(
+      currentTime + (targetTime - currentTime) * easedProgress,
+      duration
+    )
+
+    if (progress < 1) {
+      heroCarouselScrubFrame = requestAnimationFrame(scrubCarousel)
+      return
+    }
+
+    heroCarouselScrubFrame = 0
+    marqueeAnimation.play()
+  }
+
+  heroCarouselScrubFrame = requestAnimationFrame(scrubCarousel)
+}
 
 const playHomeIntroAnimation = async () => {
   isHomeIntroVisible.value = false
@@ -1314,6 +1403,10 @@ onMounted(() => {
 onUnmounted(() => {
   if (homeIntroAnimationFrame) {
     cancelAnimationFrame(homeIntroAnimationFrame)
+  }
+
+  if (heroCarouselScrubFrame) {
+    cancelAnimationFrame(heroCarouselScrubFrame)
   }
 
   secondSectionObserver?.disconnect()
@@ -1896,6 +1989,67 @@ const showPreviousNewsPost = () => {
   transform: translate3d(0, 0, 0) scale(1);
 }
 
+.hero-strip-shell {
+  align-self: stretch;
+}
+
+.hero-carousel-controls {
+  position: absolute;
+  top: -3.65rem;
+  right: calc(50% - 50vw + 1.5rem);
+  z-index: 12;
+  display: flex;
+  gap: 0.7rem;
+}
+
+.hero-carousel-button {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1.35px solid rgb(255 255 255 / 0.9);
+  border-radius: 999px;
+  appearance: none;
+  background: rgb(5 38 58 / 0.42);
+  color: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  box-shadow: 0 16px 34px rgb(0 20 32 / 0.28);
+  backdrop-filter: blur(8px);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.hero-carousel-button span {
+  display: block;
+  margin-top: -2px;
+  font-size: 27px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.hero-carousel-button:hover,
+.hero-carousel-button:focus-visible {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: #073f5e;
+  box-shadow: 0 20px 42px rgb(0 20 32 / 0.36);
+  transform: translate3d(0, -1px, 0);
+}
+
+.hero-carousel-button:focus-visible {
+  outline: 2px solid #18d8b7;
+  outline-offset: 4px;
+}
+
+.hero-carousel-button:active {
+  transform: translate3d(0, 1px, 0) scale(0.98);
+}
+
 .hero-image-strip-viewport {
   align-self: stretch;
   margin-inline: calc(50% - 50vw);
@@ -1944,6 +2098,11 @@ const showPreviousNewsPost = () => {
 }
 
 @media (min-width: 640px) {
+  .hero-carousel-controls {
+    top: -3.9rem;
+    right: calc(50% - 50vw + 2.25rem);
+  }
+
   .hero-image-strip {
     --hero-card-gap: 1rem;
   }
@@ -1966,6 +2125,11 @@ const showPreviousNewsPost = () => {
 }
 
 @media (min-width: 1024px) {
+  .hero-carousel-controls {
+    top: -4.2rem;
+    right: calc(50% - 50vw + 2rem);
+  }
+
   .hero-image-strip {
     --hero-card-gap: 1.5rem;
     animation-duration: 56s;
@@ -1973,6 +2137,23 @@ const showPreviousNewsPost = () => {
 
   .hero-image-card {
     width: clamp(280px, 21vw, 340px);
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-carousel-controls {
+    top: -3.2rem;
+    right: calc(50% - 50vw + 1rem);
+    gap: 0.5rem;
+  }
+
+  .hero-carousel-button {
+    width: 34px;
+    height: 34px;
+  }
+
+  .hero-carousel-button span {
+    font-size: 24px;
   }
 }
 
