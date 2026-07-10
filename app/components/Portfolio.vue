@@ -130,7 +130,7 @@
   >
 
       <div
-             class="portfolio-image-cover-panel relative mr-6  min-h-[360px] overflow-hidden bg-[#002d49] bg-cover  sm:min-h-[340px]  md:mr-10  md:min-h-[390px] lg:min-h-[450px] xl:mr-20"
+             class="portfolio-image-cover-panel relative mr-6  min-h-[360px] overflow-hidden bg-[#002d49] bg-cover bg-[68%_center] sm:min-h-[340px] md:mr-10  md:min-h-[390px] lg:min-h-[450px] xl:mr-20"
              :style="{ backgroundImage: `url(${tunnel})` }"
            >
              <div

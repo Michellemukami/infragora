@@ -412,7 +412,7 @@ Executed by INFRAGORA Advisory
 
     <div
       ref="focusAreasFeatureRef"
-      class="portfolio-image-cover-section relative mr-6 mt-14 min-h-[360px] overflow-hidden bg-[#002d49] bg-cover bg-[64%_center] bg-no-repeat sm:mt-20 sm:min-h-[340px] sm:bg-[72%_center] md:mr-10 md:mt-24 md:min-h-[390px] lg:min-h-[450px] lg:bg-[88%_47%] xl:mr-20"
+      class="portfolio-image-cover-section relative mr-6 mt-14 min-h-[360px] overflow-hidden bg-[#002d49] bg-cover bg-no-repeat sm:mt-20 sm:min-h-[340px] md:mr-10 md:mt-24 md:min-h-[390px] lg:min-h-[450px] xl:mr-20"
       :class="{ 'is-visible': isFocusAreasFeatureVisible }"
       :style="{ backgroundImage: `url(${ribbonImage})` }"
     >
