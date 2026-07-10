@@ -210,7 +210,7 @@
 <script setup lang="ts">
 import WhatWeDoIntro from '~/components/common/WhatWeDoIntro.vue'
 import ImageCard from '~/components/common/ImageCard.vue'
-import aboutHeroVideo from '~/assets/images/about-us/aboutUs.webp'
+import aboutHeroVideo from '~/assets/images/about-us/home.jpg'
 import bridgeImage from '~/assets/images/about-us/aboutside.webp'
 
 type TeamMember = {

@@ -153,94 +153,16 @@
     </div>
 
     <!-- Benefits section -->
-    <div
-      ref="benefitsSectionRef"
-      class="homepage-benefits-section mx-auto px-6 py-16 sm:px-10 md:px-14 md:py-20 lg:px-20 lg:py-20 xl:px-20"
-      :class="{ 'is-visible': isBenefitsSectionVisible }"
-    >
-      <!-- Desktop composition -->
-      <div class="hidden grid-cols-3 gap-7 md:grid">
-        <!-- Main title occupies the first two cells -->
-        <div
-          class="second-section-benefit-heading col-span-2 flex min-h-[220px] items-start pt-12 lg:min-h-[260px] lg:pt-16"
-        >
-          <h3
-            class="max-w-[560px] text-[24px] font-medium leading-[1.08] tracking-[-0.045em] lg:text-[40px]"
-          >
-            A New Exit Window for
-            <br />
-            African Infrastructure
-          </h3>
-        </div>
-
-        <!-- Card 01 -->
-        <article
-          class="second-section-card flex min-h-[220px] flex-col justify-between bg-[#eeeeee] p-7 lg:min-h-[260px] lg:p-8"
-          style="--second-section-delay: 260ms"
-        >
-          <span
-            class="benefit-card-number text-[42px] font-semibold leading-none tracking-[-0.05em] text-[#c6c6c6] lg:text-[54px]"
-          >
-            {{ marketBenefits[0].number }}
-          </span>
-
-          <p
-            class="benefit-card-text max-w-[300px] text-[12px] leading-[1.35] text-[#1b1b1b] lg:text-[14px]"
-          >
-            {{ marketBenefits[0].text }}
-          </p>
-        </article>
-
-        <!-- Remaining cards -->
-        <article
-          v-for="item in marketBenefits.slice(1)"
-          :key="item.number"
-          class="second-section-card flex min-h-[220px] flex-col justify-between bg-[#eeeeee] p-7 lg:min-h-[260px] lg:p-8"
-          :style="{ '--second-section-delay': `${320 + Number(item.number) * 70}ms` }"
-        >
-          <span
-            class="benefit-card-number text-[42px] font-semibold leading-none tracking-[-0.05em] text-[#c6c6c6] lg:text-[54px]"
-          >
-            {{ item.number }}
-          </span>
-
-          <p
-            class="benefit-card-text max-w-[310px] text-[12px] leading-[1.35] text-[#1b1b1b] lg:text-[14px]"
-          >
-            {{ item.text }}
-          </p>
-        </article>
-      </div>
-
-      <!-- Mobile and tablet composition -->
-      <div class="md:hidden">
-        <h3
-          class="second-section-benefit-heading max-w-[520px] text-[28px] font-medium leading-[1.08] tracking-[-0.045em] sm:text-[34px]"
-        >
-          A New Exit Market for African Infrastructure
-
-        </h3>
-
-        <div class="mt-10 grid gap-4 sm:grid-cols-2">
-          <article
-            v-for="item in marketBenefits"
-            :key="item.number"
-            class="second-section-card flex min-h-[190px] flex-col justify-between bg-[#eeeeee] p-6"
-            :style="{ '--second-section-delay': `${180 + Number(item.number) * 70}ms` }"
-          >
-            <span
-              class="benefit-card-number text-[40px] font-semibold leading-none tracking-[-0.05em] text-[#c6c6c6]"
-            >
-              {{ item.number }}
-            </span>
-
-            <p class="benefit-card-text max-w-[290px] text-[12px] leading-[1.4]">
-              {{ item.text }}
-            </p>
-          </article>
-        </div>
-      </div>
-    </div>
+    <NumberCard
+      title="A New Exit Market for African Infrastructure"
+      :items="marketBenefitCards"
+      section-class="homepage-benefits-section is-visible bg-[#fbfbfb]"
+      container-class="max-w-[1600px] px-6 py-16 sm:px-10 md:px-14 md:py-20 lg:px-20 xl:px-20"
+      title-class="max-w-[620px] text-[28px] font-medium leading-[1.08] tracking-[-0.045em] text-[#0a5264] sm:text-[34px] lg:text-[40px]"
+      grid-class="lg:gap-x-20 xl:gap-x-24"
+      number-class="text-[#f6b800]"
+      label-class="max-w-[620px]"
+    />
   </section>
 <!-- What We Do Section -->
   <section
@@ -789,6 +711,7 @@ import heroCardThree from "~/assets/images/home/corasel3.jpg"
 import heroCardFour from "~/assets/images/home/corasel4.jpg"
 import heroCardFive from "~/assets/images/home/corasel5.jpg"
 import KnowledgeHub from '~/components/KnowledgeHub.vue'
+import NumberCard from './common/NumberCard.vue'
 import mauritiusFlag from '~/assets/images/flags/african/mauritius.png'
 import southAfricaFlag from '~/assets/images/flags/african/south-africa.png'
 import kenyaFlag from '~/assets/images/flags/african/ke.png'
@@ -910,11 +833,11 @@ const toggleRegion = (name) => {
 const marketBenefits = [
   {
     number: '01',
-    text: 'Stimulate capital recycling for existing investors and developers',
+    label: 'Stimulate capital recycling for existing investors and developers',
   },
   {
     number: '02',
-    text: 'Unlock capital tied up in operating infrastructure projects',
+    label: 'Unlock capital tied up in operating infrastructure projects',
   },
   {
     number: '03',
@@ -922,21 +845,31 @@ const marketBenefits = [
   },
   {
     number: '04',
-    text: 'Attract local, regional and global institutional investors into the African infrastructure market',
+    label: 'Attract local, regional and global institutional investors into the African infrastructure market',
   },
   {
     number: '05',
-    text: 'Support the development of novel, diversified asset-backed securities, products and instruments',
+    label: 'Support the development of novel, diversified asset-backed securities, products and instruments',
   },
   {
     number: '06',
-    text: 'Deepen capital formation across African markets',
+    label: 'Deepen capital formation across African markets',
   },
   {
     number: '07',
-    text: 'Grow infrastructure into a more visible and investable asset class in Africa',
+    label: 'Grow infrastructure into a more visible and investable asset class in Africa',
   },
 ]
+
+const marketBenefitCards = computed(() =>
+  marketBenefits.map((item) => ({
+    number: item.number,
+    label:
+      item.number === '03'
+        ? "Improve liquidity in Africa's historically illiquid infrastructure market"
+        : item.label,
+  })),
+)
 
 const focusAreas = [
   {
@@ -1055,8 +988,6 @@ const heroImageStripRef = ref(null)
 const isHomeIntroVisible = ref(false)
 const isSecondSectionVisible = ref(false)
 const secondSectionRef = ref(null)
-const isBenefitsSectionVisible = ref(false)
-const benefitsSectionRef = ref(null)
 const isWhatWeDoSectionVisible = ref(false)
 const whatWeDoSectionRef = ref(null)
 const isFocusAreasSectionVisible = ref(false)
@@ -1073,7 +1004,6 @@ const isLastSectionVisible = ref(false)
 const lastSectionRef = ref(null)
 
 let secondSectionObserver = null
-let benefitsSectionObserver = null
 let whatWeDoSectionObserver = null
 let portfolioFocusObserver = null
 let focusAreasSectionObserver = null
@@ -1177,7 +1107,6 @@ onMounted(() => {
 
   if (!supportsIntersectionObserver) {
     isSecondSectionVisible.value = true
-    isBenefitsSectionVisible.value = true
     isWhatWeDoSectionVisible.value = true
     isPortfolioFocusVisible.value = true
     isFocusAreasSectionVisible.value = true
@@ -1208,27 +1137,6 @@ onMounted(() => {
     secondSectionObserver.observe(secondSectionRef.value)
   } else {
     isSecondSectionVisible.value = true
-  }
-
-  if (!benefitsSectionRef.value) {
-    isBenefitsSectionVisible.value = true
-  } else {
-    benefitsSectionObserver = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting) {
-          return
-        }
-
-        isBenefitsSectionVisible.value = true
-        benefitsSectionObserver?.disconnect()
-      },
-      {
-        threshold: 0.18,
-        rootMargin: '0px 0px -14% 0px',
-      }
-    )
-
-    benefitsSectionObserver.observe(benefitsSectionRef.value)
   }
 
   if (!whatWeDoSectionRef.value) {
@@ -1410,7 +1318,6 @@ onUnmounted(() => {
   }
 
   secondSectionObserver?.disconnect()
-  benefitsSectionObserver?.disconnect()
   whatWeDoSectionObserver?.disconnect()
   portfolioFocusObserver?.disconnect()
   focusAreasSectionObserver?.disconnect()
@@ -1654,6 +1561,8 @@ const showPreviousNewsPost = () => {
 }
 
 .hero-intro-button {
+  justify-content: center;
+  text-align: center;
   opacity: 0;
   transform: translate3d(0, 24px, 0) scale(.965);
   filter: blur(10px);
@@ -1672,11 +1581,12 @@ const showPreviousNewsPost = () => {
   position: relative;
   display: inline-grid;
   place-items: center;
+  flex: 0 0 12px;
   width: 12px;
   height: 12px;
   overflow: hidden;
   opacity: 0;
-  transform: translate3d(-6px, 6px, 0) scale(.86);
+  transform: translate3d(0, 6px, 0) scale(.86);
   transition:
     opacity 520ms ease,
     transform 680ms cubic-bezier(.16, 1, .3, 1);
@@ -1685,7 +1595,9 @@ const showPreviousNewsPost = () => {
 }
 
 .hero-button-icon img {
-  grid-area: 1 / 1;
+  position: absolute;
+  inset: 0;
+  margin: auto;
   display: block;
   filter: none;
   transform-origin: center;
@@ -1702,7 +1614,7 @@ const showPreviousNewsPost = () => {
 
 .hero-button-icon-hover {
   opacity: 0;
-  transform: translate3d(-7px, 7px, 0) rotate(-8deg);
+  transform: translate3d(0, 7px, 0) rotate(-8deg);
 }
 
 .homepage-hero.is-visible .hero-intro-button {
@@ -1735,7 +1647,7 @@ const showPreviousNewsPost = () => {
 
 .homepage-hero.is-visible .hero-intro-button:hover .hero-button-icon,
 .homepage-hero.is-visible .hero-intro-button:focus-visible .hero-button-icon {
-  transform: translate3d(2px, -2px, 0) scale(1.08);
+  transform: translate3d(0, -2px, 0) scale(1.08);
 }
 
 .homepage-hero.is-visible .hero-intro-button:hover .hero-button-icon-base,
@@ -1751,8 +1663,7 @@ const showPreviousNewsPost = () => {
 }
 
 .second-section-intro-title,
-.second-section-intro-copy,
-.second-section-benefit-heading {
+.second-section-intro-copy {
   opacity: 0;
   transform: translate3d(0, 30px, 0);
   transition:
@@ -1766,74 +1677,10 @@ const showPreviousNewsPost = () => {
   --second-section-delay: 120ms;
 }
 
-.second-section-benefit-heading {
-  --second-section-delay: 180ms;
-  filter: blur(8px);
-  transform: translate3d(0, 38px, 0);
-  transition:
-    opacity 840ms ease,
-    transform 980ms cubic-bezier(.16, 1, .3, 1),
-    filter 840ms ease;
-}
-
-.second-section-card {
-  opacity: 0;
-  filter: blur(10px);
-  transform: translate3d(0, 48px, 0) scale(.975);
-  transform-origin: center bottom;
-  box-shadow: 0 26px 60px rgb(0 63 80 / 0);
-  transition:
-    opacity 840ms ease,
-    transform 980ms cubic-bezier(.16, 1, .3, 1),
-    filter 840ms ease,
-    box-shadow 980ms ease,
-    background-color 980ms ease;
-  transition-delay: var(--second-section-delay, 0ms);
-  will-change: opacity, transform, filter;
-}
-
-.benefit-card-number {
-  display: inline-block;
-  transform: translate3d(-10px, 0, 0) scale(.94);
-  transition:
-    color 900ms ease,
-    transform 920ms cubic-bezier(.16, 1, .3, 1);
-  transition-delay: calc(var(--second-section-delay, 0ms) + 110ms);
-  will-change: transform;
-}
-
-.benefit-card-text {
-  opacity: 0;
-  transform: translate3d(0, 18px, 0);
-  transition:
-    opacity 760ms ease,
-    transform 900ms cubic-bezier(.16, 1, .3, 1);
-  transition-delay: calc(var(--second-section-delay, 0ms) + 150ms);
-  will-change: opacity, transform;
-}
-
 .homepage-second-section.is-visible .second-section-intro-title,
 .homepage-second-section.is-visible .second-section-intro-copy {
   opacity: 1;
   transform: translate3d(0, 0, 0);
-}
-
-.homepage-benefits-section.is-visible .second-section-benefit-heading,
-.homepage-benefits-section.is-visible .second-section-card {
-  opacity: 1;
-  filter: blur(0);
-  transform: translate3d(0, 0, 0) scale(1);
-}
-
-.homepage-benefits-section.is-visible .second-section-card {
-  background-color: #f2f2f2;
-  box-shadow: 0 26px 60px rgb(0 63 80 / 0.08);
-}
-
-.homepage-benefits-section.is-visible .benefit-card-number,
-.homepage-benefits-section.is-visible .benefit-card-text {
-  opacity: 1;
-  transform: translate3d(0, 0, 0) scale(1);
 }
 
 .what-we-do-tile,
@@ -1995,11 +1842,12 @@ const showPreviousNewsPost = () => {
 
 .hero-carousel-controls {
   position: absolute;
-  top: -3.65rem;
-  right: calc(50% - 50vw + 1.5rem);
+  top: -2.9rem;
+  left: 50%;
   z-index: 12;
   display: flex;
   gap: 0.7rem;
+  transform: translateX(-50%);
 }
 
 .hero-carousel-button {
@@ -2099,8 +1947,7 @@ const showPreviousNewsPost = () => {
 
 @media (min-width: 640px) {
   .hero-carousel-controls {
-    top: -3.9rem;
-    right: calc(50% - 50vw + 2.25rem);
+    top: -3.1rem;
   }
 
   .hero-image-strip {
@@ -2126,8 +1973,7 @@ const showPreviousNewsPost = () => {
 
 @media (min-width: 1024px) {
   .hero-carousel-controls {
-    top: -4.2rem;
-    right: calc(50% - 50vw + 2rem);
+    top: -3.35rem;
   }
 
   .hero-image-strip {
@@ -2141,19 +1987,31 @@ const showPreviousNewsPost = () => {
 }
 
 @media (max-width: 520px) {
+  .hero-intro-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-intro-button {
+    justify-content: center;
+  }
+
+  .hero-button-icon {
+    margin-inline: 0;
+  }
+
   .hero-carousel-controls {
-    top: -3.2rem;
-    right: calc(50% - 50vw + 1rem);
+    top: -2.75rem;
     gap: 0.5rem;
   }
 
   .hero-carousel-button {
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
   }
 
   .hero-carousel-button span {
-    font-size: 24px;
+    font-size: 21px;
   }
 }
 
@@ -2166,10 +2024,6 @@ const showPreviousNewsPost = () => {
   .hero-intro-strip,
   .second-section-intro-title,
   .second-section-intro-copy,
-  .second-section-benefit-heading,
-  .second-section-card,
-  .benefit-card-number,
-  .benefit-card-text,
   .what-we-do-tile,
   .what-we-do-feature,
   .focus-areas-heading,
