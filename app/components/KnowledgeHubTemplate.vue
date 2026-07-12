@@ -4,6 +4,19 @@ import SmallHeader from './common/SmallHeader.vue'
 import type { CmsContentItem } from '~/data/cmsContent'
 import { resolveCmsImageSrc } from '~/data/cmsImageResolver'
 
+type CmsCategory = {
+  id: number
+  name: string
+  slug: string
+  type: string
+}
+
+type CmsCountry = {
+  id: number
+  name: string
+  slug: string
+}
+
 useHead({
   title: 'Knowledge Hub | African Infrastructure Investment Insights',
   meta: [
@@ -32,6 +45,14 @@ const { data: knowledgeArticles } = await useFetch<CmsContentItem[]>('/api/knowl
   default: () => [],
 })
 
+const { data: categories } = await useFetch<CmsCategory[]>('/api/categories', {
+  default: () => [],
+})
+
+const { data: countries } = await useFetch<CmsCountry[]>('/api/countries', {
+  default: () => [],
+})
+
 const knowledgeHubItems = computed(() =>
   knowledgeArticles.value.map((item) => ({
     id: item.id,
@@ -46,6 +67,16 @@ const knowledgeHubItems = computed(() =>
     href: `/knowledge-hub/${item.slug}`,
   })),
 )
+
+const knowledgeHubCategories = computed(() =>
+  categories.value
+    .filter((category) => ['knowledge_hub', 'knowledge-hub'].includes(category.type))
+    .map((category) => category.name),
+)
+
+const countryOptions = computed(() =>
+  countries.value.map((country) => country.name),
+)
 </script>
 
 <template>
@@ -56,5 +87,7 @@ const knowledgeHubItems = computed(() =>
 
   <ReusableGrid
     :items="knowledgeHubItems"
+    :categories="knowledgeHubCategories"
+    :countries="countryOptions"
   />
 </template>

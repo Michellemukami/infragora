@@ -6,6 +6,19 @@ type CmsApiResponse<T> = T | {
   data?: T
 }
 
+export type CmsCategory = {
+  id: number
+  name: string
+  slug: string
+  type: 'news' | 'knowledge_hub' | string
+}
+
+export type CmsCountry = {
+  id: number
+  name: string
+  slug: string
+}
+
 const getCmsApiBase = () => {
   const config = useRuntimeConfig()
 
@@ -36,6 +49,26 @@ export const fetchCmsCollection = async (
 ) => {
   try {
     const response = await fetchRemote<CmsApiResponse<CmsContentItem[]>>(path)
+
+    return unwrapCmsResponse(response) || []
+  } catch {
+    return []
+  }
+}
+
+export const fetchCmsCategories = async () => {
+  try {
+    const response = await fetchRemote<CmsApiResponse<CmsCategory[]>>('categories')
+
+    return unwrapCmsResponse(response) || []
+  } catch {
+    return []
+  }
+}
+
+export const fetchCmsCountries = async () => {
+  try {
+    const response = await fetchRemote<CmsApiResponse<CmsCountry[]>>('countries')
 
     return unwrapCmsResponse(response) || []
   } catch {

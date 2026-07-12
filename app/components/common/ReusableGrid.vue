@@ -60,20 +60,26 @@ const buildOptions = (values: Array<string | string[] | undefined>) => {
   return ['All', ...Array.from(uniqueValues)]
 }
 
+const withAllOption = (values: string[]) => {
+  const uniqueValues = Array.from(new Set(values.filter(Boolean)))
+
+  return uniqueValues.includes('All') ? uniqueValues : ['All', ...uniqueValues]
+}
+
 const categoryOptions = computed(() => {
-  if (props.categories.length > 0) return props.categories
+  if (props.categories.length > 0) return withAllOption(props.categories)
 
   return ['All', ...Array.from(new Set(props.items.map((item) => item.category)))]
 })
 
 const countryOptions = computed(() => {
-  if (props.countries.length > 0) return props.countries
+  if (props.countries.length > 0) return withAllOption(props.countries)
 
   return buildOptions(props.items.map((item) => item.country))
 })
 
 const projectOptions = computed(() => {
-  if (props.projects.length > 0) return props.projects
+  if (props.projects.length > 0) return withAllOption(props.projects)
 
   return buildOptions(props.items.map((item) => item.project))
 })
@@ -187,7 +193,7 @@ const itemLabels = (item: GridItem) =>
                 class="h-9 w-full min-w-0 appearance-none border border-black/35 bg-white pl-3 pr-8 text-[11px] outline-none transition focus:border-black lg:h-8 lg:min-w-[128px]"
               >
                 <option
-                  v-for="country in countries"
+                  v-for="country in countryOptions"
                   :key="country"
                   :value="country"
                 >

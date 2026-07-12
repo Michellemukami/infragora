@@ -334,53 +334,45 @@ const submitForm = async () => {
     return
   }
 
-  const serviceId = config.public.emailjsServiceId
-  const templateId = config.public.emailjsTemplateId
-  const publicKey = config.public.emailjsPublicKey
-
-  if (!serviceId || !templateId || !publicKey) {
-    setStatus('error', 'Email service is not configured yet. Please try again later.')
-    return
-  }
-
   isSubmitting.value = true
 
   try {
     const fullName = `${form.firstName} ${form.lastName}`.trim()
+    const cmsApiBase = config.public.cmsApiBase.replace(/\/$/, '')
 
-    const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+    const response = await fetch(`${cmsApiBase}/enquiries`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
       body: JSON.stringify({
-        service_id: serviceId,
-        template_id: templateId,
-        user_id: publicKey,
-        template_params: {
-          enquiry_type: form.enquiryType,
-          from_name: fullName,
-          first_name: form.firstName,
-          last_name: form.lastName,
-          from_email: form.email,
-          reply_to: form.email,
-          phone: form.phone,
-          organisation: form.organisation,
-          job_title: form.jobTitle,
-          message: form.message,
-          source: 'Infragora',
-        },
+        source: 'Infragora',
+        enquiry_type: form.enquiryType,
+        first_name: form.firstName,
+        last_name: form.lastName,
+        full_name: fullName,
+        from_email: form.email,
+        phone: form.phone,
+        organisation: form.organisation,
+        job_title: form.jobTitle,
+        message: form.message,
       }),
     })
 
     if (!response.ok) {
+      if (response.status === 422) {
+        setStatus('error', 'Please check the form fields and try again.')
+        return
+      }
+
       throw new Error(await response.text())
     }
 
     resetForm()
     setStatus('success', 'Thank you. Your message has been sent successfully.')
   } catch (error) {
-    console.error('EmailJS contact form error:', error)
+    console.error('CMS enquiry form error:', error)
     setStatus('error', 'We could not send your message right now. Please try again in a moment.')
   } finally {
     isSubmitting.value = false

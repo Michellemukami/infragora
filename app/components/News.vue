@@ -4,6 +4,19 @@ import SmallHeader from './common/SmallHeader.vue'
 import type { CmsContentItem } from '~/data/cmsContent'
 import { resolveCmsImageSrc } from '~/data/cmsImageResolver'
 
+type CmsCategory = {
+  id: number
+  name: string
+  slug: string
+  type: string
+}
+
+type CmsCountry = {
+  id: number
+  name: string
+  slug: string
+}
+
 useHead({
   title: 'News | INFRAGORA Global Capital Updates',
   meta: [
@@ -31,6 +44,14 @@ const { data: newsArticles } = await useFetch<CmsContentItem[]>('/api/news', {
   default: () => [],
 })
 
+const { data: categories } = await useFetch<CmsCategory[]>('/api/categories', {
+  default: () => [],
+})
+
+const { data: countries } = await useFetch<CmsCountry[]>('/api/countries', {
+  default: () => [],
+})
+
 const newsItems = computed(() =>
   newsArticles.value.map((item) => ({
     id: item.id,
@@ -45,6 +66,16 @@ const newsItems = computed(() =>
     href: `/news/${item.slug}`,
   })),
 )
+
+const newsCategories = computed(() =>
+  categories.value
+    .filter((category) => category.type === 'news')
+    .map((category) => category.name),
+)
+
+const countryOptions = computed(() =>
+  countries.value.map((country) => country.name),
+)
 </script>
 
 <template>
@@ -55,5 +86,7 @@ const newsItems = computed(() =>
 
   <ReusableGrid
     :items="newsItems"
+    :categories="newsCategories"
+    :countries="countryOptions"
   />
 </template>
