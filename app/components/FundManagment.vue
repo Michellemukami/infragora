@@ -8,7 +8,7 @@
     media-type="image"
     section-class="min-h-[560px] md:min-h-[620px] lg:min-h-[640px]"
     media-container-class="min-h-[560px] items-start !pt-36 !pb-20 md:min-h-[620px] md:!pt-36 md:!pb-20 lg:min-h-[640px] lg:!pt-36 lg:!pb-20"
-    title-class="text-[42px] sm:text-[52px] lg:text-[58px]"
+    title-class="pb-2 text-[42px] !leading-[1.12] sm:text-[52px] lg:text-[58px]"
     content-class="mt-28 md:mt-[230px] md:translate-x-12 lg:mt-[240px] lg:translate-x-24 xl:translate-x-32 text-[20px]"
   />
   
@@ -1081,7 +1081,8 @@ useHead({
   ],
 })
 const aboutIntroParagraphs = [
-  "INFRAGORA provides disciplined fund management for infrastructure investment vehicles and portfolios across Africa. Our fund management approach combines investment selection, risk management, governance, ESG integration, investor reporting and active value creation.",
+  "INFRAGORA manages infrastructure investment platforms focused on capital mobilisation, asset acquisition, portfolio growth and structured exits across Africa's infrastructure market.",
+  "The platform targets infrastructure assets across green energy, ICT and digital infrastructure, water and sanitation, transport and infrastructure finance services.",
 
 ]
 

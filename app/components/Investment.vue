@@ -24,7 +24,7 @@
   />
 
   <ImageCard
-    title="Investment Strategys"
+    title="Investment Strategies"
     :paragraphs="coverageText"
     :image="bridgeImage"
     image-alt="African infrastructure development"
