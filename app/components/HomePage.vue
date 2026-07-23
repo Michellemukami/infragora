@@ -385,11 +385,11 @@ Executed by INFRAGORA Advisory
               </h3>
 
               <div class="mt-5 flex items-center gap-4">
-                <span class="text-[12px] tracking-wide">
+                <!-- <span class="text-[12px] tracking-wide">
                   Read More
-                </span>
+                </span> -->
 
-                <svg
+                <!-- <svg
                   width="12"
                   height="12"
                   viewBox="0 0 24 24"
@@ -401,7 +401,7 @@ Executed by INFRAGORA Advisory
                     stroke="currentColor"
                     stroke-width="1.5"
                   />
-                </svg>
+                </svg> -->
               </div>
             </div>
 
@@ -515,11 +515,11 @@ Executed by INFRAGORA Advisory
               </h3>
 
               <div class="mt-5 flex items-center gap-4">
-                <span class="text-[12px] tracking-wide">
+                <!-- <span class="text-[12px] tracking-wide">
                   Read More
-                </span>
+                </span> -->
 
-                <svg
+                <!-- <svg
                   width="12"
                   height="12"
                   viewBox="0 0 24 24"
@@ -531,7 +531,7 @@ Executed by INFRAGORA Advisory
                     stroke="currentColor"
                     stroke-width="1.5"
                   />
-                </svg>
+                </svg> -->
               </div>
             </div>
 

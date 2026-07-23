@@ -85,7 +85,7 @@
                 {{ post.title }}
               </h3>
 
-              <div class="mt-5 flex items-center gap-4">
+              <!-- <div class="mt-5 flex items-center gap-4">
                 <span class="text-[12px] tracking-wide">
                   Read More
                 </span>
@@ -103,7 +103,7 @@
                     stroke-width="1.5"
                   />
                 </svg>
-              </div>
+              </div> -->
             </div>
 
           </div>
