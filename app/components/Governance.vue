@@ -29,7 +29,15 @@
             :style="{ transitionDelay: `${index * 75}ms` }"
             @click="openMember(member)"
           >
-            <div class="aspect-[1.02/1] w-full bg-[#dcebe8] transition-colors duration-300 group-hover:bg-[#cfe3df]" />
+            <div class="aspect-[1.02/1] w-full overflow-hidden bg-[#dcebe8] transition-colors duration-300 group-hover:bg-[#cfe3df]">
+              <img
+                v-if="member.image"
+                :src="member.image"
+                :alt="member.name"
+                class="size-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                loading="lazy"
+              >
+            </div>
 
             <div class="mt-4">
               <h3 class="text-[15px] font-semibold leading-none tracking-[-0.035em] text-[#003f50] md:text-[17px] lg:text-[18px]">
@@ -67,7 +75,15 @@
               :style="{ transitionDelay: `${index * 75}ms` }"
               @click="openMember(member)"
             >
-              <div class="aspect-[1.02/1] w-full bg-[#dcebe8] transition-colors duration-300 group-hover:bg-[#cfe3df]" />
+              <div class="aspect-[1.02/1] w-full overflow-hidden bg-[#dcebe8] transition-colors duration-300 group-hover:bg-[#cfe3df]">
+                <img
+                  v-if="member.image"
+                  :src="member.image"
+                  :alt="member.name"
+                  class="size-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                  loading="lazy"
+                >
+              </div>
 
               <div class="mt-4">
                 <h3 class="text-[15px] font-semibold leading-none tracking-[-0.035em] text-[#003f50] md:text-[17px] lg:text-[18px]">
@@ -119,7 +135,14 @@
             leave-to-class="translate-y-4 scale-[0.98] opacity-0"
           >
             <div class="relative grid max-h-[calc(100vh-48px)] w-full max-w-[1080px] grid-cols-1 gap-6 overflow-y-auto py-10 md:max-h-[calc(100vh-80px)] md:grid-cols-[38%_1fr] md:items-center md:gap-10 md:py-0 lg:gap-12">
-              <div class="aspect-[1.04/1] w-full max-w-[280px] bg-white shadow-[0_24px_80px_rgba(0,63,80,0.10)] sm:max-w-[340px] md:max-w-none" />
+              <div class="aspect-[1.04/1] w-full max-w-[280px] overflow-hidden bg-white shadow-[0_24px_80px_rgba(0,63,80,0.10)] sm:max-w-[340px] md:max-w-none">
+                <img
+                  v-if="selectedMember.image"
+                  :src="selectedMember.image"
+                  :alt="selectedMember.name"
+                  class="size-full object-cover"
+                >
+              </div>
 
               <div class="max-w-[590px] pr-1">
                 <h2 class="text-[22px] font-semibold leading-none tracking-[-0.04em] text-[#003f50] md:text-[28px] lg:text-[32px]">
@@ -156,11 +179,18 @@
 
 <script setup lang="ts">
 import SideHeader from '~/components/common/SideHeader.vue'
+import andrewImage from '~/assets/images/team/andrew.png'
+import farisaniImage from '~/assets/images/team/farisani.png'
+import ngoziImage from '~/assets/images/team/ngozi.png'
+import odiogoImage from '~/assets/images/team/odigio.png'
+import tshokoloImage from '~/assets/images/team/tshokolo.png'
+import veraImage from '~/assets/images/team/vera.png'
 
 type Member = {
   name: string
   role: string
   displayRole?: string
+  image?: string
   linkedin?: string
   bio: string[]
 }
@@ -251,24 +281,28 @@ const teamMembers: Member[] = [
   {
     name: 'Tshokolo Nchocho',
     role: 'Senior MD',
+    image: tshokoloImage,
     linkedin: '#',
     bio: tshokoloBio,
   },
   {
     name: 'Ezekiel Odiogo',
     role: 'Senior MD',
+    image: odiogoImage,
     linkedin: '#',
     bio: ezekielBio,
   },
   {
     name: 'Edozien Ngozi',
     role: 'Senior MD',
+    image: ngoziImage,
     linkedin: '#',
     bio: edozienBio,
   },
   {
     name: 'Lindelwa Farisani',
     role: 'MD, Public Investments',
+    image: farisaniImage,
     linkedin: '#',
     bio: lindelwaBio,
   },
@@ -281,6 +315,7 @@ const teamMembers: Member[] = [
   {
     name: 'Andrew Alli',
     role: 'Strategic Investor',
+    image: andrewImage,
     linkedin: '#',
     bio: andrewBio,
   },
@@ -291,6 +326,7 @@ const boardMembers: Member[] = [
     name: 'Vera Songwe',
     role: 'Chair, Liquidity and Sustainability Facility; Former Under Secretary, UNECA; Former Director IFC, World Bank',
     displayRole: 'Chair, Liquidity and Sustainability Facility',
+    image: veraImage,
     linkedin: '#',
     bio: veraBio,
   },
@@ -304,12 +340,14 @@ const boardMembers: Member[] = [
   {
     name: 'Tshokolo Nchocho',
     role: 'Executive Director',
+    image: tshokoloImage,
     linkedin: '#',
     bio: tshokoloBio,
   },
   {
     name: 'Ezekiel Odiogo',
     role: 'Executive Director',
+    image: odiogoImage,
     linkedin: '#',
     bio: ezekielBio,
   },

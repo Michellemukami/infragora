@@ -31,13 +31,13 @@
 
           <button
             type="submit"
-            class="flex h-[56px] w-[150px] items-center justify-center gap-5 bg-white text-[11px] font-semibold uppercase text-black transition hover:bg-[#10cfa3] sm:h-[62px] sm:w-[170px]"
+            class="footer-subscribe-button flex h-[56px] w-[150px] items-center justify-center gap-5 bg-white text-[11px] font-semibold uppercase text-black transition sm:h-[62px] sm:w-[170px]"
           >
             Subscribe
             <img
           :src="arrowOutwardIcon"
           alt=""
-          class="h-5 w-5 object-contain"
+          class="footer-subscribe-icon h-5 w-5 object-contain"
         />
           </button>
         </form>
@@ -161,3 +161,46 @@ const route = useRoute()
 const currentYear = new Date().getFullYear()
 const showMailingList = computed(() => route.path.replace(/\/$/, "") !== "/contact-us")
 </script>
+
+<style scoped>
+.footer-subscribe-button {
+  transition:
+    background-color 220ms ease,
+    color 220ms ease,
+    transform 260ms cubic-bezier(.16, 1, .3, 1),
+    box-shadow 260ms ease;
+}
+
+.footer-subscribe-icon {
+  transition: transform 260ms cubic-bezier(.16, 1, .3, 1);
+  will-change: transform;
+}
+
+.footer-subscribe-button:hover {
+  background-color: #10cfa3;
+  transform: translate3d(0, -2px, 0);
+  box-shadow: 0 14px 30px rgb(16 207 163 / 0.22);
+}
+
+.footer-subscribe-button:hover .footer-subscribe-icon {
+  transform: translate3d(4px, -4px, 0);
+}
+
+.footer-subscribe-button:active {
+  transform: translate3d(0, 0, 0);
+  box-shadow: 0 8px 18px rgb(16 207 163 / 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-subscribe-button,
+  .footer-subscribe-icon {
+    transition: none;
+  }
+
+  .footer-subscribe-button:hover,
+  .footer-subscribe-button:hover .footer-subscribe-icon,
+  .footer-subscribe-button:active {
+    transform: none;
+  }
+}
+</style>

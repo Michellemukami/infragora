@@ -4,7 +4,7 @@
       class="mx-auto flex h-[76px] items-center justify-between px-6 md:px-20"
     >
       <NuxtLink to="/">
-        <img src="/logo.png" alt="Infragora" class="h-8 w-auto" />
+        <img src="/Logo.svg" alt="Infragora" class="h-8 w-auto" />
       </NuxtLink>
 
       <nav class="hidden items-center gap-10 lg:flex">

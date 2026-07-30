@@ -233,7 +233,9 @@ withDefaults(defineProps<{
 }
 
 .what-we-do-intro-title-wrap {
+  margin-block: -0.12em;
   overflow: hidden;
+  padding-block: 0.12em;
 }
 
 .what-we-do-intro-title,

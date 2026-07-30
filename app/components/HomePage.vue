@@ -1,5 +1,86 @@
 <template>
+  <!-- Hero Section -->
     <section
+      ref="homeHeroRef"
+      class="homepage-hero relative overflow-hidden bg-[radial-gradient(circle_at_50%_115%,rgba(20,129,160,0.92)_0%,rgba(12,92,123,0.94)_33%,rgba(5,50,75,1)_78%)] pt-[124px] text-white sm:pt-[132px] lg:pt-[146px]"
+      :class="{ 'is-visible': isHomeIntroVisible }"
+    >
+      <div class="mx-auto flex min-h-[540px] max-w-[1600px] flex-col items-center px-6 pb-0 sm:min-h-[650px] sm:px-10 lg:min-h-[820px] lg:px-20">
+        <h1 class="hero-intro-title max-w-[720px] text-center text-[31px] font-semibold leading-[1.08] tracking-[-0.055em] text-white sm:text-[42px] md:text-[50px] lg:text-[56px]">
+          Africa's Infrastructure
+          <br />
+          Secondary Market Platform
+        </h1>
+
+        <div class="hero-intro-actions mt-8 flex flex-wrap items-center justify-center gap-2 sm:mt-9 sm:gap-3 lg:mt-10">
+          <NuxtLink
+            to="/our-capabilities"
+            class="hero-intro-button inline-flex h-9 items-center gap-5 bg-[#18d8b7] px-6 text-[8px] font-bold uppercase tracking-[0.04em] text-[#032f45] transition hover:bg-[#35ffd8] sm:h-10 sm:px-7 sm:text-[9px] lg:h-11 lg:px-8 lg:text-[10px]"
+            style="--hero-button-delay: 150ms"
+          >
+            Explore Our Platform
+            <span class="hero-button-icon" aria-hidden="true">
+              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-base h-3 w-3 object-contain" />
+              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-hover h-3 w-3 object-contain" />
+            </span>
+          </NuxtLink>
+
+          <NuxtLink
+            to="/about-us"
+            class="hero-intro-button inline-flex h-9 items-center gap-5 bg-[#0d4a70] px-6 text-[8px] font-bold uppercase tracking-[0.04em] text-white transition hover:bg-[#12577f] sm:h-10 sm:px-7 sm:text-[9px] lg:h-11 lg:px-8 lg:text-[10px]"
+            style="--hero-button-delay: 235ms"
+          >
+            Discover Our Platform
+            <span class="hero-button-icon" aria-hidden="true">
+              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-base hero-button-icon-light brightness-0 invert  h-3 w-3 object-contain" />
+              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-hover hero-button-icon-light brightness-0 invert h-3 w-3 object-contain" />
+            </span>
+          </NuxtLink>
+        </div>
+
+       <div class="hero-intro-strip hero-strip-shell mt-[54px] self-stretch sm:mt-16 lg:mt-[74px]">
+  <div class="hero-image-strip-viewport">
+  <div class="hero-image-strip pb-8 sm:pb-10 md:pb-12 lg:pb-14">
+      <NuxtLink
+        v-for="card in heroCarouselCards.slice(0, 3)"
+        :key="card.id"
+        :to="card.to"
+        class="group hero-image-card"
+      >
+        <span class="block overflow-hidden">
+          <img
+            :src="card.image"
+            :alt="card.title"
+            class="h-[220px] w-full object-cover transition duration-700 ease-out group-hover:scale-[1.035] sm:h-[300px] md:h-[370px] lg:h-[410px] xl:h-[430px]"
+          />
+        </span>
+
+        <div class="mt-3 flex items-start justify-between gap-4">
+          <div class="min-w-0">
+            <p class="text-[10px] font-medium leading-none text-[#15c8aa] sm:text-[11px] lg:text-[12px]">
+              {{ card.category }}
+            </p>
+
+            <h2
+              class="mt-2 text-[13px] font-medium leading-[1.22] tracking-[-0.025em] text-white sm:text-[15px] lg:text-[17px]"
+            >
+              {{ card.title }}
+            </h2>
+          </div>
+
+          <img
+            :src="arrowOutwardIcon"
+            alt=""
+            class="mt-[18px] h-2.5 w-2.5 shrink-0 object-contain brightness-0 invert transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:mt-6 lg:h-3 lg:w-3 "
+          />
+        </div>
+      </NuxtLink>
+  </div>
+</div>
+</div>
+      </div>
+    </section>
+    <!-- <section
       ref="homeHeroRef"
       class="homepage-hero relative overflow-hidden bg-[radial-gradient(circle_at_50%_115%,rgba(20,129,160,0.92)_0%,rgba(12,92,123,0.94)_33%,rgba(5,50,75,1)_78%)] pt-[124px] text-white sm:pt-[132px] lg:pt-[146px]"
       :class="{ 'is-visible': isHomeIntroVisible }"
@@ -105,7 +186,7 @@
 </div>
 </div>
       </div>
-    </section>
+    </section> -->
 <section
   ref="secondSectionRef"
   class="homepage-second-section w-full bg-[#fafafa] text-[#111111]"
@@ -156,7 +237,7 @@
     <NumberCard
       title="A New Exit Market for African Infrastructure"
       :items="marketBenefitCards"
-      section-class="homepage-benefits-section is-visible bg-[#fbfbfb]"
+      section-class="homepage-benefits-section bg-[#fbfbfb]"
       container-class="max-w-[1600px] px-6 py-16 sm:px-10 md:px-14 md:py-20 lg:px-20 xl:px-20"
       title-class="max-w-[620px] text-[28px] font-medium leading-[1.08] tracking-[-0.045em] text-[#0a5264] sm:text-[34px] lg:text-[40px]"
       grid-class="lg:gap-x-20 xl:gap-x-24"
@@ -442,14 +523,14 @@ Executed by INFRAGORA Advisory
   </div>
 </section>
   <!-- News -->
-<section
+<!-- <section
   ref="newsSectionRef"
   class="homepage-news overflow-hidden bg-[#f5f5f5]"
   :class="{ 'is-visible': isNewsSectionVisible }"
 >
   <div class="mx-auto pl-6 sm:pl-10 lg:pl-20">
 
-    <!-- Header -->
+   
     <div class="mb-12 flex items-end justify-between pr-6 sm:pr-10 lg:pr-20">
       <h2
         class="news-heading text-[34px] leading-[0.95] font-medium tracking-[-0.04em] lg:text-[42px]"
@@ -479,13 +560,13 @@ Executed by INFRAGORA Advisory
       </div>
     </div>
 
-    <!-- Cards -->
+
     <div class="news-cards-viewport overflow-hidden pb-4">
       <div
         class="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
         :style="{ transform: `translateX(calc(-${newsCarouselIndex} * (min(82vw, 380px) + 1.5rem)))` }"
       >
-        <!-- Card -->
+      
         <article
           v-for="(post, postIndex) in newsCarouselPosts2"
           :key="post.carouselId"
@@ -494,7 +575,7 @@ Executed by INFRAGORA Advisory
         >
           <div class="relative overflow-hidden bg-white">
 
-            <!-- Image -->
+         
             <div class="overflow-hidden">
               <img
                 :src="post.image"
@@ -503,23 +584,23 @@ Executed by INFRAGORA Advisory
               />
             </div>
 
-            <!-- Bottom Fade -->
+          
             <div
               class="absolute inset-x-0 bottom-0 h-[190px] bg-gradient-to-t from-white via-white/85 to-transparent transition duration-500 group-hover:via-white/90"
             />
 
-            <!-- Content -->
+          
             <div class="absolute bottom-0 left-0 right-0 p-5 transition duration-500 ease-[cubic-bezier(.16,1,.3,1)] group-hover:-translate-y-0.5">
               <h3 class="max-w-[260px] text-[20px] font-medium leading-[1.05]">
                 {{ post.title }}
               </h3>
 
               <div class="mt-5 flex items-center gap-4">
-                <!-- <span class="text-[12px] tracking-wide">
+                 <span class="text-[12px] tracking-wide">
                   Read More
-                </span> -->
+                </span>
 
-                <!-- <svg
+                 <svg
                   width="12"
                   height="12"
                   viewBox="0 0 24 24"
@@ -531,7 +612,7 @@ Executed by INFRAGORA Advisory
                     stroke="currentColor"
                     stroke-width="1.5"
                   />
-                </svg> -->
+                </svg> 
               </div>
             </div>
 
@@ -541,7 +622,7 @@ Executed by INFRAGORA Advisory
     </div>
 
   </div>
-</section>
+</section> -->
 <!-- <section
   ref="partnersSectionRef"
   class="homepage-partners bg-[#f5f5f5] px-6 py-16 sm:px-10 sm:py-20 lg:px-20 lg:py-24"
@@ -567,7 +648,7 @@ Executed by INFRAGORA Advisory
     </div>
   </div>
 </section> -->
-<KnowledgeHub />
+<!-- <KnowledgeHub /> -->
 <!-- accordion -->
  <section
     ref="accordionSectionRef"
@@ -984,7 +1065,6 @@ const posts = [
 const newsCarouselIndex = ref(0)
 const route = useRoute()
 const homeHeroRef = ref(null)
-const heroImageStripRef = ref(null)
 const isHomeIntroVisible = ref(false)
 const isSecondSectionVisible = ref(false)
 const secondSectionRef = ref(null)
@@ -1013,74 +1093,6 @@ let partnersSectionObserver = null
 let accordionSectionObserver = null
 let lastSectionObserver = null
 let homeIntroAnimationFrame = 0
-let heroCarouselScrubFrame = 0
-
-const normalizeAnimationTime = (time, duration) =>
-  ((time % duration) + duration) % duration
-
-const easeHeroCarouselScrub = (progress) =>
-  1 - Math.pow(1 - progress, 3)
-
-const moveHeroCarousel = (direction) => {
-  const strip = heroImageStripRef.value
-
-  if (!strip) {
-    return
-  }
-
-  const marqueeAnimations = strip.getAnimations?.() || []
-  const marqueeAnimation =
-    marqueeAnimations.find(
-      (animation) => animation.animationName === 'hero-card-marquee'
-    ) || marqueeAnimations[0]
-
-  if (!marqueeAnimation) {
-    strip.scrollBy?.({
-      left: direction * strip.clientWidth * 0.7,
-      behavior: 'smooth',
-    })
-    return
-  }
-
-  const timing = marqueeAnimation.effect?.getComputedTiming?.()
-  const duration = Number(timing?.duration) || 46000
-  const currentTime =
-    typeof marqueeAnimation.currentTime === 'number'
-      ? marqueeAnimation.currentTime
-      : 0
-  const stepTime = duration / heroCarouselCards.length
-  const targetTime = currentTime + direction * stepTime
-  const scrubDuration = 720
-  const startedAt = performance.now()
-
-  if (heroCarouselScrubFrame) {
-    cancelAnimationFrame(heroCarouselScrubFrame)
-    heroCarouselScrubFrame = 0
-  }
-
-  marqueeAnimation.pause()
-
-  const scrubCarousel = (frameTime) => {
-    const elapsed = frameTime - startedAt
-    const progress = Math.min(elapsed / scrubDuration, 1)
-    const easedProgress = easeHeroCarouselScrub(progress)
-
-    marqueeAnimation.currentTime = normalizeAnimationTime(
-      currentTime + (targetTime - currentTime) * easedProgress,
-      duration
-    )
-
-    if (progress < 1) {
-      heroCarouselScrubFrame = requestAnimationFrame(scrubCarousel)
-      return
-    }
-
-    heroCarouselScrubFrame = 0
-    marqueeAnimation.play()
-  }
-
-  heroCarouselScrubFrame = requestAnimationFrame(scrubCarousel)
-}
 
 const playHomeIntroAnimation = async () => {
   isHomeIntroVisible.value = false
@@ -1311,10 +1323,6 @@ onMounted(() => {
 onUnmounted(() => {
   if (homeIntroAnimationFrame) {
     cancelAnimationFrame(homeIntroAnimationFrame)
-  }
-
-  if (heroCarouselScrubFrame) {
-    cancelAnimationFrame(heroCarouselScrubFrame)
   }
 
   secondSectionObserver?.disconnect()
@@ -1840,149 +1848,35 @@ const showPreviousNewsPost = () => {
   align-self: stretch;
 }
 
-.hero-carousel-controls {
-  position: absolute;
-  top: -2.9rem;
-  left: 50%;
-  z-index: 12;
-  display: flex;
-  gap: 0.7rem;
-  transform: translateX(-50%);
-}
-
-.hero-carousel-button {
-  display: grid;
-  width: 38px;
-  height: 38px;
-  place-items: center;
-  border: 1.35px solid rgb(255 255 255 / 0.9);
-  border-radius: 999px;
-  appearance: none;
-  background: rgb(5 38 58 / 0.42);
-  color: #ffffff;
-  cursor: pointer;
-  font: inherit;
-  box-shadow: 0 16px 34px rgb(0 20 32 / 0.28);
-  backdrop-filter: blur(8px);
-  transition:
-    background-color 180ms ease,
-    border-color 180ms ease,
-    color 180ms ease,
-    transform 180ms ease,
-    box-shadow 180ms ease;
-}
-
-.hero-carousel-button span {
-  display: block;
-  margin-top: -2px;
-  font-size: 27px;
-  font-weight: 300;
-  line-height: 1;
-}
-
-.hero-carousel-button:hover,
-.hero-carousel-button:focus-visible {
-  border-color: #ffffff;
-  background: #ffffff;
-  color: #073f5e;
-  box-shadow: 0 20px 42px rgb(0 20 32 / 0.36);
-  transform: translate3d(0, -1px, 0);
-}
-
-.hero-carousel-button:focus-visible {
-  outline: 2px solid #18d8b7;
-  outline-offset: 4px;
-}
-
-.hero-carousel-button:active {
-  transform: translate3d(0, 1px, 0) scale(0.98);
-}
-
 .hero-image-strip-viewport {
   align-self: stretch;
-  margin-inline: calc(50% - 50vw);
-  mask-image: linear-gradient(
-    90deg,
-    transparent 0,
-    #000 6vw,
-    #000 calc(100% - 6vw),
-    transparent 100%
-  );
 }
 
 .hero-image-strip {
-  --hero-card-gap: 0.75rem;
-  display: flex;
-  width: max-content;
-  gap: var(--hero-card-gap);
-  animation: hero-card-marquee 46s linear infinite;
-  will-change: transform;
-}
-
-.hero-image-strip:hover {
-  animation-play-state: paused;
-}
-
-.hero-image-strip-set {
-  display: flex;
-  gap: var(--hero-card-gap);
+  display: grid;
+  gap: 0.9rem;
 }
 
 .hero-image-card {
-  width: 44vw;
-  min-width: 150px;
-  max-width: 210px;
-  flex-shrink: 0;
-}
-
-@keyframes hero-card-marquee {
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(calc(-50% - (var(--hero-card-gap) / 2)), 0, 0);
-  }
+  min-width: 0;
 }
 
 @media (min-width: 640px) {
-  .hero-carousel-controls {
-    top: -3.1rem;
-  }
-
   .hero-image-strip {
-    --hero-card-gap: 1rem;
-  }
-
-  .hero-image-card {
-    width: 28vw;
-    max-width: 260px;
+    gap: 1rem;
   }
 }
 
 @media (min-width: 768px) {
   .hero-image-strip {
-    --hero-card-gap: 1.25rem;
-  }
-
-  .hero-image-card {
-    width: 240px;
-    max-width: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .hero-carousel-controls {
-    top: -3.35rem;
-  }
-
   .hero-image-strip {
-    --hero-card-gap: 1.5rem;
-    animation-duration: 56s;
-  }
-
-  .hero-image-card {
-    width: clamp(280px, 21vw, 340px);
+    gap: 1.5rem;
   }
 }
 
@@ -2000,19 +1894,6 @@ const showPreviousNewsPost = () => {
     margin-inline: 0;
   }
 
-  .hero-carousel-controls {
-    top: -2.75rem;
-    gap: 0.5rem;
-  }
-
-  .hero-carousel-button {
-    width: 30px;
-    height: 30px;
-  }
-
-  .hero-carousel-button span {
-    font-size: 21px;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2048,9 +1929,6 @@ const showPreviousNewsPost = () => {
     box-shadow: none;
   }
 
-  .hero-image-strip {
-    animation: none;
-  }
 }
 </style>
 
