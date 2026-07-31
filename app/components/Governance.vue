@@ -110,7 +110,7 @@
       >
         <div
           v-if="selectedMember"
-          class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-[#dcebe8]/95 px-5 py-6 text-[#003f50] backdrop-blur-sm sm:px-8 md:py-10"
+          class="fixed inset-0 z-[2147483000] flex items-start justify-center overflow-y-auto bg-[#dcebe8]/95 px-5 py-20 text-[#003f50] backdrop-blur-sm sm:px-8 sm:py-24 md:py-28"
           role="dialog"
           aria-modal="true"
           :aria-label="`${selectedMember.name} profile`"
@@ -118,11 +118,13 @@
         >
           <button
             type="button"
-            class="absolute right-5 top-5 z-[80] grid size-11 place-items-center text-[42px] font-light leading-none text-[#003f50] transition duration-200 hover:rotate-90 hover:text-[#0f5b69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003f50] sm:right-8 sm:top-8 md:size-12 md:text-[46px]"
+            class="group fixed right-5 top-24 z-[2147483647] grid size-12 place-items-center text-[#003f50] transition duration-200 hover:text-[#0f5b69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#003f50] sm:right-8 md:top-28 md:size-14"
             aria-label="Close profile"
             @click="closeMember"
           >
-            &times;
+            <span class="grid size-full origin-center place-items-center text-[44px] font-light leading-none transition-transform duration-200 group-hover:rotate-90 md:text-[50px]">
+              &times;
+            </span>
           </button>
 
           <Transition
@@ -134,8 +136,8 @@
             leave-from-class="translate-y-0 scale-100 opacity-100"
             leave-to-class="translate-y-4 scale-[0.98] opacity-0"
           >
-            <div class="relative grid max-h-[calc(100vh-48px)] w-full max-w-[1080px] grid-cols-1 gap-6 overflow-y-auto py-10 md:max-h-[calc(100vh-80px)] md:grid-cols-[38%_1fr] md:items-center md:gap-10 md:py-0 lg:gap-12">
-              <div class="aspect-[1.04/1] w-full max-w-[280px] overflow-hidden bg-white shadow-[0_24px_80px_rgba(0,63,80,0.10)] sm:max-w-[340px] md:max-w-none">
+            <div class="relative grid w-full max-w-[1180px] grid-cols-1 gap-8 md:grid-cols-[42%_minmax(0,1fr)] md:items-start md:gap-12 lg:gap-16">
+              <div class="aspect-[1.04/1] w-full max-w-[320px] overflow-hidden bg-white shadow-[0_24px_80px_rgba(0,63,80,0.10)] sm:max-w-[420px] md:max-w-none">
                 <img
                   v-if="selectedMember.image"
                   :src="selectedMember.image"
@@ -144,7 +146,7 @@
                 >
               </div>
 
-              <div class="max-w-[590px] pr-1">
+              <div class="min-w-0 max-w-[680px]">
                 <h2 class="text-[22px] font-semibold leading-none tracking-[-0.04em] text-[#003f50] md:text-[28px] lg:text-[32px]">
                   {{ selectedMember.name }}
                 </h2>
@@ -163,7 +165,7 @@
                   in
                 </a>
 
-                <div class="mt-5 space-y-3.5 text-[11px] font-medium leading-[1.5] tracking-[-0.02em] text-[#003f50] sm:text-[12px] md:text-[13px] lg:text-[14px]">
+                <div class="mt-5 space-y-4 text-[12px] font-medium leading-[1.65] tracking-[-0.02em] text-[#003f50] sm:text-[13px] md:text-[14px]">
                   <p v-for="paragraph in selectedMember.bio" :key="paragraph">
                     {{ paragraph }}
                   </p>
@@ -185,6 +187,7 @@ import ngoziImage from '~/assets/images/team/ngozi.png'
 import odiogoImage from '~/assets/images/team/odigio.png'
 import tshokoloImage from '~/assets/images/team/tshokolo.png'
 import veraImage from '~/assets/images/team/vera.png'
+import danieleImage from '~/assets/images/team/daniela.png'
 
 type Member = {
   name: string
@@ -277,6 +280,16 @@ const edBio = [
   'He holds an MBA from Cranfield University, a PGDip Law from the University of Northumbria, and a BA from Manchester University; he is a graduate of the US Army Command and General Staff College and RMA Sandhurst.',
 ]
 
+const danieleBio = [
+  'Daniele Jean-Pierre is a corporate finance attorney and senior executive with over two decades of experience in private equity, corporate finance, international trade, and development finance.',
+  'As Managing Director for Trade at Prosper Africa, she managed a $50 million catalytic capital facility supporting agribusiness, textiles and apparel, and critical minerals, mobilizing financing from the private sector and DFIs.',
+  'Over the course of her career at USAID, she has advanced African economic development, secured global supply chains, and advanced $5 billion of U.S. foreign assistance across Africa, Asia, and the Caribbean through senior legal leadership roles, including Acting Deputy General Counsel, Assistant General Counsel, and Chief Legal Officer in Senegal and Haiti.',
+  'She has advised on public-private partnerships, infrastructure and energy projects, and compliance frameworks in fragile and frontier markets.',
+  'In the private sector, Daniele served as Associate General Counsel at American Capital, a global asset manager with $100 billion AUM, structuring leveraged buyouts, debt, and equity investments and advising portfolio company boards.',
+  'She began her career at Latham & Watkins LLP, representing major investment banks, including Goldman Sachs, and private equity sponsors, including the Carlyle Group, in leveraged finance transactions across Washington, New York, and Paris.',
+  'She holds a JD from Harvard Law School and an MA in International Policy Studies and BA in International Relations from Stanford University, and is fluent in French with professional proficiency in Portuguese.',
+]
+
 const teamMembers: Member[] = [
   {
     name: 'Tshokolo Nchocho',
@@ -318,6 +331,13 @@ const teamMembers: Member[] = [
     image: andrewImage,
     linkedin: '#',
     bio: andrewBio,
+  },
+  {
+    name: 'Daniele Jean-Pierre',
+    role: 'General Counsel',
+    image: danieleImage,
+    linkedin: '#',
+    bio: danieleBio,
   },
 ]
 
