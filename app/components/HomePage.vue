@@ -1,86 +1,6 @@
 <template>
   <!-- Hero Section -->
-    <section
-      ref="homeHeroRef"
-      class="homepage-hero relative overflow-hidden bg-[radial-gradient(circle_at_50%_115%,rgba(20,129,160,0.92)_0%,rgba(12,92,123,0.94)_33%,rgba(5,50,75,1)_78%)] pt-[124px] text-white sm:pt-[132px] lg:pt-[146px]"
-      :class="{ 'is-visible': isHomeIntroVisible }"
-    >
-      <div class="mx-auto flex min-h-[540px] max-w-[1600px] flex-col items-center px-6 pb-0 sm:min-h-[650px] sm:px-10 lg:min-h-[820px] lg:px-20">
-        <h1 class="hero-intro-title max-w-[720px] text-center text-[31px] font-semibold leading-[1.08] tracking-[-0.055em] text-white sm:text-[42px] md:text-[50px] lg:text-[56px]">
-          Africa's Infrastructure
-          <br />
-          Secondary Market Platform
-        </h1>
-
-        <div class="hero-intro-actions mt-8 flex flex-wrap items-center justify-center gap-2 sm:mt-9 sm:gap-3 lg:mt-10">
-          <NuxtLink
-            to="/our-capabilities"
-            class="hero-intro-button inline-flex h-9 items-center gap-5 bg-[#18d8b7] px-6 text-[8px] font-bold uppercase tracking-[0.04em] text-[#032f45] transition hover:bg-[#35ffd8] sm:h-10 sm:px-7 sm:text-[9px] lg:h-11 lg:px-8 lg:text-[10px]"
-            style="--hero-button-delay: 150ms"
-          >
-            Explore Our Platform
-            <span class="hero-button-icon" aria-hidden="true">
-              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-base h-3 w-3 object-contain" />
-              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-hover h-3 w-3 object-contain" />
-            </span>
-          </NuxtLink>
-
-          <NuxtLink
-            to="/about-us"
-            class="hero-intro-button inline-flex h-9 items-center gap-5 bg-[#0d4a70] px-6 text-[8px] font-bold uppercase tracking-[0.04em] text-white transition hover:bg-[#12577f] sm:h-10 sm:px-7 sm:text-[9px] lg:h-11 lg:px-8 lg:text-[10px]"
-            style="--hero-button-delay: 235ms"
-          >
-            Discover Our Platform
-            <span class="hero-button-icon" aria-hidden="true">
-              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-base hero-button-icon-light brightness-0 invert  h-3 w-3 object-contain" />
-              <img :src="arrowOutwardIcon" alt="" class="hero-button-icon-hover hero-button-icon-light brightness-0 invert h-3 w-3 object-contain" />
-            </span>
-          </NuxtLink>
-        </div>
-
-       <div class="hero-intro-strip hero-strip-shell mt-[54px] self-stretch sm:mt-16 lg:mt-[74px]">
-  <div class="hero-image-strip-viewport">
-  <div class="hero-image-strip pb-8 sm:pb-10 md:pb-12 lg:pb-14">
-      <NuxtLink
-        v-for="card in heroCarouselCards.slice(0, 3)"
-        :key="card.id"
-        :to="card.to"
-        class="group hero-image-card"
-      >
-        <span class="block overflow-hidden">
-          <img
-            :src="card.image"
-            :alt="card.title"
-            class="h-[220px] w-full object-cover transition duration-700 ease-out group-hover:scale-[1.035] sm:h-[300px] md:h-[370px] lg:h-[410px] xl:h-[430px]"
-          />
-        </span>
-
-        <div class="mt-3 flex items-start justify-between gap-4">
-          <div class="min-w-0">
-            <p class="text-[10px] font-medium leading-none text-[#15c8aa] sm:text-[11px] lg:text-[12px]">
-              {{ card.category }}
-            </p>
-
-            <h2
-              class="mt-2 text-[13px] font-medium leading-[1.22] tracking-[-0.025em] text-white sm:text-[15px] lg:text-[17px]"
-            >
-              {{ card.title }}
-            </h2>
-          </div>
-
-          <img
-            :src="arrowOutwardIcon"
-            alt=""
-            class="mt-[18px] h-2.5 w-2.5 shrink-0 object-contain brightness-0 invert transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:mt-6 lg:h-3 lg:w-3 "
-          />
-        </div>
-      </NuxtLink>
-  </div>
-</div>
-</div>
-      </div>
-    </section>
-    <!-- <section
+     <section
       ref="homeHeroRef"
       class="homepage-hero relative overflow-hidden bg-[radial-gradient(circle_at_50%_115%,rgba(20,129,160,0.92)_0%,rgba(12,92,123,0.94)_33%,rgba(5,50,75,1)_78%)] pt-[124px] text-white sm:pt-[132px] lg:pt-[146px]"
       :class="{ 'is-visible': isHomeIntroVisible }"
@@ -139,7 +59,11 @@
     </button>
   </div>
 
-  <div class="hero-image-strip-viewport overflow-hidden">
+  <div
+    class="hero-image-strip-viewport overflow-hidden"
+    @mouseenter="isHeroCarouselPaused = true"
+    @mouseleave="isHeroCarouselPaused = false"
+  >
   <div ref="heroImageStripRef" class="hero-image-strip pb-8 sm:pb-10 md:pb-12 lg:pb-14">
     <div
       v-for="trackIndex in 2"
@@ -157,11 +81,17 @@
           <img
             :src="card.image"
             :alt="card.title"
-            class="h-[220px] w-full object-cover transition duration-700 ease-out group-hover:scale-[1.035] sm:h-[300px] md:h-[370px] lg:h-[410px] xl:h-[430px]"
+            class="h-[240px] w-full object-cover transition duration-700 ease-out group-hover:scale-[1.035] sm:h-[320px] md:h-[380px] lg:h-[430px] xl:h-[455px]"
           />
         </span>
 
-        <div class="mt-3 flex items-start justify-between gap-4">
+        <div class="mt-3 flex items-start gap-2.5">
+          <img
+            :src="arrowOutwardIcon"
+            alt=""
+            class="mt-[15px] h-2 w-2 shrink-0 object-contain brightness-0 invert transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
+
           <div class="min-w-0">
             <p class="text-[10px] font-medium leading-none text-[#15c8aa] sm:text-[11px] lg:text-[12px]">
               {{ card.category }}
@@ -173,12 +103,6 @@
               {{ card.title }}
             </h2>
           </div>
-
-          <img
-            :src="arrowOutwardIcon"
-            alt=""
-            class="mt-[18px] h-2.5 w-2.5 shrink-0 object-contain brightness-0 invert transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:mt-6 lg:h-3 lg:w-3 "
-          />
         </div>
       </NuxtLink>
     </div>
@@ -186,7 +110,7 @@
 </div>
 </div>
       </div>
-    </section> -->
+    </section> 
 <section
   ref="secondSectionRef"
   class="homepage-second-section w-full bg-[#fafafa] text-[#111111]"
@@ -253,11 +177,11 @@
   >
     <div class="mx-auto ">
       <div class="grid lg:grid-cols-2">
-        <!-- LEFT SIDE -->
+        <!-- LEFT SIDE What We Do Section-->
         <div class="grid grid-cols-1 md:grid-cols-2 ">
           <!-- Advisory -->
           <article
-            class="what-we-do-tile bg-[#0d5563] px-8 py-8 md:px-10 lg:px-20 md:py-10 lg:h-[330px]"
+            class="what-we-do-tile bg-[#0d5563] px-8 py-8 md:px-10 md:py-10 lg:h-[330px] lg:pl-20 lg:pr-12"
             style="--what-we-do-delay: 0ms"
           >
             <h3
@@ -267,7 +191,7 @@
             </h3>
 
             <p
-              class="mt-16 max-w-[250px] text-[15px] leading-[1.7] text-white/90"
+              class="mt-16 max-w-[285px] text-[15px] leading-[1.7] text-white/90"
             >
               Project development, transaction structuring, capital raising, market access, valuation analysis, ESG strategy and impact assessment and investor readiness.
 
@@ -288,7 +212,7 @@ Executed by INFRAGORA Advisory
             </h3>
 
             <p
-              class="mt-16 max-w-[250px] text-[15px] leading-[1.7] text-white/90"
+              class="mt-16 max-w-[285px] text-[15px] leading-[1.7] text-white/90"
             >
               Greenfield especially selected late-stage and operating/brownfield with growth upside infrastructure assets
             </p>
@@ -306,7 +230,7 @@ Executed by INFRAGORA Advisory
             </h3>
 
             <p
-              class="mt-16 max-w-[250px] text-[15px] leading-[1.7] text-[#16354b]"
+              class="mt-16 max-w-[285px] text-[15px] leading-[1.7] text-[#16354b]"
             >
               Flexible investment instruments including
               equity, quasi-equity and private credit.
@@ -325,7 +249,7 @@ Executed by INFRAGORA Advisory
             </h3>
 
             <p
-              class="mt-16 max-w-[250px] text-[15px] leading-[1.7] text-[#16354b]"
+              class="mt-16 max-w-[285px] text-[15px] leading-[1.7] text-[#16354b]"
             >
               Infrastructure-focused vehicles and
               portfolios with disciplined governance,
@@ -528,49 +452,28 @@ Executed by INFRAGORA Advisory
   class="homepage-news overflow-hidden bg-[#f5f5f5]"
   :class="{ 'is-visible': isNewsSectionVisible }"
 >
-  <div class="mx-auto pl-6 sm:pl-10 lg:pl-20">
+  <div class="mx-auto pl-6 sm:pl-10 lg:pl-20 pb-10 md:pb-20">
 
    
-    <div class="mb-12 flex items-end justify-between pr-6 sm:pr-10 lg:pr-20">
+    <div class="mb-12 pr-6 sm:pr-10 lg:pr-20">
       <h2
         class="news-heading text-[34px] leading-[0.95] font-medium tracking-[-0.04em] lg:text-[42px]"
       >
         News <br />
         & Insights
       </h2>
-
-      <div class="news-controls flex gap-3">
-        <button
-          type="button"
-          class="flex h-9 w-9 items-center justify-center rounded-full border border-[#9da8aa] text-[20px] leading-none text-[#24454c] transition duration-300 hover:border-[#111111] hover:bg-[#111111] hover:text-white"
-          aria-label="Previous news item"
-          @click="showPreviousNewsPost2"
-        >
-          &lsaquo;
-        </button>
-
-        <button
-          type="button"
-          class="flex h-9 w-9 items-center justify-center rounded-full border border-[#9da8aa] text-[20px] leading-none text-[#24454c] transition duration-300 hover:border-[#111111] hover:bg-[#111111] hover:text-white"
-          aria-label="Next news item"
-          @click="showNextNewsPost2"
-        >
-          &rsaquo;
-        </button>
-      </div>
     </div>
 
 
-    <div class="news-cards-viewport overflow-hidden pb-4">
+    <div class="news-cards-viewport pb-4 pr-6 sm:pr-10 lg:pr-20">
       <div
-        class="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(.16,1,.3,1)]"
-        :style="{ transform: `translateX(calc(-${newsCarouselIndex} * (min(82vw, 380px) + 1.5rem)))` }"
+        class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"
       >
       
         <article
-          v-for="(post, postIndex) in newsCarouselPosts2"
-          :key="post.carouselId"
-          class="news-card group w-[min(82vw,380px)] flex-shrink-0 transition duration-500 ease-[cubic-bezier(.16,1,.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_34px_rgba(0,0,0,0.09)]"
+          v-for="(post, postIndex) in posts.slice(0, 3)"
+          :key="post.id"
+          class="news-card group min-w-0 transition duration-500 ease-[cubic-bezier(.16,1,.3,1)] hover:-translate-y-1 hover:shadow-[0_16px_34px_rgba(0,0,0,0.09)]"
           :style="{ '--news-card-delay': `${160 + (postIndex % posts.length) * 85}ms` }"
         >
           <div class="relative overflow-hidden bg-white">
@@ -622,7 +525,7 @@ Executed by INFRAGORA Advisory
     </div>
 
   </div>
-</section> -->
+</section>  -->
 <!-- <section
   ref="partnersSectionRef"
   class="homepage-partners bg-[#f5f5f5] px-6 py-16 sm:px-10 sm:py-20 lg:px-20 lg:py-24"
@@ -1065,6 +968,8 @@ const posts = [
 const newsCarouselIndex = ref(0)
 const route = useRoute()
 const homeHeroRef = ref(null)
+const heroImageStripRef = ref(null)
+const isHeroCarouselPaused = ref(false)
 const isHomeIntroVisible = ref(false)
 const isSecondSectionVisible = ref(false)
 const secondSectionRef = ref(null)
@@ -1093,6 +998,118 @@ let partnersSectionObserver = null
 let accordionSectionObserver = null
 let lastSectionObserver = null
 let homeIntroAnimationFrame = 0
+let heroCarouselAnimationFrame = 0
+let heroCarouselPreviousTime = 0
+let heroCarouselResumeTimeout = 0
+
+const getHeroCarouselCycleWidth = (track) => {
+  const firstSet = track?.querySelector('.hero-image-strip-set')
+
+  if (!track || !firstSet) {
+    return 0
+  }
+
+  const styles = window.getComputedStyle(track)
+  const gap = Number.parseFloat(styles.columnGap || styles.gap || '0') || 0
+
+  return firstSet.scrollWidth + gap
+}
+
+const normalizeHeroCarouselScroll = () => {
+  const track = heroImageStripRef.value
+  const viewport = track?.parentElement
+  const cycleWidth = getHeroCarouselCycleWidth(track)
+
+  if (!viewport || !cycleWidth) {
+    return
+  }
+
+  if (viewport.scrollLeft >= cycleWidth) {
+    viewport.scrollLeft -= cycleWidth
+  }
+
+  if (viewport.scrollLeft < 0) {
+    viewport.scrollLeft += cycleWidth
+  }
+}
+
+const startHeroCarouselAutoScroll = () => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    return
+  }
+
+  if (heroCarouselAnimationFrame) {
+    cancelAnimationFrame(heroCarouselAnimationFrame)
+  }
+
+  heroCarouselPreviousTime = 0
+
+  const tick = (timestamp) => {
+    const track = heroImageStripRef.value
+    const viewport = track?.parentElement
+
+    if (viewport && track) {
+      const elapsed = heroCarouselPreviousTime
+        ? timestamp - heroCarouselPreviousTime
+        : 0
+
+      if (!isHeroCarouselPaused.value && elapsed > 0) {
+        viewport.scrollLeft += elapsed * 0.058
+        normalizeHeroCarouselScroll()
+      }
+    }
+
+    heroCarouselPreviousTime = timestamp
+    heroCarouselAnimationFrame = requestAnimationFrame(tick)
+  }
+
+  heroCarouselAnimationFrame = requestAnimationFrame(tick)
+}
+
+const pauseHeroCarouselBriefly = () => {
+  isHeroCarouselPaused.value = true
+
+  if (heroCarouselResumeTimeout) {
+    window.clearTimeout(heroCarouselResumeTimeout)
+  }
+
+  heroCarouselResumeTimeout = window.setTimeout(() => {
+    isHeroCarouselPaused.value = false
+    heroCarouselResumeTimeout = 0
+  }, 1600)
+}
+
+const moveHeroCarousel = (direction) => {
+  const track = heroImageStripRef.value
+  const viewport = track?.parentElement
+  const firstCard = track?.querySelector('.hero-image-card')
+
+  if (!viewport || !firstCard) {
+    return
+  }
+
+  const styles = window.getComputedStyle(track)
+  const gap = Number.parseFloat(styles.columnGap || styles.gap || '0') || 0
+  const step = firstCard.getBoundingClientRect().width + gap
+  const cycleWidth = getHeroCarouselCycleWidth(track)
+
+  if (direction < 0 && viewport.scrollLeft <= 2 && cycleWidth) {
+    viewport.scrollLeft += cycleWidth
+  }
+
+  const nextScrollLeft = viewport.scrollLeft + direction * step
+
+  viewport.scrollTo({
+    left: nextScrollLeft,
+    behavior: 'smooth',
+  })
+
+  pauseHeroCarouselBriefly()
+
+  window.setTimeout(() => {
+    normalizeHeroCarouselScroll()
+  }, 420)
+}
 
 const playHomeIntroAnimation = async () => {
   isHomeIntroVisible.value = false
@@ -1114,6 +1131,7 @@ const playHomeIntroAnimation = async () => {
 
 onMounted(() => {
   playHomeIntroAnimation()
+  startHeroCarouselAutoScroll()
 
   const supportsIntersectionObserver = 'IntersectionObserver' in window
 
@@ -1325,6 +1343,14 @@ onUnmounted(() => {
     cancelAnimationFrame(homeIntroAnimationFrame)
   }
 
+  if (heroCarouselAnimationFrame) {
+    cancelAnimationFrame(heroCarouselAnimationFrame)
+  }
+
+  if (heroCarouselResumeTimeout) {
+    window.clearTimeout(heroCarouselResumeTimeout)
+  }
+
   secondSectionObserver?.disconnect()
   whatWeDoSectionObserver?.disconnect()
   portfolioFocusObserver?.disconnect()
@@ -1352,29 +1378,10 @@ const newsCarouselPosts = computed(() =>
     carouselId: `${post.id}-${index}`,
   }))
 )
-const newsCarouselPosts2 = computed(() =>
-  [...posts, ...posts].map((post, index) => ({
-    ...post,
-    carouselId: `${post.id}-${index}`,
-  }))
-)
 
 const showNextNewsPost = () => {
   newsCarouselIndex.value =
     newsCarouselIndex.value >= posts2.length - 1
-      ? 0
-      : newsCarouselIndex.value + 1
-}
-
-const showPreviousNewsPost2 = () => {
-  newsCarouselIndex.value =
-    newsCarouselIndex.value <= 0
-      ? posts.length - 1
-      : newsCarouselIndex.value - 1
-}
-const showNextNewsPost2 = () => {
-  newsCarouselIndex.value =
-    newsCarouselIndex.value >= posts.length - 1
       ? 0
       : newsCarouselIndex.value + 1
 }
@@ -1746,7 +1753,6 @@ const showPreviousNewsPost = () => {
 }
 
 .news-heading,
-.news-controls,
 .news-cards-viewport,
 .news-card {
   opacity: 0;
@@ -1755,10 +1761,6 @@ const showPreviousNewsPost = () => {
     opacity 820ms ease,
     transform 820ms cubic-bezier(.16, 1, .3, 1);
   will-change: opacity, transform;
-}
-
-.news-controls {
-  transition-delay: 80ms;
 }
 
 .news-cards-viewport {
@@ -1772,7 +1774,6 @@ const showPreviousNewsPost = () => {
 }
 
 .homepage-news.is-visible .news-heading,
-.homepage-news.is-visible .news-controls,
 .homepage-news.is-visible .news-cards-viewport,
 .homepage-news.is-visible .news-card {
   opacity: 1;
@@ -1846,41 +1847,161 @@ const showPreviousNewsPost = () => {
 
 .hero-strip-shell {
   align-self: stretch;
+  width: 100%;
+}
+
+.hero-carousel-controls {
+  position: absolute;
+  left: 50%;
+  top: -3.1rem;
+  z-index: 3;
+  display: flex;
+  transform: translateX(-50%);
+  gap: 0.75rem;
+}
+
+.hero-carousel-button {
+  display: inline-flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(255 255 255 / 0.7);
+  border-radius: 9999px;
+  color: #ffffff;
+  font-size: 1.5rem;
+  line-height: 1;
+  transition:
+    background-color 220ms ease,
+    border-color 220ms ease,
+    color 220ms ease,
+    transform 220ms ease;
+}
+
+.hero-carousel-button:hover,
+.hero-carousel-button:focus-visible {
+  border-color: #ffffff;
+  background-color: #ffffff;
+  color: #0c5c7b;
+  transform: translateY(-1px);
 }
 
 .hero-image-strip-viewport {
   align-self: stretch;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-inline: clamp(0.75rem, 5vw, 5rem);
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0,
+    #000 5%,
+    #000 95%,
+    transparent 100%
+  );
+  scroll-behavior: auto;
+  scrollbar-width: none;
+}
+
+.hero-image-strip-viewport::-webkit-scrollbar {
+  display: none;
 }
 
 .hero-image-strip {
-  display: grid;
-  gap: 0.9rem;
+  --hero-strip-gap: clamp(0.85rem, 1.35vw, 1.45rem);
+  display: flex;
+  width: max-content;
+  gap: var(--hero-strip-gap);
+}
+
+.hero-image-strip-set {
+  display: flex;
+  gap: var(--hero-strip-gap);
 }
 
 .hero-image-card {
+  width: clamp(195px, 66vw, 280px);
   min-width: 0;
+  flex: 0 0 auto;
+  transform: translateZ(0);
+  transition:
+    opacity 320ms ease,
+    transform 520ms cubic-bezier(.16, 1, .3, 1);
+  will-change: transform;
+}
+
+.hero-image-card span {
+  background: rgb(255 255 255 / 0.08);
+}
+
+.hero-image-card img {
+  display: block;
 }
 
 @media (min-width: 640px) {
-  .hero-image-strip {
-    gap: 1rem;
+  .hero-carousel-controls {
+    top: -3.3rem;
+  }
+
+  .hero-image-card {
+    width: clamp(270px, 40vw, 380px);
   }
 }
 
 @media (min-width: 768px) {
-  .hero-image-strip {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1.25rem;
+  .hero-image-card {
+    width: clamp(310px, 31vw, 430px);
   }
 }
 
 @media (min-width: 1024px) {
-  .hero-image-strip {
-    gap: 1.5rem;
+  .hero-image-strip-viewport {
+    padding-inline: clamp(1rem, 3.5vw, 4rem);
+  }
+
+  .hero-image-card {
+    width: clamp(330px, 25vw, 460px);
+  }
+}
+
+@media (min-width: 1600px) {
+  .hero-image-card {
+    width: 480px;
   }
 }
 
 @media (max-width: 520px) {
+  .hero-carousel-controls {
+    position: static;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .hero-image-strip-viewport {
+    padding-inline: 1rem;
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 10%,
+      #000 90%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0,
+      #000 10%,
+      #000 90%,
+      transparent 100%
+    );
+  }
+
   .hero-intro-actions {
     width: 100%;
     justify-content: center;
@@ -1912,7 +2033,6 @@ const showPreviousNewsPost = () => {
   .focus-areas-carousel,
   .focus-areas-feature,
   .news-heading,
-  .news-controls,
   .news-cards-viewport,
   .news-card,
   .accordion-kicker,
