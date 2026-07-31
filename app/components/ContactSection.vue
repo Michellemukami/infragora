@@ -107,6 +107,18 @@
               </svg>
             </a>
           </div>
+
+          <div class="contact-office mt-9 max-w-[360px] text-[#0c5668]">
+            <h3 class="text-[28px] font-semibold leading-none tracking-[-0.02em]">
+              Office
+            </h3>
+            <p class="mt-5 text-[15px] leading-[1.65]">
+              4th Floor, West Tower,<br>
+              Nelson Mandela Square<br>
+              Sandton<br>
+              Johannesburg, Gauteng, South Africa
+            </p>
+          </div>
         </div>
 
         <!-- RIGHT SIDE FORM -->
@@ -388,6 +400,7 @@ const submitForm = async () => {
 .contact-title,
 .contact-intro,
 .contact-social,
+.contact-office,
 .contact-form-panel :deep(select),
 .contact-form-panel :deep(input),
 .contact-form-panel :deep(textarea),
@@ -413,6 +426,10 @@ const submitForm = async () => {
 
 .contact-social {
   transition-delay: 210ms;
+}
+
+.contact-office {
+  transition-delay: 290ms;
 }
 
 .contact-form-panel :deep(select) {
@@ -454,6 +471,7 @@ const submitForm = async () => {
 .contact-section.is-visible .contact-title,
 .contact-section.is-visible .contact-intro,
 .contact-section.is-visible .contact-social,
+.contact-section.is-visible .contact-office,
 .contact-section.is-visible .contact-form-panel :deep(select),
 .contact-section.is-visible .contact-form-panel :deep(input),
 .contact-section.is-visible .contact-form-panel :deep(textarea),
@@ -467,6 +485,7 @@ const submitForm = async () => {
   .contact-title,
   .contact-intro,
   .contact-social,
+  .contact-office,
   .contact-form-panel :deep(select),
   .contact-form-panel :deep(input),
   .contact-form-panel :deep(textarea),

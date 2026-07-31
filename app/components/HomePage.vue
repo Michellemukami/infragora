@@ -85,23 +85,23 @@
           />
         </span>
 
-        <div class="mt-3 flex items-start gap-2.5">
-          <img
-            :src="arrowOutwardIcon"
-            alt=""
-            class="mt-[15px] h-2 w-2 shrink-0 object-contain brightness-0 invert transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          />
+        <div class="mt-3">
+          <p class="text-[10px] font-medium leading-none text-[#15c8aa] sm:text-[11px] lg:text-[12px]">
+            {{ card.category }}
+          </p>
 
-          <div class="min-w-0">
-            <p class="text-[10px] font-medium leading-none text-[#15c8aa] sm:text-[11px] lg:text-[12px]">
-              {{ card.category }}
-            </p>
-
+          <div class="mt-2 flex items-start justify-between gap-4">
             <h2
-              class="mt-2 text-[13px] font-medium leading-[1.22] tracking-[-0.025em] text-white sm:text-[15px] lg:text-[17px]"
+              class="max-w-[78%] text-[13px] font-medium leading-[1.22] tracking-[-0.025em] text-white sm:max-w-[80%] sm:text-[15px] lg:text-[17px]"
             >
               {{ card.title }}
             </h2>
+
+            <img
+              :src="arrowOutwardIcon"
+              alt=""
+              class="mt-1 h-3 w-3 shrink-0 object-contain brightness-0 invert transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-3.5 sm:w-3.5"
+            />
           </div>
         </div>
       </NuxtLink>
@@ -694,6 +694,7 @@ import heroCardTwo from "~/assets/images/home/corasel2.jpg"
 import heroCardThree from "~/assets/images/home/corasel3.jpg"
 import heroCardFour from "~/assets/images/home/corasel4.jpg"
 import heroCardFive from "~/assets/images/home/corasel5.jpg"
+import heroCardSix from "~/assets/images/capabilities/fund.png"
 import KnowledgeHub from '~/components/KnowledgeHub.vue'
 import NumberCard from './common/NumberCard.vue'
 import mauritiusFlag from '~/assets/images/flags/african/mauritius.png'
@@ -739,37 +740,44 @@ useHead({
 const heroCarouselCards = [
   {
     id: 1,
-    category: 'Private Credit',
-    title: 'A New Exit Window for African Infrastructure',
+    category: 'Governance',
+    title: 'Meet the team behind the vision',
     image: heroCardOne,
-    to: '/our-capabilities/instruments/private-credit',
+    to: '/governance',
   },
   {
     id: 2,
-    category: 'Private Credit',
-    title: 'A New Exit Window for African Infrastructure',
+    category: 'Advisory',
+    title: 'Ensuring the bankability of infrastructure assets',
     image: heroCardTwo,
-    to: '/our-capabilities/instruments/private-credit',
+    to: '/our-capabilities/advisory',
   },
   {
     id: 3,
-    category: 'Public Investment',
-    title: 'A New Exit Window for African Infrastructure',
+    category: 'Investment',
+    title: 'Supporting Africa\'s  economic transformation',
     image: heroCardThree,
-    to: '/our-capabilities/investment/public-investment',
+    to: '/our-capabilities/investment',
   },
   {
     id: 4,
-    category: 'News',
-    title: 'A New Exit Window for African Infrastructure',
+    category: 'Private Investment',
+    title: 'Unlocking growth, expansion and value',
     image: heroCardFour,
-    to: '/news',
+    to: '/our-capabilities/investment/private-investment',
   },
   {
     id: 5,
-    category: 'Fund Management',
-    title: 'A New Exit Window for African Infrastructure',
+    category: 'Public Investment',
+    title: 'Connect African infrastructure to Regional and Global Markets ',
     image: heroCardFive,
+    to: '/our-capabilities/investment/public-investment',
+  },
+  {
+    id: 6,
+    category: 'Fund Management',
+    title: 'Managing infrastructure investment platforms',
+    image: heroCardSix,
     to: '/fund-management',
   },
 ]

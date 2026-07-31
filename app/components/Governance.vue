@@ -188,6 +188,7 @@ import odiogoImage from '~/assets/images/team/odigio.png'
 import tshokoloImage from '~/assets/images/team/tshokolo.png'
 import veraImage from '~/assets/images/team/vera.png'
 import danieleImage from '~/assets/images/team/daniela.png'
+import placeholderImage from '~/assets/images/team/placeholder.png'
 
 type Member = {
   name: string
@@ -322,6 +323,7 @@ const teamMembers: Member[] = [
   {
     name: 'Ed Marlow',
     role: 'MD, Private Investments',
+    image: placeholderImage,
     linkedin: '#',
     bio: edBio,
   },
@@ -355,6 +357,7 @@ const boardMembers: Member[] = [
     role: 'Chair, Africa, Milken Institute International; Former Deputy Assistant Administrator & Coordinator, Prosper Africa',
     displayRole: 'Chair, Africa, Milken Institute International',
     linkedin: '#',
+    image: placeholderImage,
     bio: britishBio,
   },
   {
