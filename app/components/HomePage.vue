@@ -1062,7 +1062,7 @@ const startHeroCarouselAutoScroll = () => {
         : 0
 
       if (!isHeroCarouselPaused.value && elapsed > 0) {
-        viewport.scrollLeft += elapsed * 0.058
+        viewport.scrollLeft += elapsed * 0.036
         normalizeHeroCarouselScroll()
       }
     }
@@ -1986,10 +1986,18 @@ const showPreviousNewsPost = () => {
 }
 
 @media (max-width: 520px) {
+  .hero-intro-strip {
+    margin-top: 1.5rem;
+  }
+
   .hero-carousel-controls {
     position: static;
+    left: auto;
+    top: auto;
+    width: 100%;
     justify-content: center;
-    margin-bottom: 1rem;
+    transform: none;
+    margin-bottom: 1.5rem;
   }
 
   .hero-image-strip-viewport {
