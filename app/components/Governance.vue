@@ -9,7 +9,7 @@
           data-governance-reveal
         >
           <h2 class="text-[24px] font-semibold leading-none tracking-[-0.04em] text-[#003f50] md:text-[32px] lg:text-[38px]">
-            Infragora Team
+            INFRAGORA Team
           </h2>
 
           <p class="max-w-[610px] text-[13px] font-medium leading-[1.45] tracking-[-0.025em] text-[#003f50] md:text-[15px] lg:text-[16px]">

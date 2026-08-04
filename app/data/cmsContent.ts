@@ -190,6 +190,174 @@ export const newsItems: CmsContentItem[] = [
 
 export const knowledgeHubItems: CmsContentItem[] = [
   {
+    id: 100,
+    type: 'knowledge_hub',
+    title: '2025 Sustainability Report',
+    slug: 'sustainabilityreport',
+    excerpt:
+      "Africa's digital economy is growing quickly, but much of the continent's data is still processed and stored far from the users, businesses and institutions that rely on it.",
+    content: [],
+    contentBlocks: [
+      {
+        type: 'paragraph',
+        text: "Africa's digital economy is growing quickly, but much of the continent's data is still processed and stored far from the users, businesses and institutions that rely on it. This creates latency, adds pressure to international transport links and can limit enterprise cloud adoption in markets where data localisation and regulatory requirements are increasing.",
+      },
+      {
+        type: 'paragraph',
+        text: 'INFRAGORA views sustainability through the practical needs of African infrastructure markets: resilient assets, transparent reporting, local capacity, climate-aware capital deployment and infrastructure platforms that can support long-term economic participation.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The 2025 Sustainability Report outlines the themes, governance priorities and impact considerations shaping our approach to infrastructure investment and market development.',
+      },
+    ],
+    category: 'Sustainability',
+    country: 'Mauritius',
+    ctaLabel: 'Read More',
+    mainImage: {
+      src: 'sustainability',
+      alt: 'Industrial infrastructure beside water',
+    },
+    publishedAt: '2025-01-01',
+    status: 'published',
+    isFeatured: true,
+    layout: 'wide',
+    seo: {
+      title: '2025 Sustainability Report | INFRAGORA Global Capital',
+      description:
+        "Read INFRAGORA's 2025 Sustainability Report covering sustainable infrastructure, digital infrastructure, governance and impact priorities.",
+      keywords: ['sustainability report', 'African infrastructure', 'ESG', 'digital infrastructure'],
+    },
+  },
+  {
+    id: 105,
+    type: 'knowledge_hub',
+    title: 'Energy Infrastructure Investment Report',
+    slug: 'energy-infrastructure-investment-report',
+    excerpt:
+      "Africa's energy infrastructure demand is expanding as markets balance reliability, affordability and transition priorities across generation, transmission and storage.",
+    content: [],
+    contentBlocks: [
+      {
+        type: 'paragraph',
+        text: "Africa's energy infrastructure demand is expanding as markets balance reliability, affordability and transition priorities across generation, transmission and storage.",
+      },
+    ],
+    category: 'Energy',
+    country: 'Mauritius',
+    ctaLabel: 'Read More',
+    mainImage: {
+      src: 'energy',
+      alt: 'Energy infrastructure investment landscape',
+    },
+    publishedAt: '2025-02-01',
+    status: 'published',
+    isFeatured: true,
+    layout: 'wide',
+    seo: {
+      title: 'Energy Infrastructure Investment Report | INFRAGORA Global Capital',
+      description:
+        'Read INFRAGORA insight on energy infrastructure investment, reliability, affordability and transition priorities across Africa.',
+      keywords: ['energy infrastructure', 'investment report', 'African infrastructure'],
+    },
+  },
+  {
+    id: 106,
+    type: 'knowledge_hub',
+    title: '2025 Infrastructure Development Conference',
+    slug: 'infrastructure-development-conference-2025',
+    excerpt:
+      'The 2025 Infrastructure Development Conference brings together investors, asset owners and policy leaders focused on practical market development across Africa.',
+    content: [],
+    contentBlocks: [
+      {
+        type: 'paragraph',
+        text: 'The 2025 Infrastructure Development Conference brings together investors, asset owners and policy leaders focused on practical market development across Africa.',
+      },
+    ],
+    category: 'Events',
+    country: 'Mauritius',
+    ctaLabel: 'Read More',
+    mainImage: {
+      src: 'conference',
+      alt: 'Infrastructure development conference',
+    },
+    publishedAt: '2025-03-01',
+    status: 'published',
+    isFeatured: true,
+    layout: 'wide',
+    seo: {
+      title: '2025 Infrastructure Development Conference | INFRAGORA Global Capital',
+      description:
+        'Read about the 2025 Infrastructure Development Conference and its focus on investors, asset owners and African infrastructure markets.',
+      keywords: ['infrastructure conference', 'African infrastructure', 'market development'],
+    },
+  },
+  {
+    id: 107,
+    type: 'knowledge_hub',
+    title: '2026 Outlook',
+    slug: 'outlook-2026',
+    excerpt:
+      'The 2026 outlook considers infrastructure liquidity, capital formation and investor priorities as African markets prepare for the next phase of growth.',
+    content: [],
+    contentBlocks: [
+      {
+        type: 'paragraph',
+        text: 'The 2026 outlook considers infrastructure liquidity, capital formation and investor priorities as African markets prepare for the next phase of growth.',
+      },
+    ],
+    category: 'Outlook',
+    country: 'Mauritius',
+    ctaLabel: 'Read More',
+    mainImage: {
+      src: 'outlook',
+      alt: 'Infrastructure market outlook',
+    },
+    publishedAt: '2025-04-01',
+    status: 'published',
+    isFeatured: true,
+    layout: 'wide',
+    seo: {
+      title: '2026 Outlook | INFRAGORA Global Capital',
+      description:
+        'Read INFRAGORA outlook on infrastructure liquidity, capital formation and investor priorities across African markets.',
+      keywords: ['2026 outlook', 'infrastructure liquidity', 'capital formation'],
+    },
+  },
+  {
+    id: 108,
+    type: 'knowledge_hub',
+    title: 'Portfolio Report',
+    slug: 'portfolio-report',
+    excerpt:
+      'The portfolio report reviews infrastructure themes, sector exposure and market signals shaping INFRAGORA Global Capital priorities.',
+    content: [],
+    contentBlocks: [
+      {
+        type: 'paragraph',
+        text: 'The portfolio report reviews infrastructure themes, sector exposure and market signals shaping INFRAGORA Global Capital priorities.',
+      },
+    ],
+    category: 'Portfolio',
+    country: 'Mauritius',
+    ctaLabel: 'Read More',
+    mainImage: {
+      src: 'portfolio',
+      alt: 'Infrastructure portfolio report',
+    },
+    publishedAt: '2025-05-01',
+    status: 'published',
+    isFeatured: true,
+    layout: 'wide',
+    seo: {
+      title: 'Portfolio Report | INFRAGORA Global Capital',
+      description:
+        'Read the INFRAGORA portfolio report covering infrastructure themes, sector exposure and market signals.',
+      keywords: ['portfolio report', 'infrastructure portfolio', 'market signals'],
+    },
+  },
+  {
     id: 101,
     type: 'knowledge_hub',
     title: 'Understanding African Infrastructure Secondary Markets',

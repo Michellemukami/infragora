@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    to="/"
+    :to="href"
     class="group relative block overflow-hidden bg-white"
     :class="height"
   >
@@ -64,6 +64,10 @@ defineProps({
   height: {
     type: String,
     default: 'h-[500px]'
+  },
+  href: {
+    type: String,
+    default: '/'
   }
 })
 </script>

@@ -1,4 +1,8 @@
 import type { CmsContentItem } from '../../app/data/cmsContent'
+import {
+  publishedKnowledgeHubItems,
+  publishedNewsItems,
+} from '../../app/data/cmsContent'
 
 const defaultCmsApiBase = 'http://127.0.0.1:8000/api'
 
@@ -31,6 +35,9 @@ const fetchRemote = async <T>(path: string) => {
   return $fetch<T>(`${base}/${path.replace(/^\//, '')}`)
 }
 
+const getLocalCollection = (path: 'news' | 'knowledge-hub') =>
+  path === 'knowledge-hub' ? publishedKnowledgeHubItems : publishedNewsItems
+
 const unwrapCmsResponse = <T>(response: CmsApiResponse<T>) => {
   if (
     response &&
@@ -50,9 +57,11 @@ export const fetchCmsCollection = async (
   try {
     const response = await fetchRemote<CmsApiResponse<CmsContentItem[]>>(path)
 
-    return unwrapCmsResponse(response) || []
+    const items = unwrapCmsResponse(response) || []
+
+    return items.length ? items : getLocalCollection(path)
   } catch {
-    return []
+    return getLocalCollection(path)
   }
 }
 
@@ -83,8 +92,8 @@ export const fetchCmsItem = async (
   try {
     const response = await fetchRemote<CmsApiResponse<CmsContentItem>>(`${path}/${slug}`)
 
-    return unwrapCmsResponse(response) || null
+    return unwrapCmsResponse(response) || getLocalCollection(path).find((item) => item.slug === slug) || null
   } catch {
-    return null
+    return getLocalCollection(path).find((item) => item.slug === slug) || null
   }
 }

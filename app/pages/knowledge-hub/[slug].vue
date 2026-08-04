@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import CmsArticleDetail from '~/components/CmsArticleDetail.vue'
+import SustainabilityReportFeature from '~/components/SustainabilityReportFeature.vue'
 import Footer from '~/components/common/Footer.vue'
 import NavBar from '~/components/common/NavBar.vue'
 import type { CmsContentItem } from '~/data/cmsContent'
+import { resolveCmsImageSrc } from '~/data/cmsImageResolver'
 
 type DetailResponse = CmsContentItem | {
   data?: CmsContentItem | null
@@ -24,6 +25,8 @@ const item = computed(() => {
 
   return response.value
 })
+
+const featureImage = computed(() => resolveCmsImageSrc(item.value?.mainImage?.src))
 
 if (!item.value) {
   throw createError({
@@ -49,11 +52,14 @@ useHead(() => ({
 
 <template>
   <NavBar />
-  <CmsArticleDetail
+  <SustainabilityReportFeature
     v-if="item"
-    :item="item"
-    back-label="Back to Knowledge Hub"
-    back-to="/knowledge-hub"
+    :title="item.title"
+    :body="item.excerpt"
+    :cta-label="item.ctaLabel"
+    href="/knowledge-hub"
+    :image="featureImage"
+    :image-alt="item.mainImage.alt"
   />
   <Footer />
 </template>

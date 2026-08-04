@@ -551,7 +551,8 @@ Executed by INFRAGORA Advisory
     </div>
   </div>
 </section> -->
-<!-- <KnowledgeHub /> -->
+
+<KnowledgeHub /> 
 <!-- accordion -->
  <section
     ref="accordionSectionRef"
@@ -696,7 +697,10 @@ import heroCardFour from "~/assets/images/home/corasel4.jpg"
 import heroCardFive from "~/assets/images/home/corasel5.jpg"
 import heroCardSix from "~/assets/images/capabilities/fund.png"
 import KnowledgeHub from '~/components/KnowledgeHub.vue'
+import SustainabilityReportFeature from '~/components/SustainabilityReportFeature.vue'
 import NumberCard from './common/NumberCard.vue'
+import { knowledgeHubItems } from '~/data/cmsContent'
+import { resolveCmsImageSrc } from '~/data/cmsImageResolver'
 import mauritiusFlag from '~/assets/images/flags/african/mauritius.png'
 import southAfricaFlag from '~/assets/images/flags/african/south-africa.png'
 import kenyaFlag from '~/assets/images/flags/african/ke.png'
@@ -721,6 +725,9 @@ import riscuraLogo from "~/assets/images/home/partners/Riscura.png"
 import serengetiLogo from "~/assets/images/home/partners/serengeti.png"
 const portfolioFocusRef = ref(null)
 const isPortfolioFocusVisible = ref(false)
+const sustainabilityReport = knowledgeHubItems.find((item) => item.slug === 'sustainabilityreport') || knowledgeHubItems[0]
+const sustainabilityReportHref = `/knowledge-hub/${sustainabilityReport.slug}`
+const sustainabilityReportImage = resolveCmsImageSrc(sustainabilityReport.mainImage.src)
 useHead({
   title: 'INFRAGORA Global Capital | Africa Infrastructure Secondary Market Platform',
   meta: [

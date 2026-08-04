@@ -152,7 +152,7 @@ Capabilities
                      leading-[1.75]
                      lg:text-[17px]"
             >
-             INFRAGORA has launched the INFRAGORA Investment Vehicle 1 (“IIV1” or the “Investment Vehicle”) – a US$ 1.2 billion listed investment holding vehicle. IIV1 would be listed in key African and global markets, with initial listing at London Stock Exchange (LSE) and the Johannesburg Stock Exchange (JSE) and further listings at the Nigeria Stock Exchange (NGX), Nairobi Stock Exchange (NSE), and the US (NYSE or NASDAQ), in a phased timeline.
+             INFRAGORA has launched the INFRAGORA Investment Vehicle 1 (“IIV1” or the “Investment Vehicle”) – a US$ 2 billion listed investment holding vehicle. IIV1 would be listed in key African and global markets, with initial listing at London Stock Exchange (LSE) and the Johannesburg Stock Exchange (JSE) and further listings at the Nigeria Stock Exchange (NGX), Nairobi Stock Exchange (NSE), and the US (NYSE or NASDAQ), in a phased timeline.
             </p>
 
           </div>
@@ -160,84 +160,31 @@ Capabilities
 
         <!-- here RIGHT -->
         <div
-          class="investment-vehicle-panel investment-vehicle-panel--right flex items-center bg-[#073a58] px-[28px] py-[48px] sm:px-[40px] lg:px-[52px]"
+          class="investment-vehicle-panel investment-vehicle-panel--right flex items-center bg-[#073a58] px-[28px] py-[56px] sm:px-[40px] sm:py-[68px] lg:px-[52px] lg:py-[80px] xl:px-[72px]"
         >
-          <div class="w-full max-w-[620px]">
-            <div class="investment-vehicle-stat-row grid gap-5 border-b border-[#4A6980]/70 pb-6 sm:grid-cols-[0.9fr_1fr] sm:items-end">
+          <div class="w-full max-w-[640px]">
+            <div class="investment-vehicle-stat-row  pb-10 sm:pb-12 lg:pb-14">
               <div>
-                <div class="investment-vehicle-currency flex items-center gap-3">
-                  <div class="relative h-[18px] w-[26px]">
-                    <span class="absolute left-0 top-1/2 h-[14px] w-[14px] -translate-y-1/2 rounded-full bg-[#2F6785]"></span>
-                    <span class="absolute right-0 top-1/2 h-[14px] w-[14px] -translate-y-1/2 rounded-full bg-[#487C99]"></span>
+                <div class="investment-vehicle-currency flex items-center gap-4 lg:gap-5">
+                  <div class="relative h-[34px] w-[42px] lg:h-[40px] lg:w-[50px]">
+                    <span class="absolute left-0 top-1/2 h-[28px] w-[28px] -translate-y-1/2 rounded-full border-[3px] border-[#3E789A] bg-transparent lg:h-[34px] lg:w-[34px]"></span>
+                    <span class="absolute right-0 top-1/2 h-[28px] w-[28px] -translate-y-1/2 rounded-full bg-[#487C99] lg:h-[34px] lg:w-[34px]"></span>
                   </div>
-                  <span class="text-[11px] uppercase tracking-[0.08em] text-[#5F8BA6]">
+                  <span class="text-[24px] font-semibold uppercase leading-none tracking-[0.02em] text-[#5F8BA6] sm:text-[28px] lg:text-[32px]">
                     USD
                   </span>
                 </div>
 
-                <div class="investment-vehicle-value mt-4 text-[42px] font-semibold leading-none tracking-[-0.055em] text-[#d9e8e3] sm:text-[52px] lg:text-[62px]">
-                  $1.2B
+                <div class="investment-vehicle-value mt-14 text-[112px] font-semibold leading-[0.82] tracking-[-0.075em] text-[#d9e8e3] sm:text-[150px] lg:text-[172px] xl:text-[220px]">
+                  $2B
                 </div>
               </div>
 
-              <p class="investment-vehicle-caption max-w-[260px] text-[13px] leading-[1.55] text-[#EAF3EF] sm:pb-1 lg:text-[14px]">
+              <p class="investment-vehicle-caption mt-12 max-w-[300px] text-[18px] font-semibold leading-[1.35] tracking-[-0.025em] text-[#EAF3EF] sm:text-[20px] lg:text-[22px]">
                 Value of listed investment holding vehicle.
               </p>
             </div>
 
-            <div class="investment-vehicle-stat-row grid gap-7 border-b border-[#4A6980]/70 py-6 sm:grid-cols-2">
-              <div>
-                <div class="investment-vehicle-currency flex items-center gap-3">
-                  <div class="relative h-[18px] w-[26px]">
-                    <span class="absolute left-0 top-1/2 h-[14px] w-[14px] -translate-y-1/2 rounded-full bg-[#2F6785]"></span>
-                    <span class="absolute right-0 top-1/2 h-[14px] w-[14px] -translate-y-1/2 rounded-full bg-[#487C99]"></span>
-                  </div>
-                  <span class="text-[11px] uppercase tracking-[0.08em] text-[#5F8BA6]">
-                    USD
-                  </span>
-                </div>
-
-                <div class="investment-vehicle-value mt-4 text-[42px] font-semibold leading-none tracking-[-0.055em] text-[#d9e8e3] sm:text-[52px] lg:text-[62px]">
-                  $10B
-                </div>
-
-                <p class="investment-vehicle-caption mt-3 text-[13px] leading-[1.35] text-[#EAF3EF] lg:text-[14px]">
-                  INFRAGORA platform size
-                </p>
-              </div>
-
-              <div class="sm:self-end">
-                <div class="investment-vehicle-value text-[42px] font-semibold leading-none tracking-[-0.055em] text-[#d9e8e3] sm:text-[52px] lg:text-[62px]">
-                  $10B
-                </div>
-
-                <p class="investment-vehicle-caption mt-3 text-[13px] leading-[1.35] text-[#EAF3EF] lg:text-[14px]">
-                  Project capital size
-                </p>
-              </div>
-            </div>
-
-            <div class="investment-vehicle-stat-row grid gap-5 pt-6 sm:grid-cols-[0.9fr_1fr] sm:items-end">
-              <div>
-                <div class="investment-vehicle-currency flex items-center gap-3">
-                  <div class="relative h-[18px] w-[26px]">
-                    <span class="absolute left-0 top-1/2 h-[14px] w-[14px] -translate-y-1/2 rounded-full bg-[#2F6785]"></span>
-                    <span class="absolute right-0 top-1/2 h-[14px] w-[14px] -translate-y-1/2 rounded-full bg-[#487C99]"></span>
-                  </div>
-                  <span class="text-[11px] uppercase tracking-[0.08em] text-[#5F8BA6]">
-                    USD
-                  </span>
-                </div>
-
-                <div class="investment-vehicle-value mt-4 text-[42px] font-semibold leading-none tracking-[-0.055em] text-[#d9e8e3] sm:text-[52px] lg:text-[62px]">
-                  $10B
-                </div>
-              </div>
-
-              <p class="investment-vehicle-caption max-w-[260px] text-[13px] leading-[1.55] text-[#EAF3EF] sm:pb-1 lg:text-[14px]">
-                Overall target investment over 10 year period
-              </p>
-            </div>
           </div>
         </div>
 
@@ -410,7 +357,7 @@ Capabilities
 
           <p class="investment-strategy-copy body-text" style="--strategy-copy-delay: 360ms">
             At full deployment, IIV1 aims to achieve a financial
-            additionality of mobilizing an additional US$3–6 billion in
+            additionality of mobilizing an additional US$5–8 billion in
             ESG-aligned impact-based sustainable infrastructure investments
             across sectors such as transport, ICT, water, renewable energy
             or green energy including gas, and infrastructure financial
@@ -471,8 +418,8 @@ Capabilities
             </p>
 
             <div class="flex items-end gap-1">
-              <span class="bridge-hero-value">$2.0</span>
-              <span class="bridge-hero-unit">b</span>
+              <span class="bridge-hero-value">$2.0B</span>
+             
             </div>
           </div>
         </div>
@@ -495,22 +442,12 @@ Capabilities
                 class="mb-2 flex items-center justify-between text-white/60 text-[12px] uppercase tracking-[1.5px]"
               >
                 <span>Size (%)</span>
-                <span class="bridge-card-value text-white">25%</span>
+                <span class="bridge-card-value text-white">25% - 30%</span>
               </div>
 
               <div class="h-px bg-white/20"></div>
             </div>
 
-            <div>
-              <div
-                class="mb-2 flex items-center justify-between text-white/60 text-[12px] uppercase tracking-[1.5px]"
-              >
-                <span>Target Investment</span>
-                <span class="bridge-card-value text-white">US$20 – 30 M</span>
-              </div>
-
-              <div class="h-px bg-white/20"></div>
-            </div>
           </div>
         </div>
 
@@ -529,22 +466,12 @@ Capabilities
                 class="mb-2 flex items-center justify-between text-[#316483] text-[12px] uppercase tracking-[1.5px]"
               >
                 <span>Size (%)</span>
-                <span class="bridge-card-value text-white">25%</span>
+                <span class="bridge-card-value text-white">70% - 80%</span>
               </div>
 
               <div class="h-px bg-[#316483] "></div>
             </div>
 
-            <div>
-              <div
-                class="mb-2 flex items-center justify-between text-[#316483] text-[12px] uppercase tracking-[1.5px]"
-              >
-                <span>Target Investment</span>
-                <span class="bridge-card-value text-white">US$20 – 30 M</span>
-              </div>
-
-              <div class="h-px bg-[#316483] "></div>
-            </div>
           </div>
         </div>
 
@@ -564,23 +491,13 @@ Capabilities
               >
                 <span>Size (%)</span>
                 <span class="bridge-card-value text-[#052e52]"
-                  >60% - 70%</span
+                  >80% - 90%</span
                 >
               </div>
 
               <div class="h-px bg-[#A1C0B6]"></div>
             </div>
 
-            <div>
-              <div
-                class="mb-2 flex items-center justify-between text-[12px] uppercase tracking-[1.5px] text-[#A1C0B6]"
-              >
-                <span>Target Investment</span>
-                <span class="bridge-card-value text-[#052e52]">US$20 – 30 M</span>
-              </div>
-
-              <div class="h-px bg-[#A1C0B6]"></div>
-            </div>
           </div>
         </div>
 
@@ -607,16 +524,7 @@ Capabilities
               <div class="h-px bg-[#76a797]"></div>
             </div>
 
-            <div>
-              <div
-                class="mb-2 flex items-center justify-between text-[12px] uppercase tracking-[1.5px] text-[#76a797]"
-              >
-                <span>Target Investment</span>
-                <span class="bridge-card-value text-[#09314a]">US$20 – 30 M</span>
-              </div>
-
-              <div class="h-px bg-[#76a797]"></div>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -663,13 +571,13 @@ Capabilities
               Target Investment
             </p>
 
-            <div class="flex items-end gap-4 sm:gap-5">
+            <div class="flex flex-col items-start">
               <span class="bridge-hero-value tracking-[-0.06em] text-white">
                 $1B
               </span>
-              <span class="bridge-hero-note">
-                Scales to<br />
-                $3B
+              <span class="bridge-hero-note mt-2 inline-flex items-center gap-2">
+                <span class="h-[4px] w-[4px] rounded-full bg-[#8A8A8A]"></span>
+                Approximate value
               </span>
             </div>
           </div>
@@ -722,7 +630,7 @@ Capabilities
           <div class="space-y-10">
             <div>
               <div
-                class="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[1.5px] text-[#A1C0B6]"
+                class="mb-2 flex items-center justify-between text-[11px] uppercase tracking-[1.5px] text-[#316483]"
               >
                 <span>Size (%)</span>
                 <span class="bridge-card-value text-white">
@@ -730,7 +638,7 @@ Capabilities
                 </span>
               </div>
 
-              <div class="h-px bg-[#A1C0B6]"></div>
+              <div class="h-px bg-[#316483]"></div>
             </div>
 
             <div>
@@ -912,9 +820,9 @@ const implementationPhases = [
   {
     phase: 'Phase II',
     title: 'Debt funding',
-    metrics: [{ value: '$3b - $5b' }],
+    metrics: [{ value: '$5b - $8b' }],
     description:
-      'Additional US$3-5 billion, through infrastructure backed debt securities, follow-on equity offerings, and infrastructure ETFs.',
+      'Additional US$ 5–8 billion, through infra backed debt securities, follow on equity offerings, and infrastructure ETFs.',
   },
 ]
 const leftList = [
@@ -1476,11 +1384,10 @@ const remainingMarketBenefits = computed(() => marketBenefits.slice(1))
 }
 
 .bridge-hero-note {
-  padding-bottom: clamp(0.45rem, 2.6vw, 1rem);
-  font-size: clamp(0.78rem, 3.6vw, 1rem);
+  font-size: clamp(0.68rem, 2.8vw, 0.82rem);
   font-weight: 500;
   line-height: 1.2;
-  color: #fff;
+  color: #8A8A8A;
 }
 
 .bridge-card-value {

@@ -54,49 +54,16 @@
       <div
         class="knowledge-hub-grid grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-6"
       >
-        <!-- Sustainability -->
         <KnowledgeCard
-          title="2025 Sustainability Report"
-          :image="sustainabilityImage"
+          v-for="card in featuredKnowledgeCards"
+          :key="card.item.slug"
+          :title="card.title"
+          :image="card.image"
+          :href="card.href"
           :height="'h-[420px] lg:h-[500px]'"
           class="knowledge-hub-card"
-          style="--knowledge-card-delay: 120ms"
-        />
-
-        <!-- Energy -->
-        <KnowledgeCard
-          title="Energy Infrastructure Investment Report"
-          :image="energyImage"
-          :height="'h-[420px] lg:h-[500px]'"
-          class="knowledge-hub-card"
-          style="--knowledge-card-delay: 210ms"
-        />
-
-        <!-- Conference -->
-        <KnowledgeCard
-          title="2025 Infrastructure Development Conference"
-          :image="conferenceImage"
-          :height="'h-[420px] lg:h-[500px]'"
-          class="knowledge-hub-card"
-          style="--knowledge-card-delay: 300ms"
-        />
-
-        <!-- Outlook -->
-        <KnowledgeCard
-          title="2026 Outlook"
-          :image="outlookImage"
-          :height="'h-[420px] lg:h-[500px]'"
-          class="knowledge-hub-card xl:col-span-2"
-          style="--knowledge-card-delay: 390ms"
-        />
-
-        <!-- Portfolio -->
-        <KnowledgeCard
-          title="Portfolio Report"
-          :image="portfolioImage"
-          :height="'h-[420px] lg:h-[500px]'"
-          class="knowledge-hub-card"
-          style="--knowledge-card-delay: 480ms"
+          :class="{ 'xl:col-span-2': card.isWide }"
+          :style="{ '--knowledge-card-delay': card.delay }"
         />
       </div>
     </div>
@@ -105,11 +72,35 @@
 
 <script setup>
 import KnowledgeCard from '~/components/KnowledgeCard.vue'
-import sustainabilityImage from '~/assets/images/home/sustainability.jpg'
-import energyImage from '~/assets/images/home/energy.jpg'
-import conferenceImage from '~/assets/images/home/conference.jpg'
-import outlookImage from '~/assets/images/home/outlook.jpg'
-import portfolioImage from '~/assets/images/home/portfolio.jpg'
+import { knowledgeHubItems } from '~/data/cmsContent'
+import { resolveCmsImageSrc } from '~/data/cmsImageResolver'
+
+const featuredKnowledgeSlugs = [
+  'sustainabilityreport',
+  'energy-infrastructure-investment-report',
+  'infrastructure-development-conference-2025',
+  'outlook-2026',
+  'portfolio-report',
+]
+
+const featuredKnowledgeCards = featuredKnowledgeSlugs
+  .map((slug, index) => {
+    const item = knowledgeHubItems.find((entry) => entry.slug === slug)
+
+    if (!item) {
+      return null
+    }
+
+    return {
+      item,
+      title: item.title,
+      image: resolveCmsImageSrc(item.mainImage.src),
+      href: `/knowledge-hub/${item.slug}`,
+      delay: `${120 + index * 90}ms`,
+      isWide: item.slug === 'outlook-2026',
+    }
+  })
+  .filter(Boolean)
 
 const knowledgeHubRef = ref(null)
 const isKnowledgeHubVisible = ref(false)
