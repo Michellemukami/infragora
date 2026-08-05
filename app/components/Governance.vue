@@ -188,7 +188,7 @@ import odiogoImage from '~/assets/images/team/odigio.png'
 import tshokoloImage from '~/assets/images/team/tshokolo.png'
 import veraImage from '~/assets/images/team/vera.png'
 import danieleImage from '~/assets/images/team/daniela.png'
-import BritishImage from '~/assets/images/team/British.png'
+import BritishImage from '~/assets/images/team/british.png'
 import placeholderImage from '~/assets/images/team/placeholder.png'
 
 type Member = {
