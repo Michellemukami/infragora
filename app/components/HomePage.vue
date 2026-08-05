@@ -64,7 +64,12 @@
     @mouseenter="isHeroCarouselPaused = true"
     @mouseleave="isHeroCarouselPaused = false"
   >
-  <div ref="heroImageStripRef" class="hero-image-strip pb-8 sm:pb-10 md:pb-12 lg:pb-14">
+  <div
+    ref="heroImageStripRef"
+    class="hero-image-strip pb-8 sm:pb-10 md:pb-12 lg:pb-14"
+    :class="{ 'is-paused': isHeroCarouselPaused }"
+    :style="{ '--hero-carousel-offset': `${heroCarouselOffset}px` }"
+  >
     <div
       v-for="trackIndex in 2"
       :key="trackIndex"
@@ -985,6 +990,7 @@ const route = useRoute()
 const homeHeroRef = ref(null)
 const heroImageStripRef = ref(null)
 const isHeroCarouselPaused = ref(false)
+const heroCarouselOffset = ref(0)
 const isHomeIntroVisible = ref(false)
 const isSecondSectionVisible = ref(false)
 const secondSectionRef = ref(null)
@@ -1013,8 +1019,6 @@ let partnersSectionObserver = null
 let accordionSectionObserver = null
 let lastSectionObserver = null
 let homeIntroAnimationFrame = 0
-let heroCarouselAnimationFrame = 0
-let heroCarouselPreviousTime = 0
 let heroCarouselResumeTimeout = 0
 
 const getHeroCarouselCycleWidth = (track) => {
@@ -1030,21 +1034,20 @@ const getHeroCarouselCycleWidth = (track) => {
   return firstSet.scrollWidth + gap
 }
 
-const normalizeHeroCarouselScroll = () => {
+const normalizeHeroCarouselOffset = () => {
   const track = heroImageStripRef.value
-  const viewport = track?.parentElement
   const cycleWidth = getHeroCarouselCycleWidth(track)
 
-  if (!viewport || !cycleWidth) {
+  if (!cycleWidth) {
     return
   }
 
-  if (viewport.scrollLeft >= cycleWidth) {
-    viewport.scrollLeft -= cycleWidth
+  while (heroCarouselOffset.value >= cycleWidth) {
+    heroCarouselOffset.value -= cycleWidth
   }
 
-  if (viewport.scrollLeft < 0) {
-    viewport.scrollLeft += cycleWidth
+  while (heroCarouselOffset.value < 0) {
+    heroCarouselOffset.value += cycleWidth
   }
 }
 
@@ -1053,32 +1056,8 @@ const startHeroCarouselAutoScroll = () => {
     return
   }
 
-  if (heroCarouselAnimationFrame) {
-    cancelAnimationFrame(heroCarouselAnimationFrame)
-  }
-
-  heroCarouselPreviousTime = 0
-
-  const tick = (timestamp) => {
-    const track = heroImageStripRef.value
-    const viewport = track?.parentElement
-
-    if (viewport && track) {
-      const elapsed = heroCarouselPreviousTime
-        ? timestamp - heroCarouselPreviousTime
-        : 0
-
-      if (!isHeroCarouselPaused.value && elapsed > 0) {
-        viewport.scrollLeft += elapsed * 0.036
-        normalizeHeroCarouselScroll()
-      }
-    }
-
-    heroCarouselPreviousTime = timestamp
-    heroCarouselAnimationFrame = requestAnimationFrame(tick)
-  }
-
-  heroCarouselAnimationFrame = requestAnimationFrame(tick)
+  isHeroCarouselPaused.value = false
+  normalizeHeroCarouselOffset()
 }
 
 const pauseHeroCarouselBriefly = () => {
@@ -1096,34 +1075,19 @@ const pauseHeroCarouselBriefly = () => {
 
 const moveHeroCarousel = (direction) => {
   const track = heroImageStripRef.value
-  const viewport = track?.parentElement
   const firstCard = track?.querySelector('.hero-image-card')
 
-  if (!viewport || !firstCard) {
+  if (!track || !firstCard) {
     return
   }
 
   const styles = window.getComputedStyle(track)
   const gap = Number.parseFloat(styles.columnGap || styles.gap || '0') || 0
   const step = firstCard.getBoundingClientRect().width + gap
-  const cycleWidth = getHeroCarouselCycleWidth(track)
 
-  if (direction < 0 && viewport.scrollLeft <= 2 && cycleWidth) {
-    viewport.scrollLeft += cycleWidth
-  }
-
-  const nextScrollLeft = viewport.scrollLeft + direction * step
-
-  viewport.scrollTo({
-    left: nextScrollLeft,
-    behavior: 'smooth',
-  })
-
+  heroCarouselOffset.value += direction * step
+  normalizeHeroCarouselOffset()
   pauseHeroCarouselBriefly()
-
-  window.setTimeout(() => {
-    normalizeHeroCarouselScroll()
-  }, 420)
 }
 
 const playHomeIntroAnimation = async () => {
@@ -1356,10 +1320,6 @@ onMounted(() => {
 onUnmounted(() => {
   if (homeIntroAnimationFrame) {
     cancelAnimationFrame(homeIntroAnimationFrame)
-  }
-
-  if (heroCarouselAnimationFrame) {
-    cancelAnimationFrame(heroCarouselAnimationFrame)
   }
 
   if (heroCarouselResumeTimeout) {
@@ -1931,18 +1891,35 @@ const showPreviousNewsPost = () => {
 
 .hero-image-strip {
   --hero-strip-gap: clamp(0.85rem, 1.35vw, 1.45rem);
+  --hero-card-width: clamp(195px, 66vw, 280px);
+  --hero-carousel-offset: 0px;
+  --hero-carousel-duration: 34s;
   display: flex;
   width: max-content;
-  gap: var(--hero-strip-gap);
+  gap: 0;
+  transform: translate3d(
+    calc(-50% - var(--hero-carousel-offset)),
+    0,
+    0
+  );
+  animation: hero-carousel-loop var(--hero-carousel-duration) linear infinite;
+  will-change: transform;
+}
+
+.hero-image-strip.is-paused {
+  animation-play-state: paused;
+  transition: transform 520ms cubic-bezier(.16, 1, .3, 1);
 }
 
 .hero-image-strip-set {
   display: flex;
   gap: var(--hero-strip-gap);
+  flex: 0 0 auto;
+  padding-right: var(--hero-strip-gap);
 }
 
 .hero-image-card {
-  width: clamp(195px, 66vw, 280px);
+  width: var(--hero-card-width);
   min-width: 0;
   flex: 0 0 auto;
   transform: translateZ(0);
@@ -1950,6 +1927,20 @@ const showPreviousNewsPost = () => {
     opacity 320ms ease,
     transform 520ms cubic-bezier(.16, 1, .3, 1);
   will-change: transform;
+}
+
+@keyframes hero-carousel-loop {
+  from {
+    transform: translate3d(calc(var(--hero-carousel-offset) * -1), 0, 0);
+  }
+
+  to {
+    transform: translate3d(
+      calc(-50% - var(--hero-carousel-offset)),
+      0,
+      0
+    );
+  }
 }
 
 .hero-image-card span {
@@ -1965,14 +1956,14 @@ const showPreviousNewsPost = () => {
     top: -3.3rem;
   }
 
-  .hero-image-card {
-    width: clamp(270px, 40vw, 380px);
+  .hero-image-strip {
+    --hero-card-width: clamp(270px, 40vw, 380px);
   }
 }
 
 @media (min-width: 768px) {
-  .hero-image-card {
-    width: clamp(310px, 31vw, 430px);
+  .hero-image-strip {
+    --hero-card-width: clamp(310px, 31vw, 430px);
   }
 }
 
@@ -1981,14 +1972,14 @@ const showPreviousNewsPost = () => {
     padding-inline: clamp(1rem, 3.5vw, 4rem);
   }
 
-  .hero-image-card {
-    width: clamp(330px, 25vw, 460px);
+  .hero-image-strip {
+    --hero-card-width: clamp(330px, 25vw, 460px);
   }
 }
 
 @media (min-width: 1600px) {
-  .hero-image-card {
-    width: 480px;
+  .hero-image-strip {
+    --hero-card-width: 480px;
   }
 }
 
@@ -2009,20 +2000,12 @@ const showPreviousNewsPost = () => {
 
   .hero-image-strip-viewport {
     padding-inline: 1rem;
-    -webkit-mask-image: linear-gradient(
-      90deg,
-      transparent 0,
-      #000 10%,
-      #000 90%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      90deg,
-      transparent 0,
-      #000 10%,
-      #000 90%,
-      transparent 100%
-    );
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .hero-image-strip {
+    --hero-carousel-duration: 28s;
   }
 
   .hero-intro-actions {
@@ -2047,6 +2030,7 @@ const showPreviousNewsPost = () => {
   .hero-button-icon,
   .hero-button-icon img,
   .hero-intro-strip,
+  .hero-image-strip,
   .second-section-intro-title,
   .second-section-intro-copy,
   .what-we-do-tile,
@@ -2069,6 +2053,7 @@ const showPreviousNewsPost = () => {
     filter: none;
     transform: none;
     transition: none;
+    animation: none;
     box-shadow: none;
   }
 
