@@ -20,6 +20,7 @@ const props = withDefaults(defineProps<{
   orderOptions?: string[]
   sectionClass?: string
   containerClass?: string
+  clickableCards?: boolean
 }>(), {
   items: () => [],
   categories: () => [],
@@ -35,6 +36,7 @@ const props = withDefaults(defineProps<{
   orderOptions: () => ['Newest', 'Oldest'],
   sectionClass: '',
   containerClass: '',
+  clickableCards: false,
 })
 
 const selectedCategory = ref('All')
@@ -114,6 +116,14 @@ const filteredItems = computed(() => {
 
 const itemLabels = (item: GridItem) =>
   [item.category, ...normalizeList(item.country), ...normalizeList(item.project)].filter(Boolean)
+
+const openItem = (item: GridItem) => {
+  if (!props.clickableCards || !item.href) return
+
+  navigateTo(item.href, {
+    external: item.href.startsWith('http'),
+  })
+}
 </script>
 
 <template>
@@ -392,12 +402,18 @@ const itemLabels = (item: GridItem) =>
         <article
           v-for="item in filteredItems"
           :key="item.id"
+          :role="clickableCards && item.href ? 'link' : undefined"
+          :tabindex="clickableCards && item.href ? 0 : undefined"
           :class="[
             'group relative isolate overflow-hidden bg-[#e7e7e7]',
+            clickableCards && item.href ? 'cursor-pointer' : '',
             item.layout === 'wide'
               ? 'sm:col-span-2 lg:col-span-2'
               : 'col-span-1',
           ]"
+          @click="openItem(item)"
+          @keydown.enter="openItem(item)"
+          @keydown.space.prevent="openItem(item)"
         >
           <img
             :src="item.image"
@@ -430,6 +446,7 @@ const itemLabels = (item: GridItem) =>
 
             <NuxtLink
               :to="item.href || '#'"
+              @click.stop
               class="mt-4 inline-flex w-fit items-center gap-5 text-[10px] font-normal tracking-[-0.02em] text-black"
             >
               {{ item.ctaLabel || item.date || 'Read More' }}

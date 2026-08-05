@@ -19,17 +19,17 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 gap-y-14 sm:grid-cols-2 sm:gap-x-7 md:grid-cols-3 md:gap-x-8 md:gap-y-[92px] lg:gap-x-9">
+        <div class="grid grid-cols-1 justify-items-start gap-x-10 gap-y-20 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-x-14">
           <button
             v-for="(member, index) in teamMembers"
             :key="member.name"
             type="button"
-            class="group text-left outline-none focus-visible:ring-2 focus-visible:ring-[#003f50] focus-visible:ring-offset-8"
+            class="group w-full max-w-[320px] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#003f50] focus-visible:ring-offset-8"
             data-governance-reveal
             :style="{ transitionDelay: `${index * 75}ms` }"
             @click="openMember(member)"
           >
-            <div class="aspect-[1.02/1] w-full overflow-hidden bg-[#dcebe8] transition-colors duration-300 group-hover:bg-[#cfe3df]">
+            <div class="aspect-square w-full overflow-hidden rounded-full bg-[#dcebe8] transition-colors duration-300 group-hover:bg-[#cfe3df]">
               <img
                 v-if="member.image"
                 :src="member.image"
@@ -39,11 +39,11 @@
               >
             </div>
 
-            <div class="mt-4">
-              <h3 class="text-[15px] font-semibold leading-none tracking-[-0.035em] text-[#003f50] md:text-[17px] lg:text-[18px]">
+            <div class="mt-7">
+              <h3 class="text-[21px] font-semibold leading-[1.08] tracking-[-0.035em] text-[#003f50] md:text-[23px] lg:text-[25px]">
                 {{ member.name }}
               </h3>
-              <p class="mt-2 text-[11px] font-semibold leading-none tracking-[-0.035em] text-[#003f50] md:text-[12px] lg:text-[13px]">
+              <p class="mt-4 text-[15px] font-medium leading-[1.25] tracking-[-0.025em] text-[#003f50] md:text-[16px] lg:text-[17px]">
                 {{ member.role }}
               </p>
             </div>
@@ -65,17 +65,17 @@
             </p>
           </div>
 
-          <div class="grid grid-cols-1 gap-y-14 sm:grid-cols-2 sm:gap-x-7 md:grid-cols-3 md:gap-x-8 md:gap-y-[92px] lg:gap-x-9">
+          <div class="grid grid-cols-1 justify-items-start gap-x-10 gap-y-20 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 xl:gap-x-14">
             <button
               v-for="(member, index) in boardMembers"
               :key="member.name"
               type="button"
-              class="group text-left outline-none focus-visible:ring-2 focus-visible:ring-[#003f50] focus-visible:ring-offset-8"
+              class="group w-full max-w-[320px] text-left outline-none focus-visible:ring-2 focus-visible:ring-[#003f50] focus-visible:ring-offset-8"
               data-governance-reveal
               :style="{ transitionDelay: `${index * 75}ms` }"
               @click="openMember(member)"
             >
-              <div class="aspect-[1.02/1] w-full overflow-hidden bg-[#dcebe8] transition-colors duration-300 group-hover:bg-[#cfe3df]">
+              <div class="aspect-square w-full overflow-hidden rounded-full bg-[#dcebe8] transition-colors duration-300 group-hover:bg-[#cfe3df]">
                 <img
                   v-if="member.image"
                   :src="member.image"
@@ -85,11 +85,11 @@
                 >
               </div>
 
-              <div class="mt-4">
-                <h3 class="text-[15px] font-semibold leading-none tracking-[-0.035em] text-[#003f50] md:text-[17px] lg:text-[18px]">
+              <div class="mt-7">
+                <h3 class="text-[21px] font-semibold leading-[1.08] tracking-[-0.035em] text-[#003f50] md:text-[23px] lg:text-[25px]">
                   {{ member.name }}
                 </h3>
-                <p class="mt-2 text-[11px] font-semibold leading-none tracking-[-0.035em] text-[#003f50] md:text-[12px] lg:text-[13px]">
+                <p class="mt-4 text-[15px] font-medium leading-[1.25] tracking-[-0.025em] text-[#003f50] md:text-[16px] lg:text-[17px]">
                   {{ member.displayRole ?? member.role }}
                 </p>
               </div>

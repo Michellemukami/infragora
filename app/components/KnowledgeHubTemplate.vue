@@ -53,19 +53,31 @@ const { data: countries } = await useFetch<CmsCountry[]>('/api/countries', {
   default: () => [],
 })
 
+const visibleKnowledgeHubSlugs = new Set([
+  'state-of-global-ma-lseg-deals-intelligence-insights',
+  'global-private-markets-report-2026',
+])
+
+const knowledgeHubImageBySlug: Record<string, string> = {
+  'state-of-global-ma-lseg-deals-intelligence-insights': 'sustainability',
+  'global-private-markets-report-2026': 'energy',
+}
+
 const knowledgeHubItems = computed(() =>
-  knowledgeArticles.value.map((item) => ({
-    id: item.id,
-    title: item.title,
-    category: item.category,
-    country: item.country,
-    project: item.project,
-    ctaLabel: item.ctaLabel,
-    date: item.publishedAt,
-    image: resolveCmsImageSrc(item.mainImage?.src),
-    layout: item.layout,
-    href: `/knowledge-hub/${item.slug}`,
-  })),
+  knowledgeArticles.value
+    .filter((item) => visibleKnowledgeHubSlugs.has(item.slug))
+    .map((item) => ({
+      id: item.id,
+      title: item.title,
+      category: item.category,
+      country: item.country,
+      project: item.project,
+      ctaLabel: item.ctaLabel,
+      date: item.publishedAt,
+      image: resolveCmsImageSrc(knowledgeHubImageBySlug[item.slug] || item.mainImage?.src),
+      layout: item.layout,
+      href: `/knowledge-hub/${item.slug}`,
+    })),
 )
 
 const knowledgeHubCategories = computed(() =>
@@ -89,5 +101,6 @@ const countryOptions = computed(() =>
     :items="knowledgeHubItems"
     :categories="knowledgeHubCategories"
     :countries="countryOptions"
+    clickable-cards
   />
 </template>

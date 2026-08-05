@@ -293,7 +293,7 @@ const investorPartners: LogoPartner[] = [
   { id: 'ustda', name: 'USTDA', logo: ustdaLogo, logoClass: 'w-[112px] md:w-[118px]' },
   { id: 'dfc-primary', name: 'U.S. International Development Finance Corporation', logo: dfcLogo, logoClass: 'w-[142px] md:w-[150px]' },
   { id: 'sasol', name: 'Sasol', logo: sasolLogo, logoClass: 'w-[88px] md:w-[94px]' },
-  // { id: 'seacom', name: 'SEACOM', logo: seacomLogo, logoClass: 'w-[98px] md:w-[104px]' },
+  { id: 'jpMorgan', name: 'jpMorgan', logo: jpMorganLogo, logoClass: 'w-[112px] md:w-[112px]' },
   { id: 'exim', name: 'EXIM Bank', logo: eximLogo, logoClass: 'w-[78px] md:w-[84px]' },
   { id: 'ifc', name: 'International Finance Corporation', logo: ifcLogo, logoClass: 'w-[172px] md:w-[178px]' },
   { id: 'afrexi', name: 'afrexi', logo: afrexiLogo, logoClass: 'w-[82px] md:w-[240px] lg:w-[270px]', positionClass: 'md:!h-[88px] lg:!h-[96px]' },

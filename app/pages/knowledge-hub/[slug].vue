@@ -26,7 +26,16 @@ const item = computed(() => {
   return response.value
 })
 
-const featureImage = computed(() => resolveCmsImageSrc(item.value?.mainImage?.src))
+const knowledgeHubImageBySlug: Record<string, string> = {
+  'state-of-global-ma-lseg-deals-intelligence-insights': 'sustainability',
+  'global-private-markets-report-2026': 'energy',
+}
+
+const featureImage = computed(() =>
+  resolveCmsImageSrc(
+    item.value ? knowledgeHubImageBySlug[item.value.slug] || item.value.mainImage?.src : undefined,
+  ),
+)
 
 if (!item.value) {
   throw createError({
@@ -57,7 +66,7 @@ useHead(() => ({
     :title="item.title"
     :body="item.excerpt"
     :cta-label="item.ctaLabel"
-    href="/knowledge-hub"
+    :href="item.externalUrl || '/knowledge-hub'"
     :image="featureImage"
     :image-alt="item.mainImage.alt"
   />

@@ -8,7 +8,7 @@
 
       <!-- Header -->
       <div
-        class="knowledge-hub-header mb-8 lg:mb-5 flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between"
+        class="knowledge-hub-header mb-8 lg:mb-5"
       >
         <h2
           class="knowledge-hub-title text-[2rem] leading-[0.9] md:text-[3rem] lg:text-[42px] font-medium tracking-[-0.04em]"
@@ -20,34 +20,6 @@
             <span>Hub</span>
           </span>
         </h2>
-
-        <NuxtLink
-          to="/knowledge-hub"
-          class="knowledge-hub-action group bg-[#13131a] text-white
-                 w-full md:w-[260px] lg:w-[300px]
-                 h-[90px] lg:h-[110px]
-                 p-5 lg:p-6
-                 flex items-start justify-between"
-        >
-          <span
-            class="text-lg lg:text-2xl leading-none"
-          >
-            View <br />
-            More
-          </span>
-
-          <svg
-            class="h-7 w-7 transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 lg:h-8 lg:w-8"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M7 17L17 7M17 7H8M17 7V16"
-              stroke="currentColor"
-              stroke-width="1.65"
-            />
-          </svg>
-        </NuxtLink>
       </div>
 
       <!-- Grid -->
@@ -65,6 +37,30 @@
           :class="{ 'xl:col-span-2': card.isWide }"
           :style="{ '--knowledge-card-delay': card.delay }"
         />
+
+        <NuxtLink
+          to="/knowledge-hub"
+          class="knowledge-hub-card group flex h-[420px] flex-col justify-between bg-[#13131a] p-6 text-white lg:h-[500px] lg:p-8"
+          :style="{ '--knowledge-card-delay': viewMoreDelay }"
+        >
+          <span class="text-[42px] font-normal leading-[1.08] tracking-normal md:text-[48px] lg:text-[58px]">
+            View<br>
+            More
+          </span>
+
+          <svg
+            class="ml-auto h-12 w-12 transition duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 lg:h-14 lg:w-14"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M7 17L17 7M17 7H8M17 7V16"
+              stroke="currentColor"
+              stroke-width="1.65"
+            />
+          </svg>
+        </NuxtLink>
       </div>
     </div>
   </section>
@@ -76,12 +72,14 @@ import { knowledgeHubItems } from '~/data/cmsContent'
 import { resolveCmsImageSrc } from '~/data/cmsImageResolver'
 
 const featuredKnowledgeSlugs = [
-  'sustainabilityreport',
-  'energy-infrastructure-investment-report',
-  'infrastructure-development-conference-2025',
-  'outlook-2026',
-  'portfolio-report',
+  'state-of-global-ma-lseg-deals-intelligence-insights',
+  'global-private-markets-report-2026',
 ]
+
+const knowledgeHubImageBySlug = {
+  'state-of-global-ma-lseg-deals-intelligence-insights': 'sustainability',
+  'global-private-markets-report-2026': 'energy',
+}
 
 const featuredKnowledgeCards = featuredKnowledgeSlugs
   .map((slug, index) => {
@@ -94,13 +92,15 @@ const featuredKnowledgeCards = featuredKnowledgeSlugs
     return {
       item,
       title: item.title,
-      image: resolveCmsImageSrc(item.mainImage.src),
+      image: resolveCmsImageSrc(knowledgeHubImageBySlug[item.slug] || item.mainImage.src),
       href: `/knowledge-hub/${item.slug}`,
       delay: `${120 + index * 90}ms`,
-      isWide: item.slug === 'outlook-2026',
+      isWide: false,
     }
   })
   .filter(Boolean)
+
+const viewMoreDelay = `${120 + featuredKnowledgeCards.length * 90}ms`
 
 const knowledgeHubRef = ref(null)
 const isKnowledgeHubVisible = ref(false)

@@ -40,6 +40,7 @@ export type CmsContentItem = {
   country: string
   project?: string | string[]
   ctaLabel: string
+  externalUrl?: string
   mainImage: CmsImage
   publishedAt: string
   status: 'draft' | 'published' | 'archived'
@@ -75,7 +76,10 @@ export const newsItems: CmsContentItem[] = [
     category: 'Company Announcements',
     country: 'Mauritius',
     ctaLabel: 'Read More',
-    mainImage: defaultNewsMainImage,
+    mainImage: {
+      src: 'sustainability',
+      alt: 'Industrial infrastructure beside water',
+    },
     publishedAt: '2026-06-12',
     status: 'published',
     isFeatured: true,
@@ -108,7 +112,10 @@ export const newsItems: CmsContentItem[] = [
     category: 'Investment Updates',
     country: 'South Africa',
     ctaLabel: 'Read More',
-    mainImage: defaultNewsMainImage,
+    mainImage: {
+      src: 'energy',
+      alt: 'Energy infrastructure investment landscape',
+    },
     publishedAt: '2026-05-28',
     status: 'published',
     isFeatured: true,
@@ -189,6 +196,82 @@ export const newsItems: CmsContentItem[] = [
 ]
 
 export const knowledgeHubItems: CmsContentItem[] = [
+  {
+    id: 109,
+    type: 'knowledge_hub',
+    title: 'The State of Global M&A: LSEG Deals Intelligence Insights',
+    slug: 'state-of-global-ma-lseg-deals-intelligence-insights',
+    excerpt:
+      'Global M&A reached a record first-half value of $2.85 trillion in 2026, but the recovery remains highly concentrated, with fewer deals and capital flowing into a smaller group of sectors, companies and large-scale transactions.',
+    content: [],
+    contentBlocks: [
+      {
+        type: 'paragraph',
+        text: 'By LSEG',
+      },
+      {
+        type: 'paragraph',
+        text: 'Global M&A reached a record first-half value of $2.85 trillion in 2026, but the recovery remains highly concentrated, with fewer deals and capital flowing into a smaller group of sectors, companies and large-scale transactions.',
+      },
+      {
+        type: 'paragraph',
+        text: 'This LSEG Deals Intelligence report explores the rise of mega-deals, AI-driven investment strategies, regional market concentration and the trends expected to shape M&A activity in the second half of 2026.',
+      },
+    ],
+    category: 'M&A',
+    country: 'Global',
+    ctaLabel: 'Read More',
+    externalUrl: 'https://solutions.lseg.com/DealsReports2026',
+    mainImage: defaultNewsMainImage,
+    publishedAt: '2026-07-01',
+    status: 'published',
+    isFeatured: true,
+    layout: 'wide',
+    seo: {
+      title: 'The State of Global M&A: LSEG Deals Intelligence Insights',
+      description:
+        'LSEG Deals Intelligence insights on record first-half 2026 global M&A value, mega-deals, AI-driven investment strategies and regional market concentration.',
+      keywords: ['global M&A', 'LSEG', 'deals intelligence', 'mega-deals'],
+    },
+  },
+  {
+    id: 110,
+    type: 'knowledge_hub',
+    title: 'Global Private Markets Report 2026',
+    slug: 'global-private-markets-report-2026',
+    excerpt:
+      'Private markets entered 2026 facing a more demanding investment environment, shaped by uncertainty in dealmaking, capital flows, fundraising and returns.',
+    content: [],
+    contentBlocks: [
+      {
+        type: 'paragraph',
+        text: 'By McKinsey',
+      },
+      {
+        type: 'paragraph',
+        text: 'Private markets entered 2026 facing a more demanding investment environment, shaped by uncertainty in dealmaking, capital flows, fundraising and returns.',
+      },
+      {
+        type: 'paragraph',
+        text: "McKinsey's Global Private Markets Report 2026 explores how leading private capital players are adapting through stronger value creation, data-driven decision-making and more disciplined investment strategies. The report highlights key trends in performance, fundraising, deal activity and the long-term outlook for private markets.",
+      },
+    ],
+    category: 'Private Markets',
+    country: 'Global',
+    ctaLabel: 'Read More',
+    externalUrl: 'https://www.mckinsey.com/industries/private-capital/our-insights/global-private-markets-report',
+    mainImage: defaultNewsMainImage,
+    publishedAt: '2026-06-01',
+    status: 'published',
+    isFeatured: true,
+    layout: 'standard',
+    seo: {
+      title: 'Global Private Markets Report 2026 | McKinsey',
+      description:
+        'McKinsey insights on the 2026 private markets environment, including dealmaking, capital flows, fundraising, returns and disciplined investment strategies.',
+      keywords: ['private markets', 'McKinsey', 'private capital', 'fundraising'],
+    },
+  },
   {
     id: 100,
     type: 'knowledge_hub',
