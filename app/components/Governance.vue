@@ -188,6 +188,7 @@ import odiogoImage from '~/assets/images/team/odigio.png'
 import tshokoloImage from '~/assets/images/team/tshokolo.png'
 import veraImage from '~/assets/images/team/vera.png'
 import danieleImage from '~/assets/images/team/daniela.png'
+import BritishImage from '~/assets/images/team/British.png'
 import placeholderImage from '~/assets/images/team/placeholder.png'
 
 type Member = {
@@ -282,6 +283,7 @@ const edBio = [
 ]
 
 const danieleBio = [
+  'JD, Harvard Law School, MA in IPS and BA in IR, Stanford University.',
   'Daniele Jean-Pierre is a corporate finance attorney and senior executive with over two decades of experience in private equity, corporate finance, international trade, and development finance.',
   'As Managing Director for Trade at Prosper Africa, she managed a $50 million catalytic capital facility supporting agribusiness, textiles and apparel, and critical minerals, mobilizing financing from the private sector and DFIs.',
   'Over the course of her career at USAID, she has advanced African economic development, secured global supply chains, and advanced $5 billion of U.S. foreign assistance across Africa, Asia, and the Caribbean through senior legal leadership roles, including Acting Deputy General Counsel, Assistant General Counsel, and Chief Legal Officer in Senegal and Haiti.',
@@ -357,7 +359,7 @@ const boardMembers: Member[] = [
     role: 'Chair, Africa, Milken Institute International; Former Deputy Assistant Administrator & Coordinator, Prosper Africa',
     displayRole: 'Chair, Africa, Milken Institute International',
     linkedin: '#',
-    image: placeholderImage,
+    image: BritishImage,
     bio: britishBio,
   },
   {

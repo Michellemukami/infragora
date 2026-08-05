@@ -727,7 +727,23 @@ Capabilities
             </h2>
           </div>
 
-        
+           <div class="bridge-three-metric">
+            <p
+              class="mb-4 text-[11px] uppercase tracking-[2px] text-white/60"
+            >
+              Target Investment
+            </p>
+
+            <div class="flex flex-col items-start">
+              <span class="bridge-hero-value tracking-[-0.06em] text-white">
+                10GW
+              </span>
+              <span class="bridge-hero-note mt-2 inline-flex items-center gap-2">
+                <span class="h-[4px] w-[4px] rounded-full bg-[#8A8A8A]"></span>
+                Capacity built over the next 10 years
+              </span>
+            </div>
+          </div>
         </div>
         
       </div>
@@ -743,22 +759,7 @@ Capabilities
           INFRAGORA -SASOL
         </h3>
 
-        <!-- Size -->
-        <div class="mb-10">
-          <div
-            class="flex justify-between items-end text-[10px] uppercase tracking-[1.8px] text-white/45"
-          >
-            <span>Size (%)</span>
-
-            <span
-              class="bridge-card-value text-white normal-case tracking-normal"
-            >
-               60% - 70%
-            </span>
-          </div>
-
-          <div class="mt-3 h-px bg-white/20"></div>
-        </div>
+    
 
         <!-- Target -->
         <div>
@@ -770,7 +771,7 @@ Capabilities
             <span
               class="bridge-card-value text-white normal-case tracking-normal"
             >
-             $0.12B - 0.14B
+             $10B over the next 10 years
             </span>
           </div>
 
