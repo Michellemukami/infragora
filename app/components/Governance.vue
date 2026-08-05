@@ -283,7 +283,7 @@ const edBio = [
 ]
 
 const danieleBio = [
-
+  'JD, Harvard Law School, MA in IPS and BA in IR, Stanford University.',
   'Daniele Jean-Pierre is a corporate finance attorney and senior executive with over two decades of experience in private equity, corporate finance, international trade, and development finance.',
   'As Managing Director for Trade at Prosper Africa, she managed a $50 million catalytic capital facility supporting agribusiness, textiles and apparel, and critical minerals, mobilizing financing from the private sector and DFIs.',
   'Over the course of her career at USAID, she has advanced African economic development, secured global supply chains, and advanced $5 billion of U.S. foreign assistance across Africa, Asia, and the Caribbean through senior legal leadership roles, including Acting Deputy General Counsel, Assistant General Counsel, and Chief Legal Officer in Senegal and Haiti.',
