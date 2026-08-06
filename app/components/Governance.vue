@@ -284,13 +284,10 @@ const edBio = [
 
 const danieleBio = [
   'JD, Harvard Law School, MA in IPS and BA in IR, Stanford University.',
-  'Daniele Jean-Pierre is a corporate finance attorney and senior executive with over two decades of experience in private equity, corporate finance, international trade, and development finance.',
-  'As Managing Director for Trade at Prosper Africa, she managed a $50 million catalytic capital facility supporting agribusiness, textiles and apparel, and critical minerals, mobilizing financing from the private sector and DFIs.',
-  'Over the course of her career at USAID, she has advanced African economic development, secured global supply chains, and advanced $5 billion of U.S. foreign assistance across Africa, Asia, and the Caribbean through senior legal leadership roles, including Acting Deputy General Counsel, Assistant General Counsel, and Chief Legal Officer in Senegal and Haiti.',
-  'She has advised on public-private partnerships, infrastructure and energy projects, and compliance frameworks in fragile and frontier markets.',
-  'In the private sector, Daniele served as Associate General Counsel at American Capital, a global asset manager with $100 billion AUM, structuring leveraged buyouts, debt, and equity investments and advising portfolio company boards.',
-  'She began her career at Latham & Watkins LLP, representing major investment banks, including Goldman Sachs, and private equity sponsors, including the Carlyle Group, in leveraged finance transactions across Washington, New York, and Paris.',
-  'She holds a JD from Harvard Law School and an MA in International Policy Studies and BA in International Relations from Stanford University, and is fluent in French with professional proficiency in Portuguese.',
+  'A corporate finance attorney and senior executive with more than two decades of experience, Daniele has built an accomplished career across private equity, corporate finance, international trade, and development finance. As Managing Director for Trade at Prosper Africa, she managed a $50 million catalytic capital facility supporting agribusiness, textiles and apparel, and critical minerals, while mobilizing additional financing from private-sector investors and development finance institutions.',
+  'During her tenure at USAID, Daniele advanced African economic development, strengthened global supply chains, and supported the deployment of $5 billion in U.S. foreign assistance across Africa, Asia, and the Caribbean. She held several senior legal leadership roles, including Acting Deputy General Counsel, Assistant General Counsel, and Chief Legal Officer in Senegal and Haiti. In these capacities, she advised on public-private partnerships, infrastructure and energy projects, and legal and compliance frameworks in fragile and frontier markets.',
+  'In the private sector, Daniele served as Associate General Counsel at American Capital, a global asset manager with $100 billion in assets under management, where she structured leveraged buyouts, debt and equity investments and advised portfolio company boards. She began her career at Latham & Watkins LLP, representing leading investment banks, including Goldman Sachs, and private equity sponsors, including; The Carlyle Group, in leveraged finance transactions across Washington, New York and Paris.',
+  'Daniele is fluent in French and has professional proficiency in Portuguese.',
 ]
 
 const teamMembers: Member[] = [
