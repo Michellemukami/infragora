@@ -275,6 +275,7 @@ const britishBio = [
 ]
 
 const edBio = [
+
   'BA Manchester University, MBA Cranfield UK, PGDip Law Northumbria University. Graduate, US and UK Army.',
   'Ed Marlow was Former MD Africa, Deutsche Bank; MD Africa, Credit Suisse; Senior Advisor, Renaissance Capital; MD, Emerging Markets Principal Investments, HSBC; and MD Fixed Income, Credit Suisse.',
   'Ed brings over 23 years of experience working and traveling in Africa, with 22+ years focused on debt, investment, and advisory in Africa.',
@@ -321,7 +322,7 @@ const teamMembers: Member[] = [
   },
   {
     name: 'Ed Marlow',
-    role: 'MD, Private Investments',
+    role: 'Advisor/MD, Private Investments ',
     image: placeholderImage,
     linkedin: '#',
     bio: edBio,
