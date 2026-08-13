@@ -2,7 +2,7 @@
   <PolicyHero title="Cookie Policy" />
   <PolicyBody :sections="sections" />
   <section class="bg-white pb-16">
-    <div class="mx-auto px-6 md:px-10 lg:px-20">
+    <div class="mx-auto max-w-[1120px] px-6 md:px-10 lg:px-12">
       <button
         type="button"
         class="h-11 border border-[#1296ad] px-5 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1296ad] transition hover:bg-[#1296ad] hover:text-white"

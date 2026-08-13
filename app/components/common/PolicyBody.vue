@@ -1,6 +1,6 @@
 <template>
   <section class="bg-white py-12 md:py-20">
-    <div class="mx-auto px-6 md:px-10 lg:px-20">
+    <div class="mx-auto max-w-[1120px] px-6 md:px-10 lg:px-12">
       <div
         v-for="(section, index) in sections"
         :key="section.title || index"
