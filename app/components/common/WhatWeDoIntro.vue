@@ -68,7 +68,7 @@
 
       <div
         :class="[
-          'what-we-do-intro-content max-w-[720px] self-end font-sans text-[12px] font-normal leading-[1.5] tracking-[-0.01em] text-white sm:text-[13px] lg:text-[14px]',
+          'what-we-do-intro-content max-w-[720px] self-end font-sans text-[12px] font-normal leading-[1.5] tracking-[-0.01em] text-white sm:text-[12px] md:text-[12px] lg:text-[14px]',
           contentClass,
         ]"
       >

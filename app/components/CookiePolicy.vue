@@ -1,6 +1,17 @@
 <template>
   <PolicyHero title="Cookie Policy" />
   <PolicyBody :sections="sections" />
+  <section class="bg-white pb-16">
+    <div class="mx-auto px-6 md:px-10 lg:px-20">
+      <button
+        type="button"
+        class="h-11 border border-[#1296ad] px-5 text-[11px] font-semibold uppercase tracking-[0.08em] text-[#1296ad] transition hover:bg-[#1296ad] hover:text-white"
+        @click="openCookiePreferences"
+      >
+        Manage cookie preferences
+      </button>
+    </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -115,4 +126,8 @@ const sections: PolicyBodySection[] = [
     `,
   },
 ]
+
+const openCookiePreferences = () => {
+  window.dispatchEvent(new CustomEvent('infragora:open-cookie-preferences'))
+}
 </script>

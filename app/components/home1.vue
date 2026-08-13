@@ -334,7 +334,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 ">
           <!-- Advisory -->
           <article
-            class="bg-[#0d5563] px-8 py-8 md:px-10 lg:px-20 md:py-10 lg:h-[330px]"
+            class="flex min-h-[330px] flex-col justify-between bg-[#0d5563] px-8 py-8 md:px-10 md:py-10 lg:px-20"
           >
             <h3
               class="text-[28px] font-medium leading-none text-white"
@@ -343,7 +343,7 @@
             </h3>
 
             <p
-              class="mt-16 max-w-[250px] text-[15px] leading-[1.7] text-white/90"
+              class="mt-10 max-w-[300px] text-[14px] leading-[1.55] text-white/90 xl:text-[15px] xl:leading-[1.65]"
             >
               Project development, transaction structuring,
               market access, valuation, ESG alignment and
@@ -353,7 +353,7 @@
 
           <!-- Investment -->
           <article
-            class="bg-[#072f4a] px-8 py-8 md:px-10 md:py-10 lg:h-[330px]"
+            class="flex min-h-[330px] flex-col justify-between bg-[#072f4a] px-8 py-8 md:px-10 md:py-10"
           >
             <h3
               class="text-[28px] font-medium leading-none text-white"
@@ -362,7 +362,7 @@
             </h3>
 
             <p
-              class="mt-16 max-w-[250px] text-[15px] leading-[1.7] text-white/90"
+              class="mt-10 max-w-[300px] text-[14px] leading-[1.6] text-white/90 xl:text-[15px] xl:leading-[1.7]"
             >
               Operating, brownfield, growth and selected
               late-stage greenfield infrastructure assets
@@ -372,7 +372,7 @@
 
           <!-- Instruments -->
           <article
-            class="bg-[#dce8e5] px-8 py-8 md:px-10 lg:px-20  md:py-10 lg:h-[330px]"
+            class="flex min-h-[330px] flex-col justify-between bg-[#dce8e5] px-8 py-8 md:px-10 md:py-10 lg:px-20"
           >
             <h3
               class="text-[28px] font-medium leading-none text-[#08243a]"
@@ -381,7 +381,7 @@
             </h3>
 
             <p
-              class="mt-16 max-w-[250px] text-[15px] leading-[1.7] text-[#16354b]"
+              class="mt-10 max-w-[300px] text-[14px] leading-[1.6] text-[#16354b] xl:text-[15px] xl:leading-[1.7]"
             >
               Flexible investment instruments including
               equity, quasi-equity and private credit.
@@ -390,7 +390,7 @@
 
           <!-- Fund Management -->
           <article
-            class="bg-[#c6ddda] px-8 py-8 md:px-10 md:py-10 lg:h-[330px]"
+            class="flex min-h-[330px] flex-col justify-between bg-[#c6ddda] px-8 py-8 md:px-10 md:py-10"
           >
             <h3
               class="text-[28px] font-medium leading-none text-[#08243a]"
@@ -399,7 +399,7 @@
             </h3>
 
             <p
-              class="mt-16 max-w-[250px] text-[15px] leading-[1.7] text-[#16354b]"
+              class="mt-10 max-w-[300px] text-[14px] leading-[1.6] text-[#16354b] xl:text-[15px] xl:leading-[1.7]"
             >
               Infrastructure-focused vehicles and
               portfolios with disciplined governance,
@@ -777,6 +777,8 @@ import southAfricaFlag from '~/assets/images/flags/african/south-africa.png'
 import kenyaFlag from '~/assets/images/flags/african/ke.png'
 import nigeriaFlag from '~/assets/images/flags/african/nigeria.png'
 import coteDivoireFlag from '~/assets/images/flags/african/cotr dlvoire.png'
+import ukFlag from '~/assets/images/flags/other/sh.svg'
+import usaFlag from '~/assets/images/flags/other/us.svg'
 
 useHead({
   title: 'INFRAGORA Global Capital | Africa Infrastructure Secondary Market Platform',
@@ -847,7 +849,10 @@ const reachRegions = [
   },
   {
     name: 'UK & USA',
-    countries: [],
+    countries: [
+      { name: 'UK', flag: ukFlag },
+      { name: 'USA', flag: usaFlag },
+    ],
   },
 ]
 

@@ -186,7 +186,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 ">
           <!-- Advisory -->
           <article
-            class="what-we-do-tile bg-[#0d5563] px-8 py-8 md:px-10 md:py-10 lg:h-[330px] lg:pl-20 lg:pr-12"
+            class="what-we-do-tile flex min-h-[330px] flex-col justify-between bg-[#0d5563] px-8 py-8 md:px-10 md:py-10 lg:pl-20 lg:pr-12"
             style="--what-we-do-delay: 0ms"
           >
             <h3
@@ -196,7 +196,7 @@
             </h3>
 
             <p
-              class="mt-16 max-w-[285px] text-[15px] leading-[1.7] text-white/90"
+              class="mt-10 max-w-[300px] text-[14px] leading-[1.55] text-white/90 xl:text-[15px] xl:leading-[1.65]"
             >
               Project development, transaction structuring, capital raising, market access, valuation analysis, ESG strategy and impact assessment and investor readiness.
 
@@ -207,7 +207,7 @@ Executed by INFRAGORA Advisory
 
           <!-- Investment -->
           <article
-            class="what-we-do-tile bg-[#072f4a] px-8 py-8 md:px-10 md:py-10 lg:h-[330px]"
+            class="what-we-do-tile flex min-h-[330px] flex-col justify-between bg-[#072f4a] px-8 py-8 md:px-10 md:py-10"
             style="--what-we-do-delay: 90ms"
           >
             <h3
@@ -217,7 +217,7 @@ Executed by INFRAGORA Advisory
             </h3>
 
             <p
-              class="mt-16 max-w-[285px] text-[15px] leading-[1.7] text-white/90"
+              class="mt-10 max-w-[300px] text-[14px] leading-[1.6] text-white/90 xl:text-[15px] xl:leading-[1.7]"
             >
               Greenfield especially selected late-stage and operating/brownfield with growth upside infrastructure assets
             </p>
@@ -225,7 +225,7 @@ Executed by INFRAGORA Advisory
 
           <!-- Instruments -->
           <article
-            class="what-we-do-tile bg-[#dce8e5] px-8 py-8 md:px-10 lg:px-20  md:py-10 lg:h-[330px]"
+            class="what-we-do-tile flex min-h-[330px] flex-col justify-between bg-[#dce8e5] px-8 py-8 md:px-10 md:py-10 lg:px-20"
             style="--what-we-do-delay: 180ms"
           >
             <h3
@@ -235,7 +235,7 @@ Executed by INFRAGORA Advisory
             </h3>
 
             <p
-              class="mt-16 max-w-[285px] text-[15px] leading-[1.7] text-[#16354b]"
+              class="mt-10 max-w-[300px] text-[14px] leading-[1.6] text-[#16354b] xl:text-[15px] xl:leading-[1.7]"
             >
               Flexible investment instruments including
               equity, quasi-equity and private credit.
@@ -244,7 +244,7 @@ Executed by INFRAGORA Advisory
 
           <!-- Fund Management -->
           <article
-            class="what-we-do-tile bg-[#c6ddda] px-8 py-8 md:px-10 md:py-10 lg:h-[330px]"
+            class="what-we-do-tile flex min-h-[330px] flex-col justify-between bg-[#c6ddda] px-8 py-8 md:px-10 md:py-10"
             style="--what-we-do-delay: 270ms"
           >
             <h3
@@ -254,7 +254,7 @@ Executed by INFRAGORA Advisory
             </h3>
 
             <p
-              class="mt-16 max-w-[285px] text-[15px] leading-[1.7] text-[#16354b]"
+              class="mt-10 max-w-[300px] text-[14px] leading-[1.6] text-[#16354b] xl:text-[15px] xl:leading-[1.7]"
             >
               Infrastructure-focused vehicles and
               portfolios with disciplined governance,
@@ -711,6 +711,8 @@ import southAfricaFlag from '~/assets/images/flags/african/south-africa.png'
 import kenyaFlag from '~/assets/images/flags/african/ke.png'
 import nigeriaFlag from '~/assets/images/flags/african/nigeria.png'
 import coteDivoireFlag from '~/assets/images/flags/african/cotr dlvoire.png'
+import ukFlag from '~/assets/images/flags/other/sh.svg'
+import usaFlag from '~/assets/images/flags/other/us.svg'
 import green from "~/assets/images/portfolio/green.jpg"
 import ict from "~/assets/images/portfolio/ict.jpg"
 import train from "~/assets/images/portfolio/train.jpg"
@@ -824,7 +826,10 @@ const reachRegions = [
   },
   {
     name: 'UK & USA',
-    countries: [],
+    countries: [
+      { name: 'UK', flag: ukFlag },
+      { name: 'USA', flag: usaFlag },
+    ],
   },
 ]
 
