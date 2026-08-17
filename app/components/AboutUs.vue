@@ -227,8 +227,10 @@ type Value = {
 }
 
 const aboutIntroParagraphs = [
-  'INFRAGORA Global Capital is an African-led infrastructure investment and fund management platform focused on establishing a structured secondary market for African infrastructure assets.',
-  "We were created to address Africa's main infrastructure finance challenges and most significant market failure: the lack of liquidity and structured exit pathways for investors, institutional investors, developers and asset owners. By enabling capital recycling, structured exits, asset-backed securities and institutional investor access, INFRAGORA helps to unlock value from existing infrastructure assets whilst mobilising new capital to accelerate asset creation and development.",
+'INFRAGORA Global Capital is an African-led, globally connected infrastructure investment and fund management platform focused on developing structured secondary market solutions for African infrastructure assets.',
+'With deep African market expertise and global institutional reach, INFRAGORA was created to address one of the continent’s most significant infrastructure finance challenges: the lack of liquidity and structured exit pathways for investors, institutional investors, developers and asset owners.',
+'Through capital recycling, structured exits, asset-backed securities and access to regional and global institutional capital, INFRAGORA helps unlock value from existing infrastructure assets while mobilising new capital to accelerate sustainable infrastructure development across Africa.'
+
 ]
 
 const teamMembers: TeamMember[] = [
@@ -244,8 +246,9 @@ const teamMembers: TeamMember[] = [
   },
 ]
 const coverageText = [
-  'INFRAGORA has a pan-African mandate with a focus on high-growth infrastructure markets across Southern, West, East, Central and North Africa.',
-  'Our platform is structured to work with asset developers, infrastructure companies, portfolio companies, DFIs, multilateral and bilateral institutions, investment banks, pension funds, sovereign wealth funds, infrastructure funds, asset managers, family offices and strategic investors.',
+ 'INFRAGORA has a Pan-African mandate focused on high-growth infrastructure markets across Southern, West, East, Central and North Africa.',
+
+'Our platform is structured to work with a broad ecosystem of asset developers, infrastructure companies, portfolio companies, DFIs, multilateral and bilateral institutions, investment banks, pension funds, sovereign wealth funds, infrastructure funds, asset managers, family offices and strategic investors, including JP Morgan and other global investment partners.'
 ]
 const objectives = [
   'Stimulate capital recycling for investors, developers, and asset owners',
