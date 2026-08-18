@@ -68,39 +68,34 @@
 
 <script setup>
 import KnowledgeCard from '~/components/KnowledgeCard.vue'
-import { knowledgeHubItems } from '~/data/cmsContent'
 import { resolveCmsImageSrc } from '~/data/cmsImageResolver'
 
-const featuredKnowledgeSlugs = [
-  'state-of-global-ma-lseg-deals-intelligence-insights',
-  'global-private-markets-report-2026',
-]
+const { data: knowledgeHubItems } = await useFetch('/api/knowledge-hub', {
+  default: () => [],
+})
 
-const knowledgeHubImageBySlug = {
-  'state-of-global-ma-lseg-deals-intelligence-insights': 'sustainability',
-  'global-private-markets-report-2026': 'energy',
+const getMainImageSrc = (mainImage) => {
+  if (typeof mainImage === 'string') {
+    return mainImage
+  }
+
+  return mainImage?.src
 }
 
-const featuredKnowledgeCards = featuredKnowledgeSlugs
-  .map((slug, index) => {
-    const item = knowledgeHubItems.find((entry) => entry.slug === slug)
-
-    if (!item) {
-      return null
-    }
-
-    return {
+const featuredKnowledgeCards = computed(() =>
+  knowledgeHubItems.value
+    .slice(0, 2)
+    .map((item, index) => ({
       item,
       title: item.title,
-      image: resolveCmsImageSrc(knowledgeHubImageBySlug[item.slug] || item.mainImage.src),
+      image: resolveCmsImageSrc(getMainImageSrc(item.mainImage)),
       href: `/knowledge-hub/${item.slug}`,
       delay: `${120 + index * 90}ms`,
       isWide: false,
-    }
-  })
-  .filter(Boolean)
+    }))
+)
 
-const viewMoreDelay = `${120 + featuredKnowledgeCards.length * 90}ms`
+const viewMoreDelay = computed(() => `${120 + featuredKnowledgeCards.value.length * 90}ms`)
 
 const knowledgeHubRef = ref(null)
 const isKnowledgeHubVisible = ref(false)

@@ -9,6 +9,11 @@ type DetailResponse = CmsContentItem | {
   data?: CmsContentItem | null
 }
 
+type KnowledgeHubDetailItem = CmsContentItem & {
+  description?: string | null
+  link?: string | null
+}
+
 const route = useRoute()
 const slug = computed(() => String(route.params.slug || ''))
 
@@ -19,11 +24,11 @@ const { data: response } = await useFetch<DetailResponse | null>(
   },
 )
 
-const item = computed(() => {
+const item = computed<KnowledgeHubDetailItem | null>(() => {
   if (!response.value) return null
-  if ('data' in response.value) return response.value.data || null
+  if ('data' in response.value) return response.value.data as KnowledgeHubDetailItem || null
 
-  return response.value
+  return response.value as KnowledgeHubDetailItem
 })
 
 const knowledgeHubImageBySlug: Record<string, string> = {
@@ -35,6 +40,14 @@ const featureImage = computed(() =>
   resolveCmsImageSrc(
     item.value ? knowledgeHubImageBySlug[item.value.slug] || item.value.mainImage?.src : undefined,
   ),
+)
+
+const featureBody = computed(() =>
+  item.value?.description || item.value?.excerpt || '',
+)
+
+const readMoreHref = computed(() =>
+  item.value?.link || item.value?.externalUrl || '/knowledge-hub',
 )
 
 if (!item.value) {
@@ -49,7 +62,7 @@ useHead(() => ({
   meta: [
     {
       name: 'description',
-      content: item.value?.seo?.description || item.value?.excerpt,
+      content: item.value?.seo?.description || item.value?.description || item.value?.excerpt || '',
     },
     {
       name: 'keywords',
@@ -64,11 +77,11 @@ useHead(() => ({
   <SustainabilityReportFeature
     v-if="item"
     :title="item.title"
-    :body="item.excerpt"
+    :body="featureBody"
     :cta-label="item.ctaLabel"
-    :href="item.externalUrl || '/knowledge-hub'"
+    :href="readMoreHref"
     :image="featureImage"
-    :image-alt="item.mainImage.alt"
+    :image-alt="item.mainImage.alt || item.title"
   />
   <Footer />
 </template>

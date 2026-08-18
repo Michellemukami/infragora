@@ -3,7 +3,7 @@
     <section v-if="showMailingList" class="w-full bg-black">
     <div class="bg-[#1c1b1f]">
       <div
-        class="mx-auto flex flex-col gap-10 px-6 py-10 sm:px-10 md:flex-row md:items-center md:justify-between lg:px-20 lg:py-12"
+        class="relative mx-auto flex flex-col gap-10 px-6 py-10 sm:px-10 md:flex-row md:items-center md:justify-between lg:px-20 lg:py-12"
       >
         <!-- Left text -->
         <div>
@@ -22,18 +22,22 @@
         <!-- Form -->
         <form
           class="flex w-full max-w-[620px] overflow-hidden bg-white md:mt-6"
+          @submit.prevent="submitMailingList"
         >
           <input
+            v-model.trim="mailingListEmail"
             type="email"
             placeholder="Enter email address to sign up"
             class="h-[56px] flex-1 bg-[#e3e3e3] px-5 text-[12px] text-black outline-none placeholder:text-black/45 sm:h-[62px]"
+            required
           />
 
           <button
             type="submit"
+            :disabled="isSubscribing"
             class="footer-subscribe-button flex h-[56px] w-[150px] items-center justify-center gap-5 bg-white text-[11px] font-semibold uppercase text-black transition sm:h-[62px] sm:w-[170px]"
           >
-            Subscribe
+            {{ isSubscribing ? 'Sending...' : 'Subscribe' }}
             <img
           :src="arrowOutwardIcon"
           alt=""
@@ -41,6 +45,18 @@
         />
           </button>
         </form>
+
+        <p
+          v-if="mailingListStatus.message"
+          :class="[
+            'text-[12px] leading-[1.5] md:absolute md:bottom-5 md:right-20 md:max-w-[620px]',
+            mailingListStatus.type === 'success' ? 'text-[#10cfa3]' : 'text-[#ffb4b4]',
+          ]"
+          role="status"
+          aria-live="polite"
+        >
+          {{ mailingListStatus.message }}
+        </p>
       </div>
     </div>
 
@@ -160,6 +176,72 @@ import arrowOutwardIcon from "~/assets/images/icon/arrow_outward.png"
 const route = useRoute()
 const currentYear = new Date().getFullYear()
 const showMailingList = computed(() => route.path.replace(/\/$/, "") !== "/contact-us")
+const mailingListEmail = ref('')
+const isSubscribing = ref(false)
+const mailingListStatus = reactive({
+  type: '',
+  message: '',
+})
+let mailingListStatusTimer
+
+const resetMailingListStatus = () => {
+  if (mailingListStatusTimer) {
+    clearTimeout(mailingListStatusTimer)
+    mailingListStatusTimer = undefined
+  }
+
+  mailingListStatus.type = ''
+  mailingListStatus.message = ''
+}
+
+const setMailingListStatus = (type, message) => {
+  resetMailingListStatus()
+
+  mailingListStatus.type = type
+  mailingListStatus.message = message
+
+  mailingListStatusTimer = setTimeout(() => {
+    resetMailingListStatus()
+  }, 6000)
+}
+
+const submitMailingList = async () => {
+  resetMailingListStatus()
+
+  if (!mailingListEmail.value) {
+    setMailingListStatus('error', 'Please enter a valid email address.')
+    return
+  }
+
+  isSubscribing.value = true
+
+  try {
+    await $fetch('/api/mailing-list', {
+      method: 'POST',
+      body: {
+        email: mailingListEmail.value,
+      },
+    })
+
+    mailingListEmail.value = ''
+    setMailingListStatus('success', 'Thank you. You are on our mailing list.')
+  } catch (error) {
+    if (error?.statusCode === 422 || error?.status === 422) {
+      setMailingListStatus('error', 'Please enter a valid email address.')
+      return
+    }
+
+    setMailingListStatus('error', 'We could not subscribe you right now. Please try again.')
+  } finally {
+    isSubscribing.value = false
+  }
+}
+
+onBeforeUnmount(() => {
+  if (mailingListStatusTimer) {
+    clearTimeout(mailingListStatusTimer)
+  }
+})
 </script>
 
 <style scoped>

@@ -14,7 +14,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      cmsApiBase: 'http://127.0.0.1:8000/api',
+      // cmsApiBase: 'http://127.0.0.1:8000/api',
+      cmsApiBase: 'https://cms.infragora.com/api/',
     },
   },
 })
