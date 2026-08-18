@@ -270,16 +270,16 @@
             >
           Knowledge Hub
         </NuxtLink>
-<!-- 
-  <NuxtLink
+
+  <!-- <NuxtLink
     to="/news"
     class="text-[11px] font-medium uppercase tracking-[0.08em] transition-colors duration-200 hover:text-[#1296ad]"
     :class="navLinkClass('/news')"
     :aria-current="isActivePath('/news') ? 'page' : undefined"
       >
     News
-  </NuxtLink>
-        -->
+  </NuxtLink> -->
+       
 
         <NuxtLink
           to="/contact-us"

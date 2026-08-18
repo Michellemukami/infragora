@@ -108,62 +108,27 @@
           aria-label="Facebook"
           class="flex h-10 w-10 items-center justify-center text-black transition duration-200 hover:-translate-y-0.5 hover:opacity-55"
         >
-          <svg
-            viewBox="0 0 24 24"
-            class="h-[18px] w-[18px]"
-            fill="currentColor"
+          <img
+            :src="facebookIcon"
+            alt=""
+            class="h-6 w-6 object-contain"
             aria-hidden="true"
-          >
-            <path
-              d="M13.5 8.5V6.8c0-.8.5-1 1-1h2V2.2C16.1 2.1 15 2 13.7 2 10.9 2 9 3.7 9 6.9v1.6H6v4h3V22h4.5v-9.5h3.1l.5-4h-3.6Z"
-            />
-          </svg>
+          />
         </a>
 
         <a
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram"
-          class="flex h-10 w-10 items-center justify-center text-black transition duration-200 hover:-translate-y-0.5 hover:opacity-55"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            class="h-[20px] w-[20px]"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.8"
-            aria-hidden="true"
-          >
-            <rect x="3" y="3" width="18" height="18" rx="5" />
-            <circle cx="12" cy="12" r="4.2" />
-            <circle
-              cx="17.3"
-              cy="6.8"
-              r="1"
-              fill="currentColor"
-              stroke="none"
-            />
-          </svg>
-        </a>
-
-        <a
-          href="#"
+          href="https://www.linkedin.com/company/infragora"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
           class="flex h-10 w-10 items-center justify-center text-black transition duration-200 hover:-translate-y-0.5 hover:opacity-55"
         >
-          <svg
-            viewBox="0 0 24 24"
-            class="h-[19px] w-[19px]"
-            fill="currentColor"
+          <img
+            :src="linkedinIcon"
+            alt=""
+            class="h-6 w-6 object-contain"
             aria-hidden="true"
-          >
-            <path
-              d="M4.5 3A2.5 2.5 0 1 0 4.5 8a2.5 2.5 0 0 0 0-5ZM2.4 9.7h4.2V22H2.4V9.7ZM9.1 9.7h4v1.7h.1c.6-1.1 1.9-2.2 4-2.2 4.3 0 5.1 2.8 5.1 6.5V22h-4.2v-5.6c0-1.3 0-3.1-1.9-3.1s-2.2 1.5-2.2 3V22H9.1V9.7Z"
-            />
-          </svg>
+          />
         </a>
       </div>
     </div>
@@ -172,6 +137,8 @@
 
 <script setup>
 import arrowOutwardIcon from "~/assets/images/icon/arrow_outward.png"
+import facebookIcon from "~/assets/images/socials/facebook.png"
+import linkedinIcon from "~/assets/images/socials/linkedin.png"
 
 const route = useRoute()
 const currentYear = new Date().getFullYear()

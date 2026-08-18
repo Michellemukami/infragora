@@ -39,72 +39,34 @@
 
           <!-- Social -->
           <div class="contact-social mt-10 flex items-center gap-6">
-            <!-- Linkedin -->
             <a
               href="#"
-              class="text-[#8d8d8d] transition hover:text-[#0c5668]"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              class="flex h-10 w-10 items-center justify-center transition duration-200 hover:-translate-y-0.5 hover:opacity-55"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM.5 8h4V24h-4V8zm7.5 0h3.83v2.19h.05c.53-1.01 1.84-2.08 3.79-2.08 4.05 0 4.8 2.67 4.8 6.14V24h-4v-7.81c0-1.86-.03-4.26-2.6-4.26-2.6 0-3 2.03-3 4.12V24H8V8z"
-                />
-              </svg>
+              <img
+                :src="facebookIcon"
+                alt=""
+                class="h-6 w-6 object-contain"
+                aria-hidden="true"
+              />
             </a>
 
-            <!-- Instagram -->
             <a
-              href="#"
-              class="text-[#8d8d8d] transition hover:text-[#0c5668]"
+              href="https://www.linkedin.com/company/infragora"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              class="flex h-10 w-10 items-center justify-center transition duration-200 hover:-translate-y-0.5 hover:opacity-55"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <rect
-                  x="3"
-                  y="3"
-                  width="18"
-                  height="18"
-                  rx="5"
-                />
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="4"
-                />
-                <circle
-                  cx="17.5"
-                  cy="6.5"
-                  r="1"
-                  fill="currentColor"
-                />
-              </svg>
-            </a>
-
-            <!-- Facebook -->
-            <a
-              href="#"
-              class="text-[#8d8d8d] transition hover:text-[#0c5668]"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M22 12.07C22 6.5 17.52 2 12 2S2 6.5 2 12.07c0 5.02 3.66 9.17 8.44 9.93v-7.03H7.9v-2.9h2.54V9.85c0-2.53 1.49-3.93 3.78-3.93 1.09 0 2.23.2 2.23.2v2.47H15.2c-1.24 0-1.63.78-1.63 1.58v1.9h2.77l-.44 2.9h-2.33V22c4.78-.76 8.43-4.91 8.43-9.93z"
-                />
-              </svg>
+              <img
+                :src="linkedinIcon"
+                alt=""
+                class="h-6 w-6 object-contain"
+                aria-hidden="true"
+              />
             </a>
           </div>
 
@@ -237,6 +199,9 @@
   </section>
 </template>
 <script setup lang="ts">
+import facebookIcon from "~/assets/images/socials/facebook.png"
+import linkedinIcon from "~/assets/images/socials/linkedin.png"
+
 const config = useRuntimeConfig()
 
 useHead({
