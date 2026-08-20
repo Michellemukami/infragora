@@ -291,11 +291,7 @@
         </NuxtLink>
       </nav>
 
-      <button
-        class="hidden h-[40px] border border-[#d6dfdf] px-5 text-[11px] font-medium uppercase tracking-[0.08em] transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-[#1296ad] hover:bg-[#1296ad] hover:text-white hover:shadow-[0_12px_28px_rgba(18,150,173,0.18)] active:translate-y-0 lg:block"
-      >
-        LP Login
-      </button>
+    
 
       <button
         type="button"
@@ -578,11 +574,7 @@
           </NuxtLink>
         </nav>
 
-        <button
-          class="mt-8 flex h-12 w-full items-center justify-center border border-[#1296ad] bg-[#1296ad] text-[11px] font-semibold uppercase tracking-[0.1em] text-white transition duration-300 hover:bg-transparent hover:text-[#1296ad]"
-        >
-          LP Login
-        </button>
+    
       </aside>
     </Transition>
   </header>

@@ -189,6 +189,7 @@ import tshokoloImage from '~/assets/images/team/tshokolo.png'
 import veraImage from '~/assets/images/team/vera.png'
 import danieleImage from '~/assets/images/team/daniela.png'
 import BritishImage from '~/assets/images/team/british.png'
+import EdImage from '~/assets/images/team/ed.jpeg'
 import placeholderImage from '~/assets/images/team/placeholder.png'
 
 type Member = {
@@ -323,7 +324,7 @@ const teamMembers: Member[] = [
   {
     name: 'Ed Marlow',
     role: 'Advisor/MD, Private Investments ',
-    image: placeholderImage,
+    image: EdImage,
     linkedin: '#',
     bio: edBio,
   },
