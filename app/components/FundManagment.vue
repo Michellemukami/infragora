@@ -753,13 +753,19 @@ Capabilities
         class="bridge-three-card bg-[#0F5B69] px-8 py-8 lg:px-12 lg:py-10 flex flex-col justify-between"
         style="--bridge-card-delay: 220ms"
       >
+      <div class="mb-12">
+
         <h3
-          class="text-white text-[22px] lg:text-[30px] font-normal mb-12"
+          class="text-white text-[22px] lg:text-[30px] font-normal "
         >
-          INFRAGORA -SASOL
+          OCHA Energy
         </h3>
 
-    
+      <span class="bridge-hero-note inline-flex items-center gap-2">
+                <span class="h-[4px] w-[4px] rounded-full bg-[#8A8A8A]"></span>
+               Powered by INFRAGORA - SASOL
+              </span>
+      </div>
 
         <!-- Target -->
         <div>
