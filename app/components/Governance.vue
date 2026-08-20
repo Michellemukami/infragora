@@ -325,7 +325,7 @@ const teamMembers: Member[] = [
     name: 'Ed Marlow',
     role: 'Advisor/MD, Private Investments ',
     image: EdImage,
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/in/edward-marlow-89030913/',
     bio: edBio,
   },
   {
